@@ -4,7 +4,7 @@
 
 ### Setting up development environment
 
-TODO
+For this tutorial, we'll use the [kiara_modules.playground](https://github.com/DHARPA-Project/kiara_modules.playground) repository as our development environment. Follow the instructions to perpare a development environment in the README over there and, then create a Python module with your own name under ``src/kiara_modules/playground`` (similar to the existing ones), and put your code in the ``__init__.py`` file in there, or create an entirely new Python module within, whatever you prefer. The module names in the following might differ slightly from what you will see when following along, but I trust you'll nonetheless figure out the right thing to do... If not, contact me and let me know how to improve this guide!
 
 ### Pre-loading the example table we are going to use
 
