@@ -8,7 +8,7 @@ For this tutorial, we'll use the [kiara_modules.playground](https://github.com/D
 
 ### Pre-loading the example table we are going to use
 
-As input data for this tutorial, we'll use a very small csv file:
+As input data for this tutorial, we'll use [this very small csv file](https://github.com/DHARPA-Project/kiara_documentation/blob/develop/examples/data/writing_module_tutorial/data_1.csv):
 
 {{ inline_file_as_codeblock('examples/data/writing_module_tutorial/data_1.csv', format='csv') }}
 
@@ -113,11 +113,11 @@ def create_output_schema(self):
 
 After adding the code for the input and output schema, we basically defined the interface of our module. Such an interface is important, because it is how other people will interact with it. *kiara* can display this interface, along with other important bits and pieces with the ``module explain-instance`` sub-command:
 
-{{ cli("kiara", "module", "explain-instance", "kiara_documentation.writing_modules.filter_table_by_date", max_height=240) }}
+{{ cli("kiara", "module", "explain-instance", "kiara_documentation.writing_modules.filter_table_by_date", max_height=240, fake_command="kiara module explain-instance playground.markus.filter_table_by_date") }}
 
 As you can see, *kiara* picked up your implementation, and converted it to an auto-generated documentation of the module. We can also 'run' the module without any input. In that case, *kiara* will give us a brief usage hint that tells the user which inputs are needed:
 
-{{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date", max_height=240) }}
+{{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date", max_height=240, fake_command="kiara run playground.markus.filter_table_by_date") }}
 
 ### method: ```process```
 
@@ -138,7 +138,7 @@ What we have done here is to request the actual table data (the 'table_input' ke
 
 After this, the (Apache Arrow) Table object the user used as input is linked to the ``table_obj`` variable. To confirm this is the case, we can now run our module for the first time, with actual input:
 
-{{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date_2", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240) }}
+{{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date_2", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240, fake_command="kiara run playground.markus.filter_table_by_date table_input=value:tutorial_data_1 date=1977-01-01") }}
 
 So, this is exactly the data we put in. Now we just have to somehow filter it. For that, first we need to retrieve the 'date' input, and we can do that the same way we did with 'table_input'. For debugging and development purposes, I like to just print some of those inputs or intermediate results in the module code while I work on it. Something like:
 
@@ -157,7 +157,7 @@ def process(self, inputs, outputs):
 
 Let's run (with the ``--output=silent`` option, because for now we are not interested in the result -- we know it's the same as the input):
 
-{{ cli("kiara", "run", "--output=silent", "kiara_documentation.writing_modules.filter_table_by_date_3", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240) }}
+{{ cli("kiara", "run", "--output=silent", "kiara_documentation.writing_modules.filter_table_by_date_3", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240, fake_command="kiara run --output=silent playground.markus.filter_table_by_date table_input=value:tutorial_data_1 date=1977-01-01") }}
 
 ### Filter the table, using Pandas
 
@@ -181,7 +181,7 @@ def process(self, inputs, outputs):
 
 Again, let's run our thing, and look at the output again:
 
-{{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date_4", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240) }}
+{{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date_4", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240, fake_command="kiara run playground.markus.filter_table_by_date table_input=value:tutorial_data_1 date=1977-01-01") }}
 
 And that was that! Your first *kiara* module!
 

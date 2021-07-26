@@ -68,6 +68,7 @@ class FilterTableByDate3Module(KiaraModule):
 
         print("------")
         print(f"HELLO FROM INSIDE THE MODULE, THIS IS OUR DATE: {date_input}")
+        print("------")
 
         outputs.set_value("table_output", table_obj)
 
