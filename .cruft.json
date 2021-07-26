@@ -1,0 +1,18 @@
+{
+    "template": "https://github.com/DHARPA-Project/kiara_modules.project_template.git",
+    "commit": "fb49af3f633fcf962d3da8665f627635274f3879",
+    "context": {
+        "cookiecutter": {
+            "full_name": "Markus Binsteiner",
+            "email": "markus@frkl.io",
+            "project_name": "documentation",
+            "project_slug": "kiara_documentation",
+            "project_short_description": "User documentation for kiara.",
+            "_extensions": [
+                "cookiecutter.extensions.JsonifyExtension"
+            ],
+            "_template": "https://github.com/DHARPA-Project/kiara_modules.project_template.git"
+        }
+    },
+    "directory": null
+}
