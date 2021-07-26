@@ -115,15 +115,15 @@ After adding the code for the input and output schema, we basically defined the 
 
 {{ cli("kiara", "module", "explain-instance", "kiara_documentation.writing_modules.filter_table_by_date", max_height=240) }}
 
-As you can see, *kiara* picked up your implementation, and converted it to an auto-generated documentation of the module. We can also 'run' the module without any input. In this case, *kiara* will us a brief usage hint, that tells the user which inputs are needed:
+As you can see, *kiara* picked up your implementation, and converted it to an auto-generated documentation of the module. We can also 'run' the module without any input. In that case, *kiara* will give us a brief usage hint that tells the user which inputs are needed:
 
 {{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date", max_height=240) }}
 
 ### method: ```process```
 
-Now, onto implementing the actual meat of our module, the ``process`` function. This function in its most basic form takes two arguments: ``inputs``, and ``outputs``. Both are objects of the [``ValueSet``](https://dharpa.org/kiara/api_reference/kiara.data.values/#kiara.data.values.ValueSet) class, which is basically a dict with the field_names as keys, and the actual values as, well ...values.
+Now, onto implementing the actual meat of our *kiara* module, the ``process`` function. This function in its most basic form takes two arguments: ``inputs``, and ``outputs``. Both are objects of the [``ValueSet``](https://dharpa.org/kiara/api_reference/kiara.data.values/#kiara.data.values.ValueSet) class, which is basically a dict with the field_names as keys, and the actual values as, well ...values.
 
-There is one thing in all of this that is a bit unintuitive (well, I'm sure there are more, but this is the most crucial): *kiara* tries to avoid handling the actual data (bytes/data objects) as much as possible, and only accesses them at the last possible moment. This is a strategy to keep memory utilization and data transfer as close to a minimum as possible. It doesn't make much sense to introducte this sort of abstraction for workflows and processes with small datasets, but we can't rely on only having small datasets, so our design has to cater for the 'worst' case, rather than the best. What this means, is that as a module developer you have to go through one extra step to get to the actual value, if you need it. Typically, this looks like this:
+There is one thing in all of this that is a bit unintuitive compared to 'normal' programming (well, I'm sure there is more, but this is the most crucial): *kiara* tries to avoid handling the actual data (bytes/data objects) as much as possible, and only accesses them at the last possible moment. This is a strategy to keep memory utilization and data transfer as close to a minimum as possible. It would not make much sense to introduce something like this for workflows and processes that only deal with small(-ish) datasets, but we can't rely on always having small datasets and we'd like to be prepared for more demanding computations. So our design has to cater for the 'worst' case, rather than the best. What this means, is that as a module developer you have to go through one extra step to get to the actual value, if you need it. Typically, this step will look like this:
 
 ```python
 def process(inputs, outputs):
@@ -133,14 +133,14 @@ def process(inputs, outputs):
     outputs.set_value("table_output", table_obj)
 ```
 
-What we have done here is to request the actual table data (the 'table_input' key in ``create_input_schema``) from *kiara* (only once we actually need it), and then set that table data directly as the 'table' output (the name 'table_output' in this case is the key of the result in ``create_output_schema``). So our module does absolutely nothing, it only uses the input it received as output, and returns that. We can try that out by running it again, this time with inputs (we'll just use random input for the 'date' for now):
+What we have done here is to request the actual table data (the 'table_input' key in ``create_input_schema``) from *kiara*, and then set that table data directly as the output value (the name 'table_output' in this case is the key of the result in ``create_output_schema``). So our module does absolutely nothing, it only uses the input it received as output, and returns that. We can try that out by running the module again, this time with inputs (we'll just use random input for the 'date' for now):
 
 
 After this, the (Apache Arrow) Table object the user used as input is linked to the ``table_obj`` variable. To confirm this is the case, we can now run our module for the first time, with actual input:
 
-{{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date_2", "table_input=value:tutorial_data_1", "date=2020-01-01", max_height=240) }}
+{{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date_2", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240) }}
 
-So, this is exactly the data we put in. Now we just have to somehow filter it. For that, first we need to retrieve the 'date' input, and we can do that the same way we did with 'table_input'. For debugging and development purposes, I like to just print some of those inputs or intermediate results in the module code. Something like:
+So, this is exactly the data we put in. Now we just have to somehow filter it. For that, first we need to retrieve the 'date' input, and we can do that the same way we did with 'table_input'. For debugging and development purposes, I like to just print some of those inputs or intermediate results in the module code while I work on it. Something like:
 
 ```python
 def process(self, inputs, outputs):
@@ -157,7 +157,9 @@ def process(self, inputs, outputs):
 
 Let's run (with the ``--output=silent`` option, because for now we are not interested in the result -- we know it's the same as the input):
 
-{{ cli("kiara", "run", "--output=silent", "kiara_documentation.writing_modules.filter_table_by_date_3", "table_input=value:tutorial_data_1", "date=2020-01-01", max_height=240) }}
+{{ cli("kiara", "run", "--output=silent", "kiara_documentation.writing_modules.filter_table_by_date_3", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240) }}
+
+### Filter the table, using Pandas
 
 Ok. Now. Filtering! In this tutorial I'll show you a few options to filter, but lets start with a pandas based one, since it something a lot of people are familar with. The nice thing about Apache Arrow ``Table`` objects is, that it lets us create Pandas dataframes super easy, all we need to do is call `[table].to_pandas()` on the table. And, creating an Arrow table from a dataframe is similarly easy (as you'll see below). So, here is a first implementation of the filtering code:
 
@@ -182,3 +184,5 @@ Again, let's run our thing, and look at the output again:
 {{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date_4", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240) }}
 
 And that was that! Your first *kiara* module!
+
+Obviously, this is simplified to the point of being use-less in practice. For example, we can't really rely on the 'birthday' column to always be there. So, if you feel like it, try to extend the module so it supports different column names to filter on! Still, I hope it gives you enough information to get started on your own first module. Ping me if you need any help, or create an issue in the [kiara_documentation git repo](https://github.com/DHARPA-Project/kiara_documentation) if you feel some of the documentation is unclear, or have other suggestions or ideas for improvements.
