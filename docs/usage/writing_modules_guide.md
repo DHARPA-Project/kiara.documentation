@@ -6,6 +6,10 @@
 
 For this tutorial, we'll use the [kiara_modules.playground](https://github.com/DHARPA-Project/kiara_modules.playground) repository as our development environment. Follow the instructions to perpare a development environment in the README over there and, then create a Python module with your own name under ``src/kiara_modules/playground`` (similar to the existing ones), and put your code in the ``__init__.py`` file in there, or create an entirely new Python module within, whatever you prefer. The module names in the following might differ slightly from what you will see when following along, but I trust you'll nonetheless figure out the right thing to do... If not, contact me and let me know how to improve this guide!
 
+### Check out the '*kiara* getting started guide'
+
+If you haven't already, it would make a lot of sense for you to go through the [*kiara* getting started guide](https://dharpa.org/kiara_documentation/usage/getting_started/). This will give you a good overview of the relevant *kiara* features, and how the module you are going to write fits in.
+
 ### Pre-loading the example table we are going to use
 
 As input data for this tutorial, we'll use [this very small csv file](https://github.com/DHARPA-Project/kiara_documentation/blob/develop/examples/data/writing_module_tutorial/data_1.csv):
