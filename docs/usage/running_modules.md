@@ -58,8 +58,8 @@ types, but basically, all you need to do is add the ``-save`` flag, and *kiara* 
 Let's say we want to create an (Apache arrow) table object out of a csv file, and store it in the data store, we could use
 the ``tabular.import_table_from_file`` module:
 
-{{ cli('kiara', 'run', '--output', 'format=silent', '--save', 'table_import_example', 'table.import.from_local_file', 'path=docs/example_data/JournalNodes1902.csv') }}
+{{ cli('kiara', 'run', '--output', 'format=silent', '--save', 'table_import_example', 'table.import.from_local_file', 'path=docs/example_data/JournalNodes1902.csv', extra_env={"KIARA_DATA_STORE": "/tmp/kiara/data_store_2"}) }}
 
 Now we can check that our table is present in our data store:
 
-{{ cli('kiara', 'data', 'list') }}
+{{ cli('kiara', 'data', 'list', extra_env={"KIARA_DATA_STORE": "/tmp/kiara/data_store_2"}) }}
