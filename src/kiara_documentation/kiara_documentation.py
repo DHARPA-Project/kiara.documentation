@@ -41,7 +41,7 @@ class ExampleModule(KiaraModule):
         This example module can be tested on the commandline with the ``kiara run`` command:
 
         ```
-        kiara run kiara_documentation_example text_1="xxx" text_2="yyy"
+        kiara run kiara_documentation.kiara_documentation.example text_1="xxx" text_2="yyy"
         ```
 
     """

@@ -35,6 +35,7 @@ nav:
     - Running modules: usage/running_modules.md
     - Data: usage/data.md
     - Modules & Pipelines: usage/module_info.md
+    - Writing modules: usage/writing_modules_guide.md
 - Modules:
     - Overview: modules/index.md
     - Core modules: modules/core_modules.md

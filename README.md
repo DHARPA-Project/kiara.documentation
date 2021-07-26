@@ -4,16 +4,12 @@
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FDHARPA-Project%2Fkiara%2Fbadge%3Fref%3Ddevelop&style=flat)](https://actions-badge.atrox.dev/DHARPA-Project/kiara_documentation/goto?ref=develop)
 [![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
-# *kiara* modules (documentation)
+# *kiara* usage documentation
 
-A set of commonly used/useful default modules (and pipelines) for [*Kiara*](https://github.com/DHARPA-project/kiara).
+The repository to hold the *kiara* user documentation sources.
 
  - Documentation: [https://dharpa.org/kiara_documentation](https://dharpa.org/kiara_documentation)
  - Code: [https://github.com/DHARPA-Project/kiara_documentation](https://github.com/DHARPA-Project/kiara_documentation)
-
-## Description
-
-TODO
 
 ## Development
 
@@ -42,10 +38,20 @@ make init
 After this is done, you should be able to run the included example module via:
 
 ```console
-kiara run kiara_documentation_example text_1="xxx" text_2="yyy"
+kiara run kiara_documentation.kiara_documentation.example text_1="xxx" text_2="yyy"
 ...
 ...
 ```
+
+### Work on documentation
+
+Once the development environment is set up, you can start the file watcher and doc auto-builder:
+
+```
+make serve-docs
+```
+
+Point your browser to: http://localhost:8000 and start editing markdown files. The rendered changes should appear more or less instantly (often less than more -- but it should be good enough) in your browser.
 
 ### Re-activate the development environment
 
