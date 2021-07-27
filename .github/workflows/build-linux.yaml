@@ -20,6 +20,8 @@ jobs:
         with:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('setup.cfg') }}-${{ hashFiles('requirements.txt') }}
+      - run: git config --global user.email "markus@frkl.io"
+      - run: git config --global user.name "Markus Binsteiner"
       - name: install git versions of the main requirements
         run: pip install --extra-index-url https://gitlab.com/api/v4/projects/25344049/packages/pypi/simple -r requirements.txt
       - name: install kiara_documentation
