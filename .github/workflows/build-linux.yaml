@@ -6,7 +6,7 @@ jobs:
 
   build-docs:
     name: build documentation
-    if: ${{ github.ref == 'refs/heads/develop' }} || ${{ github.ref == 'refs/heads/main' }} || startsWith(github.ref, 'refs/tags/')
+    if: ${{ github.ref == 'refs/heads/develop' }}
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python 3.9.1
@@ -29,7 +29,7 @@ jobs:
       - name: create an entry in the data store
         run: KIARA_DATA_STORE="/tmp/data_store_3/" kiara run --output format=silent --save table=example.table table.import.from_local_file path=docs/example_data/JournalEdges1902.csv
       - name: create documentation
-        run: FAIL_DOC_BUILD_ON_ERROR=true mike deploy dev
+        run: FAIL_DOC_BUILD_ON_ERROR=true mike deploy -p dev
 
 
 #  release_package:
