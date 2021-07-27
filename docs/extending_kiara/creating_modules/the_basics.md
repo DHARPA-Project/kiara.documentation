@@ -1,4 +1,8 @@
-# Writing your own *kiara* modules
+---
+title: The basics
+---
+
+# Writing your own *kiara* module - the basics
 
 ## Preparation
 

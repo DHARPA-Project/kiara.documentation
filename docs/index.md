@@ -5,11 +5,20 @@ to let users re-use tried and tested data orchestration pipelines, as well as cr
 blocks. It also helps you manage your research data, and augment it with automatically-, semi-automatically-, and manually-
 created metadata. Most of this is not yet implemented.
 
+## Links
+
  - *kiara* user documentation: [https://dharpa.org/kiara_documentation](https://dharpa.org/kiara_documentation)
  - Code: [https://github.com/DHARPA-Project/kiara](https://github.com/DHARPA-Project/kiara)
  - Development documentation for this repo: [https://dharpa.org/kiara](https://dharpa.org/kiara)
 
 ## Overview
 
- - [Getting started](/usage/getting_started): a 'getting started with *kiara*' guide for new users
- - [Extending *kiara*](/extending_kiara)
+*Note*: all of this is very much work in progress, and a lot of things are missing at the moment
+
+- [Usage](/kiara_documentation/usage)
+
+   - [Getting started](/kiara_documentation/usage/getting_started): a 'getting started with *kiara*' guide for new users
+
+- [Extending *kiara*](/kiara_documentation/extending_kiara)
+
+    - [creating *kiara* modules: the basics](/kiara_documentation/extending_kiara/creating_modules/the_basics)
