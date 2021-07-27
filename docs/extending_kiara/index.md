@@ -6,12 +6,12 @@ This page lists the different ways to extend *kiara*, and links to pages that co
 
 - Creating *kiara* modules:
 
-    - [the basics](/kiara_documentation/extending_kiara/creating_modules/the_basics): the minimum amount of things you need to know to create your own module
-    - [more basics](/TODO): not written yet
+    - [the basics](creating_modules/the_basics): the minimum amount of things you need to know to create your own module
+    - [more basics](TODO): not written yet
 
 - Creating custom data types:
 
-    - [the basics](/TODO): not written yet
+    - [the basics](TODO): not written yet
 
 - other stuff
 

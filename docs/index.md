@@ -15,10 +15,10 @@ created metadata. Most of this is not yet implemented.
 
 *Note*: all of this is very much work in progress, and a lot of things are missing at the moment
 
-- [Usage](/kiara_documentation/usage)
+- [Usage](usage/index.md)
 
-   - [Getting started](/kiara_documentation/usage/getting_started): a 'getting started with *kiara*' guide for new users
+   - [Getting started](usage/getting_started.md): a 'getting started with *kiara*' guide for new users
 
-- [Extending *kiara*](/kiara_documentation/extending_kiara)
+- [Extending *kiara*](extending_kiara/index.md)
 
-    - [creating *kiara* modules: the basics](/kiara_documentation/extending_kiara/creating_modules/the_basics)
+    - [creating *kiara* modules: the basics](extending_kiara/creating_modules/the_basics.md)
