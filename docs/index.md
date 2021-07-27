@@ -1,4 +1,4 @@
-# *kiara* user documentation
+# Home
 
 *Kiara* is the data orchestration engine developed by the DHARPA project. It uses a modular approach
 to let users re-use tried and tested data orchestration pipelines, as well as create new ones from existing building

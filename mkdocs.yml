@@ -26,42 +26,44 @@ markdown_extensions:
 - pymdownx.highlight
 - pymdownx.superfences
 
-nav:
-- Home: index.md
-- Install: install.md
-- Usage:
-    - Overview: usage/index.md
-    - Getting started: usage/getting_started.md
-    - Running modules: usage/running_modules.md
-    - Data: usage/data.md
-    - Modules & Pipelines: usage/module_info.md
-    - Writing modules: usage/writing_modules_guide.md
-- Modules:
-    - Overview: modules/index.md
-    - Core modules: modules/core_modules.md
-    - Pipeline modules: modules/pipeline_modules.md
-- Workflows:
-    - Overview: workflows/index.md
-- Data:
-    - Overview: data/index.md
-    - Data registry: data/registry.md
-    - Tables:
-        - Overview: data/tables/index.md
-        - filtering: data/tables/filtering.md
-- Development:
-    - Overview: development/index.md
-    - Development environment: development/environment.md
-    - Module discovery: development/module_discovery.md
-    - Executing modules: development/executing_modules.md
-    - Pipeline controllers: development/pipeline_controllers.md
-    - Workflows: development/workflows.md
-    - Entities:
-      - Overview: development/entities/index.md
-      - Values / Data: development/entities/values.md
-      - Modules / Pipelines: development/entities/modules.md
-      - Events: development/entities/events.md
+#nav:
+#- Home: index.md
+#- Install: install.md
+#- Usage:
+#    - Overview: usage/index.md
+#    - Getting started: usage/getting_started.md
+#    - Running modules: usage/running_modules.md
+#    - Data: usage/data.md
+#    - Modules & Pipelines: usage/module_info.md
+#    - Writing modules: usage/writing_modules_guide.md
+#- Modules:
+#    - Overview: modules/index.md
+#    - Core modules: modules/core_modules.md
+#    - Pipeline modules: modules/pipeline_modules.md
+#- Workflows:
+#    - Overview: workflows/index.md
+#- Data:
+#    - Overview: data/index.md
+#    - Data registry: data/registry.md
+#    - Tables:
+#        - Overview: data/tables/index.md
+#        - filtering: data/tables/filtering.md
+#- Development:
+#    - Overview: development/index.md
+#    - Development environment: development/environment.md
+#    - Module discovery: development/module_discovery.md
+#    - Executing modules: development/executing_modules.md
+#    - Pipeline controllers: development/pipeline_controllers.md
+#    - Workflows: development/workflows.md
+#    - Entities:
+#      - Overview: development/entities/index.md
+#      - Values / Data: development/entities/values.md
+#      - Modules / Pipelines: development/entities/modules.md
+#      - Events: development/entities/events.md
 
-
+extra:
+  version:
+    provider: mike
 
 plugins:
 - search
@@ -70,12 +72,12 @@ plugins:
     default_handler: python
     watch:
       - "src"
-- frkl-docgen:
-    main_module: "kiara_documentation"
+#- frkl-docgen:
+#    main_module: "kiara_documentation"
 - macros:
    modules:
      - kiara.doc.mkdocs_macros_cli
      - kiara.doc.mkdocs_macros_kiara
-- gen-files:
-    scripts:
-      - scripts/documentation/gen_module_doc.py
+#- gen-files:
+#    scripts:
+#      - scripts/documentation/gen_module_doc.py
