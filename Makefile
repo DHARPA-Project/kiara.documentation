@@ -35,6 +35,11 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 	rm -fr .mypy_cache
 
+clean-doc:
+	rm -fr /tmp/kiara
+	rm -fr "${HOME}/.cache/kiara"
+
+
 init: clean ## initialize a development environment (to be run in virtualenv)
 	git init
 	git checkout -b develop || true

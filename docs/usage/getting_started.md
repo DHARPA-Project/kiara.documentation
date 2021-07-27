@@ -83,16 +83,17 @@ It did import our table though. It actually did more than that: it also imported
 
 So, let's try that again, this time with alias:
 
-{{ cli("kiara", "run", "table.import.from_local_file", "path=examples/data/journals/JournalNodes1902.csv", "aliases=my_first_table", cache_key="2nd_run_table_import", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "table.import.from_local_file", "path=examples/data/journals/JournalNodes1902.csv", "aliases=my_first_table", cache_key="2nd_run_table_import", max_height=200, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
-And, if everything went right, the ``data list`` command should now be a bit more friendly:
+And, if everything went right, issuing ``data list --all`` command again should now be a bit more helpful:
 
 {{ cli("kiara", "data", "list", "--all", cache_key="3rd_run_data_list", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
-One thing that is interesting to note: our 2nd run didn't add a new data item with a new id, all it did as add an alias for the existing one. This is because *kiara* is smart enough that it can, in some cases, see that two datasets are the same, and therefor it doesn't need to store the 2nd copy seperately.
+One thing that is interesting: our 2-nd run didn't add a new data item for the table (with a new id), all it did was to add an alias for the existing one. This is because *kiara* is smart enough that it can, in some cases, see that two datasets are the same, and therefore it doesn't need to store the 2nd copy seperately. Which saves hard-disk space, among other things.
+
 Another thing of note: *kiara* added an ``@1`` appendix to the alias we specified. This is the version of this alias within the *kiara* data store, and it is done automatically, so there is always a 'fixed' name you can use to refer to a dataset. If you would save a different table under the same alias, *kiara* would automatically increase the version number for the new dataset. You can always refer to a dataset using just the alias string; if you do that, *kiara* will pick the latest version that was stored under that alias.
 
-Now that our table is safely imported, let's have a look at the metadata *kiara* has stored for this specific item (we could also use the id in the following command, btw):
+Now that our table is safely imported, let's have a look at the metadata *kiara* has stored for this specific item (we could also use the id in the following command, by the way):
 
 {{ cli("kiara", "data", "explain", "my_first_table", max_height=320, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
@@ -117,7 +118,7 @@ The *kiara* module we are going to use is called ``table.query.sql``. Let's chec
 
 {{ cli("kiara", "run", "table.query.sql", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
-Aha. ``table``, and ``query``. Good, we have both. In this example we'll use the data item we've stored as input for another workflow. That goes like this:
+Aha. ``table``, and ``query`` are required. Good, we have both. In this example we'll use the data item we've stored as input for another workflow. That goes like this:
 
 {{ cli("kiara", "run", "table.query.sql", "table=value:my_first_table", "query=\"select Label, JournalType from data where City=\'Berlin\'\"", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240) }}
 
@@ -130,7 +131,9 @@ we might want to store the result of our work, similar to how we imported the or
 
 {{ cli("kiara", "run", "table.query.sql", "--output=silent", "--save", "query_result=berlin_journals", "table=value:my_first_table", "query=\"select Label, JournalType from data where City=\'Berlin\'\"", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240) }}
 
-Here we've also used the ``--output=silent`` option, since we've seen that result before. It looks like saving our result worked, we can check by letting *kiara* 'explain' to us the data that is stored under 'berlin_journals':
+Here we've also used the ``--output=silent`` option, since we've seen that result before.
+
+From looking at the output, it seems that saving our result has worked. We can make sure by letting *kiara* 'explain' to us the data that is stored under the alias 'berlin_journals':
 
 {{ cli("kiara", "data", "explain", "berlin_journals", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240) }}
 

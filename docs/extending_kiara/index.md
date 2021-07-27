@@ -1,4 +1,4 @@
-# Extending Kiara
+# Overview
 
 *kiara* can be extended in different ways, most importantly by writing new modules that transform data in some defined way, and which can be used in composable *kiara* workflows.
 
