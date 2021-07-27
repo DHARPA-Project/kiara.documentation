@@ -6,12 +6,12 @@ help:
 
 docs: ## build documentation
 	rm -rf /tmp/kiara
-	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save table=example.table table.import.from_local_file path=docs/example_data/JournalEdges1902.csv || true
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save table=example.table table.import.from_local_file path=examples/data/journals/JournalEdges1902.csv || true
 	mkdocs build
 
 serve-docs: ## serve and watch documentation
 	rm -rf /tmp/kiara
-	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save table=example.table table.import.from_local_file path=docs/example_data/JournalEdges1902.csv || true
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save table=example.table table.import.from_local_file path=examples/data/journals/JournalEdges1902.csv || true
 	mkdocs serve -a 0.0.0.0:8000
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
