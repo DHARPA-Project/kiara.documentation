@@ -168,7 +168,7 @@ Let's run (with the ``--output=silent`` option, because for now we are not inter
 
 ### Filter the table, using Pandas
 
-Ok. Now. Actual filtering! Later, I'll show you a few options to filter a table, but lets start with a pandas based approach, since Pandas is probably something a lot of people are familar with. One nice thing about Apache Arrow ``Table`` objects is that they let us create Pandas dataframes from them super easy, all we need to do is call `[table].to_pandas()`. And, creating an Arrow table from a dataframe is similarly simple (as you'll see below). So, here is a first implementation of the filtering code:
+Ok. Now. Actual filtering! Later, I'll show a few other options to filter a table, but lets start with a pandas based approach, since Pandas is probably something a lot of people are familar with. One nice thing about Apache Arrow ``Table`` objects is that they let us create Pandas dataframes from them super easy, all we need to do is call `[table].to_pandas()`. And, creating an Arrow table from a dataframe is similarly simple (as you'll see below). So, here is a first implementation of the filtering code:
 
 ```python
 def process(self, inputs, outputs):
