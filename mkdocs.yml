@@ -68,10 +68,11 @@ extra:
 plugins:
 - search
 - mknotebooks
-- mkdocstrings:
-    default_handler: python
-    watch:
-      - "src"
+- awesome-pages
+#- mkdocstrings:
+#    default_handler: python
+#    watch:
+#      - "src"
 #- frkl-docgen:
 #    main_module: "kiara_documentation"
 - macros:

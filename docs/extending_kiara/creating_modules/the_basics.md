@@ -16,7 +16,7 @@ You can put your code in the resulting ``__init__.py`` file, or create an entire
 
 ### Check out the '*kiara* getting started guide'
 
-If you haven't already, it would make a lot of sense for you to go through the [*kiara* getting started guide](https://dharpa.org/kiara_documentation/usage/getting_started/). This will give you a good overview of the relevant *kiara* features, and how the module you are going to write fits in.
+If you haven't already, it would make a lot of sense for you to go through the [*kiara* getting started guide](/kiara_documentation/usage/getting_started/). This will give you a good overview of the relevant *kiara* features, and how the module you are going to write fits in.
 
 ### Pre-loading the example table we are going to use
 
