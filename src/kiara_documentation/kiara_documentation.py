@@ -3,11 +3,11 @@ import typing
 
 from kiara import KiaraModule
 from kiara.data.values import ValueSchema, ValueSet
-from kiara.module_config import KiaraModuleConfig
+from kiara.module_config import ModuleTypeConfig
 from pydantic import Field
 
 
-class ExampleModuleConfig(KiaraModuleConfig):
+class ExampleModuleConfig(ModuleTypeConfig):
 
     separator: str = Field(
         description="The seperator between the two strings.", default=" - "
@@ -20,7 +20,7 @@ class ExampleModule(KiaraModule):
     The purpose of this modules is to show the main elements of a ``KiaraModule``:
 
     the (optional) configuration
-    :    must inherit from ``KiaraModuleConfig``, and the config class must be set as the "_config_cls" attribute
+    :    must inherit from ``ModuleTypeConfig``, and the config class must be set as the "_config_cls" attribute
          on the ``KiaraModule`` class. Configuration values can be retrieved via the ``self.get_config_value(key)``
          method
 

@@ -30,11 +30,11 @@ already have a flexible and powerful way to do stuff to data-sets: *kiara module
 
 So, the solution I decided to implement is de-coupled from the value type code, and it is declarative, instead of actual Python code:
 
-- it is plugin-based: data operations can be added by inheriting from [OperationType][kiara.data.operation.OperationType]
-- `OperationType`-classes implement a (class-) method ([retrieve_operation_configs][kiara.data.operation.OperationType.retrieve_operation_configs]), which returns a dict of dicts of dicts (keys: *value_type*/*operation_name*/*operation_id*, value: *operation_config_dict*)
+- it is plugin-based: data operations can be added by inheriting from [TypeOperationConfig][kiara.data.operation.TypeOperationConfig]
+- `TypeOperationConfig`-classes implement a (class-) method ([retrieve_operation_configs][kiara.data.operation.TypeOperationConfig.retrieve_operation_configs]), which returns a dict of dicts of dicts (keys: *value_type*/*operation_name*/*operation_id*, value: *operation_config_dict*)
 - *kiara* merges the result of all of those operation configs into a single tree, with the same structure, and which can be used to query which operations are available for each value type
-- once an operation is selected, *kiara* investigates the *operation config*, and creates a custom ``OperationType`` object from it
-- this ``OperationType`` object is nothing more than a reference to a single *kiara* module, its optional configuration, and maps for input and output names
+- once an operation is selected, *kiara* investigates the *operation config*, and creates a custom ``TypeOperationConfig`` object from it
+- this ``TypeOperationConfig`` object is nothing more than a reference to a single *kiara* module, its optional configuration, and maps for input and output names
 - the maps of input and output names can be used to 'translate' a shared operation input/output interface to the interface (input-/output-field names) of the underlying *kiara* module
 - this means, that all an operation is, is an intermediate 'translation-layer', that collects and translates configurations for *kiara* module executions, and sorts them according to input types and purpose
 
