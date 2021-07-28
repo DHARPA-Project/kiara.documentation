@@ -4,8 +4,8 @@ on: [push]
 
 jobs:
 
-  build-docs:
-    name: build documentation
+  build-docs-latest:
+    name: build documentation and push new 'latest' version
     if: ${{ github.ref == 'refs/heads/develop' }}
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +29,7 @@ jobs:
       - name: create an entry in the data store
         run: KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save table=example.table table.import.from_local_file path=docs/example_data/JournalEdges1902.csv
       - name: create documentation
-        run: FAIL_DOC_BUILD_ON_ERROR=true mike deploy --push dev
+        run: FAIL_DOC_BUILD_ON_ERROR=true mike deploy --push latest
 
   build-docs-tag:
     name: build documentation
