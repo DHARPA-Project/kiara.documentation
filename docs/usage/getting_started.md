@@ -13,6 +13,8 @@ The files contain information about connection (edges) between medical journals 
 For now, there are no published binary versions of kiara, so we'll install the Python package in a virtual environment.
 While we're at it we'll check out the [kiara_modules.playgrounds repository](https://github.com/DHARPA-Project/kiara_modules.playground), because we can use that later to create our own *kiara* modules and pipelines:
 
+### On Linux & Mac OS X (using `make`)
+
 ```console
 git clone https://github.com/DHARPA-Project/kiara_modules.playground.git
 cd kiara_modules.playground
@@ -23,6 +25,25 @@ make init
 
 This will take a while, because it sets up a full-blown development environment. Which is not really necessary for us
 at this stage, but hey...
+
+### Windows (or manual pip install)
+
+It's impossible to describe all the ways Python can be installed on a machine, and virtual- (or conda-)envs can be created, so I'll assume you know how to do this.
+
+One simple way is to install the [Anaconda (individual edition)](https://docs.anaconda.com/anaconda/install/index.html), then use the Anaconda navigator to create a new environment, install the 'git' package in it (if your system does not already have it), and use the 'Open Terminal' option of that environment to start up a terminal that has that virtual-/conda-environment already activated.
+
+Once that is done, create and change into a directory where you want this project folder to live, make sure your virtual- or conda-env is activated (if you used the Anaconda navigator to open the Terminal, it should be, otherwise you could use something like `pip -V` and look at the output path), then do:
+
+```console
+git clone https://github.com/DHARPA-Project/kiara_modules.playground.git
+cd kiara_modules.playground
+# if you use conda, you can try to install the `python-levenshtein` package using it. Sometimes (esp. on Windows), it causes some problems otherwise.
+# this package is not strictly necessary for what we are doing, but unfortunately its a dependency that is required at the moment
+# if this is causing issues, please let me know and I'll try to spend some time removing that dependency
+conda install -c conda-forge python-levenshtein   # ignore if not using conda/windows
+pip install --extra-index-url https://pypi.fury.io/dharpa/ -U -e .[all_dev]
+```
+
 
 ## Checking for available modules
 
