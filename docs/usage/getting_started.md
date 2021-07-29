@@ -34,13 +34,16 @@ One simple way is to install the [Anaconda (individual edition)](https://docs.an
 
 Once that is done, create and change into a directory where you want this project folder to live, make sure your virtual- or conda-env is activated (if you used the Anaconda navigator to open the Terminal, it should be, otherwise you could use something like `pip -V` and look at the output path), then do:
 
+!!! note
+    If you are using Windows, there might be a problem installing one of the dependencies: `python-levenshtein`, because it requires a C++ compiler installed. If you are using conda, any potential problems can be circumvented by installing the `python-levenshtein` conda package before 'pip install'-ing the local git repo.
+    Let me know if this is causing problems in your environment, and I'll try to find a better way to deal with this.
+
 ```console
+# ensure activated virtual- or conda environment
 git clone https://github.com/DHARPA-Project/kiara_modules.playground.git
 cd kiara_modules.playground
-# if you use conda, you can try to install the `python-levenshtein` package using it. Sometimes (esp. on Windows), it causes some problems otherwise.
-# this package is not strictly necessary for what we are doing, but unfortunately its a dependency that is required at the moment
-# if this is causing issues, please let me know and I'll try to spend some time removing that dependency
-conda install -c conda-forge python-levenshtein   # ignore if not using conda/windows
+# the next command is optional, ignore if not using conda
+conda install -c conda-forge python-levenshtein
 pip install --extra-index-url https://pypi.fury.io/dharpa/ -U -e .[all_dev]
 ```
 
