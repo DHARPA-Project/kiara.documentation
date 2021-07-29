@@ -35,7 +35,7 @@ One simple way is to install the [Anaconda (individual edition)](https://docs.an
 Once that is done, create and change into a directory where you want this project folder to live, make sure your virtual- or conda-env is activated (if you used the Anaconda navigator to open the Terminal, it should be, otherwise you could use something like `pip -V` and look at the output path), then do:
 
 !!! note
-    If you are using Windows, there might be a problem installing one of the dependencies: `python-levenshtein`, because it requires a C++ compiler installed. If you are using conda, any potential problems can be circumvented by installing the `python-levenshtein` conda package before 'pip install'-ing the local git repo.
+    If you are using Windows, there might be a problem installing one of the dependencies *`python-levenshtein`) because it requires a C++ compiler installed. If you are using conda, any potential problems can be avoided by installing the `python-levenshtein` conda package before 'pip install'-ing the local git repo.
     Let me know if this is causing problems in your environment, and I'll try to find a better way to deal with this.
 
 ```console
