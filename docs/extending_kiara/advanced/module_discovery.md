@@ -1,3 +1,7 @@
+---
+title: Module and pipeline discovery
+---
+
 # *kiara* module and pipeline discovery
 
 Because we have a requirement to record the versions of code a data set was created with, we need to have a way of versioning our modules and pipelines. This is a harder problem than it looks from the outside, and it's the reason why *kiara* does not support 'random', unregistered [KiaraModule][kiara.module.KiaraModule] sub-classes.

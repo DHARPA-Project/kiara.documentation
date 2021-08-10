@@ -6,7 +6,7 @@
             "full_name": "Markus Binsteiner",
             "email": "markus@frkl.io",
             "project_name": "documentation",
-            "project_slug": "kiara_documentation",
+            "project_slug": "kiara.documentation",
             "project_short_description": "User documentation for kiara.",
             "_extensions": [
                 "cookiecutter.extensions.JsonifyExtension"

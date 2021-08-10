@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Top-level package for kiara_documentation."""
+"""Top-level package for kiara.documentation."""
 
 
 import logging
@@ -11,7 +11,7 @@ from kiara import KiaraEntryPointItem, find_kiara_modules_under
 __author__ = """Markus Binsteiner"""
 __email__ = "markus@frkl.io"
 
-log = logging.getLogger("kiara_documentation")
+log = logging.getLogger("kiara.documentation")
 
 KIARA_METADATA = {
     "authors": [{"name": __author__, "email": __email__}],
@@ -19,15 +19,15 @@ KIARA_METADATA = {
     "references": {
         "source_repo": {
             "desc": "The module package git repository.",
-            "url": "https://github.com/DHARPA-Project/kiara_documentation",
+            "url": "https://github.com/DHARPA-Project/kiara.documentation",
         },
         "documentation": {
             "desc": "The url for the module package documentation.",
-            "url": "https://dharpa.org/kiara_documentation/",
+            "url": "https://dharpa.org/kiara.documentation/",
         },
     },
-    "tags": ["kiara_documentation"],
-    "labels": {"package": "kiara_documentation"},
+    "tags": ["documentation"],
+    "labels": {"package": "kiara.documentation"},
 }
 
 modules: KiaraEntryPointItem = (find_kiara_modules_under, ["kiara_documentation"])

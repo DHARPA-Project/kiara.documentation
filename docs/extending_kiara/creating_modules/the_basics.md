@@ -20,7 +20,7 @@ If you haven't already, it would make sense for you to go through the [*kiara* g
 
 ### Pre-loading the example table we are going to use
 
-As input data for this tutorial, we'll use [this very small csv file](https://github.com/DHARPA-Project/kiara_documentation/blob/develop/examples/data/writing_module_tutorial/data_1.csv):
+As input data for this tutorial, we'll use [this very small csv file](https://github.com/DHARPA-Project/kiara.documentation/blob/develop/examples/data/writing_module_tutorial/data_1.csv):
 
 {{ inline_file_as_codeblock('examples/data/writing_module_tutorial/data_1.csv', format='csv') }}
 
@@ -121,7 +121,7 @@ def create_output_schema(self):
 
 ### Interlude: displaying the information *kiara* has about our module, so far
 
-After adding the code for the input and output schema, we basically defined the interface of our module. Such an interface is important, because it is how other people will interact with it. *kiara* can display this interface, along with other important bits and pieces with the ``module explain-instance`` sub-command:
+After adding the code for the input and output schema, we basically defined the interface of our module. The design of such interface is important, because it is how other people will interact with it. *kiara* can display this interface, along with other important bits and pieces with the ``module explain-instance`` sub-command:
 
 {{ cli("kiara", "module", "explain-instance", "kiara_documentation.writing_modules.filter_table_by_date", max_height=240, fake_command="kiara module explain-instance playground.markus.filter_table_by_date") }}
 
@@ -133,7 +133,7 @@ As you can see, *kiara* picked up your implementation, and converted it to an au
 
 Now, onto implementing the actual meat of our *kiara* module, the ``process`` function. This function in its most basic form takes two arguments: ``inputs``, and ``outputs``. Both are objects of the [``ValueSet``](https://dharpa.org/kiara/api_reference/kiara.data.values/#kiara.data.values.ValueSet) class, which is basically a Python dictionary with the field_names as keys, and the actual values as, well ...values.
 
-There is one thing in all of this that is a bit unintuitive compared to how you would normally expect to program something like this (well, I'm sure there is more, but this is the most crucial): *kiara* tries to avoid handling the actual data (bytes/data objects) as much as possible, and only accesses them at the last possible moment. This is a strategy to keep memory utilization and data transfer as close to a minimum as possible. It would not make much sense to introduce something like this for workflows and processes that only deal with small(-ish) datasets, but we can't rely on always having small datasets and we'd like to be prepared for more demanding computations. So our design has to cater for the worst case, rather than the best. What this means is that as a module developer you have to go through one extra step to get to the actual data, if you need it. Typically, this step will look like this:
+There is one thing in all of this that is a bit unintuitive compared to how you would normally expect to program something like this (well, I'm sure there is more, but this is one of the more crucial bits): *kiara* tries to avoid handling the actual data (bytes/data objects) as much as possible, and only accesses them at the last possible moment. This is a strategy to keep memory utilization and data transfer as close to a minimum as possible. It would not make much sense to introduce something like this for workflows and processes that only deal with small(-ish) datasets, but we can't rely on always having small datasets and we'd like to be prepared for more demanding computations. So our design has to cater for the worst case, rather than the best. What this means is that as a module developer you have to go through one extra step to get to the actual data, once you need it. Typically, this step will look like this:
 
 ```python
 def process(inputs, outputs):
@@ -143,7 +143,7 @@ def process(inputs, outputs):
     outputs.set_value("table_output", table_obj)
 ```
 
-What we have done here is to request the table data (the 'table_input' key in ``create_input_schema``) from *kiara*, and then set that table directly as the output value (the name 'table_output' in this case is the key of the result in ``create_output_schema``). So our module does absolutely nothing, it only uses the input it received as output, and returns that unchanged. We can try that out by running the module again, this time with inputs (we'll just use random input for the 'date' for now):
+What we have done here is to request the table data (the 'table_input' key in ``create_input_schema``) from *kiara*, and then set that table directly as the output value (the name 'table_output' in this case is the key of the result in ``create_output_schema``). Here, our module does absolutely nothing, it only reads the input it received, and returns it as output, unchanged. We can try that out by running the module again, this time with inputs (we'll also provide a 'date' input which won't be used, but if we didn't *kiara* would complain):
 
 {{ cli("kiara", "run", "kiara_documentation.writing_modules.filter_table_by_date_2", "table_input=value:tutorial_data_1", "date=1977-01-01", max_height=240, fake_command="kiara run playground.markus.filter_table_by_date table_input=value:tutorial_data_1 date=1977-01-01") }}
 

@@ -1,15 +1,15 @@
-[![PyPI status](https://img.shields.io/pypi/status/kiara_documentation.svg)](https://pypi.python.org/pypi/kiara/)
-[![PyPI version](https://img.shields.io/pypi/v/kiara_documentation.svg)](https://pypi.python.org/pypi/kiara/)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/kiara_documentation.svg)](https://pypi.python.org/pypi/kiara/)
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FDHARPA-Project%2Fkiara%2Fbadge%3Fref%3Ddevelop&style=flat)](https://actions-badge.atrox.dev/DHARPA-Project/kiara_documentation/goto?ref=develop)
+[![PyPI status](https://img.shields.io/pypi/status/kiara.documentation.svg)](https://pypi.python.org/pypi/kiara/)
+[![PyPI version](https://img.shields.io/pypi/v/kiara.documentation.svg)](https://pypi.python.org/pypi/kiara/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/kiara.documentation.svg)](https://pypi.python.org/pypi/kiara/)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FDHARPA-Project%2Fkiara%2Fbadge%3Fref%3Ddevelop&style=flat)](https://actions-badge.atrox.dev/DHARPA-Project/kiara.documentation/goto?ref=develop)
 [![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 # *kiara* usage documentation
 
 The repository to hold the *kiara* user documentation sources.
 
- - Documentation: [https://dharpa.org/kiara_documentation](https://dharpa.org/kiara_documentation)
- - Code: [https://github.com/DHARPA-Project/kiara_documentation](https://github.com/DHARPA-Project/kiara_documentation)
+ - Documentation: [https://dharpa.org/kiara.documentation](https://dharpa.org/kiara.documentation)
+ - Code: [https://github.com/DHARPA-Project/kiara.documentation](https://github.com/DHARPA-Project/kiara.documentation)
 
 ## Development
 
@@ -28,8 +28,8 @@ The repository to hold the *kiara* user documentation sources.
 For UNI*-like operating system, setting up a development environment is relatively easy:
 
 ```console
-git clone https://github.com/DHARPA-Project/kiara_documentation.git
-cd kiara_documentation
+git clone https://github.com/DHARPA-Project/kiara.documentation.git
+cd kiara.documentation
 python3 -m venv .venv
 source .venv/bin/activate
 make init
@@ -44,8 +44,8 @@ Once that is done, `cd` into a directory where you want this project folder to l
 
 ```console
 # make sure your virtual env is activated!!!
-git clone https://github.com/DHARPA-Project/kiara_modules.kiara_documentation.git
-cd kiara_modules.kiara_documentation
+git clone https://github.com/DHARPA-Project/kiara.documentation.git
+cd kiara.documentation
 pip install --extra-index-url https://pypi.fury.io/dharpa/ -U -e .[all_dev]
 ```
 
@@ -75,7 +75,7 @@ The 'prepare' step from above only has to be done once. After that, to re-enable
 you'll need to navigate to the directory again (wherever that is, in your case), and run the ``source`` command from before again:
 
 ```console
-cd path/to/kiara_documentation
+cd path/to/kiara.documentation
 source .venv/bin/activate  # if it isn't activated already, for example by the Anaconda navigator
 kiara --help  # or whatever, point is, kiara should be available again for you now
 ```

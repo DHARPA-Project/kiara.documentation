@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-    Dummy conftest.py for kiara_documentationg.
+    Dummy conftest.py for kiara.documentationg.
 
     If you don't know what this is for, just leave it empty.
     Read more about conftest.py under:

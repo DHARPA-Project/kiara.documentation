@@ -2,3 +2,4 @@ nav:
   - Home: index.md
   - usage
   - extending_kiara
+  - concepts

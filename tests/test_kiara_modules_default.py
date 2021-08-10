@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `kiara_documentation` package."""
+"""Tests for `kiara.documentation` package."""
 
 import pytest  # noqa
 

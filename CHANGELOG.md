@@ -4,4 +4,4 @@ Changelog
 
 ## Version 0.0.1 (Upcoming)
 
-- first release of *kiara_documentation*
+- first release of *kiara.documentation*
