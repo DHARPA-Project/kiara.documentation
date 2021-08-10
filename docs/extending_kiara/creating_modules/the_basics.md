@@ -26,7 +26,7 @@ As input data for this tutorial, we'll use [this very small csv file](https://gi
 
 Download this file, and import it with kiara like so:
 
-{{ cli("kiara", "run", "table.import.from_local_file", "path=examples/data/writing_module_tutorial/data_1.csv", "aliases=tutorial_data_1", max_height=240) }}
+{{ cli("kiara", "run", "table.import_from.file_path.string", "source=examples/data/writing_module_tutorial/data_1.csv", "aliases=tutorial_data_1", max_height=240) }}
 
 From now on, we'll be able to use this as input by specifying ``value:tutorial_data_1``.
 

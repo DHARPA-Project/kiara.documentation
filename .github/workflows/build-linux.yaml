@@ -27,7 +27,7 @@ jobs:
       - name: install kiara.documentation
         run: pip install -U --pre  --extra-index-url https://gitlab.com/api/v4/projects/25344049/packages/pypi/simple --extra-index-url https://pypi.fury.io/dharpa/ .[all,dev_documentation]
       - name: create an entry in the data store
-        run: KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save table=example.table table.import.from_local_file path=docs/example_data/JournalEdges1902.csv
+        run: KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save value_item=example.table table.import_from.file_path.string source=docs/example_data/JournalEdges1902.csv
       - name: create documentation
         run: FAIL_DOC_BUILD_ON_ERROR=true mike deploy --push latest
 
@@ -54,7 +54,7 @@ jobs:
       - name: install kiara.documentation
         run: pip install -U --pre  --extra-index-url https://gitlab.com/api/v4/projects/25344049/packages/pypi/simple --extra-index-url https://pypi.fury.io/dharpa/ .[all,dev_documentation]
       - name: create an entry in the data store
-        run: KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save table=example.table table.import.from_local_file path=docs/example_data/JournalEdges1902.csv
+        run: KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save value_item=example.table table.import_from.file_path.string source=docs/example_data/JournalEdges1902.csv
       - name: extract tag name
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: create documentation and tag it
