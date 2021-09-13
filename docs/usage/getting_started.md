@@ -153,7 +153,7 @@ As you can see, there are 2 items now: one `file`, and one `table`. If you ever 
 
 ##### `kiara data explain`
 
-{{ cli("kiara", "data", "explain", "my_first_table") }}
+{{ cli("kiara", "data", "explain", "my_first_table", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 This command prints out the metadata *kiara* has stored about a value item.
 
@@ -162,7 +162,7 @@ generated this configuration, and it can be used later to load and use the exact
 
 ##### `kiara data load`
 
-{{ cli("kiara", "data", "load", "my_first_table") }}
+{{ cli("kiara", "data", "load", "my_first_table", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 This command loads the actual data, and prints out its content (or a representation of it that makes sense in a terminal-context).
 
