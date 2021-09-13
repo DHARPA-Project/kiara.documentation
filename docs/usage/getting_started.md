@@ -119,20 +119,20 @@ All right! Looks like this worked.
 Csv files are usually not much use by themselves, they need to be converted into a table-structure so we can efficiently query then.
 This usually also makes sure that the structure and format of the file is valid.
 
-Let's ask kiara what 'table' related operations it has available:
+Let's ask kiara what 'convert' related operations it has available:
 
-{{ cli("kiara", "operation", "list", "table") }}
+{{ cli("kiara", "operation", "list", "convert") }}
 
 !!! note
     If you add strings to the end of any `list` command in *kiara*, they act as filters.
 
 Righto, looks like `file.convert_to.table` might be our ticket! Let's see what it does:
 
-{{ cli("kiara", "operation", "explain", "file.convert_to.table") }}
+{{ cli("kiara", "operation", "explain", "file.convert_to.table", max_height=320) }}
 
 So, it needs an input `value_item` of type `file` as input, and will return a same-named output of type `table`. Looks good. Here is how we run this:
 
-{{ cli("kiara", "run", "file.convert_to.table", "value_item=value:my_first_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "file.convert_to.table", "value_item=value:my_first_file", max_height=240, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 !!! note
     In this example we pre-pend the right side of the `value_item=` argument with `value:`. This is necessary to make it clear to *kiara* that we mean
@@ -141,7 +141,11 @@ So, it needs an input `value_item` of type `file` as input, and will return a sa
 
 That output looks good, right? Much more table-y then before. Only thing is: we want to again 'save' this output, so we can use it later directly. No big deal, just like last time:
 
-{{ cli("kiara", "run", "--save", "value_item=my_first_table", "file.convert_to.table", "value_item=value:my_first_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "--output", "silent", "--save", "value_item=my_first_table", "file.convert_to.table", "value_item=value:my_first_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+!!! note
+    Here we use the `--output silent` command line option to surpress any output of values. We've seen this already in the
+    last invocation of this command. *kiara* will still tell us the id of the value it just saved.
 
 #### Checking the data store, again
 
@@ -153,7 +157,7 @@ As you can see, there are 2 items now: one `file`, and one `table`. If you ever 
 
 ##### `kiara data explain`
 
-{{ cli("kiara", "data", "explain", "my_first_table", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "data", "explain", "my_first_table", max_height=300, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 This command prints out the metadata *kiara* has stored about a value item.
 
@@ -162,7 +166,7 @@ generated this configuration, and it can be used later to load and use the exact
 
 ##### `kiara data load`
 
-{{ cli("kiara", "data", "load", "my_first_table", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "data", "load", "my_first_table", max_height=240, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 This command loads the actual data, and prints out its content (or a representation of it that makes sense in a terminal-context).
 
