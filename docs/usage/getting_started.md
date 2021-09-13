@@ -132,7 +132,7 @@ Righto, looks like `file.convert_to.table` might be our ticket! Let's see what i
 
 So, it needs an input `value_item` of type `file` as input, and will return a same-named output of type `table`. Looks good. Here is how we run this:
 
-{{ cli("kiara", "run", "file.convert_to.table", "value_item=value:my_first_file") }}
+{{ cli("kiara", "run", "file.convert_to.table", "value_item=value:my_first_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 !!! note
     In this example we pre-pend the right side of the `value_item=` argument with `value:`. This is necessary to make it clear to *kiara* that we mean

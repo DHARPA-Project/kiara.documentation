@@ -16,7 +16,7 @@ serve-docs: ## serve and watch documentation
 	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run file.convert_to.table value_item=value:example_table_source --save value_item=example_table
 	mkdocs serve -a 0.0.0.0:8000
 
-clean: clean-build clean-pyc clean-test clean-doc ## remove all build, test, coverage and Python artifacts
+clean: clean-build clean-pyc clean-test clean-docs ## remove all build, test, coverage and Python artifacts
 
 clean-build: ## remove build artifacts
 	rm -fr build/
