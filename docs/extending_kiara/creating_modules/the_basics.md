@@ -26,7 +26,8 @@ As input data for this tutorial, we'll use [this very small csv file](https://gi
 
 Download this file, and import it with kiara like so:
 
-{{ cli("kiara", "run", "table.import_from.file_path.string", "source=examples/data/writing_module_tutorial/data_1.csv", "aliases=tutorial_data_1", max_height=240) }}
+{{ cli("kiara", "run", "file.import_from.local.file_path", "source=examples/data/writing_module_tutorial/data_1.csv", "--save", "value_item=tutorial_data_1_source_file", max_height=240) }}
+{{ cli("kiara", "run", "file.convert_to.table", "value_item=value:tutorial_data_1_source_file", "--save", "value_item=tutorial_data_1", max_height=240) }}
 
 From now on, we'll be able to use this as input by specifying ``value:tutorial_data_1``.
 
@@ -95,11 +96,11 @@ So, for our case, the implementation of that method would look like this:
 def create_input_schema(self):
     return {
         "table_input": {
-            "type": "table",
+            "type_name": "table",
             "doc": "The table that will be filtered."
         },
         "date": {
-            "type": "date",
+            "type_name": "date",
             "doc": "The minimum date, earlier dates will be filtered out."
         }
     }
@@ -113,7 +114,7 @@ The format of the result of this method is very similar to the above. The (only)
 def create_output_schema(self):
     return {
         "table_output": {
-            "type": "table",
+            "type_name": "table",
             "doc": "The filtered table."
         }
     }

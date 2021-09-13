@@ -6,21 +6,24 @@ help:
 
 docs: ## build documentation
 	rm -rf /tmp/kiara
-	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save value_item=example.table table.import_from.file_path.string source=examples/data/journals/JournalEdges1902.csv || true
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run file.import_from.local.file_path source=examples/data/journals/JournalEdges1902.csv --save value_item=example_table_source
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run file.convert_to.table value_item=value:example_table_source --save value_item=example_table
 	mkdocs build
 
 serve-docs: ## serve and watch documentation
 	rm -rf /tmp/kiara
-	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run --output format=silent --save value_item=example.table table.import_from.file_path.string source=examples/data/journals/JournalEdges1902.csv || true
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run file.import_from.local.file_path source=examples/data/journals/JournalEdges1902.csv --save value_item=example_table_source
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run file.convert_to.table value_item=value:example_table_source --save value_item=example_table
 	mkdocs serve -a 0.0.0.0:8000
 
-clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
+clean: clean-build clean-pyc clean-test clean-doc ## remove all build, test, coverage and Python artifacts
 
 clean-build: ## remove build artifacts
 	rm -fr build/
 	rm -fr dist/
 	rm -fr .eggs/
 	find . -name '*.egg' -exec rm -f {} +
+
 
 clean-pyc: ## remove Python file artifacts
 	find . -name '*.pyc' -exec rm -f {} +
@@ -35,10 +38,10 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 	rm -fr .mypy_cache
 
-clean-doc:
+clean-docs:
 	rm -fr /tmp/kiara
 	rm -fr "${HOME}/.cache/kiara"
-
+	rm -fr build
 
 init: clean ## initialize a development environment (to be run in virtualenv)
 	git init

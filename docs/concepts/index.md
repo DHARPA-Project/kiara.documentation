@@ -33,9 +33,9 @@ You may have noticed that after assembling a pipeline in this way, we end up wit
 
 {{ cli("kiara", "pipeline", "explain", "logic.xor", max_height=320) }}
 
-### OperationType
+### Operations
 
-OperationType are what users usually interact with. They have a fixed id (``kiara operation list``), a fixed set of well-defined inputs and outputs, and a well-defined, (usually) [idempotent](https://en.wikipedia.org/wiki/Idempotence) way of transforming inputs into outputs. OperationType are defined uniquely by their module type and module configuration (which means, the same module type configured in the same way always results in the same operation). You can find out those details using the *kiara* command-line interface:
+Operations are what users usually interact with. They have a fixed id (``kiara operation list``), a fixed set of well-defined inputs and outputs, and a well-defined, (usually) [idempotent](https://en.wikipedia.org/wiki/Idempotence) way of transforming inputs into outputs. Operations are defined uniquely by their module type and module configuration (which means, the same module type configured in the same way always results in the same operation). You can find out those details using the *kiara* command-line interface:
 
 {{ cli("kiara", "operation", "explain", "file.calculate_hash.sha3_256", max_height=240) }}
 
@@ -54,4 +54,4 @@ The following links go into more detail on each of the concepts:
 
   - [Modules](modules.md): the core building blocks of *kiara*
   - [Pipelines](pipelines.md): assembled *modules*
-  - [OperationType](operations.md): instantiated *modules* or *pipelines*
+  - [Operations](operations.md): instantiated *modules* or *pipelines*

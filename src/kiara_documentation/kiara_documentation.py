@@ -2,12 +2,13 @@
 import typing
 
 from kiara import KiaraModule
-from kiara.data.values import ValueSchema, ValueSet
-from kiara.module_config import ModuleTypeConfig
+from kiara.data import ValueSet
+from kiara.data.values import ValueSchema
+from kiara.module_config import ModuleTypeConfigSchema
 from pydantic import Field
 
 
-class ExampleModuleConfig(ModuleTypeConfig):
+class ExampleModuleConfig(ModuleTypeConfigSchema):
 
     separator: str = Field(
         description="The seperator between the two strings.", default=" - "
@@ -20,16 +21,16 @@ class ExampleModule(KiaraModule):
     The purpose of this modules is to show the main elements of a ``KiaraModule``:
 
     the (optional) configuration
-    :    must inherit from ``ModuleTypeConfig``, and the config class must be set as the "_config_cls" attribute
+    :    must inherit from ``ModuleTypeConfigSchema``, and the config class must be set as the "_config_cls" attribute
          on the ``KiaraModule`` class. Configuration values can be retrieved via the ``self.get_config_value(key)``
          method
 
     the inputs description
-    :    must return a dictionary, containing the input name(s) as keys, and another dictionary containing type information
+    :    must return a dictionary, containing the input name(s) as keys, and another dictionary containing type_name information
          and documentation about the input data as value
 
     the outputs description
-    :    must return a dictionary, containing the output name(s) as keys, and another dictionary containing type information
+    :    must return a dictionary, containing the output name(s) as keys, and another dictionary containing type_name information
          and documentation about the output data as value
 
     the ``process`` method
@@ -55,8 +56,8 @@ class ExampleModule(KiaraModule):
     ]:
 
         inputs = {
-            "text_1": {"type": "string", "doc": "The first text."},
-            "text_2": {"type": "string", "doc": "The second text."},
+            "text_1": {"type_name": "string", "doc": "The first text."},
+            "text_2": {"type_name": "string", "doc": "The second text."},
         }
 
         return inputs
@@ -69,7 +70,7 @@ class ExampleModule(KiaraModule):
 
         outputs = {
             "text": {
-                "type": "string",
+                "type_name": "string",
                 "doc": "The concatenated text.",
             }
         }

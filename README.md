@@ -25,7 +25,7 @@ The repository to hold the *kiara* user documentation sources.
 
 #### Linux & Mac OS X (using make)
 
-For UNI*-like operating system, setting up a development environment is relatively easy:
+For *NIX-like operating system, setting up a development environment is relatively easy:
 
 ```console
 git clone https://github.com/DHARPA-Project/kiara.documentation.git

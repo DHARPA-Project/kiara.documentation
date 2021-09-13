@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""This module contains the value type classes that are used in the ``kiara.documentation`` package.
+"""This module contains the value type_name classes that are used in the ``kiara.documentation`` package.
 """
 from kiara import KiaraEntryPointItem
 from kiara.utils.class_loading import find_value_types_under

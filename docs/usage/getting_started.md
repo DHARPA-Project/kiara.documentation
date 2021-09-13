@@ -52,7 +52,7 @@ pip install --extra-index-url https://pypi.fury.io/dharpa/ -U -e .[all_dev]
 
 First, let's have a look which operations are available, and what we can do with them:
 
-{{ cli("kiara", "module", "list", max_height=320) }}
+{{ cli("kiara", "operation", "list", max_height=320) }}
 
 !!! note
     In this guide we'll use the term *operation* to indicate an entity that transforms data in some way or form. *kiara*
@@ -74,60 +74,97 @@ that will make subsequent processing faster, and also simpler in a lot of cases.
 
 ### Finding the right command, and how to use it
 
-So, after looking at the ``kiara operation list`` output, it looks like the ``table.import_from.file_path.string`` module might be a good fit for us. *kiara* has the [``run``](../running_operations) sub-command, which is used to execute operations. If we
+The best practice on how to 'onboard' any type of external data is not yet established, but one way that will always be supported
+is to 'import' the file containing the data first, then convert it to the target 'internal' *kiara* data type. So let's do that here...
+
+#### Importing the 'raw' file
+
+After looking at the ``kiara operation list`` output, it looks like the ``file.import_from.local.file_path`` module might be just what we need. *kiara* has the [``run``](../running_operations) sub-command, which is used to execute operations. If we
 only provide a module name, and not any input, this command will tell us what it expects:
 
-{{ cli("kiara", "run", "table.import_from.file_path.string", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "file.import_from.local.file_path", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
-As makes obvious sense, we need to provide a ``source`` input, of type ``string``. The *kiara* commandline interface can
-take complex inputs like dicts, but fortunately this is not necessary here. If you ever come into a situation where you need this, check out [this section](../..//usage/#complex-inputs).
+!!! note
+    The output of this command may show two other inputs (apart from `source`): `save` and `aliases`. There is a good chance that
+    those two will be gone in the future, so just pretend you didn't see them, otherwise what follows might or might not appear a bit silly.
 
-For simple inputs like strings, all we need to do is provide the input name, followed by '=' and the value itself:
+As makes obvious sense, we need to provide a ``source`` input, of type ``file_path`` (basically, a string). The *kiara* commandline interface can
+take complex inputs like dicts, but fortunately this is not necessary here. If you ever come into a situation where you need that, check out [this section](../..//usage/#complex-inputs).
 
-{{ cli("kiara", "run", "table.import_from.file_path.string", "source=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+For simple inputs like string-type things, all we need to do is provide the input name, followed by '=' and the value itself:
 
-As you can see from the terminal output, this produced 2 pieces of output data: `value_item` (refering to the result table) and `value_metadata` (which includes some metadata about the value). *kiara* tries to tell us what the values of each of the fields are, and prints a preview of them on the terminal.
+{{ cli("kiara", "run", "file.import_from.local.file_path", "source=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
-### Checking the data store
+As you can see from the terminal output, this produced one piece of output data: `value_item` (referring to the imported file), and it displays a some metadata of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in *kiara* persists it into the *kiara* data store, gives it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, as to make it easy to find and identify an item later on.
+
+*kiara* supports saving any of the output values of a `kiara run` command via the `--save` flag. This `--save` parameter takes a single string as argument, and can be used in two ways:
+
+- if you want to save all output fields of a `run` you can just provide a single string (for example `imported_journal_csv`) as the parameter. In this case, *kiara* will store all result items with an auto-generated alias in the form of `[save_argument]__[field_name]`. In our case this would result in one item being store in the data store, with the alias `imported_journal_csv__value_item`.
+- if you want to save only a subset of result values, or want to have more control about the aliases those results get, you can use the `--save` parameter for every field you want to persist. In this case the argument to `--save` must be in the form of: `[field_name]=[alias]`. You can use the parameter multiple times, with different field names.
+
+In our case, lets opt for the second option:
+
+{{ cli("kiara", "run", "--save", "value_item=my_first_file", "file.import_from.local.file_path", "source=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+#### Checking the data store
 
 To check whether that worked, we can list all of our items in the data store, and see if the one we just created is in there:
 
 {{ cli("kiara", "data", "list", cache_key="1st_run_data_list", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
-Hm. No? What to do, what to do? Maybe the command we just ran can '--help' us?
+All right! Looks like this worked.
 
-{{ cli("kiara", "data", "list", "--help") }}
+#### Converting an imported csv file into a table
 
-Right. Something about aliases... Let's see what happens if we use this ``--all`` thing...
+Csv files are usually not much use by themselves, they need to be converted into a table-structure so we can efficiently query then.
+This usually also makes sure that the structure and format of the file is valid.
 
-{{ cli("kiara", "data", "list", "--all", cache_key="2nd_run_data_list", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+Let's ask kiara what 'table' related operations it has available:
 
-All right! It seems there is something in there after all!
+{{ cli("kiara", "operation", "list", "table") }}
 
-Here is what happened: we imported our table, but didn't specify the ``aliases`` input when running it. That means kiara didn't bother with aliases, and just imported our table without doing anything else, like assigning an alias. And the ``data list`` sub-command doesn't print any values that don't have
-an alias, by default.
+!!! note
+    If you add strings to the end of any `list` command in *kiara*, they act as filters.
 
-It did import our table though. It actually did more than that: it also imported the original csv file, in addition to the table that was generated from it. This is because *kiara* tries to keep an unbroken chain of record for every operation that is done with a dataset, in order to be able to later re-run and investigate a datasets history. Why this is use- (and power-)full is a discussion for another usage guide, but suffice to say: it is the reason why we see 2 items in our list.
+Righto, looks like `file.convert_to.table` might be our ticket! Let's see what it does:
 
-### Importing data, with alias
+{{ cli("kiara", "operation", "explain", "file.convert_to.table") }}
 
-So, let's try that again, this time with alias:
+So, it needs an input `value_item` of type `file` as input, and will return a same-named output of type `table`. Looks good. Here is how we run this:
 
-{{ cli("kiara", "run", "table.import_from.file_path.string", "source=examples/data/journals/JournalNodes1902.csv", "aliases=my_first_table", cache_key="2nd_run_table_import", max_height=200, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "file.convert_to.table", "value_item=value:my_first_file") }}
 
-And, if everything went right, issuing ``data list --all`` command again should now be a bit more helpful:
+!!! note
+    In this example we pre-pend the right side of the `value_item=` argument with `value:`. This is necessary to make it clear to *kiara* that we mean
+    a dataset that lives in its data store. Otherwise, *kiara* would have just interpreted the input as a string, and since that is of the wrong input type
+    (we needed a table), it would have thrown an error.
 
-{{ cli("kiara", "data", "list", "--all", cache_key="3rd_run_data_list", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+That output looks good, right? Much more table-y then before. Only thing is: we want to again 'save' this output, so we can use it later directly. No big deal, just like last time:
 
-One thing that is interesting: our 2-nd run didn't add a new data item for the table (with a new id), all it did was to add an alias for the existing one. This is because *kiara* is smart enough that it can, in some cases, see that two datasets are the same, and therefore it doesn't need to store the 2nd copy seperately. Which saves hard-disk space, among other things.
+{{ cli("kiara", "run", "--save", "value_item=my_first_table", "file.convert_to.table", "value_item=value:my_first_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
-Another thing of note: *kiara* added an ``@1`` appendix to the alias we specified. This is the version of this alias within the *kiara* data store, and it is done automatically, so there is always a 'fixed' name you can use to refer to a dataset. If you would save a different table under the same alias, *kiara* would automatically increase the version number for the new dataset. You can always refer to a dataset using just the alias string; if you do that, *kiara* will pick the latest version that was stored under that alias.
+#### Checking the data store, again
 
-Now that our table is safely imported, let's have a look at the metadata *kiara* has stored for this specific item (we could also use the id in the following command, by the way):
+Now, let's look again at the content of the *kiara* data store:
 
-{{ cli("kiara", "data", "explain", "my_first_table", max_height=320, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "data", "list", cache_key="2nd_run_data_list", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
-This is basically the same thing we saw as output to our `run` command. This metadata is useful internally, because it enables *kiara* to be very selective about which parts of a dataset it actually loads into memory, if any.
+As you can see, there are 2 items now: one `file`, and one `table`. If you ever want to get more details about any of the items in the data store, you can use one of those commands:
+
+##### `kiara data explain`
+
+{{ cli("kiara", "data", "explain", "my_first_table") }}
+
+This command prints out the metadata *kiara* has stored about a value item.
+
+One thing that is noteworthy here is the ``load_config`` section in the metadata. When saving the value, *kiara* automatically
+generated this configuration, and it can be used later to load and use the exact same table file, in another workflow.
+
+##### `kiara data load`
+
+{{ cli("kiara", "data", "load", "my_first_table") }}
+
+This command loads the actual data, and prints out its content (or a representation of it that makes sense in a terminal-context).
 
 One thing that is noteworthy here is the ``load_config`` section in the metadata. When saving the value, *kiara* automatically
 generated this configuration, and it can be used later to load and use the exact same table file, in another workflow.
@@ -165,38 +202,3 @@ Here we've also used the ``--output=silent`` option, since we've seen that resul
 From looking at the output, it seems that saving our result has worked. We can make sure by letting *kiara* 'explain' to us the data that is stored under the alias 'berlin_journals':
 
 {{ cli("kiara", "data", "explain", "berlin_journals", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240) }}
-
-## Generating a network graph
-
-Since what we actually want to do is generating a network graph from our two csv files, we'll have a look at the list of
-operations again, and it looks like the ``network_graph.import.from_local_files`` one might do what we need.
-
-But we are not sure. Luckily, *kiara* has some ways to give us more information about a operations: `kiara operation explain [OPERATION]`
-
-
-{{ cli("kiara", "operation", "explain", "network_graph.import.from_local_files", max_height=320, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
-
-The 'inputs' section is most interesting, it's basically the same information we get from running ``kiara run`` without any inputs. Using the information from that output, and after looking at the headers of our csv files, we can figure out how to assemble our command:
-
-{{ cli("kiara", "run", "network_graph.import.from_local_files", "edges_path=examples/data/journals/JournalEdges1902.csv", "source_column=Source", "target_column=Target", "nodes_path=examples/data/journals/JournalNodes1902.csv", "nodes_table_index=Id", "--save", "graph=generate_graph_from_csvs.graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
-
-!!! note
-    Yes, we could use the nodes table we loaded earlier here. But we don't. For reasons that have nothing to do with what makes sense here.
-
-To confirm our graph is stored, let's check the data store:
-
-{{ cli("kiara", "data", "explain", "generate_graph_from_csvs.graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
-
-## Investigating the graph
-
-Now we might want to have a look at some of the intrinsic properties of our graph. For that, we will use the ``network.graph.properties`` module:
-
-{{ cli("kiara", "run", "network_graph.properties", "graph=value:generate_graph_from_csvs.graph", "--save", "graph_properties_workflow", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
-
-## Finding the shortest path
-
-Another thing we can do is finding the shortest path between two nodes:
-
-{{ cli("kiara", "run", "network_graph.find_shortest_path", "graph=value:generate_graph_from_csvs.graph", "source_node=1", "target_node=2", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
-
-That's that, for now. This is just a first draft, let me know all the things I should change, explain better, etc.
