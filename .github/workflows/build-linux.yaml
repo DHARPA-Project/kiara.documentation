@@ -7,10 +7,6 @@ jobs:
   build-docs:
     name: build documentation
     runs-on: ubuntu-latest
-    needs:
-      - test-linux
-      - mypy-linux
-      - flake8-linux
     steps:
       - name: Set up Python 3.9.1
         uses: actions/setup-python@v2
