@@ -1,5 +1,8 @@
 ---
 title: The basics
+description: How to create your own kiara module -- the basics.
+tags:
+- tutorial
 ---
 
 # Writing your own *kiara* module - the basics

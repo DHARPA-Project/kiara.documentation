@@ -19,6 +19,10 @@ jobs:
         with:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('setup.cfg') }}-${{ hashFiles('requirements.txt') }}
+      - uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
       - run: git config --global user.email "markus@frkl.io"
       - run: git config --global user.name "Markus Binsteiner"
       - name: install git versions of the main requirements

@@ -1,3 +1,9 @@
+---
+description: Getting started with kiara.
+tags:
+- tutorial
+---
+
 # Getting started
 
 This guide walks through some of the important (and some of the lesser important) features of *kiara*, the goal is to introduce
@@ -69,7 +75,7 @@ because *kiara* really likes the [Apache Arrow project](https://arrow.apache.org
 
 A depressingly large amount of data comes in csv files, which is why we'll use one as an example here. Specifically, we will
 use [``JournalNodes1902.csv``](https://github.com/DHARPA-Project/kiara_modules.playground/blob/develop/examples/data/journals/JournalNodes1902.csv). This file contains information about historical medical
-journals (name, type, where it was from, etc.). We want to convert this file into a 'proper' table structure, because
+journals (name, type, where it was from, etc.), and we'll later use it as the table which will provide node information in a network graph. We want to convert this file into a 'proper' table structure, because
 that will make subsequent processing faster, and also simpler in a lot of cases.
 
 ### Finding the right command, and how to use it
@@ -210,34 +216,70 @@ From looking at the output, it seems that saving our result has worked. We can m
 
 ## Generating a network graph
 
-Since what we actually want to do is generating a network graph from our two csv files, we'll have a look at the list of
-operations again, and it looks like the ``network_graph.import.from_local_files`` one might do what we need.
+Our goal for this tutorial is to create a network graph, and investigate its properties. Network graphs are usually created from
+one or two pieces of data (both tabular in nature:
 
-But we are not sure. Luckily, *kiara* has some ways to give us more information about a operations:
-
-{{ cli("kiara", "operation", "explain", "network_graph.import.from_local_files", max_height=320, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
-
-The 'inputs' section is most interesting, it's basically the same information we get from running ``kiara run`` without any inputs. Using theinformation from that output, and after looking at the headers of our csv files, we can figure out how to assemble our command:
-
-{{ cli("kiara", "run", "network_graph.import.from_local_files", "edges_path=examples/data/journals/JournalEdges1902.csv", "source_column=Source", "target_column=Target", "nodes_path=examples/data/journals/JournalNodes1902.csv", "nodes_table_index=Id", "--save", "graph=generate_graph_from_csvs.graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+- *edges* (mandataor): information about what nodes exist, and if and how they are connected
+- *nodes information* (optional): information about attributes of each node
 
 !!! note
-    Yes, we could use the nodes table we loaded earlier here. But we don't. For reasons that have nothing to do with what makes sense here.
+    In this tutorial we'll go through all the steps necessary to create a network graph object from two csv files, one by one.
+    This is a bit cumbersome, but it'll help you understand what actually happens. In a later tutorial we'll show how to create a *kiara* pipeline
+    to combine all those steps into one.
+
+### Importing edges data, creating a table item from it
+
+We already have our nodes imported into kiara (with the alias `my_first_table`). Now we need to do the same for our edges. Simliar to what we have done above, we want to import the file into
+the *kiara* data store, and then convert it into a table:
+
+{{ cli("kiara", "run", "--save", "value_item=edges_file", "file.import_from.local.file_path", "source=examples/data/journals/JournalEdges1902.csv", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240 ) }}
+{{ cli("kiara", "run", "--save", "value_item=edges_table", "file.convert_to.table", "value_item=value:edges_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240) }}
+
+At this stage we'll have two relevant tables in our store: `edges_table`, and `my_first_table`:
+
+{{ cli("kiara", "data", "list", cache_key="3rd_run_data_list", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+### Creating the graph (without node attributes)
+
+Now that we have the edges data in *kiara* in a useful format, we can create the graph object. The data type for graphs in *kiara* is called `network_graph`, so let's check out all the operations *kiara* has to offer related to `network_graphs`:
+
+{{ cli("kiara", "operation", "list", "network_graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+Hm, ``network_graph.from_edges_table` looks good, right? Let's see that operations interface:
+
+{{ cli("kiara", "operation", "explain", "network_graph.from_edges_table", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=320) }}
+
+From this information we can assemble our command, using `value:edges_table` as the main input, and saving it using the alias `edges_graph`. We can figure the values for the other inputs out be running `kiara data explain edges_table`, which will give us the column names, among other things. So, here goes nothing:
+
+{{ cli("kiara", "run", "--save", "graph=edges_graph", "network_graph.from_edges_table", "edges_table=value:edges_table", "source_column=Source", "target_column=Target", "weight_column=weight", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 To confirm our graph is stored, let's check the data store:
 
-{{ cli("kiara", "data", "explain", "generate_graph_from_csvs.graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "data", "explain", "edges_graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+All good. Also, check out the meteadata *kiara* knows about the graph already.
+
+### Augmenting the graph with node attributes
+
+The final step in our graph assembly process is to add node attributes. Looking at the operation list from above, we decide to try `network_graph.augment`:
+
+{{ cli("kiara", "operation", "explain", "network_graph.augment", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=320) }}
+
+Using all we've learned so far, it should be easy to do:
+
+{{ cli("kiara", "run", "--save", "graph=journals_graph", "network_graph.augment", "graph=value:edges_graph", "node_attributes=value:my_first_table", "index_column_name=Id", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
 
 ## Investigating the graph
 
 Now we might want to have a look at some of the intrinsic properties of our graph. For that, we will use the ``network.graph.properties`` module:
 
-{{ cli("kiara", "run", "network_graph.properties", "graph=value:generate_graph_from_csvs.graph", "--save", "graph_properties_workflow", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "network_graph.properties", "graph=value:journals_graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 ## Finding the shortest path
 
 Another thing we can do is finding the shortest path between two nodes:
 
-{{ cli("kiara", "run", "network_graph.find_shortest_path", "graph=value:generate_graph_from_csvs.graph", "source_node=1", "target_node=2", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "network_graph.find_shortest_path", "graph=value:journals_graph", "source_node=1", "target_node=2", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 That's that, for now. This is just a first draft, let me know all the things I should change, explain better, etc.

@@ -8,9 +8,16 @@ site_dir: build/site
 
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.instant
     - navigation.tracking
+    - content.tabs.link
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.top
+    - navigation.sections
+    - navigation.expand
 
 markdown_extensions:
 - attr_list
@@ -24,57 +31,21 @@ markdown_extensions:
 - pymdownx.snippets:
     base_path: docs
 - pymdownx.highlight
-- pymdownx.superfences
-
-#nav:
-#- Home: index.md
-#- Install: install.md
-#- Usage:
-#    - Overview: usage/index.md
-#    - Getting started: usage/getting_started.md
-#    - Running modules: usage/running_modules.md
-#    - Data: usage/data.md
-#    - Modules & Pipelines: usage/module_info.md
-#    - Writing modules: usage/writing_modules_guide.md
-#- Modules:
-#    - Overview: modules/index.md
-#    - Core modules: modules/core_modules.md
-#    - Pipeline modules: modules/pipeline_modules.md
-#- Workflows:
-#    - Overview: workflows/index.md
-#- Data:
-#    - Overview: data/index.md
-#    - Data registry: data/registry.md
-#    - Tables:
-#        - Overview: data/tables/index.md
-#        - filtering: data/tables/filtering.md
-#- Development:
-#    - Overview: development/index.md
-#    - Development environment: development/environment.md
-#    - Module discovery: development/module_discovery.md
-#    - Executing modules: development/executing_modules.md
-#    - Pipeline controllers: development/pipeline_controllers.md
-#    - Workflows: development/workflows.md
-#    - Entities:
-#      - Overview: development/entities/index.md
-#      - Values / Data: development/entities/values.md
-#      - Modules / Pipelines: development/entities/modules.md
-#      - Events: development/entities/events.md
+- pymdownx.superfences:
+    custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: "!!python/name:pymdownx.superfences.fence_code_format"
 
 extra:
   version:
     provider: mike
-
+    default: latest
 plugins:
 - search
 - mknotebooks
 - awesome-pages
-#- mkdocstrings:
-#    default_handler: python
-#    watch:
-#      - "src"
-#- frkl-docgen:
-#    main_module: "kiara_documentation"
+- social
 - macros:
    modules:
      - kiara.doc.mkdocs_macros_cli
