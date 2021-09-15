@@ -58,7 +58,7 @@ pip install --extra-index-url https://pypi.fury.io/dharpa/ -U -e .[all_dev]
 
 First, let's have a look which operations are available, and what we can do with them:
 
-{{ cli("kiara", "operation", "list", max_height=320) }}
+{{ cli("kiara", "operation", "list", max_height=320, extra_env={"CONSOLE_WIDTH": "140"}) }}
 
 !!! note
     In this guide we'll use the term *operation* to indicate an entity that transforms data in some way or form. *kiara*
@@ -127,7 +127,7 @@ This usually also makes sure that the structure and format of the file is valid.
 
 Let's ask kiara what 'convert' related operations it has available:
 
-{{ cli("kiara", "operation", "list", "convert", extra_env={"CONSOLE_WIDTH": "200"}) }}
+{{ cli("kiara", "operation", "list", "convert", extra_env={"CONSOLE_WIDTH": "120"}) }}
 
 !!! note
     If you add strings to the end of any `list` command in *kiara*, they act as filters.
@@ -138,7 +138,7 @@ Righto, looks like `file.convert_to.table` might be our ticket! Let's see what i
 
 So, it needs an input `value_item` of type `file` as input, and will return a same-named output of type `table`. Looks good. Here is how we run this:
 
-{{ cli("kiara", "run", "file.convert_to.table", "value_item=value:my_first_file", max_height=240, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "file.convert_to.table", "value_item=value:my_first_file", max_height=240, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "200"}) }}
 
 !!! note
     In this example we pre-pend the right side of the `value_item=` argument with `value:`. This is necessary to make it clear to *kiara* that we mean
@@ -243,11 +243,11 @@ At this stage we'll have two relevant tables in our store: `edges_table`, and `m
 
 Now that we have the edges data in *kiara* in a useful format, we can create the graph object. The data type for graphs in *kiara* is called `network_graph`, so let's check out all the operations *kiara* has to offer related to `network_graphs`:
 
-{{ cli("kiara", "operation", "list", "network_graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "240"}, max_height=320) }}
+{{ cli("kiara", "operation", "list", "network_graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "180"}, max_height=320) }}
 
 Hm, `network_graph.from_edges_table` looks good, right? Let's see that operations interface:
 
-{{ cli("kiara", "operation", "explain", "network_graph.from_edges_table", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=320) }}
+{{ cli("kiara", "operation", "explain", "network_graph.from_edges_table", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "120"}, max_height=320) }}
 
 From this information we can assemble our command, using `value:edges_table` as the main input, and saving it using the alias `edges_graph`. We can figure the values for the other inputs out be running `kiara data explain edges_table`, which will give us the column names, among other things. So, here goes nothing:
 
@@ -263,7 +263,7 @@ All good. Also, check out the meteadata *kiara* knows about the graph already.
 
 The final step in our graph assembly process is to add node attributes. Looking at the operation list from above, we decide to try `network_graph.augment`:
 
-{{ cli("kiara", "operation", "explain", "network_graph.augment", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=320) }}
+{{ cli("kiara", "operation", "explain", "network_graph.augment", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "120"}, max_height=320) }}
 
 Using all we've learned so far, it should be easy to do:
 
