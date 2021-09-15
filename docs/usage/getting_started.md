@@ -127,7 +127,7 @@ This usually also makes sure that the structure and format of the file is valid.
 
 Let's ask kiara what 'convert' related operations it has available:
 
-{{ cli("kiara", "operation", "list", "convert") }}
+{{ cli("kiara", "operation", "list", "convert", extra_env={"CONSOLE_WIDTH": "200"}) }}
 
 !!! note
     If you add strings to the end of any `list` command in *kiara*, they act as filters.
@@ -172,7 +172,7 @@ generated this configuration, and it can be used later to load and use the exact
 
 ##### `kiara data load`
 
-{{ cli("kiara", "data", "load", "my_first_table", max_height=240, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "data", "load", "my_first_table", max_height=240, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "200"}) }}
 
 This command loads the actual data, and prints out its content (or a representation of it that makes sense in a terminal-context).
 
@@ -243,9 +243,9 @@ At this stage we'll have two relevant tables in our store: `edges_table`, and `m
 
 Now that we have the edges data in *kiara* in a useful format, we can create the graph object. The data type for graphs in *kiara* is called `network_graph`, so let's check out all the operations *kiara* has to offer related to `network_graphs`:
 
-{{ cli("kiara", "operation", "list", "network_graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "operation", "list", "network_graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "240"}, max_height=320) }}
 
-Hm, ``network_graph.from_edges_table` looks good, right? Let's see that operations interface:
+Hm, `network_graph.from_edges_table` looks good, right? Let's see that operations interface:
 
 {{ cli("kiara", "operation", "explain", "network_graph.from_edges_table", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=320) }}
 
