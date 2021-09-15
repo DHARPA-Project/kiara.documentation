@@ -206,3 +206,38 @@ Here we've also used the ``--output=silent`` option, since we've seen that resul
 From looking at the output, it seems that saving our result has worked. We can make sure by letting *kiara* 'explain' to us the data that is stored under the alias 'berlin_journals':
 
 {{ cli("kiara", "data", "explain", "berlin_journals", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240) }}
+
+
+## Generating a network graph
+
+Since what we actually want to do is generating a network graph from our two csv files, we'll have a look at the list of
+operations again, and it looks like the ``network_graph.import.from_local_files`` one might do what we need.
+
+But we are not sure. Luckily, *kiara* has some ways to give us more information about a operations:
+
+{{ cli("kiara", "operation", "explain", "network_graph.import.from_local_files", max_height=320, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+The 'inputs' section is most interesting, it's basically the same information we get from running ``kiara run`` without any inputs. Using theinformation from that output, and after looking at the headers of our csv files, we can figure out how to assemble our command:
+
+{{ cli("kiara", "run", "network_graph.import.from_local_files", "edges_path=examples/data/journals/JournalEdges1902.csv", "source_column=Source", "target_column=Target", "nodes_path=examples/data/journals/JournalNodes1902.csv", "nodes_table_index=Id", "--save", "graph=generate_graph_from_csvs.graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+!!! note
+    Yes, we could use the nodes table we loaded earlier here. But we don't. For reasons that have nothing to do with what makes sense here.
+
+To confirm our graph is stored, let's check the data store:
+
+{{ cli("kiara", "data", "explain", "generate_graph_from_csvs.graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+## Investigating the graph
+
+Now we might want to have a look at some of the intrinsic properties of our graph. For that, we will use the ``network.graph.properties`` module:
+
+{{ cli("kiara", "run", "network_graph.properties", "graph=value:generate_graph_from_csvs.graph", "--save", "graph_properties_workflow", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+## Finding the shortest path
+
+Another thing we can do is finding the shortest path between two nodes:
+
+{{ cli("kiara", "run", "network_graph.find_shortest_path", "graph=value:generate_graph_from_csvs.graph", "source_node=1", "target_node=2", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+
+That's that, for now. This is just a first draft, let me know all the things I should change, explain better, etc.

@@ -48,6 +48,9 @@ init: clean ## initialize a development environment (to be run in virtualenv)
 	git checkout -b develop || true
 	pip install -U pip
 	pip install --pre --extra-index-url https://pypi.fury.io/dharpa/ --extra-index-url https://gitlab.com/api/v4/projects/25344049/packages/pypi/simple -U -e '.[all_dev]'
+ifdef MKDOCS_PULL_TOKEN
+	pip install --upgrade --force-reinstall git+https://${MKDOCS_PULL_TOKEN}@github.com/DHARPA-Project/mkdocs-material-insiders.git
+endif
 	pre-commit install
 	pre-commit install --hook-type commit-msg
 	setup-cfg-fmt setup.cfg || true
@@ -58,7 +61,9 @@ init: clean ## initialize a development environment (to be run in virtualenv)
 update-dependencies:  ## update all development dependencies
 	pip install -U pip
 	pip install --pre --extra-index-url https://pypi.fury.io/dharpa/ --extra-index-url https://gitlab.com/api/v4/projects/25344049/packages/pypi/simple -U -e '.[all_dev]'
-
+ifdef MKDOCS_PULL_TOKEN
+	pip install --upgrade --force-reinstall git+https://${GH_PULL_TOKEN}@github.com/DHARPA-Project/mkdocs-material-insiders.git
+endif
 
 setup-cfg-fmt: # format setup.cfg
 	setup-cfg-fmt setup.cfg || true
