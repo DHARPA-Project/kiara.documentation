@@ -269,6 +269,12 @@ Using all we've learned so far, it should be easy to do:
 
 {{ cli("kiara", "run", "--save", "graph=journals_graph", "network_graph.augment", "graph=value:edges_graph", "node_attributes=value:my_first_table", "index_column_name=Id", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
+### Side-note: investigating the graph value lineage
+
+*kiara* keeps track of all the modules and inputs that went into producing a value, basically its entire ancestry. This is not the place to explain why, and how that can be
+very power- and use-full. But if you are ever interested about what went into creating a particular value, you can do this with:
+
+{{ cli("kiara", "data", "explain", "--lineage", "--include-ids", "journals_graph",  extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "COLUMN_WIDTH": "140"}) }}
 
 ## Investigating the graph
 
