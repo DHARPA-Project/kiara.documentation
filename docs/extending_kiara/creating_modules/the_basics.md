@@ -99,11 +99,11 @@ So, for our case, the implementation of that method would look like this:
 def create_input_schema(self):
     return {
         "table_input": {
-            "type_name": "table",
+            "type": "table",
             "doc": "The table that will be filtered."
         },
         "date": {
-            "type_name": "date",
+            "type": "date",
             "doc": "The minimum date, earlier dates will be filtered out."
         }
     }
@@ -117,7 +117,7 @@ The format of the result of this method is very similar to the above. The (only)
 def create_output_schema(self):
     return {
         "table_output": {
-            "type_name": "table",
+            "type": "table",
             "doc": "The filtered table."
         }
     }
