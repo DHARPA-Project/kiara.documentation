@@ -17,6 +17,7 @@ theme:
     - navigation.top
     - navigation.sections
     - navigation.expand
+    - content.code.annotate
 
 markdown_extensions:
 - attr_list
