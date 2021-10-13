@@ -50,6 +50,6 @@ plugins:
    modules:
      - kiara.doc.mkdocs_macros_cli
      - kiara.doc.mkdocs_macros_kiara
-#- gen-files:
-#    scripts:
-#      - scripts/documentation/gen_module_doc.py
+- gen-files:
+    scripts:
+      - scripts/documentation/gen_operation_type_pages.py

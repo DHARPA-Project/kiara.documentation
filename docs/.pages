@@ -1,6 +1,5 @@
 nav:
   - Home: index.md
   - usage
-  - pipelines
-  - extending_kiara
   - concepts
+  - extending_kiara
