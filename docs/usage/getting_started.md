@@ -99,18 +99,18 @@ take complex inputs like dicts, but fortunately this is not necessary here. If y
 
 For simple inputs like string-type things, all we need to do is provide the input name, followed by '=' and the value itself:
 
-{{ cli("kiara", "run", "file.import_from.local.file_path", "source=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "file.import_from.local.file_path", "file_path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 As you can see from the terminal output, this produced one piece of output data: `value_item` (referring to the imported file), and it displays a some metadata of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in *kiara* persists it into the *kiara* data store, gives it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, as to make it easy to find and identify an item later on.
 
 *kiara* supports saving any of the output values of a `kiara run` command via the `--save` flag. This `--save` parameter takes a single string as argument, and can be used in two ways:
 
-- if you want to save all output fields of a `run` you can just provide a single string (for example `imported_journal_csv`) as the parameter. In this case, *kiara* will store all result items with an auto-generated alias in the form of `[save_argument]__[field_name]`. In our case this would result in one item being store in the data store, with the alias `imported_journal_csv__value_item`.
+- if you want to save all output fields of a `run` you can just provide a single string (for example `imported_journal_csv`) as the parameter. In this case, *kiara* will store all result items with an auto-generated alias in the form of `[save_argument]__[field_name]`. In our case this would result in one item being store in the data store, with the alias `imported_journal_csv__file`.
 - if you want to save only a subset of result values, or want to have more control about the aliases those results get, you can use the `--save` parameter for every field you want to persist. In this case the argument to `--save` must be in the form of: `[field_name]=[alias]`. You can use the parameter multiple times, with different field names.
 
 In our case, lets opt for the second option:
 
-{{ cli("kiara", "run", "--save", "value_item=my_first_file", "file.import_from.local.file_path", "source=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "--save", "file=my_first_file", "file.import_from.local.file_path", "file_path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 #### Checking the data store
 
@@ -232,7 +232,7 @@ one or two pieces of data (both tabular in nature:
 We already have our nodes imported into kiara (with the alias `my_first_table`). Now we need to do the same for our edges. Simliar to what we have done above, we want to import the file into
 the *kiara* data store, and then convert it into a table:
 
-{{ cli("kiara", "run", "--save", "value_item=edges_file", "file.import_from.local.file_path", "source=examples/data/journals/JournalEdges1902.csv", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240 ) }}
+{{ cli("kiara", "run", "--save", "file=edges_file", "file.import_from.local.file_path", "file_path=examples/data/journals/JournalEdges1902.csv", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240 ) }}
 {{ cli("kiara", "run", "--save", "value_item=edges_table", "file.convert_to.table", "value_item=value:edges_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240) }}
 
 At this stage we'll have two relevant tables in our store: `edges_table`, and `my_first_table`:

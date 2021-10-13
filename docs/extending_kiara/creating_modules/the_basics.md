@@ -29,7 +29,7 @@ As input data for this tutorial, we'll use [this very small csv file](https://gi
 
 Download this file, and import it with kiara like so:
 
-{{ cli("kiara", "run", "file.import_from.local.file_path", "source=examples/data/writing_module_tutorial/data_1.csv", "--save", "value_item=tutorial_data_1_source_file", max_height=240) }}
+{{ cli("kiara", "run", "file.import_from.local.file_path", "file_path=examples/data/writing_module_tutorial/data_1.csv", "--save", "file=tutorial_data_1_source_file", max_height=240) }}
 {{ cli("kiara", "run", "file.convert_to.table", "value_item=value:tutorial_data_1_source_file", "--save", "value_item=tutorial_data_1", max_height=240) }}
 
 From now on, we'll be able to use this as input by specifying ``value:tutorial_data_1``.
