@@ -34,7 +34,7 @@ jobs:
       - name: create an entry in the data store (1)
         run: KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run import.file.from.file_path file_path=examples/data/journals/JournalEdges1902.csv --save file=example_table_source
       - name: create an entry in the data store (2)
-        run: KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run create.table.from_csv_file csv_file=value:example_table_source --save table=example_table
+        run: KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run create.table.from.csv_file csv_file=value:example_table_source --save table=example_table
       - name: create latest documentation
         if: ${{ ( github.ref == 'refs/heads/develop') }}
         run: FAIL_DOC_BUILD_ON_ERROR=true mike deploy --push latest && mike set-default --push latest
