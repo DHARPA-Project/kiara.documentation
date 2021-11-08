@@ -37,7 +37,7 @@ You may have noticed that after assembling a pipeline in this way, we end up wit
 
 Operations are what users usually interact with. They have a fixed id (``kiara operation list``), a fixed set of well-defined inputs and outputs, and a well-defined, (usually) [idempotent](https://en.wikipedia.org/wiki/Idempotence) way of transforming inputs into outputs. Operations are defined uniquely by their module type and module configuration (which means, the same module type configured in the same way always results in the same operation). You can find out those details using the *kiara* command-line interface:
 
-{{ cli("kiara", "operation", "explain", "file.calculate_hash.sha3_256", max_height=240) }}
+{{ cli("kiara", "operation", "explain", "calculate_hash.sha3_256.for.file", max_height=240) }}
 
 Some modules don't require any configuration (either because they can't be configured, or have default values for all configuration options). If that is the case, *kiara* considers those also as operations, and includes the module type id in the list of operations automatically.
 

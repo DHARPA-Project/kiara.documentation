@@ -85,10 +85,10 @@ is to 'import' the file containing the data first, then convert it to the target
 
 #### Importing the 'raw' file
 
-After looking at the ``kiara operation list`` output, it looks like the ``file.import_from.local.file_path`` module might be just what we need. *kiara* has the [``run``](../running_operations) sub-command, which is used to execute operations. If we
+After looking at the ``kiara operation list`` output, it looks like the ``import.file.from.file_path`` module might be just what we need. *kiara* has the [``run``](../running_operations) sub-command, which is used to execute operations. If we
 only provide a module name, and not any input, this command will tell us what it expects:
 
-{{ cli("kiara", "run", "file.import_from.local.file_path", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "import.file.from.file_path", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 !!! note
     The output of this command may show two other inputs (apart from `source`): `save` and `aliases`. There is a good chance that
@@ -99,7 +99,7 @@ take complex inputs like dicts, but fortunately this is not necessary here. If y
 
 For simple inputs like string-type things, all we need to do is provide the input name, followed by '=' and the value itself:
 
-{{ cli("kiara", "run", "file.import_from.local.file_path", "file_path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "import.file.from.file_path", "file_path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 As you can see from the terminal output, this produced one piece of output data: `value_item` (referring to the imported file), and it displays a some metadata of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in *kiara* persists it into the *kiara* data store, gives it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, as to make it easy to find and identify an item later on.
 
@@ -110,7 +110,7 @@ As you can see from the terminal output, this produced one piece of output data:
 
 In our case, lets opt for the second option:
 
-{{ cli("kiara", "run", "--save", "file=my_first_file", "file.import_from.local.file_path", "file_path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "--save", "file=my_first_file", "import.file.from.file_path", "file_path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 #### Checking the data store
 
@@ -120,34 +120,33 @@ To check whether that worked, we can list all of our items in the data store, an
 
 All right! Looks like this worked.
 
-#### Converting an imported csv file into a table
+#### Creating a table from an imported csv file
 
-Csv files are usually not much use by themselves, they need to be converted into a table-structure so we can efficiently query then.
-This usually also makes sure that the structure and format of the file is valid.
+Csv files are usually not much use by themselves, in most cases we want to create a table-like structure from them, so we can efficiently query the data. This usually also makes sure that the structure and format of the file is valid.
 
-Let's ask kiara what 'convert' related operations it has available:
+Let's ask kiara what 'create' related operations it has available:
 
-{{ cli("kiara", "operation", "list", "convert", extra_env={"CONSOLE_WIDTH": "120"}) }}
+{{ cli("kiara", "operation", "list", "create", extra_env={"CONSOLE_WIDTH": "120"}) }}
 
 !!! note
     If you add strings to the end of any `list` command in *kiara*, they act as filters.
 
-Righto, looks like `file.convert_to.table` might be our ticket! Let's see what it does:
+Righto, looks like `create.table.from.csv_file` might be our ticket! Let's see what it does:
 
-{{ cli("kiara", "operation", "explain", "file.convert_to.table", max_height=320) }}
+{{ cli("kiara", "operation", "explain", "create.table.from.csv_file", max_height=320) }}
 
-So, it needs an input `value_item` of type `file` as input, and will return a same-named output of type `table`. Looks good. Here is how we run this:
+So, it needs an input `csv_file` of type `file`, and will return a 'table'-named output of type, well ... `table`. Looks good. Here is how we run this:
 
-{{ cli("kiara", "run", "file.convert_to.table", "value_item=value:my_first_file", max_height=240, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "200"}) }}
+{{ cli("kiara", "run", "create.table.from.csv_file", "csv_file=value:my_first_file", max_height=240, extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "200"}) }}
 
 !!! note
-    In this example we pre-pend the right side of the `value_item=` argument with `value:`. This is necessary to make it clear to *kiara* that we mean
+    In this example we pre-pend the right side of the `csv_file=` argument with `value:`. This is necessary to make it clear to *kiara* that we mean
     a dataset that lives in its data store. Otherwise, *kiara* would have just interpreted the input as a string, and since that is of the wrong input type
     (we needed a table), it would have thrown an error.
 
 That output looks good, right? Much more table-y then before. Only thing is: we want to again 'save' this output, so we can use it later directly. No big deal, just like last time:
 
-{{ cli("kiara", "run", "--output", "silent", "--save", "value_item=my_first_table", "file.convert_to.table", "value_item=value:my_first_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
+{{ cli("kiara", "run", "--output", "silent", "--save", "table=my_first_table", "create.table.from.csv_file", "csv_file=value:my_first_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}) }}
 
 !!! note
     Here we use the `--output silent` command line option to surpress any output of values. We've seen this already in the
@@ -232,8 +231,8 @@ one or two pieces of data (both tabular in nature:
 We already have our nodes imported into kiara (with the alias `my_first_table`). Now we need to do the same for our edges. Simliar to what we have done above, we want to import the file into
 the *kiara* data store, and then convert it into a table:
 
-{{ cli("kiara", "run", "--save", "file=edges_file", "file.import_from.local.file_path", "file_path=examples/data/journals/JournalEdges1902.csv", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240 ) }}
-{{ cli("kiara", "run", "--save", "value_item=edges_table", "file.convert_to.table", "value_item=value:edges_file", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240) }}
+{{ cli("kiara", "run", "--save", "file=edges_file", "import.file.from.file_path", "file_path=examples/data/journals/JournalEdges1902.csv", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240 ) }}
+{{ cli("kiara", "run", "--save", "value_item=edges_table", "import.file.from.file_path", "value_item=value:edges_file", extra_env=l{"KIARA_DATA_STORE": "/tmp/kiara/getting_started"}, max_height=240) }}
 
 At this stage we'll have two relevant tables in our store: `edges_table`, and `my_first_table`:
 

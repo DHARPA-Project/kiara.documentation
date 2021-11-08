@@ -6,14 +6,14 @@ help:
 
 docs: ## build documentation
 	rm -rf /tmp/kiara
-	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run file.import_from.local.file_path file_path=examples/data/journals/JournalEdges1902.csv --save file=example_table_source
-	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run file.convert_to.table value_item=value:example_table_source --save value_item=example_table
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run import.file.from.file_path file_path=examples/data/journals/JournalEdges1902.csv --save file=example_table_source
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run create.table.from.csv_file csv_file=value:example_table_source --save table=example_table
 	mkdocs build
 
 serve-docs: ## serve and watch documentation
 	rm -rf /tmp/kiara
-	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run file.import_from.local.file_path file_path=examples/data/journals/JournalEdges1902.csv --save file=example_table_source
-	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run file.convert_to.table value_item=value:example_table_source --save value_item=example_table
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run import.file.from.file_path file_path=examples/data/journals/JournalEdges1902.csv --save file=example_table_source
+	KIARA_DATA_STORE="/tmp/kiara/data_store_3/" kiara run create.table.from.csv_file csv_file=value:example_table_source --save table=example_table
 	mkdocs serve -a 0.0.0.0:8000
 
 clean: clean-build clean-pyc clean-test clean-docs ## remove all build, test, coverage and Python artifacts
