@@ -10,20 +10,20 @@ This guide walks through some of the important (and some of the lesser important
 new users to the overall framework, so they can get a feeling for what it can do, and whether it might be useful for their
 own usage scenarios.
 
-As example data, we'll be using two csv files that were created by my colleague [Lena Jaskov](https://github.com/yaslena): [files](https://github.com/DHARPA-Project/kiara_modules.playground/tree/develop/examples/data/journals)
+As example data, we'll be using two csv files that were created by my colleague [Lena Jaskov](https://github.com/yaslena): [files](https://github.com/DHARPA-Project/kiara-playground/tree/develop/examples/data/journals)
 
 The files contain information about connection (edges) between medical journals (``JournalEdges1902.csv``), as well as additional metadata for the journals themselves (``JournalNodes1902.csv``). We'll use that data to create table and graph structures with *kiara*.
 
 ## Setting up kiara
 
 For now, there are no published binary versions of kiara, so we'll install the Python package in a virtual environment.
-While we're at it we'll check out the [kiara_modules.playgrounds repository](https://github.com/DHARPA-Project/kiara_modules.playground), because we can use that later to create our own *kiara* modules and pipelines:
+While we're at it we'll check out the [kiara playground repository](https://github.com/DHARPA-Project/kiara-playground), because we can use that later to create our own *kiara* modules and pipelines:
 
 ### On Linux & Mac OS X (using `make`)
 
 ```console
-git clone https://github.com/DHARPA-Project/kiara_modules.playground.git
-cd kiara_modules.playground
+git clone https://github.com/DHARPA-Project/kiara-playground
+cd kiara-playground
 python3 -m venv .venv
 source .venv/bin/activate
 make init
@@ -46,8 +46,8 @@ Once that is done, create and change into a directory where you want this projec
 
 ```console
 # ensure activated virtual- or conda environment
-git clone https://github.com/DHARPA-Project/kiara_modules.playground.git
-cd kiara_modules.playground
+git clone https://github.com/DHARPA-Project/kiara-playground
+cd kiara-playground
 # the next command is optional, ignore if not using conda
 conda install -c conda-forge python-levenshtein
 pip install --extra-index-url https://pypi.fury.io/dharpa/ -U -e .[all_dev]
@@ -74,7 +74,7 @@ Also, when we talk about tables in *kiara*-land, we specifically talk about [Apa
 because *kiara* really likes the [Apache Arrow project](https://arrow.apache.org/docs/index.html); there is a high probability that it will become a de-facto standard in this space (if it isn't already). Why Arrow tables are better than others is a topic for another time, plus, in practical terms the underlying implementation of the data structures that are used by *kiara* won't matter that much to most users anyway.
 
 A depressingly large amount of data comes in csv files, which is why we'll use one as an example here. Specifically, we will
-use [``JournalNodes1902.csv``](https://github.com/DHARPA-Project/kiara_modules.playground/blob/develop/examples/data/journals/JournalNodes1902.csv). This file contains information about historical medical
+use [``JournalNodes1902.csv``](https://github.com/DHARPA-Project/kiara-playground/blob/develop/examples/data/journals/JournalNodes1902.csv). This file contains information about historical medical
 journals (name, type, where it was from, etc.), and we'll later use it as the table which will provide node information in a network graph. We want to convert this file into a 'proper' table structure, because
 that will make subsequent processing faster, and also simpler in a lot of cases.
 
