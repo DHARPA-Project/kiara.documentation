@@ -933,11 +933,11 @@ take complex inputs like dicts, but fortunately this is not necessary here. If y
 
 </div>
 
-<p>As you can see from the terminal output, this produced one piece of output data: <code>file</code> (referring to the imported file), and it displays a preview of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in <em>kiara</em> persists the file (rather: it's content and some metadata) into the <em>kiara</em> data store, giving it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, in order to make it easy to find datasets later on.</p>
+<p>As you can see from the terminal output, this produced one piece of output data: <code>file</code> (referring to the imported file), and it displays a preview of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in <em>kiara</em> persists the file (rather: it's content and some metadata) into the <em>kiara</em> data store, giving it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, in order to make it easy to refer to datasets later on.</p>
 <p><em>kiara</em> supports saving any of the output values of a <code>kiara run</code> command via the <code>--save</code> flag. This <code>--save</code> parameter takes a single string as argument, and can be used in two ways:</p>
 <ul>
 <li>if you want to save all output fields of a <code>run</code> you can just provide a single string (for example <code>imported_journal_csv</code>) as the parameter. In this case, <em>kiara</em> will store all result items with an auto-generated alias in the form of <code>[save_argument].[field_name]</code>. In our case this would result in one item being store in the data store, with the alias <code>imported_journal_csv.file</code>.</li>
-<li>if you want to save only a subset of result values, or want to have more control about the aliases those results get, you can use the <code>--save</code> parameter for every field you want to persist. In this case the argument to <code>--save</code> must be in the form of: <code>[field_name]=[alias]</code>. You can use the parameter multiple times, with different field names.</li>
+<li>if you want to save only a subset of result values, or want to have more control about the aliases those results get, you can use the <code>--save</code> parameter for every field you want to persist. In this case the argument to <code>--save</code> must be in the form of: <code>[field_name]=[alias]</code>. You can use the <code>--save</code> parameter multiple times, with different field names.</li>
 </ul>
 <p>In our case, lets opt for the second option:</p>
 <div class="highlight"><pre><span></span><code><span class="go">kiara run --save file=journal_nodes_file import.file path=examples/data/journals/JournalNodes1902.csv</span>
@@ -1070,7 +1070,7 @@ take complex inputs like dicts, but fortunately this is not necessary here. If y
 <span class="go">│                                                                              │</span>
 <span class="go">│   field   data type   stored id                         alias(es)            │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   file    file        34eb1829-57a7-49d8-92e7-c23814…   journal_nodes_file   │</span>
+<span class="go">│   file    file        fbec6c31-54f6-493b-8f36-905294…   journal_nodes_file   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1245,9 +1245,9 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <div style='max-height:300px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journal_nodes_table ───────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id            e8f330b9-1537-42a7-8efd-2deec664dc9d                   │</span>
+<span class="go">│   value_id            cfd89f78-05db-491b-b98e-91fb1b1595dd                   │</span>
 <span class="go">│   aliases             journal_nodes_table                                    │</span>
-<span class="go">│   kiara_id            9aa0684f-4e46-4ece-a73f-ae212f196976                   │</span>
+<span class="go">│   kiara_id            39af4d3e-6844-4cdb-88cf-259008ddb4be                   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                            │</span>
@@ -1259,9 +1259,9 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <span class="go">│   destiny_links       {}                                                     │</span>
 <span class="go">│   property_links      {                                                      │</span>
 <span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
-<span class="go">│                       &quot;3e69417b-7632-443b-8b51-068a14c45e15&quot;,                │</span>
+<span class="go">│                       &quot;c3dec663-0270-416d-bb86-9efa09bc9669&quot;,                │</span>
 <span class="go">│                         &quot;metadata.table&quot;:                                    │</span>
-<span class="go">│                       &quot;51756ce0-a6ed-43d0-b3bd-01429972edf3&quot;                 │</span>
+<span class="go">│                       &quot;c9d807b3-3e57-4d1b-932c-fabe2fb49f6c&quot;                 │</span>
 <span class="go">│                       }                                                      │</span>
 <span class="go">│   value_hash          zdpuAn89Et1ENzfoASJRYcWEceyfRiPg664mN4nnHLFnjRLyg      │</span>
 <span class="go">│   value_schema                                                               │</span>
@@ -1281,8 +1281,6 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 </div>
 
 <p>This command prints out the metadata <em>kiara</em> has stored about a value item. This commands supports displaying several internally important metadata details of stored datasets, check out the available options with <code>kiara data explain --help</code>. One option that is particularly interesting is the <code>-p</code> one, which displays all the metadata properties <em>kiara</em> has collected about a value.</p>
-<p>One thing that is noteworthy here is the <code>load_config</code> section in the metadata. When saving the value, <em>kiara</em> automatically
-generated this configuration, and it can be used later to load and use the exact same table file, in another workflow.</p>
 <h5 id="kiara-data-load"><code>kiara data load</code><a class="headerlink" href="#kiara-data-load" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="go">kiara data load -s alias:journal_nodes_table</span>
 </code></pre></div>
@@ -1477,9 +1475,9 @@ we might want to store the result of our work, similar to how we imported the or
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:berlin_journals ───────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id            a0407ff2-b33c-4d7d-a43a-ee84c2af5dfd                   │</span>
+<span class="go">│   value_id            fe3a6465-2247-4349-8156-006a553563bd                   │</span>
 <span class="go">│   aliases             berlin_journals                                        │</span>
-<span class="go">│   kiara_id            9aa0684f-4e46-4ece-a73f-ae212f196976                   │</span>
+<span class="go">│   kiara_id            39af4d3e-6844-4cdb-88cf-259008ddb4be                   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                            │</span>
@@ -1491,9 +1489,9 @@ we might want to store the result of our work, similar to how we imported the or
 <span class="go">│   destiny_links       {}                                                     │</span>
 <span class="go">│   property_links      {                                                      │</span>
 <span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
-<span class="go">│                       &quot;25ffc356-09c1-4e35-bf33-4fafaaf64226&quot;,                │</span>
+<span class="go">│                       &quot;540625ce-8182-4497-9b4f-deb6fefb05a9&quot;,                │</span>
 <span class="go">│                         &quot;metadata.table&quot;:                                    │</span>
-<span class="go">│                       &quot;5f83033b-316c-46ea-9904-70ceaffbcc6f&quot;                 │</span>
+<span class="go">│                       &quot;2336ab8d-37b5-4e31-87de-0d8e31c98ea2&quot;                 │</span>
 <span class="go">│                       }                                                      │</span>
 <span class="go">│   value_hash          zdpuAq5Ty5hNtUaKWouPmS75LxteiQQv6Ue6Jsq9v39QoMPyw      │</span>
 <span class="go">│   value_schema                                                               │</span>
@@ -1685,8 +1683,8 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                                              │</span>
 <span class="go">│   field           data type   stored id               alias(es)              │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   imported_file   file        a95e5259-63d8-41e7-b…   journal_edges.impor…   │</span>
-<span class="go">│   table           table       848dc4af-6c84-4f15-b…   journal_edges.table    │</span>
+<span class="go">│   imported_file   file        850e1e20-ed61-4c36-9…   journal_edges.impor…   │</span>
+<span class="go">│   table           table       6853dd56-2de4-47bb-9…   journal_edges.table    │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1874,7 +1872,7 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field          data type      stored id                              alias(es)                                                                                                                                                             │</span>
 <span class="go">│  ─────────────────────────────────────────────────────────────────────────────────────                                                                                                                                                       │</span>
-<span class="go">│   network_data   network_data   12d19640-a747-4bc7-ae42-12a85c3960d2   journals_graph                                                                                                                                                        │</span>
+<span class="go">│   network_data   network_data   84c32dbf-49f7-46c6-8fec-22db2497ca90   journals_graph                                                                                                                                                        │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1887,9 +1885,9 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journals_graph ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│   value_id            12d19640-a747-4bc7-ae42-12a85c3960d2                                                                                                                                                                                   │</span>
+<span class="go">│   value_id            84c32dbf-49f7-46c6-8fec-22db2497ca90                                                                                                                                                                                   │</span>
 <span class="go">│   aliases             journals_graph                                                                                                                                                                                                         │</span>
-<span class="go">│   kiara_id            9aa0684f-4e46-4ece-a73f-ae212f196976                                                                                                                                                                                   │</span>
+<span class="go">│   kiara_id            39af4d3e-6844-4cdb-88cf-259008ddb4be                                                                                                                                                                                   │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                                                                                                                                                                                            │</span>
@@ -1900,9 +1898,9 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│   destiny_backlinks   {}                                                                                                                                                                                                                     │</span>
 <span class="go">│   destiny_links       {}                                                                                                                                                                                                                     │</span>
 <span class="go">│   property_links      {                                                                                                                                                                                                                      │</span>
-<span class="go">│                         &quot;metadata.database&quot;: &quot;abbe3041-4621-4131-974f-2601d42dbf01&quot;,                                                                                                                                                         │</span>
-<span class="go">│                         &quot;metadata.graph_properties&quot;: &quot;2ec74df4-942c-4705-a311-810c4a9e131a&quot;,                                                                                                                                                 │</span>
-<span class="go">│                         &quot;metadata.python_class&quot;: &quot;56b98abc-8183-4cf8-a433-a53a3a6c58c1&quot;                                                                                                                                                      │</span>
+<span class="go">│                         &quot;metadata.database&quot;: &quot;e714cf45-be7b-417e-a459-111c6d81937c&quot;,                                                                                                                                                         │</span>
+<span class="go">│                         &quot;metadata.graph_properties&quot;: &quot;a57196cd-7859-4e13-bfc7-9d1f6854c594&quot;,                                                                                                                                                 │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;: &quot;051027b8-14a7-40b1-a5fd-6fd845128160&quot;                                                                                                                                                      │</span>
 <span class="go">│                       }                                                                                                                                                                                                                      │</span>
 <span class="go">│   value_hash          zdpuAvzKSkXr3q9X66LTA8G5TT56jsT5SaMwFRATECSd7XtPb                                                                                                                                                                      │</span>
 <span class="go">│   value_schema                                                                                                                                                                                                                               │</span>
@@ -2078,9 +2076,9 @@ very power- and use-full. But if you are ever interested about what went into cr
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journals_graph ────────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id            12d19640-a747-4bc7-ae42-12a85c3960d2                   │</span>
+<span class="go">│   value_id            84c32dbf-49f7-46c6-8fec-22db2497ca90                   │</span>
 <span class="go">│   aliases             journals_graph                                         │</span>
-<span class="go">│   kiara_id            9aa0684f-4e46-4ece-a73f-ae212f196976                   │</span>
+<span class="go">│   kiara_id            39af4d3e-6844-4cdb-88cf-259008ddb4be                   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                            │</span>
@@ -2092,11 +2090,11 @@ very power- and use-full. But if you are ever interested about what went into cr
 <span class="go">│   destiny_links       {}                                                     │</span>
 <span class="go">│   property_links      {                                                      │</span>
 <span class="go">│                         &quot;metadata.database&quot;:                                 │</span>
-<span class="go">│                       &quot;abbe3041-4621-4131-974f-2601d42dbf01&quot;,                │</span>
+<span class="go">│                       &quot;e714cf45-be7b-417e-a459-111c6d81937c&quot;,                │</span>
 <span class="go">│                         &quot;metadata.graph_properties&quot;:                         │</span>
-<span class="go">│                       &quot;2ec74df4-942c-4705-a311-810c4a9e131a&quot;,                │</span>
+<span class="go">│                       &quot;a57196cd-7859-4e13-bfc7-9d1f6854c594&quot;,                │</span>
 <span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
-<span class="go">│                       &quot;56b98abc-8183-4cf8-a433-a53a3a6c58c1&quot;                 │</span>
+<span class="go">│                       &quot;051027b8-14a7-40b1-a5fd-6fd845128160&quot;                 │</span>
 <span class="go">│                       }                                                      │</span>
 <span class="go">│   value_hash          zdpuAvzKSkXr3q9X66LTA8G5TT56jsT5SaMwFRATECSd7XtPb      │</span>
 <span class="go">│   value_schema                                                               │</span>
@@ -2114,33 +2112,33 @@ very power- and use-full. But if you are ever interested about what went into cr
 <span class="go">│                                                                              │</span>
 <span class="go">│   lineage             create.network_data.from.tables                        │</span>
 <span class="go">│                       ├── input: edges (table) =                             │</span>
-<span class="go">│                       │   848dc4af-6c84-4f15-b46c-a3101f6ecb80               │</span>
+<span class="go">│                       │   6853dd56-2de4-47bb-9a65-cd321f3c8f23               │</span>
 <span class="go">│                       │   └── create.table                                   │</span>
 <span class="go">│                       │       └── input: csv_file (file) =                   │</span>
-<span class="go">│                       │           a95e5259-63d8-41e7-b1de-eade638672a9       │</span>
+<span class="go">│                       │           850e1e20-ed61-4c36-91ba-767b30f722a0       │</span>
 <span class="go">│                       │           └── import.file                            │</span>
 <span class="go">│                       │               └── input: path (string) =             │</span>
-<span class="go">│                       │                   89e21654-c5e0-4136-af86-a1d2563…   │</span>
+<span class="go">│                       │                   4a11e051-a3cb-43c2-8f86-5415beb…   │</span>
 <span class="go">│                       ├── input: edges_column_map (none) =                   │</span>
 <span class="go">│                       │   00000000-0000-0000-0000-000000000001               │</span>
 <span class="go">│                       ├── input: id_column_name (string) =                   │</span>
-<span class="go">│                       │   f18271b4-c7fa-49a9-81e9-bd1017f4e0b5               │</span>
+<span class="go">│                       │   99e04ace-591b-4044-9eb0-43e0ff251571               │</span>
 <span class="go">│                       ├── input: label_column_name (string) =                │</span>
-<span class="go">│                       │   c51e6128-8378-4ba9-a411-218d403a16dd               │</span>
+<span class="go">│                       │   e9042bbb-cc3f-44fc-9f1b-1c7eda5b9f65               │</span>
 <span class="go">│                       ├── input: nodes (table) =                             │</span>
-<span class="go">│                       │   e8f330b9-1537-42a7-8efd-2deec664dc9d               │</span>
+<span class="go">│                       │   cfd89f78-05db-491b-b98e-91fb1b1595dd               │</span>
 <span class="go">│                       │   └── create.table                                   │</span>
 <span class="go">│                       │       └── input: csv_file (file) =                   │</span>
-<span class="go">│                       │           34eb1829-57a7-49d8-92e7-c23814c07b61       │</span>
+<span class="go">│                       │           fbec6c31-54f6-493b-8f36-905294ed2ff3       │</span>
 <span class="go">│                       │           └── import.file                            │</span>
 <span class="go">│                       │               └── input: path (string) =             │</span>
-<span class="go">│                       │                   acbad8c0-db79-424e-bb8b-1f22525…   │</span>
+<span class="go">│                       │                   397f941d-8d21-43eb-bb44-6fbdee7…   │</span>
 <span class="go">│                       ├── input: nodes_column_map (none) =                   │</span>
 <span class="go">│                       │   00000000-0000-0000-0000-000000000001               │</span>
 <span class="go">│                       ├── input: source_column_name (string) =               │</span>
-<span class="go">│                       │   53b5d49e-6ec0-4956-80dd-6485d681ccb8               │</span>
+<span class="go">│                       │   781be627-8e4d-46c8-a207-ea4db9ff8098               │</span>
 <span class="go">│                       └── input: target_column_name (string) =               │</span>
-<span class="go">│                           6b56d96e-700a-42dc-a52c-ee047caf560e               │</span>
+<span class="go">│                           63a0e00f-2b03-4152-ab6c-5a140a89985c               │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
