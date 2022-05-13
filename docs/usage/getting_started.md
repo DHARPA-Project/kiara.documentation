@@ -246,7 +246,7 @@ From this information we can assemble our command, using `alias:edges_table` as 
 
 To confirm our graph data is created, let's check the data store:
 
-{{ cli("kiara", "data", "explain", "--properties", "alias:journals_graph", extra_env={"KIARA_DATA_STORE": "/tmp/kiara/getting_started", "CONSOLE_WIDTH": "240"}, max_height=240) }}
+{{ cli("kiara", "data", "explain", "--properties", "alias:journals_graph", extra_env={"KIARA_CONTEXT": "_getting_started", "CONSOLE_WIDTH": "240"}, max_height=240) }}
 
 All good. Also, check out the meteadata *kiara* knows about the graph already.
 
@@ -255,7 +255,7 @@ All good. Also, check out the meteadata *kiara* knows about the graph already.
 *kiara* keeps track of all the modules and inputs that went into producing a value, basically its entire ancestry. This is not the place to explain why, and how that can be
 very power- and use-full. But if you are ever interested about what went into creating a particular value, you can do this with:
 
-{{ cli("kiara", "data", "explain", "--lineage", "alias:journals_graph",  extra_env={"KIARA_DATA_STORE": "_getting_started", "COLUMN_WIDTH": "140"}) }}
+{{ cli("kiara", "data", "explain", "--lineage", "alias:journals_graph",  extra_env={"KIARA_CONTEXT": "_getting_started", "COLUMN_WIDTH": "140"}) }}
 
 As you can see, this basically describes what we've done so far, to get to this stage. You could now do a `kiara explain data value:<value_id>` on each of the value ids you see here, if you were so inclined.
 
