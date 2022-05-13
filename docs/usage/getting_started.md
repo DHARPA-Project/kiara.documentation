@@ -90,7 +90,7 @@ For simple inputs like string-type things, all we need to do is provide the inpu
 
 {{ cli("kiara", "run", "import.file", "path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
-As you can see from the terminal output, this produced one piece of output data: `file` (referring to the imported file), and it displays a preview of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in *kiara* persists it into the *kiara* data store, giving it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, in order to amke it easy to find datasets later on.
+As you can see from the terminal output, this produced one piece of output data: `file` (referring to the imported file), and it displays a preview of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in *kiara* persists the file (rather: it's content and some metadata) into the *kiara* data store, giving it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, in order to make it easy to find datasets later on.
 
 *kiara* supports saving any of the output values of a `kiara run` command via the `--save` flag. This `--save` parameter takes a single string as argument, and can be used in two ways:
 
