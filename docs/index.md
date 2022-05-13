@@ -18,5 +18,5 @@ Kiara user documentation.
 
 ## Links
 
- - Documentation: [https://DHARPA-Project.github.io/kiara_plugin.documentation](https://DHARPA-Project.github.io/kiara_plugin.documentation)
- - Code: [https://github.com/DHARPA-Project/kiara_plugin.documentation](https://github.com/DHARPA-Project/kiara_plugin.documentation)
+ - Documentation: [https://DHARPA-Project.github.io/kiara.documentation](https://DHARPA-Project.github.io/kiara.documentation)
+ - Code: [https://github.com/DHARPA-Project/kiara.documentation](https://github.com/DHARPA-Project/kiara.documentation)

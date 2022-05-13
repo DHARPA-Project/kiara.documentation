@@ -1,5 +1,5 @@
-site_name: kiara_plugin.documentation
-repo_url: https://github.com/DHARPA-Project/kiara_plugin.documentation
+site_name: kiara.documentation
+repo_url: https://github.com/DHARPA-Project/kiara.documentation
 site_author: Markus Binsteiner
 docs_dir: docs
 site_dir: build/site

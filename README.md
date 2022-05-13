@@ -1,17 +1,17 @@
-[![PyPI status](https://img.shields.io/pypi/status/kiara_plugin.documentation.svg)](https://pypi.python.org/pypi/kiara_plugin.documentation/)
-[![PyPI version](https://img.shields.io/pypi/v/kiara_plugin.documentation.svg)](https://pypi.python.org/pypi/kiara_plugin.documentation/)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/kiara_plugin.documentation.svg)](https://pypi.python.org/pypi/kiara_plugin.documentation/)
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FDHARPA-Project%2Fkiara%2Fbadge%3Fref%3Ddevelop&style=flat)](https://actions-badge.atrox.dev/DHARPA-Project/kiara_plugin.documentation/goto?ref=develop)
-[![Coverage Status](https://coveralls.io/repos/github/DHARPA-Project/kiara_plugin.documentation/badge.svg?branch=develop)](https://coveralls.io/github/DHARPA-Project/kiara_plugin.documentation?branch=develop)
+[![PyPI status](https://img.shields.io/pypi/status/kiara.documentation.svg)](https://pypi.python.org/pypi/kiara.documentation/)
+[![PyPI version](https://img.shields.io/pypi/v/kiara.documentation.svg)](https://pypi.python.org/pypi/kiara.documentation/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/kiara.documentation.svg)](https://pypi.python.org/pypi/kiara.documentation/)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FDHARPA-Project%2Fkiara%2Fbadge%3Fref%3Ddevelop&style=flat)](https://actions-badge.atrox.dev/DHARPA-Project/kiara.documentation/goto?ref=develop)
+[![Coverage Status](https://coveralls.io/repos/github/DHARPA-Project/kiara.documentation/badge.svg?branch=develop)](https://coveralls.io/github/DHARPA-Project/kiara.documentation?branch=develop)
 [![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 # [**kiara**](https://dharpa.org/kiara.documentation) plugin: (documentation)
 
 Kiara user documentation.
 
- - Documentation: [https://DHARPA-Project.github.io/kiara_plugin.documentation](https://DHARPA-Project.github.io/kiara_plugin.documentation)
- - Code: [https://github.com/DHARPA-Project/kiara_plugin.documentation](https://github.com/DHARPA-Project/kiara_plugin.documentation)
- - `kiara`: [https://dharpa.org/kiara.documentation](https://dharpa.org/kiara.documentation)
+ - Documentation: [https://DHARPA-Project.github.io/kiara.documentation](https://DHARPA-Project.github.io/kiara.documentation)
+ - Code: [https://github.com/DHARPA-Project/kiara.documentation](https://github.com/DHARPA-Project/kiara.documentation)
+
 
 ## Description
 

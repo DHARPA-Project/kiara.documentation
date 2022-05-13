@@ -1,4 +1,4 @@
-{% set name = "kiara_plugin.documentation" %}
+{% set name = "kiara.documentation" %}
 {% set version = "__VERSION__" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   git_rev: "{{ version }}"
-  git_url: https://github.com/DHARPA-Project/kiara_plugin.documentation.git
+  git_url: https://github.com/DHARPA-Project/kiara.documentation.git
 
 
 build:
@@ -26,13 +26,13 @@ requirements:
     - kiara>=0.4.4
     - kiara_plugin.core_types>=0.4.2
 about:
-  home: https://github.com/DHARPA-Project/kiara_plugin.documentation
+  home: https://github.com/DHARPA-Project/kiara.documentation
   license: "Mozilla Public 2.0 (MPL 2.0)"
   license_family: MOZILLA
   license_file:
   summary: "A set of modules (and pipelines) for kiara."
-  doc_url: https://DHARPA-Project.github.io/kiara_plugin.documentation
-  dev_url: https://github.com/DHARPA-Project/kiara_plugin.documentation
+  doc_url: https://DHARPA-Project.github.io/kiara.documentation
+  dev_url: https://github.com/DHARPA-Project/kiara.documentation
 
 extra:
   recipe-maintainers:

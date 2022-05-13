@@ -1,4 +1,4 @@
-name: "darwin tests for 'kiara_plugin.documentation'"
+name: "darwin tests for 'kiara.documentation'"
 # This workflow is triggered on pushes to the repository.
 on: [push]
 env:
@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "${{ matrix.python_version }}"
       - uses: actions/checkout@v2
-      - name: install kiara_plugin.documentation
+      - name: install kiara.documentation
         run: pip install -U --pre --extra-index-url https://pypi.fury.io/dharpa/ .[all,dev_testing]
       - name: display installed kiara and module package versions
         run: pip list | grep kiara

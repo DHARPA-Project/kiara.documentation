@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Top-level package for kiara_plugin.documentation."""
+"""Top-level package for kiara.documentation."""
 
 
 import os
