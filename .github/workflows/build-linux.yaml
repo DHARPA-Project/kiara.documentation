@@ -167,7 +167,7 @@ jobs:
       - name: install conda build packages
         run: conda install -c conda-forge conda-build anaconda-client boa
       - name: build conda package
-        run: cd ci/conda/ && ./build-conda-packages.sh "kiara_plugin.documentation" develop "${{ matrix.python_version }}" true
+        run: cd ci/conda/ && ./build-conda-packages.sh "kiara.documentation" develop "${{ matrix.python_version }}" true
 
   publish_conda_package:
     name: publish conda package
@@ -192,7 +192,7 @@ jobs:
         run: conda install -c conda-forge -n anaconda-build-env conda-build anaconda-client boa
       - name: build conda package
         shell: bash -l {0}
-        run: conda activate anaconda-build-env && cd ci/conda/ && ./build-conda-packages.sh "kiara_plugin.documentation" "${GITHUB_REF#refs/*/}" "${{ matrix.python_version }}" false
+        run: conda activate anaconda-build-env && cd ci/conda/ && ./build-conda-packages.sh "kiara.documentation" "${GITHUB_REF#refs/*/}" "${{ matrix.python_version }}" false
 
   merge_tag_to_main:
     name: merge current tag to main branch

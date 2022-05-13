@@ -57,10 +57,10 @@ pip install -e '.[all_dev]'
 
 #### Try it out
 
-After this is done, you can start [mkdocs](https://www.mkdocs.org/) in the 'serve' mode:
+After this is done, you can start the development 'serve' mode:
 
 ```console
-mkdocs serve
+kiara doc serve
 ...
 ...
 ```
