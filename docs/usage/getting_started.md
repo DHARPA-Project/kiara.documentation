@@ -90,12 +90,12 @@ For simple inputs like string-type things, all we need to do is provide the inpu
 
 {{ cli("kiara", "run", "import.file", "path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
-As you can see from the terminal output, this produced one piece of output data: `file` (referring to the imported file), and it displays a preview of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in *kiara* persists the file (rather: it's content and some metadata) into the *kiara* data store, giving it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, in order to make it easy to find datasets later on.
+As you can see from the terminal output, this produced one piece of output data: `file` (referring to the imported file), and it displays a preview of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in *kiara* persists the file (rather: it's content and some metadata) into the *kiara* data store, giving it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, in order to make it easy to refer to datasets later on.
 
 *kiara* supports saving any of the output values of a `kiara run` command via the `--save` flag. This `--save` parameter takes a single string as argument, and can be used in two ways:
 
 - if you want to save all output fields of a `run` you can just provide a single string (for example `imported_journal_csv`) as the parameter. In this case, *kiara* will store all result items with an auto-generated alias in the form of `[save_argument].[field_name]`. In our case this would result in one item being store in the data store, with the alias `imported_journal_csv.file`.
-- if you want to save only a subset of result values, or want to have more control about the aliases those results get, you can use the `--save` parameter for every field you want to persist. In this case the argument to `--save` must be in the form of: `[field_name]=[alias]`. You can use the parameter multiple times, with different field names.
+- if you want to save only a subset of result values, or want to have more control about the aliases those results get, you can use the `--save` parameter for every field you want to persist. In this case the argument to `--save` must be in the form of: `[field_name]=[alias]`. You can use the `--save` parameter multiple times, with different field names.
 
 In our case, lets opt for the second option:
 
@@ -151,9 +151,6 @@ As you can see, there are 2 items now: one `file`, and one `table`. If you ever 
 {{ cli("kiara", "data", "explain", "alias:journal_nodes_table", max_height=300, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
 This command prints out the metadata *kiara* has stored about a value item. This commands supports displaying several internally important metadata details of stored datasets, check out the available options with ``kiara data explain --help``. One option that is particularly interesting is the `-p` one, which displays all the metadata properties *kiara* has collected about a value.
-
-One thing that is noteworthy here is the ``load_config`` section in the metadata. When saving the value, *kiara* automatically
-generated this configuration, and it can be used later to load and use the exact same table file, in another workflow.
 
 ##### `kiara data load`
 
