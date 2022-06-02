@@ -31,11 +31,11 @@ TODO
 ### Using conda (recommended)
 
 ```
-conda create -n documentation python=3.9
-conda activate documentation
+conda create -n kiara_documentation python=3.9
+conda activate kiara_documentation
 conda install -c conda-forge mamba   # this is optional, but makes everything install related much faster, if you don't use it, replace 'mamba' with 'conda' below
 mamba install -c conda-forge -c dharpa kiara
-mamba install -c conda-forge -c dharpa kiara_plugin.core_types kiara_plugin.tabular   # optional, adjust which plugin packages you depend on, those two are quite common
+mamba install -c conda-forge -c dharpa kiara_plugin.core_types kiara_plugin.tabular kiara_plugin.network_analysis
 ```
 
 ## Check out the source code
@@ -57,7 +57,9 @@ pip install -e '.[all_dev]'
 
 #### Try it out
 
-After this is done, you can start the development 'serve' mode:
+If you followed the instructions above, you should see an additional `doc` subcommand when doing a `kiara --help`. Check out the available commands by using the `--help` flag.
+
+The main command to use is `serve`, which builds and serves the current documenation website:
 
 ```console
 kiara doc serve
@@ -71,6 +73,8 @@ out-of-date easily (and as a test against regressions). Those results are cached
 
 The 'serve' command will watch documents under `docs`, if any of them is changed, it will auto-create the changed documentation page,
 and reload the browser(s) that are viewing it.
+
+Another important command is `cache clear`, which cleares the build cache of the dynamic commands that were executed while buidling the page for the first time.
 
 ### ``make`` targets (Linux & Mac OS X)
 

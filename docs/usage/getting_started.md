@@ -189,9 +189,7 @@ we might want to store the result of our work, similar to how we imported the or
 
 {{ cli("kiara", "run", "query.table", "--output=silent", "--save", "query_result=berlin_journals", "table=alias:journal_nodes_table", "query=\"select Label, JournalType from data where City=\'Berlin\'\"", extra_env={"KIARA_CONTEXT": "_getting_started"}, max_height=240) }}
 
-Here we've also used the ``--output=silent`` option, since we've seen that result before.
-
-From looking at the output, it seems that saving our result has worked. We can make sure by letting *kiara* 'explain' to us the data that is stored under the alias 'berlin_journals':
+From looking at the output, it seems that saving our result has worked. We can make sure by letting *kiara* 'explain' to us the data that is stored under the alias 'berlin_journals'. This time, let's also display the result tables properies (by using the `--properties` flag:
 
 {{ cli("kiara", "data", "explain", "--properties", "alias:berlin_journals", extra_env={"KIARA_CONTEXT": "_getting_started"}, max_height=240) }}
 
@@ -223,7 +221,7 @@ So, let's see:
 !!! note
     Here we've used a simple string (without '=') with the `--save` option, and as you can see, *kiara* created two namespaced aliases for the result items.
 
-At this stage we'll have two relevant tables in our store: `journal_edges.table`, and `journal_nodes_table`:
+At this stage we'll have two relevant tables in our store: `journal_edges.table`, and `journal_nodes_table` (note how both use different naming schems due to us using the `--save` option differently in both cases):
 
 {{ cli("kiara", "data", "list", cache_key="3rd_run_data_list", extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
