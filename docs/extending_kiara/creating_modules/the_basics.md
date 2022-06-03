@@ -34,13 +34,13 @@ After this, the `kiara` command-line application should be available to you, you
 
 For this tutorial, we'll use a [project template](https://github.com/DHARPA-Project/kiara_plugin.develop/tree/main/kiara_plugin.%7B%7B%20cookiecutter.project_slug%20%7D%7D) to create a bare-bones kiara plugin project, which we will augment with our own module(s).
 
-To get started, install the `cruft` conda package, which we will use to create our project stub:
+First we need to install the `cruft` conda package, which we will use to create our project stub:
 
 ```
 mamba install -c conda-forge cruft
 ```
 
-Then, we run `cruft` against our template git repo, feel free to change any of the answers to the questions you'll be asked:
+Now, we run `cruft` against our template git repo, feel free to change any of the answers to the questions you'll be asked:
 
 ```
 cruft create https://github.com/DHARPA-Project/kiara_plugin.develop.git
@@ -73,7 +73,7 @@ Once this is done, you should see a new operation called `my_kiara_module.exampl
 !!! note
     The `example` string token at the end of the above command filters the output to ones that match the token.
 
-This module comes as example code with the project template, and is located in the `src/kiara_plugin/my_kiara_module/my_kiara_module.py` Python file. It only serves as a reminder and blueprint for your own modules, and you can delete the file (or only the module class within the file) if you wish.
+This module comes as example code with the project template, and is located in the `src/kiara_plugin/my_kiara_module/my_kiara_module.py` Python file. It only serves as an example and blueprint for your own modules, and you can the module class within the file if you wish.
 
 ### Pre-loading a table dataset
 
