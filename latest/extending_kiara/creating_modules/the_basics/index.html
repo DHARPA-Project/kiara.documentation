@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.0">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.1">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.fd896c8a.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c0b802b2.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -302,16 +302,10 @@
       
       
       
-        
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../../">Extending kiara</a>
-          
-            <label for="__nav_3">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
+        <label class="md-nav__link" for="__nav_3">
+          Extending kiara
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <nav class="md-nav" aria-label="Extending kiara" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
@@ -319,59 +313,6 @@
           Extending kiara
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
-      
-      
-      
-      
-        
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../../advanced/">Advanced</a>
-          
-            <label for="__nav_3_1">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
-      
-      <nav class="md-nav" aria-label="Advanced" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_1">
-          <span class="md-nav__icon md-icon"></span>
-          Advanced
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/module_discovery/" class="md-nav__link">
-        Module and pipeline discovery
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
           
             
               
@@ -448,7 +389,12 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#writing-the-kiara-module" class="md-nav__link">
     Writing the kiara module
   </a>
@@ -488,16 +434,58 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Pipelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pipelines/assemble_pipelines" class="md-nav__link">
+        Assemble a pipeline
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -571,7 +559,12 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#writing-the-kiara-module" class="md-nav__link">
     Writing the kiara module
   </a>
@@ -604,11 +597,6 @@
   <a href="#processing-the-inputs" class="md-nav__link">
     Processing the inputs
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -694,7 +682,7 @@ pip install -e .
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code>example</code> string token at the end of the above command filters the output to ones that match the token.</p>
+<p>The <code>example</code> string token at the end of the above command filters the output to operations that match the token.</p>
 </div>
 <p>This module comes as example code with the project template, and is located in the <code>src/kiara_plugin/my_kiara_module/my_kiara_module.py</code> Python file. It only serves as an example and blueprint for your own modules, and you can the module class within the file if you wish.</p>
 <h3 id="pre-loading-a-table-dataset">Pre-loading a table dataset<a class="headerlink" href="#pre-loading-a-table-dataset" title="Permanent link">&para;</a></h3>
@@ -796,7 +784,7 @@ pip install -e .
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field   data type   stored id                              alias(es)                                                                                                                                                                       │</span>
 <span class="go">│  ────────────────────────────────────────────────────────────────────────────────                                                                                                                                                            │</span>
-<span class="go">│   table   table       b73bc307-5fe4-4af1-bfaf-11a76b801d8f   journal_nodes_table                                                                                                                                                             │</span>
+<span class="go">│   table   table       59b48b1d-15eb-4661-b138-6e94a357b6ff   journal_nodes_table                                                                                                                                                             │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -804,9 +792,9 @@ pip install -e .
 </div>
 
 <p>This should have created an item with alias <code>journal_nodes_table</code> in the <em>kiara</em> data store, which you can confirm with <code>kiara data list</code>.</p>
-<h3 id="writing-the-kiara-module">Writing the <em>kiara</em> module<a class="headerlink" href="#writing-the-kiara-module" title="Permanent link">&para;</a></h3>
+<h2 id="writing-the-kiara-module">Writing the <em>kiara</em> module<a class="headerlink" href="#writing-the-kiara-module" title="Permanent link">&para;</a></h2>
 <p>Ok, let's get started and create a <em>kiara</em> module that filters a table, using different filter criteria.</p>
-<h4 id="module-skeleton">Module skeleton<a class="headerlink" href="#module-skeleton" title="Permanent link">&para;</a></h4>
+<h3 id="module-skeleton">Module skeleton<a class="headerlink" href="#module-skeleton" title="Permanent link">&para;</a></h3>
 <p>In most cases you'd delete the example module mentioned above, and create your module in the Python file where the example module was. For the purpose of this tutorial, we can just leave the example module in place, because it can serve as a quick reference for our own module. Use the editor of your choice, and paste the following text below the existing code into <code>src/kiara_plugin/my_kiara_module/my_kiara_module.py</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">kiara</span> <span class="kn">import</span> <span class="n">KiaraModule</span>
 
@@ -846,7 +834,7 @@ pip install -e .
 </div>
 
 <p>The id of the module was autogenerated from the full Python path of its class: <code>kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module</code>.</p>
-<h4 id="module-id-and-description">Module id and description<a class="headerlink" href="#module-id-and-description" title="Permanent link">&para;</a></h4>
+<h3 id="module-id-and-description">Module id and description<a class="headerlink" href="#module-id-and-description" title="Permanent link">&para;</a></h3>
 <p>In most cases, we don't want such a long and unwieldy module name. We can assign our own, custom and meaningful id by setting the <code>_module_type_name</code> class attribute. In addition, we will want to add some documentation about the module and its functionality that is displayed to the user. For this, we use a normal Python doc string on the Python class body. For the purpose of this tutorial, we'll only add a single sentence, but in most cases you'll want to have a multi-paragraph markdown text here. So, taking all that into account, edit the module code to include:</p>
 <div class="highlight"><pre><span></span><code><span class="o">...</span>
 <span class="o">...</span>
@@ -900,7 +888,7 @@ pip install -e .
 
 </div>
 
-<h4 id="inputoutput-field-documentation">Input/output field documentation<a class="headerlink" href="#inputoutput-field-documentation" title="Permanent link">&para;</a></h4>
+<h3 id="inputoutput-field-documentation">Input/output field documentation<a class="headerlink" href="#inputoutput-field-documentation" title="Permanent link">&para;</a></h3>
 <p>As you can see in the <code>explain</code> output above, the information to the user is still a bit sparse. In most cases, we'll want to have some information about the input(s) the user is supposed to provide. Same for what the outputs actually mean. In both cases, we can add a <code>doc</code> attribute to each input and output field.</p>
 <div class="highlight"><pre><span></span><code>    <span class="o">...</span>
     <span class="o">...</span>
@@ -947,7 +935,7 @@ pip install -e .
 
 </div>
 
-<h4 id="processing-the-inputs">Processing the inputs<a class="headerlink" href="#processing-the-inputs" title="Permanent link">&para;</a></h4>
+<h3 id="processing-the-inputs">Processing the inputs<a class="headerlink" href="#processing-the-inputs" title="Permanent link">&para;</a></h3>
 <p>Specifying the inputs (and outputs) is an important part of designing your module, it's basically the modules' 'public API', and you want to avoid changing it (too much; or at all) as your module evolves over time. But of course, the actual processing is where the interesting stuff happens. In <em>kiara</em>, that is the <code>process</code> method of every module. The arguments to this method are called <code>inputs</code> and <code>outputs</code>, which are basically dicts that use the field names specified in the <code>create_inputs_schema</code> / <code>create_outputs_schema</code> as keys, and Python objects of class <a class="autorefs autorefs-external" href="https://dharpa.org/kiara/latest/reference/kiara/models/values/value/#kiara.models.values.value.Value">Value</a> as values.</p>
 <p>One thing to understand is that a <code>Value</code> object is not the same as the actual data. Instead, it's a reference to it (a means to retrieve it), and it also contains metadata about it's provenance (pedigree/lineage) and other properties.</p>
 <p>This is the signature of the <code>process</code> method, including type hints (which we will omit after this):</p>
@@ -989,7 +977,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=b73bc307-5fe4-4af1-bfaf-11a76b801d8f, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=59b48b1d-15eb-4661-b138-6e94a357b6ff, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 
 <span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
@@ -1254,7 +1242,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run --output silent filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=b73bc307-5fe4-4af1-bfaf-11a76b801d8f, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=59b48b1d-15eb-4661-b138-6e94a357b6ff, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 <span class="go">Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,</span>
 <span class="go">       &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],</span>
@@ -1503,7 +1491,7 @@ The class/type of the data depends on the data type of the value, so you'll have
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../advanced/module_discovery/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Module and pipeline discovery" rel="prev">
+        <a href="../../../usage/getting_started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting started" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1512,7 +1500,7 @@ The class/type of the data depends on the data type of the value, so you'll have
               <span class="md-footer__direction">
                 Previous
               </span>
-              Module and pipeline discovery
+              Getting started
             </div>
           </div>
         </a>
@@ -1543,7 +1531,7 @@ The class/type of the data depends on the data type of the value, so you'll have
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.0f659f14.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.7f366e99.min.js"></script>
       
     
   </body>
