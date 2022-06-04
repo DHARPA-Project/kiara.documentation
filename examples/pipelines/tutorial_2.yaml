@@ -1,0 +1,7 @@
+steps:
+  - module_type: import.table.from.csv_file
+    step_id: import_table_step
+  - module_type: filter.table_5
+    step_id: filter_table_step
+    input_links:
+      table_input: import_table_step.table

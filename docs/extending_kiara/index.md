@@ -4,10 +4,11 @@
 
 This page lists the different ways to extend *kiara*, and links to pages that contain more information.
 
-- Creating *kiara* modules:
+- Creating *kiara* modules and pipelines:
 
-    - [the basics](creating_modules/the_basics): the minimum amount of things you need to know to create your own module
-    - [more basics](TODO): not written yet
+    - [Part I - the basics](creating_modules/the_basics): the minimum amount of things you need to know to create your own module
+    - [Part II - assembling_pipelines](pipelines/assemble_pipelines.md): how to assemble multiple *kiara* modules into a pipeline
+    - [Part III - more basics](TODO): not written yet
 
 - Creating custom data types:
 
