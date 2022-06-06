@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.1">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.2">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c0b802b2.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.5d38496d.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -784,7 +784,7 @@ pip install -e .
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field   data type   stored id                              alias(es)                                                                                                                                                                       │</span>
 <span class="go">│  ────────────────────────────────────────────────────────────────────────────────                                                                                                                                                            │</span>
-<span class="go">│   table   table       59b48b1d-15eb-4661-b138-6e94a357b6ff   journal_nodes_table                                                                                                                                                             │</span>
+<span class="go">│   table   table       f6bca4ec-aaa1-4ca4-9ce3-e7d737761968   journal_nodes_table                                                                                                                                                             │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -872,14 +872,14 @@ pip install -e .
 <span class="go">│   Documentation   Filter a table.                                                                                                        │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│   Inputs                                                                                                                                 │</span>
-<span class="go">│                     field name    type    description   Required   Default                                                               │</span>
-<span class="go">│                    ─────────────────────────────────────────────────────────────────                                                     │</span>
-<span class="go">│                     table_input   table   -- n/a --     yes        -- no default --                                                      │</span>
+<span class="go">│                     field name    type    description                                                    Required   Default              │</span>
+<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
+<span class="go">│                     table_input   table   -- n/a --                                                      yes        -- no default --     │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│   Outputs                                                                                                                                │</span>
 <span class="go">│                     field name     type    description                                                                                   │</span>
-<span class="go">│                    ────────────────────────────────────                                                                                  │</span>
+<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
 <span class="go">│                     table_output   table   -- n/a --                                                                                     │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│                                                                                                                                          │</span>
@@ -977,7 +977,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=59b48b1d-15eb-4661-b138-6e94a357b6ff, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=f6bca4ec-aaa1-4ca4-9ce3-e7d737761968, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 
 <span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
@@ -1242,7 +1242,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run --output silent filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=59b48b1d-15eb-4661-b138-6e94a357b6ff, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=f6bca4ec-aaa1-4ca4-9ce3-e7d737761968, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 <span class="go">Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,</span>
 <span class="go">       &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],</span>

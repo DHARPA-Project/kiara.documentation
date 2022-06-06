@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.1">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.2">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c0b802b2.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.5d38496d.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -455,6 +455,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#making-the-pipeline-discoverable" class="md-nav__link">
+    Making the pipeline discoverable
+  </a>
+  
+    <nav class="md-nav" aria-label="Making the pipeline discoverable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-extra_pipeline-property" class="md-nav__link">
+    Using the extra_pipeline property
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-the-pipeline-to-a-kiara-plugin" class="md-nav__link">
+    Adding the pipeline to a kiara plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -480,13 +507,13 @@
 
 <h1 id="assembling-a-kiara-pipeline">Assembling a kiara pipeline<a class="headerlink" href="#assembling-a-kiara-pipeline" title="Permanent link">&para;</a></h1>
 <h2 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permanent link">&para;</a></h2>
-<p>If you haven't already, it would make sense for you to go through the <a href="../../../usage/getting_started/"><em>kiara</em> getting started guide</a>, as well as <a href="../creating_modules/the_basics">writing your own <em>kiara</em> module</a>. We'll use the
+<p>If you haven't already, it would make sense for you to go through the <a href="../../../usage/getting_started/"><em>kiara</em> getting started guide</a>, as well as <a href="../../creating_modules/the_basics">writing your own <em>kiara</em> module</a>. We'll use the
 development environment set-up from the latter guide, as well as the module created there as a step in our pipeline.</p>
 <h2 id="creating-a-pipeline">Creating a pipeline<a class="headerlink" href="#creating-a-pipeline" title="Permanent link">&para;</a></h2>
 <p>A <em>kiara</em> pipeline is a dict-like data structure that includes one or several processing steps (implemented by <em>kiara</em> operations), connected (or not) in a specific way so that some steps outputs feed into other steps' inputs.</p>
 <h3 id="a-single-step-pipeline">A single-step pipeline<a class="headerlink" href="#a-single-step-pipeline" title="Permanent link">&para;</a></h3>
-<p>The simplest pipeline contains a single operation, and is not use-full in any way, since it's easier to just <code>kiara run</code>
-the operation directly. Nonetheless, below is how that would look like, we'll be using the module we created in the <a href="../creating_modules/the_basics">writing your own <em>kiara</em> module</a> guide:</p>
+<p>The simplest pipeline contains a single operation, and is not useful in any way, since it's easier to just <code>kiara run</code>
+the operation directly. Nonetheless, below is how that would look like, we'll be using the module we created in the <a href="../../creating_modules/the_basics">writing your own <em>kiara</em> module</a> guide:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter.table</span><span class="w"></span>
 <span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_table_step</span><span class="w"></span>
@@ -494,10 +521,10 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <p>A pipeline step is a dictionary with 2 required keys (and some optional ones, which we'll cover later):</p>
 <ul>
 <li><strong><code>module_type</code></strong>: the name of the module or operation that should be used.</li>
-<li><strong><code>step_id</code></strong>: the name of the step, ideally a short, descriptive name of what the step does. It can't contain special characters except '_', and it must be unique within the pipeline.</li>
+<li><strong><code>step_id</code></strong>: the name of the step, ideally a short, descriptive name outlining what the step does. It can't contain special characters except '_', and it must be unique within the pipeline.</li>
 </ul>
 <p>An assembled pipeline has the same characteristics as a <em>kiara</em> module, and in fact is a perfectly valid operation, like any other one, and can be called the same way.</p>
-<p>Create a new file <code>my_first_pipeline.yaml</code>, and copy and paste the above code into it. The, run the <code>operation explain</code> command against the file:</p>
+<p>Create a new file <code>my_first_pipeline.yaml</code>, and copy and paste the above code into it. Then, run the <code>operation explain</code> command against the file:</p>
 <p><div class="highlight"><pre><span></span><code><span class="go">kiara operation explain my_first_pipeline.yaml</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: examples/pipelines/tutorial_1.yaml ──────────────────────────────────────────────────────────────────────────────────────────╮</span>
@@ -521,7 +548,7 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
-<p>As you can see, <em>kiara</em> turned this (single-step) pipeline into an operation, and auto-generated some input- and output-fields, by assembling the step-id and step input-/output-field(s). Those long field names are a bit unwieldy, and we'll remedy that later, but for now let's just ignore that.</p>
+<p>As you can see, <em>kiara</em> turned this (single-step) pipeline into an operation, and auto-generated some input- and output-fields, by assembling the step-id and step input-/output-field(s). Those long field names are a bit unwieldy, and we'll remedy that later, for now let's just ignore that.</p>
 <h3 id="adding-a-second-step">Adding a second step<a class="headerlink" href="#adding-a-second-step" title="Permanent link">&para;</a></h3>
 <p>In the previous tutorial we pre-seeded the <em>kiara</em> data store with a csv file/tabular dataset, to help us with developing our table filter module. In this tutorial, we'll remove the requirement to do that, by adding a step to our pipeline that lets the user specify a path to a csv file, and import and convert that into a table value.</p>
 <p>Previously, we've used the <code>import.table.from.csv_file</code> operation to import the csv file, and we can do the same now. Edit the pipeline file you created so it looks like the following:</p>
@@ -564,13 +591,13 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
-<p>As you can see, the previously existing input with the field name <code>filter_table_step__table_input</code> (type: table) is gone now, replaced by a new one, with the field name <code>import_table_step__path</code> (type: string). The other two inputs remain the same (since we did not connect any output to them).</p>
+<p>As you can see, the previously existing input with the field name <code>filter_table_step__table_input</code> (type: <code>table</code>) is gone now, replaced by a new one, with the field name <code>import_table_step__path</code> (type: <code>string</code>). The other two inputs remain the same (since we did not connect a step output to them).</p>
 <h3 id="side-note-visualizing-the-pipeline">Side-note: visualizing the pipeline<a class="headerlink" href="#side-note-visualizing-the-pipeline" title="Permanent link">&para;</a></h3>
 <p>We can let <em>kiara</em> visualize our pipeline at each step in the development process. This is quite useful, as it can serve as a visual aid to debug and assemble pipelines and their steps.</p>
 <p>If you want to do this in your own environment, you need to have Java installed, as well as an additional Python dependency in your virtual- or conda-environment:</p>
 <div class="highlight"><pre><span></span><code>pip install &#39;git+https://github.com/cosminbasca/asciinet.git#egg=asciinet&amp;subdirectory=pyasciinet&#39;
 </code></pre></div>
-<p>Currently, commands exist to print a pipeline as graph on the command-line:</p>
+<p>Currently, the following commands exist to print a pipeline as graph on the command-line:</p>
 <ul>
 <li><code>kiara pipeline execution-graph &lt;pipeline_file&gt;</code>: display the pipeline steps in the order they will be executed.</li>
 <li><code>kiara pipeline data-flow-graph &lt;pipeline_file&gt;</code>: display the the connections of inputs/outputs as well as processing steps.</li>
@@ -593,8 +620,7 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go"> └─────────────────┘</span>
 </code></pre></div></p>
 <h3 id="adjusting-the-input-output-field-names">Adjusting the input-/output-field names<a class="headerlink" href="#adjusting-the-input-output-field-names" title="Permanent link">&para;</a></h3>
-<p>We could run our pipeline as is, but let's adjust its input- and output field names first, to make it nicer to use.
-To do that we can to add one or both of the following keys to our pipeline description:</p>
+<p>We could run our pipeline as is, but let's adjust its input- and output field names first. Mainly to make it more intuitive to use. To do that we can add one or both of the following keys to our pipeline description:</p>
 <ul>
 <li><code>input_aliases</code>: a mapping of pipeline inputs to more user-friendly names</li>
 <li><code>output_aliases</code>: a mapping of pipeline outputs to more user-friendly names</li>
@@ -610,8 +636,8 @@ To do that we can to add one or both of the following keys to our pipeline descr
 <div class="highlight"><pre><span></span><code><span class="nt">output_aliases</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">filter_table_step.table_output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filtered_table</span><span class="w"></span>
 </code></pre></div>
-<p>Output aliases work a bit different to input aliases: for the latter, if we don't specify an input field, <em>kiara</em> will just use the auto-generated name. For outputs aliases, if we don't specify an alias, <em>kiara</em> will ignore that output, and not display it to the user. In our case, we are not really interested in the intermediate outputs of the first step, so we only add the <code>filtered_table</code> alias that represents our final, filtered result.</p>
-<p>Lets see what <em>kiara</em> has to say about the pipelines 'API' now:</p>
+<p>Output aliases work a bit different to input aliases: for inputs, if we don't specify a field, <em>kiara</em> will just use the auto-generated name (since the need for the input to exist does not go away). For output aliases, if we don't specify a field, <em>kiara</em> will ignore that output, and not display it to the user. In our case, we are not really interested in the intermediate outputs of the first step, so we only add the <code>filtered_table</code> alias that represents our final, filtered result.</p>
+<p>Lets see what <em>kiara</em> has to say about the 'API' of our pipelines now:</p>
 <p><div class="highlight"><pre><span></span><code><span class="go">kiara operation explain my_first_pipeline.yaml</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: examples/pipelines/tutorial_3.yaml ──────────────────────────────────────────────────╮</span>
@@ -659,6 +685,63 @@ To do that we can to add one or both of the following keys to our pipeline descr
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Of course, you can use all the usual arguments for the <code>kiara run</code> command that you used previously, like <code>--save</code>.</p>
+</div>
+<h3 id="making-the-pipeline-discoverable">Making the pipeline discoverable<a class="headerlink" href="#making-the-pipeline-discoverable" title="Permanent link">&para;</a></h3>
+<p>One of the main concepts that <em>kiara</em> is trying to facilitate is a modular approach to assembling data workflows. The main ingredient here is the fact that assembled pipelines behave like any other operation in <em>kiara</em>, which means that pipelines can also be used as (single) steps in other pipelines.</p>
+<p>To make that work in an intuitive and simple way for users, <em>kiara</em> needs to know about all the pipeline descriptions the user intends to use as building blocks. If we are only concerned about a single 'top-level' pipeline (as we have done in this tutorial so far), this is not a problem, and all we need to do is point <em>kiara</em> to a (yaml- or json-) file containing the pipeline description.</p>
+<p>If we want to re-use our pipelines in other pipelines, we need to 'register' them in a <em>kiara</em> context, and give it its own operation id.</p>
+<p><em>kiara</em> tries to make this as simple as possible, so, if you don't do anything, <em>kiara</em> will use the file name that contains the pipeline description (without extension), and convert it to a valid operation id. In our case, we'd end up with an operation called 'my_first_pipeline'.</p>
+<p>If we want to have more control over this, we can add a property <code>pipeline_name</code> to our description, that will override the auto-generated operation id.</p>
+<h4 id="using-the-extra_pipeline-property">Using the <code>extra_pipeline</code> property<a class="headerlink" href="#using-the-extra_pipeline-property" title="Permanent link">&para;</a></h4>
+<p>Each <em>kiara</em> context has a property called <code>extra_pipeline</code>. On the command-line, you can specify one or several of those via the <code>--pipelines</code> (or: <code>-p</code>) argument (after the <code>kiara</code> command-name, before the sub-command name):</p>
+<p><div class="highlight"><pre><span></span><code><span class="go">kiara --pipelines my_first_pipeline.yaml operation list my_first</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="go">│                                                                                                                                          │</span>
+<span class="go">│   Id                  Type(s)    Description                                                                                             │</span>
+<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
+<span class="go">│   my_first_pipeline   pipeline   -- n/a --                                                                                               │</span>
+<span class="go">│                                                                                                                                          │</span>
+<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>kiara</em> accepts paths to files or folders as the argument to <code>--pipelines</code>. If you specify a folder, <em>kiara</em> will look for valid pipeline descriptions under that folder.</p>
+</div>
+<p>Let's test that again, but this time we give our new pipeline a descriptive name, as well as some documentation. Add those two properties to your existing pipeline file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">pipeline_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;import.filtered_table&quot;</span><span class="w"></span>
+<span class="nt">doc</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">  </span><span class="no">Import a table from a csv file, then filter it.</span><span class="w"></span>
+
+<span class="w">  </span><span class="no">Filtering is done by matching a &#39;filter_string&#39; against all cells of a column, both specified by the user.</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here, we use a <a href="https://www.baeldung.com/yaml-multi-line#literal-style">yaml literal multiline string</a> to specify our pipeline documentation (the: '<code>|</code>'). This allows us to write as much documentation as we need to, without being restricted to a single line.</p>
+</div>
+<p><div class="highlight"><pre><span></span><code><span class="go">kiara --pipelines my_first_pipeline.yaml operation list import</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<span class="go">│                                                                                                                                          │</span>
+<span class="go">│   Id                                   Type(s)    Description                                                                            │</span>
+<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
+<span class="go">│   import.file                                     Import a file from the local filesystem.                                               │</span>
+<span class="go">│   import.file_bundle                              Import a folder (file_bundle) from the local filesystem.                               │</span>
+<span class="go">│   import.filtered_table                pipeline   Import a table from a csv file, then filter it.                                        │</span>
+<span class="go">│   import.network_data.from.csv_files   pipeline   Load the edges table from a csv file.                                                  │</span>
+<span class="go">│   import.table.from.csv_file           pipeline   Load a table from a csv file.                                                          │</span>
+<span class="go">│                                                                                                                                          │</span>
+<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+</code></pre></div></p>
+<p>Going with the information contained in this output, instead of running our pipeline with the path to its file after the <code>run</code> sub-command, we could also do it like:</p>
+<div class="highlight"><pre><span></span><code>kiara --pipelines my_first_pipeline.yaml run import.filtered_table ... ... ...
+</code></pre></div>
+<h4 id="adding-the-pipeline-to-a-kiara-plugin">Adding the pipeline to a <em>kiara</em> plugin<a class="headerlink" href="#adding-the-pipeline-to-a-kiara-plugin" title="Permanent link">&para;</a></h4>
+<p>In case we want to 'publish' our pipeline so it can be re-used as part of a <em>kiara</em> plugin (which may or may not contain native 'Python' modules/operations, custom data-types, etc.), this is also easy to do. If you have followed the <code>writing your own *kiara* module</code> tutorial, you'd have created a <em>kiara</em> plugin project from a template. To add your pipeline to this plugin, simply copy/move it into the directory <code>src/kiara_plugin/&lt;YOUR_PLUGIN_NAME&gt;/pipelines</code>. Naming the pipeline and adding documentation works the same as outlined in the previous chapter.</p>
+<p>If you add pipelines to a <em>kiara</em> context this way, nothing else should be necessary, <em>kiara</em> will auto-discover all the pipelines added like this, and you can use the assigned 'pipeline_name' as value of the <code>module_type</code> key in your step description, if you want to run it within another pipeline.</p>
 
               
             </article>
