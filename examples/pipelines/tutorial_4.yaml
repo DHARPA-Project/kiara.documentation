@@ -1,4 +1,8 @@
-pipeline_name: "my_first_pipeline"
+pipeline_name: "import.filtered_table"
+doc: |
+  Import a table from a csv file, then filter it.
+
+  Filtering is done by matching a 'filter_string' against all cells of a column, both specified by the user.
 steps:
   - module_type: import.table.from.csv_file
     step_id: import_table_step
