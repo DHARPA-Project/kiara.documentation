@@ -73,7 +73,7 @@ Once this is done, you should see a new operation called `my_kiara_module.exampl
 !!! note
     The `example` string token at the end of the above command filters the output to operations that match the token.
 
-This module comes as example code with the project template, and is located in the `src/kiara_plugin/my_kiara_module/my_kiara_module.py` Python file. It only serves as an example and blueprint for your own modules, and you can the module class within the file if you wish.
+This module comes as example code with the project template, and is located in the `src/kiara_plugin/my_kiara_module/my_kiara_module.py` Python file. It only serves as an example and blueprint for your own modules, and you can delete the module class within the file if you wish.
 
 ### Pre-loading a table dataset
 
