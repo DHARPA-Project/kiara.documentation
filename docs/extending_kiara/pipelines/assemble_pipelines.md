@@ -36,7 +36,7 @@ An assembled pipeline has the same characteristics as a *kiara* module, and in f
 
 Create a new file `my_first_pipeline.yaml`, and copy and paste the above code into it. Then, run the `operation explain` command against the file:
 
-{{ cli("kiara", "operation", "explain", "examples/pipelines/tutorial_1.yaml", fake_command="kiara operation explain my_first_pipeline.yaml", extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_assembling_pipeline"}) }}
+{{ cli("kiara", "operation", "explain", "examples/pipelines/tutorial_1.yaml", fake_command="kiara operation explain my_first_pipeline.yaml", extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_assembling_pipeline"}, repl_dict={"examples/pipelines/tutorial_1": "my_first_pipeline.yaml"}) }}
 
 As you can see, *kiara* turned this (single-step) pipeline into an operation, and auto-generated some input- and output-fields, by assembling the step-id and step input-/output-field(s). Those long field names are a bit unwieldy, and we'll remedy that later, for now let's just ignore that.
 
@@ -50,7 +50,7 @@ Previously, we've used the `import.table.from.csv_file` operation to import the 
 steps:
   - module_type: import.table.from.csv_file
     step_id: import_table_step
-  - module_type: filter.table_5
+  - module_type: filter.table
     step_id: filter_table_step
     input_links:
       table_input: import_table_step.table
@@ -63,7 +63,7 @@ What we did here:
 
 We can ask *kiara* again about what it thinks of this new pipeline/operation:
 
-{{ cli("kiara", "operation", "explain", "examples/pipelines/tutorial_2.yaml", fake_command="kiara operation explain my_first_pipeline.yaml", extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_assembling_pipeline"}) }}
+{{ cli("kiara", "operation", "explain", "examples/pipelines/tutorial_2.yaml", fake_command="kiara operation explain my_first_pipeline.yaml", extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_assembling_pipeline"}, repl_dict={"examples/pipelines/tutorial_2": "my_first_pipeline.yaml"}) }}
 
 As you can see, the previously existing input with the field name `filter_table_step__table_input` (type: `table`) is gone now, replaced by a new one, with the field name `import_table_step__path` (type: `string`). The other two inputs remain the same (since we did not connect a step output to them).
 
@@ -115,7 +115,7 @@ Output aliases work a bit different to input aliases: for inputs, if we don't sp
 
 Lets see what *kiara* has to say about the 'API' of our pipelines now:
 
-{{ cli("kiara", "operation", "explain", "examples/pipelines/tutorial_3.yaml", fake_command="kiara operation explain my_first_pipeline.yaml", extra_env={"CONSOLE_WIDTH": "100", "KIARA_CONTEXT": "_assembling_pipeline"}) }}
+{{ cli("kiara", "operation", "explain", "examples/pipelines/tutorial_3.yaml", fake_command="kiara operation explain my_first_pipeline.yaml", extra_env={"CONSOLE_WIDTH": "100", "KIARA_CONTEXT": "_assembling_pipeline"}, repl_dict={"examples/pipelines/tutorial_3": "my_first_pipeline.yaml"}) }}
 
 Much nicer!
 
@@ -123,10 +123,12 @@ Much nicer!
 
 Now, all that is left to do is run the pipeline:
 
-{{ cli("kiara", "run", "examples/pipelines/tutorial_3.yaml", "csv_file_path=examples/data/journals/JournalNodes1902.csv", "filter_string=Amsterdam", "column_name=City", fake_command="kiara run my_first_pipeline.yaml csv_file_path=examples/data/journals/JournalNodes1902.csv filter_string=Amsterdam column_name=City", extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_assembling_pipeline"}) }}
+{{ cli("kiara", "run", "--save", "filtered_table=amsterdam_journals", "examples/pipelines/tutorial_3.yaml", "csv_file_path=examples/data/journals/JournalNodes1902.csv", "filter_string=Amsterdam", "column_name=City", fake_command="kiara run --save filtered_table=amsterdam_journals my_first_pipeline.yaml csv_file_path=examples/data/journals/JournalNodes1902.csv filter_string=Amsterdam column_name=City", extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_assembling_pipeline"}) }}
 
-!!! note
-    Of course, you can use all the usual arguments for the `kiara run` command that you used previously, like `--save`.
+And to confirm this worked, we ask *kiara* about the value we just stored (alias: `amsterdam_journals`), including it's lineage, which should give us the value ids of the intermediate results (in case we ever needed them -- they won't have an alias associated with it, but are still persisted in the *kiara* data store and can be looked up with `kiara data explain <VALUE_ID>` and/or `kiara data load <VALUE_ID>):
+
+{{ cli("kiara", "data", "explain", "--lineage", "alias:amsterdam_journals", extra_env={"CONSOLE_WIDTH": "100", "KIARA_CONTEXT": "_assembling_pipeline"}, repl_dict={"table_5": "table"}) }}
+
 
 ### Making the pipeline discoverable
 
@@ -172,8 +174,8 @@ Going with the information contained in this output, instead of running our pipe
 kiara --pipelines my_first_pipeline.yaml run import.filtered_table ... ... ...
 ```
 
-#### Adding the pipeline to a *kiara* plugin
+#### Including the pipeline in a *kiara* plugin
 
-In case we want to 'publish' our pipeline so it can be re-used as part of a *kiara* plugin (which may or may not contain native 'Python' modules/operations, custom data-types, etc.), this is also easy to do. If you have followed the `writing your own *kiara* module` tutorial, you'd have created a *kiara* plugin project from a template. To add your pipeline to this plugin, simply copy/move it into the directory `src/kiara_plugin/<YOUR_PLUGIN_NAME>/pipelines`. Naming the pipeline and adding documentation works the same as outlined in the previous chapter.
+In case we want to 'publish' our pipeline so it can be re-used as part of a *kiara* plugin (which may or may not contain native 'Python' modules/operations, custom data-types, etc.), this is also easy to do. If you have followed the 'writing your own *kiara* module' tutorial, you'd have created a *kiara* plugin project from a template. To add your pipeline to this plugin, simply copy/move it into the directory `src/kiara_plugin/<YOUR_PLUGIN_NAME>/pipelines`. Naming the pipeline and adding documentation works the same as outlined in the previous chapter.
 
 If you add pipelines to a *kiara* context this way, nothing else should be necessary, *kiara* will auto-discover all the pipelines added like this, and you can use the assigned 'pipeline_name' as value of the `module_type` key in your step description, if you want to run it within another pipeline.
