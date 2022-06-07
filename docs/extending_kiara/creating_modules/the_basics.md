@@ -176,7 +176,7 @@ As you can see in the `explain` output above, the information to the user is sti
 
 Run the `explain` command again, to check what *kiara* thinks of our module now:
 
-{{ cli("kiara", "operation", "explain", "filter.table_2", fake_command="kiara operation explain filter.table", max_height=200, extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_my_kiara_module"}) }}
+{{ cli("kiara", "operation", "explain", "filter.table_2", fake_command="kiara operation explain filter.table", max_height=200, extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_my_kiara_module"}, repl_dict={"table_2": "table"}) }}
 
 ### Processing the inputs
 
@@ -321,9 +321,9 @@ Of course, a module like this is only of very limited value, because the tables 
         outputs.set_value("table_output", berlin_df)
 ```
 
-In this example, I've used a default value for the `column_name` input ('City'). This propably doesn't make a whole lot of sense, but it shows how to set defaults for input fields, which in a lot of cases makes sense. We can try to run this command using a missing `filter_string` argument, which shows off nicely what the *kiara* command-line interface has to say about something like this:
+In this example, I've used a default value for the `column_name` input ('City'). This propably doesn't make a whole lot of sense, but it shows how to set defaults for input fields, which in a lot of cases does make sense. We can try to run this command using a missing `filter_string` argument, which shows off nicely what the *kiara* command-line interface has to say about something like this:
 
-{{ cli("kiara", "run", "filter.table_5", "table_input=alias:journal_nodes_table", fail_ok=true, fake_command="kiara run filter.table table_input=alias:journal_nodes_table", max_height=200, extra_env={"CONSOLE_WIDTH": "80", "KIARA_CONTEXT": "_my_kiara_module"}) }}
+{{ cli("kiara", "run", "filter.table_5", "table_input=alias:journal_nodes_table", fail_ok=true, fake_command="kiara run filter.table table_input=alias:journal_nodes_table", max_height=200, extra_env={"CONSOLE_WIDTH": "80", "KIARA_CONTEXT": "_my_kiara_module"}, repl_dict={"table_5": "table"}) }}
 
 As you can see, *kiara* complains about the missing input, but has used 'City' as default for the missing `column_name` input, and therefor is ok with the user not providing this. Ok, one more time, let's look for 'Amsterdam':
 
