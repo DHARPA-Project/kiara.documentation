@@ -61,6 +61,9 @@ What we did here:
 - add a new step with the id `import_table_step`, which will execute the `import.table.from.csv_file` operation
 - leave our filter step in place, but connect the `table_input` input of this steps operation to the `table` output field of the `import_table_step` operation
 
+!!! note:
+    To find out the input/output field names of each step, use `kiara operation explain <MODULE_TYPE`.
+
 We can ask *kiara* again about what it thinks of this new pipeline/operation:
 
 {{ cli("kiara", "operation", "explain", "examples/pipelines/tutorial_2.yaml", fake_command="kiara operation explain my_first_pipeline.yaml", extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_assembling_pipeline"}, repl_dict={"examples/pipelines/tutorial_2": "my_first_pipeline.yaml"}) }}
