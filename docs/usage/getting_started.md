@@ -146,13 +146,13 @@ Now, let's look again at the content of the *kiara* data store:
 
 As you can see, there are 2 items now: one `file`, and one `table`. If you ever want to get more details about any of the items in the data store, you can use one of those commands:
 
-##### `kiara data explain`
+##### Display information about the data: `kiara data explain`
 
 {{ cli("kiara", "data", "explain", "alias:journal_nodes_table", max_height=300, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
 This command prints out the metadata *kiara* has stored about a value item. This commands supports displaying several internally important metadata details of stored datasets, check out the available options with ``kiara data explain --help``. One option that is particularly interesting is the `-p` one, which displays all the metadata properties *kiara* has collected about a value.
 
-##### `kiara data load`
+##### Display the data itself: `kiara data load`
 
 {{ cli("kiara", "data", "load", "-s", "alias:journal_nodes_table", max_height=240, extra_env={"KIARA_CONTEXT": "_getting_started", "CONSOLE_WIDTH": "200"}) }}
 
