@@ -684,7 +684,7 @@ pip install -e .
 <p class="admonition-title">Note</p>
 <p>The <code>example</code> string token at the end of the above command filters the output to operations that match the token.</p>
 </div>
-<p>This module comes as example code with the project template, and is located in the <code>src/kiara_plugin/my_kiara_module/my_kiara_module.py</code> Python file. It only serves as an example and blueprint for your own modules, and you can the module class within the file if you wish.</p>
+<p>This module comes as example code with the project template, and is located in the <code>src/kiara_plugin/my_kiara_module/my_kiara_module.py</code> Python file. It only serves as an example and blueprint for your own modules, and you can delete the module class within the file if you wish.</p>
 <h3 id="pre-loading-a-table-dataset">Pre-loading a table dataset<a class="headerlink" href="#pre-loading-a-table-dataset" title="Permanent link">&para;</a></h3>
 <p>In our tutorial we'll create a module to filter a table. In order to do this we'll need to pre-seed our <em>kiara</em> data store with a tabular dataset. Here is the command to run (with the project root as our working directory):</p>
 <div class="highlight"><pre><span></span><code><span class="go">kiara run --save table=journal_nodes_table import.table.from.csv_file path=examples/data/journals/JournalNodes1902.csv</span>
@@ -784,7 +784,7 @@ pip install -e .
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field   data type   stored id                              alias(es)                                                                                                                                                                       │</span>
 <span class="go">│  ────────────────────────────────────────────────────────────────────────────────                                                                                                                                                            │</span>
-<span class="go">│   table   table       368b9771-2db0-4f97-be8e-692b321f2d65   journal_nodes_table                                                                                                                                                             │</span>
+<span class="go">│   table   table       c6604228-f008-4f8d-b7da-105bf3d2a201   journal_nodes_table                                                                                                                                                             │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -977,7 +977,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=368b9771-2db0-4f97-be8e-692b321f2d65, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=c6604228-f008-4f8d-b7da-105bf3d2a201, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 
 <span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
@@ -1242,7 +1242,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run --output silent filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=368b9771-2db0-4f97-be8e-692b321f2d65, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=c6604228-f008-4f8d-b7da-105bf3d2a201, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 <span class="go">Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,</span>
 <span class="go">       &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],</span>
