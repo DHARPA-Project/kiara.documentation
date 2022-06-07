@@ -784,7 +784,7 @@ pip install -e .
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field   data type   stored id                              alias(es)                                                                                                                                                                       │</span>
 <span class="go">│  ────────────────────────────────────────────────────────────────────────────────                                                                                                                                                            │</span>
-<span class="go">│   table   table       c6604228-f008-4f8d-b7da-105bf3d2a201   journal_nodes_table                                                                                                                                                             │</span>
+<span class="go">│   table   table       3a9917fe-35f0-4524-b5e1-f14499012036   journal_nodes_table                                                                                                                                                             │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -914,7 +914,7 @@ pip install -e .
 <div class="highlight"><pre><span></span><code><span class="go">kiara operation explain filter.table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: filter.table_2 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
+<div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: filter.table ──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│   Documentation   Filter a table.                                                                                                        │</span>
 <span class="go">│                                                                                                                                          │</span>
@@ -977,7 +977,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=c6604228-f008-4f8d-b7da-105bf3d2a201, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=3a9917fe-35f0-4524-b5e1-f14499012036, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 
 <span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
@@ -1242,7 +1242,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run --output silent filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=c6604228-f008-4f8d-b7da-105bf3d2a201, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=3a9917fe-35f0-4524-b5e1-f14499012036, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 <span class="go">Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,</span>
 <span class="go">       &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],</span>
@@ -1414,17 +1414,17 @@ The class/type of the data depends on the data type of the value, so you'll have
         <span class="n">berlin_df</span> <span class="o">=</span> <span class="n">pandas_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pandas_df</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">==</span> <span class="n">filter_string</span><span class="p">]</span>
         <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;table_output&quot;</span><span class="p">,</span> <span class="n">berlin_df</span><span class="p">)</span>
 </code></pre></div>
-<p>In this example, I've used a default value for the <code>column_name</code> input ('City'). This propably doesn't make a whole lot of sense, but it shows how to set defaults for input fields, which in a lot of cases makes sense. We can try to run this command using a missing <code>filter_string</code> argument, which shows off nicely what the <em>kiara</em> command-line interface has to say about something like this:</p>
+<p>In this example, I've used a default value for the <code>column_name</code> input ('City'). This propably doesn't make a whole lot of sense, but it shows how to set defaults for input fields, which in a lot of cases does make sense. We can try to run this command using a missing <code>filter_string</code> argument, which shows off nicely what the <em>kiara</em> command-line interface has to say about something like this:</p>
 <div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Run info: filter.table_5 ───────────────────────────────────────────────────╮</span>
+<div class="highlight"><pre><span></span><code><span class="go">╭─ Run info: filter.table ───────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│ Can&#39;t run operation, invalid or insufficient inputs.                         │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│ ──────────────────────────────────────────────────────────────────────────── │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│ Operation: filter.table_5                                                    │</span>
+<span class="go">│ Operation: filter.table                                                    │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│ Filter a table.                                                              │</span>
 <span class="go">│                                                                              │</span>
