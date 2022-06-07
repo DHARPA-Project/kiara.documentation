@@ -62,7 +62,7 @@ What we did here:
 - leave our filter step in place, but connect the `table_input` input of this steps operation to the `table` output field of the `import_table_step` operation
 
 !!! note:
-    To find out the input/output field names of each step, use `kiara operation explain <MODULE_TYPE`.
+    To find out the input/output field names of each step, use `kiara operation explain <MODULE_TYPE>`.
 
 We can ask *kiara* again about what it thinks of this new pipeline/operation:
 
