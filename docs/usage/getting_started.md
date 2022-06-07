@@ -197,7 +197,7 @@ From looking at the output, it seems that saving our result has worked. We can m
 ## Generating a network graph
 
 Our goal for this tutorial is to create a network graph, and investigate its properties. Network graphs are usually created from
-one or two pieces of data (both tabular in nature:
+one or two pieces of data (both tabular in nature):
 
 - *edges* (mandataor): information about what nodes exist, and if and how they are connected
 - *nodes information* (optional): information about attributes of each node
