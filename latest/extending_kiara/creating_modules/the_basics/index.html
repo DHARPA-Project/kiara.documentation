@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.2">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.5d38496d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -784,7 +784,7 @@ pip install -e .
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field   data type   stored id                              alias(es)                                                                                                                                                                       │</span>
 <span class="go">│  ────────────────────────────────────────────────────────────────────────────────                                                                                                                                                            │</span>
-<span class="go">│   table   table       3a9917fe-35f0-4524-b5e1-f14499012036   journal_nodes_table                                                                                                                                                             │</span>
+<span class="go">│   table   table       b39072c5-5768-450d-bd6a-2e34f89d4320   journal_nodes_table                                                                                                                                                             │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -936,8 +936,8 @@ pip install -e .
 </div>
 
 <h3 id="processing-the-inputs">Processing the inputs<a class="headerlink" href="#processing-the-inputs" title="Permanent link">&para;</a></h3>
-<p>Specifying the inputs (and outputs) is an important part of designing your module, it's basically the modules' 'public API', and you want to avoid changing it (too much; or at all) as your module evolves over time. But of course, the actual processing is where the interesting stuff happens. In <em>kiara</em>, that is the <code>process</code> method of every module. The arguments to this method are called <code>inputs</code> and <code>outputs</code>, which are basically dicts that use the field names specified in the <code>create_inputs_schema</code> / <code>create_outputs_schema</code> as keys, and Python objects of class <a class="autorefs autorefs-external" href="https://dharpa.org/kiara/latest/reference/kiara/models/values/value/#kiara.models.values.value.Value">Value</a> as values.</p>
-<p>One thing to understand is that a <code>Value</code> object is not the same as the actual data. Instead, it's a reference to it (a means to retrieve it), and it also contains metadata about it's provenance (pedigree/lineage) and other properties.</p>
+<p>Specifying the inputs (and outputs) is an important part of designing your module, it's basically the module's 'public API', and you want to avoid changing it (too much; or at all) as your module evolves over time. But of course, the actual processing is where the interesting stuff happens. In <em>kiara</em>, that is the <code>process</code> method of every module. The arguments to this method are called <code>inputs</code> and <code>outputs</code>, which are basically dicts that use the field names specified in the <code>create_inputs_schema</code> / <code>create_outputs_schema</code> as keys, and Python objects of class <a class="autorefs autorefs-external" href="https://dharpa.org/kiara/latest/reference/kiara/models/values/value/#kiara.models.values.value.Value">Value</a> as values.</p>
+<p>One thing to understand is that a <code>Value</code> object is not the same as the actual data. Instead, it's a reference to it (a means to retrieve it), and it also contains metadata about its provenance (pedigree/lineage) and other properties.</p>
 <p>This is the signature of the <code>process</code> method, including type hints (which we will omit after this):</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">kiara.models.values.value</span> <span class="kn">import</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">ValueMapWritable</span>
 
@@ -945,7 +945,7 @@ pip install -e .
         <span class="o">...</span>
         <span class="o">...</span>
 </code></pre></div>
-<p>The <code>inputs</code> and <code>outputs</code> arguments to the <code>process</code> method are of type <a class="autorefs autorefs-external" href="https://dharpa.org/kiara/latest/reference/kiara/models/values/value/#kiara.models.values.value.ValueMap">ValueMap</a>, the two main methods to access input data are:</p>
+<p>The <code>inputs</code> and <code>outputs</code> arguments to the <code>process</code> method are of type <a class="autorefs autorefs-external" href="https://dharpa.org/kiara/latest/reference/kiara/models/values/value/#kiara.models.values.value.ValueMap">ValueMap</a>; the two main methods to access input data are:</p>
 <ul>
 <li><code>inputs.get_value_obj([field_name])</code>: retrieve the (wrapper) <code>Value</code> object for a field</li>
 <li><code>inputs.get_value_data([field_name])</code>: retrieve the data object for a field</li>
@@ -962,7 +962,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 </ul>
 <p>All that out of the way, let's get started implementing our table filter. We'll do it in stages, so hopefully we can cover all the important aspects in this tutorial in a way that makes intuitive sense.</p>
 <p>To that end, let's write some code that does ...nothing. Our first iteration of our module will take the input table, and immediately set it as output:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
 
     <span class="n">table_obj</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s2">&quot;table_input&quot;</span><span class="p">)</span>
 
@@ -977,7 +977,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=3a9917fe-35f0-4524-b5e1-f14499012036, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=b39072c5-5768-450d-bd6a-2e34f89d4320, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 
 <span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
@@ -1225,7 +1225,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 
 </div>
 
-<p>Reading this, and following some of the links included. shows us that we can retrive the table data as a Pandas dataframe using the <code>to_pandas()</code> method. As the documentation states, this loads the whole data into memory, which is something we should try to avoid, but in a lot of cases (esp. if we are dealing with sub-hundreds-of-megabytes-sized data) it's a perfectly acceptable approach. So, let's do this and use our existing knowledge of Pandas, and retrieve a list of column names from the table the user provided, print out that information debug-style, using print:</p>
+<p>Reading this, and following some of the links included. shows us that we can retrieve the table data as a Pandas dataframe using the <code>to_pandas()</code> method. As the documentation states, this loads the whole data into memory, which is something we should try to avoid, but in a lot of cases (esp. if we are dealing with sub-hundreds-of-megabytes-sized data) it's a perfectly acceptable approach. So, let's do this and use our existing knowledge of Pandas, and retrieve a list of column names from the table the user provided, print out that information debug-style, using print:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="n">table_obj</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s2">&quot;table_input&quot;</span><span class="p">)</span>
@@ -1242,7 +1242,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run --output silent filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=3a9917fe-35f0-4524-b5e1-f14499012036, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=b39072c5-5768-450d-bd6a-2e34f89d4320, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 <span class="go">Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,</span>
 <span class="go">       &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],</span>
@@ -1414,7 +1414,7 @@ The class/type of the data depends on the data type of the value, so you'll have
         <span class="n">berlin_df</span> <span class="o">=</span> <span class="n">pandas_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pandas_df</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">==</span> <span class="n">filter_string</span><span class="p">]</span>
         <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;table_output&quot;</span><span class="p">,</span> <span class="n">berlin_df</span><span class="p">)</span>
 </code></pre></div>
-<p>In this example, I've used a default value for the <code>column_name</code> input ('City'). This propably doesn't make a whole lot of sense, but it shows how to set defaults for input fields, which in a lot of cases does make sense. We can try to run this command using a missing <code>filter_string</code> argument, which shows off nicely what the <em>kiara</em> command-line interface has to say about something like this:</p>
+<p>In this example, I've used a default value for the <code>column_name</code> input ('City'). This probably doesn't make a whole lot of sense, but it shows how to set defaults for input fields, which in a lot of cases does make sense. We can try to run this command using a missing <code>filter_string</code> argument, which shows off nicely what the <em>kiara</em> command-line interface has to say about something like this:</p>
 <div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
@@ -1528,10 +1528,10 @@ The class/type of the data depends on the data type of the value, so you'll have
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.7f366e99.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.0238f547.min.js"></script>
       
     
   </body>
