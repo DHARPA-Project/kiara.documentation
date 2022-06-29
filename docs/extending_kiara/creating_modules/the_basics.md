@@ -180,9 +180,9 @@ Run the `explain` command again, to check what *kiara* thinks of our module now:
 
 ### Processing the inputs
 
-Specifying the inputs (and outputs) is an important part of designing your module, it's basically the modules' 'public API', and you want to avoid changing it (too much; or at all) as your module evolves over time. But of course, the actual processing is where the interesting stuff happens. In *kiara*, that is the `process` method of every module. The arguments to this method are called `inputs` and `outputs`, which are basically dicts that use the field names specified in the `create_inputs_schema` / `create_outputs_schema` as keys, and Python objects of class [Value][kiara.models.values.value.Value] as values.
+Specifying the inputs (and outputs) is an important part of designing your module, it's basically the module's 'public API', and you want to avoid changing it (too much; or at all) as your module evolves over time. But of course, the actual processing is where the interesting stuff happens. In *kiara*, that is the `process` method of every module. The arguments to this method are called `inputs` and `outputs`, which are basically dicts that use the field names specified in the `create_inputs_schema` / `create_outputs_schema` as keys, and Python objects of class [Value][kiara.models.values.value.Value] as values.
 
-One thing to understand is that a `Value` object is not the same as the actual data. Instead, it's a reference to it (a means to retrieve it), and it also contains metadata about it's provenance (pedigree/lineage) and other properties.
+One thing to understand is that a `Value` object is not the same as the actual data. Instead, it's a reference to it (a means to retrieve it), and it also contains metadata about its provenance (pedigree/lineage) and other properties.
 
 This is the signature of the `process` method, including type hints (which we will omit after this):
 
@@ -194,7 +194,7 @@ from kiara.models.values.value import ValueMap, ValueMapWritable
         ...
 ```
 
-The `inputs` and `outputs` arguments to the `process` method are of type [ValueMap][kiara.models.values.value.ValueMap], the two main methods to access input data are:
+The `inputs` and `outputs` arguments to the `process` method are of type [ValueMap][kiara.models.values.value.ValueMap]; the two main methods to access input data are:
 
 - `inputs.get_value_obj([field_name])`: retrieve the (wrapper) `Value` object for a field
 - `inputs.get_value_data([field_name])`: retrieve the data object for a field
@@ -217,7 +217,7 @@ All that out of the way, let's get started implementing our table filter. We'll 
 To that end, let's write some code that does ...nothing. Our first iteration of our module will take the input table, and immediately set it as output:
 
 ```python
-def process(inputs, outputs):
+def process(self, inputs, outputs):
 
     table_obj = inputs.get_value_obj("table_input")
 
@@ -241,7 +241,7 @@ To find out more about a specific data type, you can use `data-type explain`:
 
 {{ cli("kiara", "data-type", "explain", "table", max_height=200, extra_env={"CONSOLE_WIDTH": "140", "KIARA_CONTEXT": "_my_kiara_module"}) }}
 
-Reading this, and following some of the links included. shows us that we can retrive the table data as a Pandas dataframe using the `to_pandas()` method. As the documentation states, this loads the whole data into memory, which is something we should try to avoid, but in a lot of cases (esp. if we are dealing with sub-hundreds-of-megabytes-sized data) it's a perfectly acceptable approach. So, let's do this and use our existing knowledge of Pandas, and retrieve a list of column names from the table the user provided, print out that information debug-style, using print:
+Reading this, and following some of the links included. shows us that we can retrieve the table data as a Pandas dataframe using the `to_pandas()` method. As the documentation states, this loads the whole data into memory, which is something we should try to avoid, but in a lot of cases (esp. if we are dealing with sub-hundreds-of-megabytes-sized data) it's a perfectly acceptable approach. So, let's do this and use our existing knowledge of Pandas, and retrieve a list of column names from the table the user provided, print out that information debug-style, using print:
 
 ```python
 def process(self, inputs, outputs) -> None:
@@ -321,7 +321,7 @@ Of course, a module like this is only of very limited value, because the tables 
         outputs.set_value("table_output", berlin_df)
 ```
 
-In this example, I've used a default value for the `column_name` input ('City'). This propably doesn't make a whole lot of sense, but it shows how to set defaults for input fields, which in a lot of cases does make sense. We can try to run this command using a missing `filter_string` argument, which shows off nicely what the *kiara* command-line interface has to say about something like this:
+In this example, I've used a default value for the `column_name` input ('City'). This probably doesn't make a whole lot of sense, but it shows how to set defaults for input fields, which in a lot of cases does make sense. We can try to run this command using a missing `filter_string` argument, which shows off nicely what the *kiara* command-line interface has to say about something like this:
 
 {{ cli("kiara", "run", "filter.table_5", "table_input=alias:journal_nodes_table", fail_ok=true, fake_command="kiara run filter.table table_input=alias:journal_nodes_table", max_height=200, extra_env={"CONSOLE_WIDTH": "80", "KIARA_CONTEXT": "_my_kiara_module"}, repl_dict={"table_5": "table"}) }}
 
