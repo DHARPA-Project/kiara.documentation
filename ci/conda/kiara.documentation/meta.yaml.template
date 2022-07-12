@@ -23,10 +23,10 @@ requirements:
     - setuptools_scm_git_archive
   run:
     - python
-    - kiara>=0.4.4
-    - kiara_plugin.core_types>=0.4.3
-    - kiara_plugin.tabular>=0.4.4
-    - kiara_plugin.network_analysis>=0.4.0
+    - kiara>=0.4.15
+    - kiara_plugin.core_types>=0.4.10
+    - kiara_plugin.tabular>=0.4.10
+    - kiara_plugin.network_analysis>=0.4.3
     - mike>=1.0.1
     - mkdocs-macros-plugin>=0.7.0
     - mkdocs-material>=8.0.0
