@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0rc1">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.476df7d4.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -50,7 +50,7 @@
     
       <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,9 +84,7 @@
     </div>
     
       <div data-md-component="outdated" hidden>
-        <aside class="md-banner md-banner--warning">
-          
-        </aside>
+        
       </div>
     
     
@@ -677,12 +675,9 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│   field            data_type   value                                                                                                     │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
 <span class="go">│   filtered_table   table                                                                                                                 │</span>
-<span class="go">│                                  Id   Label      Journal…   City       Country…   Present…   Latitude   Longit…   Language   __inde…     │</span>
+<span class="go">│                                  Id   Label      JournalT   City       CountryN   PresentD   Latitude   Longitu   Language   __index     │</span>
 <span class="go">│                                 ─────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                                  75   Psychia…   special…   Amsterd…   Netherl…   Netherl…   52.3666…   4.9       Dutch      0           │</span>
-<span class="go">│                                       en         psychia…                                                                                │</span>
-<span class="go">│                                       neurolo…   and                                                                                     │</span>
-<span class="go">│                                       bladen     neurolo…                                                                                │</span>
+<span class="go">│                                  75   Psychiat   speciali   Amsterda   Netherla   Netherla   52.36666   4.9       Dutch      0           │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
@@ -691,7 +686,7 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│   field            data type   stored id                              alias(es)                                                          │</span>
 <span class="go">│  ────────────────────────────────────────────────────────────────────────────────────────                                                │</span>
-<span class="go">│   filtered_table   table       1c06977a-fcb7-4d96-9a03-adae77e5cbcc   amsterdam_journals                                                 │</span>
+<span class="go">│   filtered_table   table       61089321-7e86-47c4-9fa4-c918c5b97ff9   amsterdam_journals                                                 │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -700,9 +695,9 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:amsterdam_journals ────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                  │</span>
-<span class="go">│   value_id            1c06977a-fcb7-4d96-9a03-adae77e5cbcc                                       │</span>
+<span class="go">│   value_id            61089321-7e86-47c4-9fa4-c918c5b97ff9                                       │</span>
 <span class="go">│   aliases             amsterdam_journals                                                         │</span>
-<span class="go">│   kiara_id            75526aa5-7855-4ace-bb04-98300b0a9788                                       │</span>
+<span class="go">│   kiara_id            c027b487-d3e3-4f43-a4d5-49f4417e54a9                                       │</span>
 <span class="go">│                                                                                                  │</span>
 <span class="go">│                       ────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                                                │</span>
@@ -714,8 +709,8 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│   destiny_links       {}                                                                         │</span>
 <span class="go">│   enviroments         None                                                                       │</span>
 <span class="go">│   property_links      {                                                                          │</span>
-<span class="go">│                         &quot;metadata.python_class&quot;: &quot;0489d76d-1f13-41d7-9afa-a3a612eccdcb&quot;,         │</span>
-<span class="go">│                         &quot;metadata.table&quot;: &quot;92f63fee-4c58-415a-8e0f-ac0f61d01545&quot;                 │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;: &quot;b893440f-b258-456d-bcf1-d9d2a0b00a68&quot;,         │</span>
+<span class="go">│                         &quot;metadata.table&quot;: &quot;21a08ef8-734e-4c7d-9e2a-45a8279c05d0&quot;                 │</span>
 <span class="go">│                       }                                                                          │</span>
 <span class="go">│   value_hash          zdpuAmca9P3gSGC6XipcksvC5aArdVeBJd8WHcwa6hLB9gqaF                          │</span>
 <span class="go">│   value_schema                                                                                   │</span>
@@ -732,15 +727,15 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                       ────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│                                                                                                  │</span>
 <span class="go">│   lineage             filter.table                                                             │</span>
-<span class="go">│                       ├── input: column_name (string) = 5d8ea620-a9fc-4b18-95a6-e33689b4ff60     │</span>
-<span class="go">│                       ├── input: filter_string (string) = b41d64d0-3c92-4c95-b212-97e1d11d0fe4   │</span>
-<span class="go">│                       └── input: table_input (table) = c0a92b75-bd4b-4773-aa1f-39e7075af164      │</span>
+<span class="go">│                       ├── input: column_name (string) = a455352d-ff29-4013-847d-558f7941a152     │</span>
+<span class="go">│                       ├── input: filter_string (string) = ecb268f2-a693-465e-891c-92f760d93e0c   │</span>
+<span class="go">│                       └── input: table_input (table) = 94809921-e9fb-473e-b536-3ccb3b3ef909      │</span>
 <span class="go">│                           └── create.table                                                       │</span>
 <span class="go">│                               └── input: csv_file (file) =                                       │</span>
-<span class="go">│                                   5c5685db-90c8-49b9-af7a-33698989e29e                           │</span>
+<span class="go">│                                   0f221dec-eab1-485b-8c59-a959be8e31f9                           │</span>
 <span class="go">│                                   └── import.file                                                │</span>
 <span class="go">│                                       └── input: path (string) =                                 │</span>
-<span class="go">│                                           6b62ad03-2295-4723-8a04-fc997d081456                   │</span>
+<span class="go">│                                           7c2051e8-1906-4e67-829c-8d5cae78a15f                   │</span>
 <span class="go">│                                                                                                  │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -783,11 +778,13 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│   Id                                   Type(s)    Description                                                                            │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
+<span class="go">│   import.database.from.csv_file        pipeline   Import a database from a csv file.                                                     │</span>
 <span class="go">│   import.file                                     Import a file from the local filesystem.                                               │</span>
 <span class="go">│   import.file_bundle                              Import a folder (file_bundle) from the local filesystem.                               │</span>
 <span class="go">│   import.filtered_table                pipeline   Import a table from a csv file, then filter it.                                        │</span>
 <span class="go">│   import.network_data.from.csv_files   pipeline   Load the edges table from a csv file.                                                  │</span>
-<span class="go">│   import.table.from.csv_file           pipeline   Load a table from a csv file.                                                          │</span>
+<span class="go">│   import.table.from.csv_file           pipeline   Import a table from a csv file.                                                        │</span>
+<span class="go">│   import.table.from.text_file_bundle   pipeline   Load a table from a bundle of text files.                                              │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -797,6 +794,9 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <h4 id="including-the-pipeline-in-a-kiara-plugin">Including the pipeline in a <em>kiara</em> plugin<a class="headerlink" href="#including-the-pipeline-in-a-kiara-plugin" title="Permanent link">&para;</a></h4>
 <p>In case we want to 'publish' our pipeline so it can be re-used as part of a <em>kiara</em> plugin (which may or may not contain native 'Python' modules/operations, custom data-types, etc.), this is also easy to do. If you have followed the 'writing your own <em>kiara</em> module' tutorial, you'd have created a <em>kiara</em> plugin project from a template. To add your pipeline to this plugin, simply copy/move it into the directory <code>src/kiara_plugin/&lt;YOUR_PLUGIN_NAME&gt;/pipelines</code>. Naming the pipeline and adding documentation works the same as outlined in the previous chapter.</p>
 <p>If you add pipelines to a <em>kiara</em> context this way, nothing else should be necessary, <em>kiara</em> will auto-discover all the pipelines added like this, and you can use the assigned 'pipeline_name' as value of the <code>module_type</code> key in your step description, if you want to run it within another pipeline.</p>
+
+
+
 
               
             </article>
@@ -828,10 +828,11 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
+    
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.0238f547.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.0bc13b87.min.js"></script>
       
     
   </body>

@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0rc1">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.476df7d4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -50,7 +50,7 @@
     
       <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,9 +84,7 @@
     </div>
     
       <div data-md-component="outdated" hidden>
-        <aside class="md-banner md-banner--warning">
-          
-        </aside>
+        
       </div>
     
     
@@ -358,7 +356,7 @@
         
           <li class="md-nav__item">
   <a href="#creating-a-table-from-an-imported-csv-file" class="md-nav__link">
-    Creating a table from an imported csv file
+    Creating a table from an imported CSV file
   </a>
   
 </li>
@@ -650,7 +648,7 @@
         
           <li class="md-nav__item">
   <a href="#creating-a-table-from-an-imported-csv-file" class="md-nav__link">
-    Creating a table from an imported csv file
+    Creating a table from an imported CSV file
   </a>
   
 </li>
@@ -793,7 +791,7 @@ own usage scenarios.</p>
 <div class="highlight"><pre><span></span><code><span class="go">git clone https://github.com/DHARPA-Project/kiara.examples.git</span>
 <span class="go">cd kiara.examples</span>
 </code></pre></div>
-<p>Specifically, here we'll be using two csv files that were created by my colleague <a href="https://github.com/yaslena">Lena Jaskov</a>: <a href="https://github.com/DHARPA-Project/kiara.examples/tree/main/data/journals">files</a></p>
+<p>Specifically, here we'll be using two CSV files that were created by my colleague <a href="https://github.com/yaslena">Lena Jaskov</a>: <a href="https://github.com/DHARPA-Project/kiara.examples/tree/main/examples/data/journals">files</a></p>
 <p>The files contain information about connection (edges) between medical journals (<code>JournalEdges1902.csv</code>), as well as additional metadata for the journals themselves (<code>JournalNodes1902.csv</code>). We'll use that data to create table and graph structures with <em>kiara</em>.</p>
 <h2 id="checking-for-available-operations">Checking for available operations<a class="headerlink" href="#checking-for-available-operations" title="Permanent link">&para;</a></h2>
 <p>First, let's have a look which operations are available, and what we can do with them:</p>
@@ -804,24 +802,31 @@ own usage scenarios.</p>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│   Id                                                             Type(s)       Description                                               │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   create.database.from.csv_file                                  create_from   -- n/a --                                                 │</span>
-<span class="go">│   create.database.from.csv_file_bundle                           create_from   -- n/a --                                                 │</span>
-<span class="go">│   create.database.from.table                                     create_from   -- n/a --                                                 │</span>
+<span class="go">│   create.database.from.csv_file                                  create_from   Create a database from a csv_file value.                  │</span>
+<span class="go">│   create.database.from.csv_file_bundle                           create_from   Create a database from a csv_file_bundle value.           │</span>
+<span class="go">│   create.database.from.table                                     create_from   Create a database value from a table.                     │</span>
 <span class="go">│   create.network_data.from.tables                                              Create a graph object from one or two tables.             │</span>
-<span class="go">│   create.table.from.csv_file                                     create_from   -- n/a --                                                 │</span>
-<span class="go">│   create.table.from.text_file_bundle                             create_from   -- n/a --                                                 │</span>
+<span class="go">│   create.table.from.csv_file                                     create_from   Create a table from a csv_file value.                     │</span>
+<span class="go">│   create.table.from.text_file_bundle                             create_from   Create a table value from a text file_bundle.             │</span>
 <span class="go">│   date.check_range                                                             Check whether a date falls within a specified date        │</span>
 <span class="go">│                                                                                range.                                                    │</span>
 <span class="go">│   date.extract_from_string                                                     Extract a date object from a string.                      │</span>
-<span class="go">│   export.network_data.as.csv_files                               export_as     -- n/a --                                                 │</span>
-<span class="go">│   export.network_data.as.sql_dump                                export_as     -- n/a --                                                 │</span>
-<span class="go">│   export.network_data.as.sqlite_db                               export_as     -- n/a --                                                 │</span>
+<span class="go">│   export.file.as.file                                            export_as     -- n/a --                                                 │</span>
+<span class="go">│   export.network_data.as.csv_files                               export_as     Export network data as 2 csv files (one for edges, one    │</span>
+<span class="go">│                                                                                for nodes.                                                │</span>
+<span class="go">│   export.network_data.as.sql_dump                                export_as     Export network data as a sql dump file.                   │</span>
+<span class="go">│   export.network_data.as.sqlite_db                               export_as     Export network data as a sqlite database file.            │</span>
+<span class="go">│   export.table.as.csv_file                                       export_as     Export a table as csv file.                               │</span>
+<span class="go">│   extract.date_array.from.table                                  pipeline      Extract a date array from a table column.                 │</span>
+<span class="go">│   file_bundle.pick_file                                                        Pick a single file from a file_bundle value.              │</span>
 <span class="go">│   filter.table                                                                 Filter a table.                                           │</span>
+<span class="go">│   import.database.from.csv_file                                  pipeline      Import a database from a csv file.                        │</span>
 <span class="go">│   import.file                                                                  Import a file from the local filesystem.                  │</span>
 <span class="go">│   import.file_bundle                                                           Import a folder (file_bundle) from the local              │</span>
 <span class="go">│                                                                                filesystem.                                               │</span>
 <span class="go">│   import.network_data.from.csv_files                             pipeline      Load the edges table from a csv file.                     │</span>
-<span class="go">│   import.table.from.csv_file                                     pipeline      Load a table from a csv file.                             │</span>
+<span class="go">│   import.table.from.csv_file                                     pipeline      Import a table from a csv file.                           │</span>
+<span class="go">│   import.table.from.text_file_bundle                             pipeline      Load a table from a bundle of text files.                 │</span>
 <span class="go">│   kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module                 -- n/a --                                                 │</span>
 <span class="go">│   list.contains                                                                Check whether an element is in a list.                    │</span>
 <span class="go">│   logic.and                                                                    Returns &#39;True&#39; if both inputs are &#39;True&#39;.                 │</span>
@@ -832,9 +837,15 @@ own usage scenarios.</p>
 <span class="go">│   logic.xor                                                      pipeline      Returns &#39;True&#39; if exactly one of it&#39;s two inputs is       │</span>
 <span class="go">│                                                                                &#39;True&#39;.                                                   │</span>
 <span class="go">│   my_kiara_module.example                                                      A very simple example module; concatenate two strings.    │</span>
-<span class="go">│   query.database                                                               -- n/a --                                                 │</span>
+<span class="go">│   parse.date_array                                                             Create an array of date objects from an array of          │</span>
+<span class="go">│                                                                                strings.                                                  │</span>
+<span class="go">│   query.database                                                               Execute a sql query against a (sqlite) database.          │</span>
 <span class="go">│   query.table                                                                  Execute a sql query against an (Arrow) table.             │</span>
+<span class="go">│   string_filter.tokens                                           filter        -- n/a --                                                 │</span>
 <span class="go">│   table.cut_column                                                             Cut off one column from a table, returning an array.      │</span>
+<span class="go">│   table_filter.drop_columns                                      filter        -- n/a --                                                 │</span>
+<span class="go">│   table_filter.select_columns                                    filter        -- n/a --                                                 │</span>
+<span class="go">│   table_filter.select_rows                                       filter        -- n/a --                                                 │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -851,10 +862,10 @@ guide. Nonetheless, keep in mind that technically both terms refer to different 
 <h2 id="importing-data-and-creating-a-table">Importing data, and creating a table<a class="headerlink" href="#importing-data-and-creating-a-table" title="Permanent link">&para;</a></h2>
 <p>Tables are arguably the most used (and useful) data structures in data science and data engineering. They come in different
 forms; some people call them spreadsheets, or dataframes. We're not fancy, so we won't do that: we'll call them tables.</p>
-<p>A depressingly large amount of (tabular) data comes in csv files, which is why we'll use one as an example here. Specifically, we will
-use <a href="https://github.com/DHARPA-Project/kiara.examples/blob/main/data/journals/JournalNodes1902.csv"><code>JournalNodes1902.csv</code></a>. As stated above, this file contains information about historical medical
+<p>A depressingly large amount of (tabular) data comes in CSV files, which is why we'll use one as an example here. Specifically, we will
+use <a href="https://github.com/DHARPA-Project/kiara.examples/blob/main/examples/data/journals/JournalNodes1902.csv"><code>JournalNodes1902.csv</code></a>. As stated above, this file contains information about historical medical
 journals (name, type, where it was from, etc.), and we'll later use it as the table which will provide node information in a network graph. We want to convert this file into a 'proper' table structure, because
-that will make subsequent processing faster, and also simpler in a lot of cases. 'Proper", in this case means we'll convert it into a better format for internal use, for example containing information about the data type in each column, among other things.</p>
+that will make subsequent processing faster, and also simpler in a lot of cases. 'Proper', in this case means we'll convert it into a better format for internal use, for example containing information about the data type in each column, among other things.</p>
 <h3 id="finding-the-right-command-and-how-to-use-it">Finding the right command, and how to use it<a class="headerlink" href="#finding-the-right-command-and-how-to-use-it" title="Permanent link">&para;</a></h3>
 <p><em>kiara</em> likes its data 'onboarded' (or: 'imported'), meaning it prefers to work with data that was imported into its internal data store. This effectively duplicates a file on a users filesystem (and depending on the filesystem used this could mean doubling the hard-disk space required for that particular dataset). The reason behind this preference is that this ensures the data won't be modified by an external application after import. This enables <em>kiara</em> to employ some techniques to save memory, hard-disk space as well as cpu-resources down the line.</p>
 <p>So, in most cases, the first thing you (as a user) want to do is 'import' the source data you want to work with. So, let's run the <code>operation list</code> command again, but let's filter using the term 'import':</p>
@@ -865,10 +876,12 @@ that will make subsequent processing faster, and also simpler in a lot of cases.
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│   Id                                   Type(s)    Description                                                                            │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
+<span class="go">│   import.database.from.csv_file        pipeline   Import a database from a csv file.                                                     │</span>
 <span class="go">│   import.file                                     Import a file from the local filesystem.                                               │</span>
 <span class="go">│   import.file_bundle                              Import a folder (file_bundle) from the local filesystem.                               │</span>
 <span class="go">│   import.network_data.from.csv_files   pipeline   Load the edges table from a csv file.                                                  │</span>
-<span class="go">│   import.table.from.csv_file           pipeline   Load a table from a csv file.                                                          │</span>
+<span class="go">│   import.table.from.csv_file           pipeline   Import a table from a csv file.                                                        │</span>
+<span class="go">│   import.table.from.text_file_bundle   pipeline   Load a table from a bundle of text files.                                              │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -906,8 +919,8 @@ that will make subsequent processing faster, and also simpler in a lot of cases.
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
-<p>As makes obvious sense, we need to provide a <code>path</code> input, of type <code>string</code>, letting <em>kiara</em> know where to pick up the file. The <em>kiara</em> commandline interface can
-take complex inputs like dicts, but fortunately this is not necessary here. If you ever come into a situation where you need that, check out <a href="../..//usage/#complex-inputs">this section</a>.</p>
+<p>As makes obvious sense, we need to provide a <code>path</code> input, of type <code>string</code>, letting <em>kiara</em> know where to pick up the file. The <em>kiara</em> command-line interface can
+take complex inputs like dictionaries, but fortunately this is not necessary here. If you ever come into a situation where you need that, check out <a href="../..//usage/#complex-inputs">this section</a>.</p>
 <p>For simple inputs like string-type things, all we need to do is provide the input name, followed by '=' and the value itself:</p>
 <div class="highlight"><pre><span></span><code><span class="go">kiara run import.file path=examples/data/journals/JournalNodes1902.csv</span>
 </code></pre></div>
@@ -1175,7 +1188,7 @@ take complex inputs like dicts, but fortunately this is not necessary here. If y
 <span class="go">│                                                                              │</span>
 <span class="go">│   field   data type   stored id                         alias(es)            │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   file    file        d4e9d423-aa76-48c7-b4d3-997c5a…   journal_nodes_file   │</span>
+<span class="go">│   file    file        af78b6aa-eaa1-481c-abae-2adba0…   journal_nodes_file   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1195,8 +1208,8 @@ take complex inputs like dicts, but fortunately this is not necessary here. If y
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
 <p>All right! Looks like this worked.</p>
-<h4 id="creating-a-table-from-an-imported-csv-file">Creating a table from an imported csv file<a class="headerlink" href="#creating-a-table-from-an-imported-csv-file" title="Permanent link">&para;</a></h4>
-<p>Csv files are usually not much use by themselves, in most cases we want to create a table-like structure from them, so we can efficiently query the data. This usually also makes sure that the structure and format of the file is valid.</p>
+<h4 id="creating-a-table-from-an-imported-csv-file">Creating a table from an imported CSV file<a class="headerlink" href="#creating-a-table-from-an-imported-csv-file" title="Permanent link">&para;</a></h4>
+<p>CSV files are usually not much use by themselves, in most cases we want to create a table-like structure from them, so we can efficiently query the data. This usually also makes sure that the structure and format of the file is valid.</p>
 <p>Let's ask kiara what 'create' related operations it has available:</p>
 <p><div class="highlight"><pre><span></span><code><span class="go">kiara operation list create</span>
 </code></pre></div>
@@ -1204,12 +1217,12 @@ take complex inputs like dicts, but fortunately this is not necessary here. If y
 <span class="go">│                                                                                                                      │</span>
 <span class="go">│   Id                                     Type(s)       Description                                                   │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   create.database.from.csv_file          create_from   -- n/a --                                                     │</span>
-<span class="go">│   create.database.from.csv_file_bundle   create_from   -- n/a --                                                     │</span>
-<span class="go">│   create.database.from.table             create_from   -- n/a --                                                     │</span>
+<span class="go">│   create.database.from.csv_file          create_from   Create a database from a csv_file value.                      │</span>
+<span class="go">│   create.database.from.csv_file_bundle   create_from   Create a database from a csv_file_bundle value.               │</span>
+<span class="go">│   create.database.from.table             create_from   Create a database value from a table.                         │</span>
 <span class="go">│   create.network_data.from.tables                      Create a graph object from one or two tables.                 │</span>
-<span class="go">│   create.table.from.csv_file             create_from   -- n/a --                                                     │</span>
-<span class="go">│   create.table.from.text_file_bundle     create_from   -- n/a --                                                     │</span>
+<span class="go">│   create.table.from.csv_file             create_from   Create a table from a csv_file value.                         │</span>
+<span class="go">│   create.table.from.text_file_bundle     create_from   Create a table value from a text file_bundle.                 │</span>
 <span class="go">│                                                                                                                      │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -1219,15 +1232,16 @@ take complex inputs like dicts, but fortunately this is not necessary here. If y
 <div style='max-height:320px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: create.table.from.csv_file ──────────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   Documentation   -- n/a --                                                  │</span>
+<span class="go">│   Documentation   Create a table from a csv_file value.                      │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   Inputs                                                                     │</span>
 <span class="go">│                     field                                                    │</span>
 <span class="go">│                     name       type       descrip…   Required   Default      │</span>
 <span class="go">│                    ──────────────────────────────────────────────────────    │</span>
-<span class="go">│                     csv_file   csv_file   The        yes        -- no        │</span>
-<span class="go">│                                           source                default      │</span>
-<span class="go">│                                           value.                --           │</span>
+<span class="go">│                     csv_file   csv_file   The type   yes        -- no        │</span>
+<span class="go">│                                           of the                default      │</span>
+<span class="go">│                                           source                --           │</span>
+<span class="go">│                                           value.                             │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   Outputs                                                                    │</span>
@@ -1252,61 +1266,40 @@ take complex inputs like dicts, but fortunately this is not necessary here. If y
 <span class="go">│   table   table                                                                                                                                                                                      │</span>
 <span class="go">│                         Id    Label                              JournalType                         City        CountryNetworkTime        PresentDayCountry   Latitude    Longitude    Language     │</span>
 <span class="go">│                        ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                         75    Psychiatrische en neurologische    specialized: psychiatry and         Amsterdam   Netherlands               Netherlands         52.366667   4.9          Dutch        │</span>
-<span class="go">│                               bladen                             neurology                                                                                                                           │</span>
-<span class="go">│                         36    The American Journal of Insanity   specialized: psychiatry and         Baltimore   United States             United States       39.289444   -76.615278   English      │</span>
-<span class="go">│                                                                  neurology                                                                                                                           │</span>
-<span class="go">│                         208   The American Journal of            specialized: psychology             Baltimore   United States             United States       39.289444   -76.615278   English      │</span>
-<span class="go">│                               Psychology                                                                                                                                                             │</span>
+<span class="go">│                         75    Psychiatrische en neurologische    specialized: psychiatry and neuro   Amsterdam   Netherlands               Netherlands         52.366667   4.9          Dutch        │</span>
+<span class="go">│                         36    The American Journal of Insanity   specialized: psychiatry and neuro   Baltimore   United States             United States       39.289444   -76.615278   English      │</span>
+<span class="go">│                         208   The American Journal of Psycholo   specialized: psychology             Baltimore   United States             United States       39.289444   -76.615278   English      │</span>
 <span class="go">│                         295   Die Krankenpflege                  specialized: therapy                Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                         296   Die deutsche Klinik am Eingange    general medicine                    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                               des zwanzigsten Jahrhunderts                                                                                                                                           │</span>
 <span class="go">│                         300   Therapeutische Monatshefte         specialized: therapy                Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                         1     Allgemeine Zeitschrift für         specialized: psychiatry and         Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                               Psychiatrie                        neurology                                                                                                                           │</span>
-<span class="go">│                         7     Archiv für Psychiatrie und         specialized: psychiatry and         Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                               Nervenkrankheiten                  neurology                                                                                                                           │</span>
+<span class="go">│                         1     Allgemeine Zeitschrift für Psych   specialized: psychiatry and neuro   Berlin      German Empire             Germany             52.52       13.405       German       │</span>
+<span class="go">│                         7     Archiv für Psychiatrie und Nerve   specialized: psychiatry and neuro   Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                         10    Berliner klinische Wochenschrift   general medicine                    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                         13    Charité Annalen                    general medicine                    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                         21    Monatsschrift für Psychiatrie      specialized: psychiatry and         Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                               und Neurologie                     neurology                                                                                                                           │</span>
+<span class="go">│                         21    Monatsschrift für Psychiatrie un   specialized: psychiatry and neuro   Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                         29    Virchows Archiv                    specialized: anatomy, physiology    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                                                  and pathology                                                                                                                       │</span>
-<span class="go">│                         31    Zeitschrift für pädagogische       specialized: psychology and         Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                               Psychologie und Pathologie         pedagogy                                                                                                                            │</span>
-<span class="go">│                         42    Vierteljahrsschrift für            specialized: anthropology,          Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                               gerichtliche Medizin und           criminology and forensics                                                                                                           │</span>
-<span class="go">│                               öffentliches Sanitätswesen                                                                                                                                             │</span>
-<span class="go">│                         47    Centralblatt für Nervenheilkunde   specialized: psychiatry and         Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                               und Psychiatrie                    neurology                                                                                                                           │</span>
+<span class="go">│                         31    Zeitschrift für pädagogische Psy   specialized: psychology and pedag   Berlin      German Empire             Germany             52.52       13.405       German       │</span>
+<span class="go">│                         42    Vierteljahrsschrift für gerichtl   specialized: anthropology, crimin   Berlin      German Empire             Germany             52.52       13.405       German       │</span>
+<span class="go">│                         47    Centralblatt für Nervenheilkunde   specialized: psychiatry and neuro   Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                         50    Russische medicinische Rundschau   general medicine                    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                         ...   ...                                ...                                 ...         ...                       ...                 ...         ...          ...          │</span>
 <span class="go">│                         ...   ...                                ...                                 ...         ...                       ...                 ...         ...          ...          │</span>
 <span class="go">│                         277   L&#39;arte medica                      general medicine                    Turin       Italy                     Italy               45.079167   7.676111     Italian      │</span>
-<span class="go">│                         288   Allgemeine österreichische         specialized: anthropology,          Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                               Gerichts-Zeitung                   criminology and forensics                                                                                                           │</span>
-<span class="go">│                         18    Jahrbücher für Psychiatrie         specialized: psychiatry and         Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                                                  neurology                                                                                                                           │</span>
+<span class="go">│                         288   Allgemeine österreichische Geric   specialized: anthropology, crimin   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
+<span class="go">│                         18    Jahrbücher für Psychiatrie         specialized: psychiatry and neuro   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
 <span class="go">│                         30    Wiener klinische Rundschau         general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
 <span class="go">│                         44    Wiener klinische Wochenschrift     general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                         45    Wiener medizinische                general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                               Wochenschrift                                                                                                                                                          │</span>
+<span class="go">│                         45    Wiener medizinische Wochenschrif   general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
 <span class="go">│                         72    Wiener medizinische Presse         general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                         81    Monatsschrift für                  general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                               Gesundheitspflege                                                                                                                                                      │</span>
-<span class="go">│                         93    Klinisch-therapeutische            general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                               Wochenschrift                                                                                                                                                          │</span>
-<span class="go">│                         151   Medicinisch-chirurgisches          specialized: surgery                Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                               Centralblatt                                                                                                                                                           │</span>
+<span class="go">│                         81    Monatsschrift für Gesundheitspfl   general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
+<span class="go">│                         93    Klinisch-therapeutische Wochensc   general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
+<span class="go">│                         151   Medicinisch-chirurgisches Centra   specialized: surgery                Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
 <span class="go">│                         199   Der Militärazt                     specialized: military medicine      Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
 <span class="go">│                         261   Медицинская беседа                 general medicine                    Voronezh    Russian Empire            Russia              51.671667   39.210556    Russian      │</span>
 <span class="go">│                         77    Medycyna                           general medicine                    Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │</span>
 <span class="go">│                         150   Kronika Lekarska                   general medicine                    Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │</span>
-<span class="go">│                         86    Grenzfragen des Nerven- und        specialized: psychiatry and         Wiesbaden   German Empire             Germany             50.0825     8.24         German       │</span>
-<span class="go">│                               Seelenlebens                       neurology                                                                                                                           │</span>
-<span class="go">│                         206   Ergebnisse der Allgemeinen         specialized: anatomy, physiology    Wiesbaden   German Empire             Germany             50.0825     8.24         German       │</span>
-<span class="go">│                               Pathologie und Pathologischen      and pathology                                                                                                                       │</span>
-<span class="go">│                               Anatomie                                                                                                                                                               │</span>
+<span class="go">│                         86    Grenzfragen des Nerven- und Seel   specialized: psychiatry and neuro   Wiesbaden   German Empire             Germany             50.0825     8.24         German       │</span>
+<span class="go">│                         206   Ergebnisse der Allgemeinen Patho   specialized: anatomy, physiology    Wiesbaden   German Empire             Germany             50.0825     8.24         German       │</span>
 <span class="go">│                                                                                                                                                                                                      │</span>
 <span class="go">│                                                                                                                                                                                                      │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
@@ -1327,13 +1320,13 @@ a dataset that lives in its data store, and we want to refer to it via its alias
 <span class="go">│                                                                              │</span>
 <span class="go">│   field   data type   stored id                        alias(es)             │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   table   table       705a61ed-4e3d-4481-ab79-b3111…   journal_nodes_table   │</span>
+<span class="go">│   table   table       3e00b7c4-d5c0-4160-93a6-54faa…   journal_nodes_table   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Here we use the <code>--output silent</code> command line option to surpress any output of values. We've seen this already in the
+<p>Here we use the <code>--output silent</code> command line option to supress any output of values. We've seen this already in the
 last invocation of this command. <em>kiara</em> will still tell us the id of the value it just saved.</p>
 </div>
 <h4 id="checking-the-data-store-again">Checking the data store, again<a class="headerlink" href="#checking-the-data-store-again" title="Permanent link">&para;</a></h4>
@@ -1344,8 +1337,8 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <span class="go">│                                                                              │</span>
 <span class="go">│   alias                 type        size                                     │</span>
 <span class="go">│  ────────────────────────────────────────                                    │</span>
-<span class="go">│   journal_nodes_table   table   42.79 KB                                     │</span>
 <span class="go">│   journal_nodes_file    file    33.43 KB                                     │</span>
+<span class="go">│   journal_nodes_table   table   42.79 KB                                     │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -1356,9 +1349,9 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <div style='max-height:300px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journal_nodes_table ───────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id            705a61ed-4e3d-4481-ab79-b3111ac7f9a6                   │</span>
+<span class="go">│   value_id            3e00b7c4-d5c0-4160-93a6-54faa949a6f6                   │</span>
 <span class="go">│   aliases             journal_nodes_table                                    │</span>
-<span class="go">│   kiara_id            17038849-fae6-4d06-b19c-6d41b4fcc2c5                   │</span>
+<span class="go">│   kiara_id            5bb92c35-d11a-4740-ba83-8af0cf01e3dc                   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                            │</span>
@@ -1371,9 +1364,9 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <span class="go">│   enviroments         None                                                   │</span>
 <span class="go">│   property_links      {                                                      │</span>
 <span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
-<span class="go">│                       &quot;66fc3cfb-b330-47f9-b514-bdf476d378e8&quot;,                │</span>
+<span class="go">│                       &quot;c6161c3e-cf1a-4e40-ab50-a3e2773e1945&quot;,                │</span>
 <span class="go">│                         &quot;metadata.table&quot;:                                    │</span>
-<span class="go">│                       &quot;f871981e-fd16-47e5-ba4b-d7d8f5d6642f&quot;                 │</span>
+<span class="go">│                       &quot;fb93e649-675d-4ecf-a915-c4bc04e41a9e&quot;                 │</span>
 <span class="go">│                       }                                                      │</span>
 <span class="go">│   value_hash          zdpuAn89Et1ENzfoASJRYcWEceyfRiPg664mN4nnHLFnjRLyg      │</span>
 <span class="go">│   value_schema                                                               │</span>
@@ -1403,8 +1396,7 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <span class="go">  36    The American Journal of Insanity                 specialized: psychiatry and neurology             Baltimore   United States             United States       39.289444   -76.615278   English   </span>
 <span class="go">  208   The American Journal of Psychology               specialized: psychology                           Baltimore   United States             United States       39.289444   -76.615278   English   </span>
 <span class="go">  295   Die Krankenpflege                                specialized: therapy                              Berlin      German Empire             Germany             52.52       13.405       German    </span>
-<span class="go">  296   Die deutsche Klinik am Eingange des              general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German    </span>
-<span class="go">        zwanzigsten Jahrhunderts                                                                                                                                                                        </span>
+<span class="go">  296   Die deutsche Klinik am Eingange des zwanzigste   general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German    </span>
 <span class="go">  300   Therapeutische Monatshefte                       specialized: therapy                              Berlin      German Empire             Germany             52.52       13.405       German    </span>
 <span class="go">  1     Allgemeine Zeitschrift für Psychiatrie           specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German    </span>
 <span class="go">  7     Archiv für Psychiatrie und Nervenkrankheiten     specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German    </span>
@@ -1412,18 +1404,14 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <span class="go">  13    Charité Annalen                                  general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German    </span>
 <span class="go">  21    Monatsschrift für Psychiatrie und Neurologie     specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German    </span>
 <span class="go">  29    Virchows Archiv                                  specialized: anatomy, physiology and pathology    Berlin      German Empire             Germany             52.52       13.405       German    </span>
-<span class="go">  31    Zeitschrift für pädagogische Psychologie und     specialized: psychology and pedagogy              Berlin      German Empire             Germany             52.52       13.405       German    </span>
-<span class="go">        Pathologie                                                                                                                                                                                      </span>
-<span class="go">  42    Vierteljahrsschrift für gerichtliche Medizin     specialized: anthropology, criminology and        Berlin      German Empire             Germany             52.52       13.405       German    </span>
-<span class="go">        und öffentliches Sanitätswesen                   forensics                                                                                                                                      </span>
-<span class="go">  47    Centralblatt für Nervenheilkunde und             specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German    </span>
-<span class="go">        Psychiatrie                                                                                                                                                                                     </span>
+<span class="go">  31    Zeitschrift für pädagogische Psychologie und P   specialized: psychology and pedagogy              Berlin      German Empire             Germany             52.52       13.405       German    </span>
+<span class="go">  42    Vierteljahrsschrift für gerichtliche Medizin u   specialized: anthropology, criminology and fore   Berlin      German Empire             Germany             52.52       13.405       German    </span>
+<span class="go">  47    Centralblatt für Nervenheilkunde und Psychiatr   specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German    </span>
 <span class="go">  50    Russische medicinische Rundschau                 general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German    </span>
 <span class="go">  ...   ...                                              ...                                               ...         ...                       ...                 ...         ...          ...       </span>
 <span class="go">  ...   ...                                              ...                                               ...         ...                       ...                 ...         ...          ...       </span>
 <span class="go">  277   L&#39;arte medica                                    general medicine                                  Turin       Italy                     Italy               45.079167   7.676111     Italian   </span>
-<span class="go">  288   Allgemeine österreichische Gerichts-Zeitung      specialized: anthropology, criminology and        Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    </span>
-<span class="go">                                                         forensics                                                                                                                                      </span>
+<span class="go">  288   Allgemeine österreichische Gerichts-Zeitung      specialized: anthropology, criminology and fore   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    </span>
 <span class="go">  18    Jahrbücher für Psychiatrie                       specialized: psychiatry and neurology             Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    </span>
 <span class="go">  30    Wiener klinische Rundschau                       general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    </span>
 <span class="go">  44    Wiener klinische Wochenschrift                   general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    </span>
@@ -1437,8 +1425,7 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <span class="go">  77    Medycyna                                         general medicine                                  Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish    </span>
 <span class="go">  150   Kronika Lekarska                                 general medicine                                  Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish    </span>
 <span class="go">  86    Grenzfragen des Nerven- und Seelenlebens         specialized: psychiatry and neurology             Wiesbaden   German Empire             Germany             50.0825     8.24         German    </span>
-<span class="go">  206   Ergebnisse der Allgemeinen Pathologie und        specialized: anatomy, physiology and pathology    Wiesbaden   German Empire             Germany             50.0825     8.24         German    </span>
-<span class="go">        Pathologischen Anatomie                                                                                                                                                                         </span>
+<span class="go">  206   Ergebnisse der Allgemeinen Pathologie und Path   specialized: anatomy, physiology and pathology    Wiesbaden   German Empire             Germany             50.0825     8.24         German    </span>
 </code></pre></div>
 
 </div>
@@ -1451,7 +1438,7 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <h2 id="querying-the-table-data">Querying the table data<a class="headerlink" href="#querying-the-table-data" title="Permanent link">&para;</a></h2>
 <p>This section is a bit more advanced, so you can skip it if you want. It's just to show an example of what can be done with
 a stored table data item.</p>
-<p>We'll be using the <a href="https://en.wikipedia.org/wiki/SQL">sql</a> query language to find the names and types of all journals from Berlin. The query for this is:</p>
+<p>We'll be using the <a href="https://en.wikipedia.org/wiki/SQL">SQL</a> query language to find the names and types of all journals from Berlin. The query for this is:</p>
 <div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">Label</span><span class="p">,</span><span class="w"> </span><span class="n">JournalType</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">City</span><span class="o">=</span><span class="s1">&#39;Berlin&#39;</span><span class="w"></span>
 </code></pre></div>
 <p>The <em>kiara</em> module we are going to use is called <code>query.table</code>. Let's check again the parameters this module expects:</p>
@@ -1466,6 +1453,12 @@ a stored table data item.</p>
 <span class="go">│ Operation: query.table                                                       │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│ Execute a sql query against an (Arrow) table.                                │</span>
+<span class="go">│                                                                              │</span>
+<span class="go">│ The default relation name for the sql query is &#39;data&#39;, but can be modified   │</span>
+<span class="go">│ by the &#39;relation_name&#39; config option/input.                                  │</span>
+<span class="go">│                                                                              │</span>
+<span class="go">│ If the &#39;query&#39; module config option is not set, users can provide their own  │</span>
+<span class="go">│ query, otherwise the pre-set one will be used.                               │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│ Inputs:                                                                      │</span>
 <span class="go">│                                                                              │</span>
@@ -1499,67 +1492,27 @@ a stored table data item.</p>
 <span class="go">│   query_result   table                                                       │</span>
 <span class="go">│                                Label                 JournalType             │</span>
 <span class="go">│                               ───────────────────────────────────────────    │</span>
-<span class="go">│                                Die Krankenpflege     specialized:            │</span>
-<span class="go">│                                                      therapy                 │</span>
+<span class="go">│                                Die Krankenpflege     specialized: therap     │</span>
 <span class="go">│                                Die deutsche Klinik   general medicine        │</span>
-<span class="go">│                                am Eingange des                               │</span>
-<span class="go">│                                zwanzigsten                                   │</span>
-<span class="go">│                                Jahrhunderts                                  │</span>
-<span class="go">│                                Therapeutische        specialized:            │</span>
-<span class="go">│                                Monatshefte           therapy                 │</span>
-<span class="go">│                                Allgemeine            specialized:            │</span>
-<span class="go">│                                Zeitschrift für       psychiatry and          │</span>
-<span class="go">│                                Psychiatrie           neurology               │</span>
-<span class="go">│                                Archiv für            specialized:            │</span>
-<span class="go">│                                Psychiatrie und       psychiatry and          │</span>
-<span class="go">│                                Nervenkrankheiten     neurology               │</span>
+<span class="go">│                                Therapeutische Mona   specialized: therap     │</span>
+<span class="go">│                                Allgemeine Zeitschr   specialized: psychi     │</span>
+<span class="go">│                                Archiv für Psychiat   specialized: psychi     │</span>
 <span class="go">│                                Berliner klinische    general medicine        │</span>
-<span class="go">│                                Wochenschrift                                 │</span>
 <span class="go">│                                Charité Annalen       general medicine        │</span>
-<span class="go">│                                Monatsschrift für     specialized:            │</span>
-<span class="go">│                                Psychiatrie und       psychiatry and          │</span>
-<span class="go">│                                Neurologie            neurology               │</span>
-<span class="go">│                                Virchows Archiv       specialized:            │</span>
-<span class="go">│                                                      anatomy, physiology     │</span>
-<span class="go">│                                                      and pathology           │</span>
-<span class="go">│                                Zeitschrift für       specialized:            │</span>
-<span class="go">│                                pädagogische          psychology and          │</span>
-<span class="go">│                                Psychologie und       pedagogy                │</span>
-<span class="go">│                                Pathologie                                    │</span>
-<span class="go">│                                Vierteljahrsschrift   specialized:            │</span>
-<span class="go">│                                für gerichtliche      anthropology,           │</span>
-<span class="go">│                                Medizin und           criminology and         │</span>
-<span class="go">│                                öffentliches          forensics               │</span>
-<span class="go">│                                Sanitätswesen                                 │</span>
-<span class="go">│                                Centralblatt für      specialized:            │</span>
-<span class="go">│                                Nervenheilkunde und   psychiatry and          │</span>
-<span class="go">│                                Psychiatrie           neurology               │</span>
-<span class="go">│                                Russische             general medicine        │</span>
-<span class="go">│                                medicinische                                  │</span>
-<span class="go">│                                Rundschau                                     │</span>
-<span class="go">│                                Deutsche              general medicine        │</span>
-<span class="go">│                                Aerzte-Zeitung                                │</span>
-<span class="go">│                                Monatsschrift für     specialized:            │</span>
-<span class="go">│                                Geburtshülfe und      gynecology              │</span>
-<span class="go">│                                Gynäkologie                                   │</span>
-<span class="go">│                                Archiv für            specialized:            │</span>
-<span class="go">│                                klinische Chirurgie   surgery                 │</span>
-<span class="go">│                                Zeitschrift für       general medicine        │</span>
-<span class="go">│                                klinische Medicin                             │</span>
-<span class="go">│                                Deutsche              specialized:            │</span>
-<span class="go">│                                militärärztliche      military medicine       │</span>
-<span class="go">│                                Zeitschrift                                   │</span>
-<span class="go">│                                Jahresbericht über    specialized:            │</span>
-<span class="go">│                                die Leistungen und    psychiatry and          │</span>
-<span class="go">│                                Fortschritte auf      neurology               │</span>
-<span class="go">│                                dem Gebiete der                               │</span>
-<span class="go">│                                Neurologi ...                                 │</span>
-<span class="go">│                                Ärztliche             general medicine        │</span>
-<span class="go">│                                Sachverständigen-Z…                           │</span>
-<span class="go">│                                Zeitschrift für die   specialized:            │</span>
-<span class="go">│                                Behandlung            psychiatry and          │</span>
-<span class="go">│                                Schwachsinniger und   neurology               │</span>
-<span class="go">│                                Epileptischer                                 │</span>
+<span class="go">│                                Monatsschrift für P   specialized: psychi     │</span>
+<span class="go">│                                Virchows Archiv       specialized: anatom     │</span>
+<span class="go">│                                Zeitschrift für päd   specialized: psycho     │</span>
+<span class="go">│                                Vierteljahrsschrift   specialized: anthro     │</span>
+<span class="go">│                                Centralblatt für Ne   specialized: psychi     │</span>
+<span class="go">│                                Russische medicinis   general medicine        │</span>
+<span class="go">│                                Deutsche Aerzte-Zei   general medicine        │</span>
+<span class="go">│                                Monatsschrift für G   specialized: gyneco     │</span>
+<span class="go">│                                Archiv für klinisch   specialized: surger     │</span>
+<span class="go">│                                Zeitschrift für kli   general medicine        │</span>
+<span class="go">│                                Deutsche militärärz   specialized: milita     │</span>
+<span class="go">│                                Jahresbericht über    specialized: psychi     │</span>
+<span class="go">│                                Ärztliche Sachverst   general medicine        │</span>
+<span class="go">│                                Zeitschrift für die   specialized: psychi     │</span>
 <span class="go">│                                Der Pfarrbote         news media              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                                                                              │</span>
@@ -1579,22 +1532,22 @@ we might want to store the result of our work, similar to how we imported the or
 <span class="go">│                                                                              │</span>
 <span class="go">│   field          data type   stored id                     alias(es)         │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   query_result   table       3cc8a7c6-6544-407d-b8bf-64…   berlin_journals   │</span>
+<span class="go">│   query_result   table       ef966b17-4410-46cc-b80e-4b…   berlin_journals   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
 
 </div>
 
-<p>From looking at the output, it seems that saving our result has worked. We can make sure by letting <em>kiara</em> 'explain' to us the data that is stored under the alias 'berlin_journals'. This time, let's also display the result tables properies (by using the <code>--properties</code> flag:</p>
+<p>From looking at the output, it seems that saving our result has worked. We can make sure by letting <em>kiara</em> 'explain' to us the data that is stored under the alias 'berlin_journals'. This time, let's also display the result tables properties (by using the <code>--properties</code> flag:</p>
 <div class="highlight"><pre><span></span><code><span class="go">kiara data explain --properties alias:berlin_journals</span>
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:berlin_journals ───────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id            3cc8a7c6-6544-407d-b8bf-6495c5fa4b87                   │</span>
+<span class="go">│   value_id            ef966b17-4410-46cc-b80e-4bfc7d14d92c                   │</span>
 <span class="go">│   aliases             berlin_journals                                        │</span>
-<span class="go">│   kiara_id            17038849-fae6-4d06-b19c-6d41b4fcc2c5                   │</span>
+<span class="go">│   kiara_id            5bb92c35-d11a-4740-ba83-8af0cf01e3dc                   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                            │</span>
@@ -1607,9 +1560,9 @@ we might want to store the result of our work, similar to how we imported the or
 <span class="go">│   enviroments         None                                                   │</span>
 <span class="go">│   property_links      {                                                      │</span>
 <span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
-<span class="go">│                       &quot;4fcb7953-e4cc-4223-8be0-0c2a15e50adb&quot;,                │</span>
+<span class="go">│                       &quot;698d13f1-51b3-4a05-a05f-576c4fbec383&quot;,                │</span>
 <span class="go">│                         &quot;metadata.table&quot;:                                    │</span>
-<span class="go">│                       &quot;7c6ed7c3-295d-44c1-a7e0-0072c1dd8922&quot;                 │</span>
+<span class="go">│                       &quot;18380454-5599-47b3-9851-19bd3a9d3f95&quot;                 │</span>
 <span class="go">│                       }                                                      │</span>
 <span class="go">│   value_hash          zdpuAq5Ty5hNtUaKWouPmS75LxteiQQv6Ue6Jsq9v39QoMPyw      │</span>
 <span class="go">│   value_schema                                                               │</span>
@@ -1668,24 +1621,24 @@ we might want to store the result of our work, similar to how we imported the or
 <p>Our goal for this tutorial is to create a network graph, and investigate its properties. Network graphs are usually created from
 one or two pieces of data (both tabular in nature):</p>
 <ul>
-<li><em>edges</em> (mandataor): information about what nodes exist, and if and how they are connected</li>
+<li><em>edges</em> (mandatory): information about what nodes exist, and if and how they are connected</li>
 <li><em>nodes information</em> (optional): information about attributes of each node</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this tutorial we'll go through all the steps necessary to create a network graph object from two csv files, one by one.
+<p>In this tutorial we'll go through all the steps necessary to create a network graph object from two CSV files, one by one.
 This is a bit cumbersome, but it'll help you understand what actually happens. In a later tutorial we'll show how to create a <em>kiara</em> pipeline
 to combine all those steps into one.</p>
 </div>
 <h3 id="importing-edges-data-creating-a-table-item-from-it">Importing edges data, creating a table item from it<a class="headerlink" href="#importing-edges-data-creating-a-table-item-from-it" title="Permanent link">&para;</a></h3>
-<p>We already have our nodes imported into kiara (with the alias <code>my_first_table</code>). Now we need to do the same for our edges. Simliar to what we have done above, we want to import the file into
+<p>We already have our nodes imported into kiara (with the alias <code>my_first_table</code>). Now we need to do the same for our edges. Similar to what we have done above, we want to import the file into
 the <em>kiara</em> data store, and then convert it into a table. This time, let's just use a pre-pared (so-called) pipeline operation, which basically runs both operations in one, and feeds the right input(s) into the right input(s):</p>
 <div class="highlight"><pre><span></span><code><span class="go">kiara operation explain import.table.from.csv_file</span>
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: import.table.from.csv_file ──────────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   Documentation   Load a table from a csv file.                              │</span>
+<span class="go">│   Documentation   Import a table from a csv file.                            │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   Inputs                                                                     │</span>
 <span class="go">│                     field                                                    │</span>
@@ -1801,8 +1754,8 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                                              │</span>
 <span class="go">│   field           data type   stored id               alias(es)              │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   imported_file   file        b8919883-9941-41f8-8…   journal_edges.impor…   │</span>
-<span class="go">│   table           table       88c9aa60-aced-4bcb-a…   journal_edges.table    │</span>
+<span class="go">│   imported_file   file        7c20704d-10a1-4d8a-9…   journal_edges.impor…   │</span>
+<span class="go">│   table           table       8e7629b8-8ec4-439d-b…   journal_edges.table    │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1813,18 +1766,18 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <p class="admonition-title">Note</p>
 <p>Here we've used a simple string (without '=') with the <code>--save</code> option, and as you can see, <em>kiara</em> created two namespaced aliases for the result items.</p>
 </div>
-<p>At this stage we'll have two relevant tables in our store: <code>journal_edges.table</code>, and <code>journal_nodes_table</code> (note how both use different naming schems due to us using the <code>--save</code> option differently in both cases):</p>
+<p>At this stage we'll have two relevant tables in our store: <code>journal_edges.table</code>, and <code>journal_nodes_table</code> (note how both use different naming schemes due to us using the <code>--save</code> option differently in both cases):</p>
 <p><div class="highlight"><pre><span></span><code><span class="go">kiara data list</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Available aliases ──────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   alias                         type        size                             │</span>
 <span class="go">│  ────────────────────────────────────────────────                            │</span>
-<span class="go">│   journal_nodes_table           table   42.79 KB                             │</span>
 <span class="go">│   berlin_journals               table    2.63 KB                             │</span>
-<span class="go">│   journal_nodes_file            file    33.43 KB                             │</span>
-<span class="go">│   journal_edges.table           table    9.13 KB                             │</span>
 <span class="go">│   journal_edges.imported_file   file     3.02 KB                             │</span>
+<span class="go">│   journal_edges.table           table    9.13 KB                             │</span>
+<span class="go">│   journal_nodes_file            file    33.43 KB                             │</span>
+<span class="go">│   journal_nodes_table           table   42.79 KB                             │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -1838,9 +1791,9 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│   Id                                   Type(s)     Description                                                                                                                   │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
 <span class="go">│   create.network_data.from.tables                  Create a graph object from one or two tables.                                                                                 │</span>
-<span class="go">│   export.network_data.as.csv_files     export_as   -- n/a --                                                                                                                     │</span>
-<span class="go">│   export.network_data.as.sql_dump      export_as   -- n/a --                                                                                                                     │</span>
-<span class="go">│   export.network_data.as.sqlite_db     export_as   -- n/a --                                                                                                                     │</span>
+<span class="go">│   export.network_data.as.csv_files     export_as   Export network data as 2 csv files (one for edges, one for nodes.                                                             │</span>
+<span class="go">│   export.network_data.as.sql_dump      export_as   Export network data as a sql dump file.                                                                                       │</span>
+<span class="go">│   export.network_data.as.sqlite_db     export_as   Export network data as a sqlite database file.                                                                                │</span>
 <span class="go">│   import.network_data.from.csv_files   pipeline    Load the edges table from a csv file.                                                                                         │</span>
 <span class="go">│                                                                                                                                                                                  │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
@@ -1855,6 +1808,12 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: create.network_data.from.tables ─────────────────────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                                      │</span>
 <span class="go">│   Documentation   Create a graph object from one or two tables.                                                      │</span>
+<span class="go">│                                                                                                                      │</span>
+<span class="go">│                   This module needs at least one table as input, providing the edges of the resulting network data   │</span>
+<span class="go">│                   set.                                                                                               │</span>
+<span class="go">│                   If no further table is created, basic node information will be automatically created by using      │</span>
+<span class="go">│                   unique values from                                                                                 │</span>
+<span class="go">│                   the edges source and target columns.                                                               │</span>
 <span class="go">│                                                                                                                      │</span>
 <span class="go">│   Inputs                                                                                                             │</span>
 <span class="go">│                     field name           type     description                        Required   Default              │</span>
@@ -1952,7 +1911,6 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                   208   The American Journal of Psychology                 specialized: psychology                           Baltimore   United States             United States       39.289444   -76.615278   English      │</span>
 <span class="go">│                                   295   Die Krankenpflege                                  specialized: therapy                              Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                                   296   Die deutsche Klinik am Eingange des zwanzigsten    general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                         Jahrhunderts                                                                                                                                                                                         │</span>
 <span class="go">│                                   300   Therapeutische Monatshefte                         specialized: therapy                              Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                                   1     Allgemeine Zeitschrift für Psychiatrie             specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                                   7     Archiv für Psychiatrie und Nervenkrankheiten       specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German       │</span>
@@ -1960,17 +1918,14 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                   13    Charité Annalen                                    general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                                   21    Monatsschrift für Psychiatrie und Neurologie       specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                                   29    Virchows Archiv                                    specialized: anatomy, physiology and pathology    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                   31    Zeitschrift für pädagogische Psychologie und       specialized: psychology and pedagogy              Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                         Pathologie                                                                                                                                                                                           │</span>
-<span class="go">│                                   42    Vierteljahrsschrift für gerichtliche Medizin und   specialized: anthropology, criminology and        Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                         öffentliches Sanitätswesen                         forensics                                                                                                                                         │</span>
+<span class="go">│                                   31    Zeitschrift für pädagogische Psychologie und Pat   specialized: psychology and pedagogy              Berlin      German Empire             Germany             52.52       13.405       German       │</span>
+<span class="go">│                                   42    Vierteljahrsschrift für gerichtliche Medizin und   specialized: anthropology, criminology and fore   Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                                   47    Centralblatt für Nervenheilkunde und Psychiatrie   specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                                   50    Russische medicinische Rundschau                   general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German       │</span>
 <span class="go">│                                   ...   ...                                                ...                                               ...         ...                       ...                 ...         ...          ...          │</span>
 <span class="go">│                                   ...   ...                                                ...                                               ...         ...                       ...                 ...         ...          ...          │</span>
 <span class="go">│                                   277   L&#39;arte medica                                      general medicine                                  Turin       Italy                     Italy               45.079167   7.676111     Italian      │</span>
-<span class="go">│                                   288   Allgemeine österreichische Gerichts-Zeitung        specialized: anthropology, criminology and        Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                                                                            forensics                                                                                                                                         │</span>
+<span class="go">│                                   288   Allgemeine österreichische Gerichts-Zeitung        specialized: anthropology, criminology and fore   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
 <span class="go">│                                   18    Jahrbücher für Psychiatrie                         specialized: psychiatry and neurology             Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
 <span class="go">│                                   30    Wiener klinische Rundschau                         general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
 <span class="go">│                                   44    Wiener klinische Wochenschrift                     general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
@@ -1984,8 +1939,7 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                   77    Medycyna                                           general medicine                                  Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │</span>
 <span class="go">│                                   150   Kronika Lekarska                                   general medicine                                  Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │</span>
 <span class="go">│                                   86    Grenzfragen des Nerven- und Seelenlebens           specialized: psychiatry and neurology             Wiesbaden   German Empire             Germany             50.0825     8.24         German       │</span>
-<span class="go">│                                   206   Ergebnisse der Allgemeinen Pathologie und          specialized: anatomy, physiology and pathology    Wiesbaden   German Empire             Germany             50.0825     8.24         German       │</span>
-<span class="go">│                                         Pathologischen Anatomie                                                                                                                                                                              │</span>
+<span class="go">│                                   206   Ergebnisse der Allgemeinen Pathologie und Pathol   specialized: anatomy, physiology and pathology    Wiesbaden   German Empire             Germany             50.0825     8.24         German       │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
@@ -1994,7 +1948,7 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field          data type      stored id                              alias(es)                                                                                                                                                             │</span>
 <span class="go">│  ─────────────────────────────────────────────────────────────────────────────────────                                                                                                                                                       │</span>
-<span class="go">│   network_data   network_data   a9ec713c-4a8e-4040-8605-706b2f3f91b6   journals_graph                                                                                                                                                        │</span>
+<span class="go">│   network_data   network_data   90176b2c-c984-41bc-8f08-d6f50afc6a54   journals_graph                                                                                                                                                        │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -2007,9 +1961,9 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journals_graph ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│   value_id            a9ec713c-4a8e-4040-8605-706b2f3f91b6                                                                                                                                                                                   │</span>
+<span class="go">│   value_id            90176b2c-c984-41bc-8f08-d6f50afc6a54                                                                                                                                                                                   │</span>
 <span class="go">│   aliases             journals_graph                                                                                                                                                                                                         │</span>
-<span class="go">│   kiara_id            17038849-fae6-4d06-b19c-6d41b4fcc2c5                                                                                                                                                                                   │</span>
+<span class="go">│   kiara_id            5bb92c35-d11a-4740-ba83-8af0cf01e3dc                                                                                                                                                                                   │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                                                                                                                                                                                            │</span>
@@ -2021,9 +1975,9 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│   destiny_links       {}                                                                                                                                                                                                                     │</span>
 <span class="go">│   enviroments         None                                                                                                                                                                                                                   │</span>
 <span class="go">│   property_links      {                                                                                                                                                                                                                      │</span>
-<span class="go">│                         &quot;metadata.database&quot;: &quot;e5764aa6-49dc-4092-a815-ac96fd9de25d&quot;,                                                                                                                                                         │</span>
-<span class="go">│                         &quot;metadata.graph_properties&quot;: &quot;cfa5715e-1e53-489b-818d-5ec7f816e0f9&quot;,                                                                                                                                                 │</span>
-<span class="go">│                         &quot;metadata.python_class&quot;: &quot;c3b5c412-124d-450f-8bac-3f47feca64c2&quot;                                                                                                                                                      │</span>
+<span class="go">│                         &quot;metadata.database&quot;: &quot;de90c49d-7ac7-4f42-9745-cba48a95fa30&quot;,                                                                                                                                                         │</span>
+<span class="go">│                         &quot;metadata.graph_properties&quot;: &quot;70fe300a-697f-41d0-a0be-395f652a44a2&quot;,                                                                                                                                                 │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;: &quot;bf25e70c-e8b3-4deb-8c75-657f0ece9dff&quot;                                                                                                                                                      │</span>
 <span class="go">│                       }                                                                                                                                                                                                                      │</span>
 <span class="go">│   value_hash          zdpuAoZJjYTx2q7sc4tGRsVLeJypMqHdxLPmdCNiMxsckHn35                                                                                                                                                                      │</span>
 <span class="go">│   value_schema                                                                                                                                                                                                                               │</span>
@@ -2191,17 +2145,17 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 
 </div>
 
-<p>All good. Also, check out the meteadata <em>kiara</em> knows about the graph already.</p>
+<p>All good. Also, check out the metadata <em>kiara</em> knows about the graph already.</p>
 <h3 id="side-note-investigating-the-graph-value-lineage">Side-note: investigating the graph value lineage<a class="headerlink" href="#side-note-investigating-the-graph-value-lineage" title="Permanent link">&para;</a></h3>
 <p><em>kiara</em> keeps track of all the modules and inputs that went into producing a value, basically its entire ancestry. This is not the place to explain why, and how that can be
-very power- and use-full. But if you are ever interested about what went into creating a particular value, you can do this with:</p>
+very powerful and useful. But if you are ever interested about what went into creating a particular value, you can do this with:</p>
 <p><div class="highlight"><pre><span></span><code><span class="go">kiara data explain --lineage alias:journals_graph</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journals_graph ────────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id            a9ec713c-4a8e-4040-8605-706b2f3f91b6                   │</span>
+<span class="go">│   value_id            90176b2c-c984-41bc-8f08-d6f50afc6a54                   │</span>
 <span class="go">│   aliases             journals_graph                                         │</span>
-<span class="go">│   kiara_id            17038849-fae6-4d06-b19c-6d41b4fcc2c5                   │</span>
+<span class="go">│   kiara_id            5bb92c35-d11a-4740-ba83-8af0cf01e3dc                   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                            │</span>
@@ -2214,11 +2168,11 @@ very power- and use-full. But if you are ever interested about what went into cr
 <span class="go">│   enviroments         None                                                   │</span>
 <span class="go">│   property_links      {                                                      │</span>
 <span class="go">│                         &quot;metadata.database&quot;:                                 │</span>
-<span class="go">│                       &quot;e5764aa6-49dc-4092-a815-ac96fd9de25d&quot;,                │</span>
+<span class="go">│                       &quot;de90c49d-7ac7-4f42-9745-cba48a95fa30&quot;,                │</span>
 <span class="go">│                         &quot;metadata.graph_properties&quot;:                         │</span>
-<span class="go">│                       &quot;cfa5715e-1e53-489b-818d-5ec7f816e0f9&quot;,                │</span>
+<span class="go">│                       &quot;70fe300a-697f-41d0-a0be-395f652a44a2&quot;,                │</span>
 <span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
-<span class="go">│                       &quot;c3b5c412-124d-450f-8bac-3f47feca64c2&quot;                 │</span>
+<span class="go">│                       &quot;bf25e70c-e8b3-4deb-8c75-657f0ece9dff&quot;                 │</span>
 <span class="go">│                       }                                                      │</span>
 <span class="go">│   value_hash          zdpuAoZJjYTx2q7sc4tGRsVLeJypMqHdxLPmdCNiMxsckHn35      │</span>
 <span class="go">│   value_schema                                                               │</span>
@@ -2236,39 +2190,42 @@ very power- and use-full. But if you are ever interested about what went into cr
 <span class="go">│                                                                              │</span>
 <span class="go">│   lineage             create.network_data.from.tables                        │</span>
 <span class="go">│                       ├── input: edges (table) =                             │</span>
-<span class="go">│                       │   88c9aa60-aced-4bcb-a159-97098dfc915c               │</span>
+<span class="go">│                       │   8e7629b8-8ec4-439d-b237-1a96484796f1               │</span>
 <span class="go">│                       │   └── create.table                                   │</span>
 <span class="go">│                       │       └── input: csv_file (file) =                   │</span>
-<span class="go">│                       │           b8919883-9941-41f8-8ad6-f22fea5541bb       │</span>
+<span class="go">│                       │           7c20704d-10a1-4d8a-9c99-2e3a239ef989       │</span>
 <span class="go">│                       │           └── import.file                            │</span>
 <span class="go">│                       │               └── input: path (string) =             │</span>
-<span class="go">│                       │                   a2786f9a-f819-4f5b-85f8-4464c30…   │</span>
+<span class="go">│                       │                   02ad12da-11a5-45ea-a439-3d234bd…   │</span>
 <span class="go">│                       ├── input: edges_column_map (none) =                   │</span>
-<span class="go">│                       │   00000000-0000-0000-0000-000000000001               │</span>
+<span class="go">│                       │   00000000-0000-0000-0000-000000000002               │</span>
 <span class="go">│                       ├── input: id_column_name (string) =                   │</span>
-<span class="go">│                       │   429837f6-86b9-4ff2-83f3-b67dc95c7983               │</span>
+<span class="go">│                       │   21b5a21f-cd5e-4cf6-8d6c-a05d5c98de52               │</span>
 <span class="go">│                       ├── input: label_column_name (string) =                │</span>
-<span class="go">│                       │   77b601d9-5ba8-4b26-820a-d5f313f91316               │</span>
+<span class="go">│                       │   50098b90-8d58-4664-bd9a-45f9d5e1651d               │</span>
 <span class="go">│                       ├── input: nodes (table) =                             │</span>
-<span class="go">│                       │   705a61ed-4e3d-4481-ab79-b3111ac7f9a6               │</span>
+<span class="go">│                       │   3e00b7c4-d5c0-4160-93a6-54faa949a6f6               │</span>
 <span class="go">│                       │   └── create.table                                   │</span>
 <span class="go">│                       │       └── input: csv_file (file) =                   │</span>
-<span class="go">│                       │           d4e9d423-aa76-48c7-b4d3-997c5a58286f       │</span>
+<span class="go">│                       │           af78b6aa-eaa1-481c-abae-2adba025fddc       │</span>
 <span class="go">│                       │           └── import.file                            │</span>
 <span class="go">│                       │               └── input: path (string) =             │</span>
-<span class="go">│                       │                   6d6e5f44-6a68-4475-a4ba-a8e0b35…   │</span>
+<span class="go">│                       │                   f97b7119-5c05-4df9-a320-a71545b…   │</span>
 <span class="go">│                       ├── input: nodes_column_map (none) =                   │</span>
-<span class="go">│                       │   00000000-0000-0000-0000-000000000001               │</span>
+<span class="go">│                       │   00000000-0000-0000-0000-000000000002               │</span>
 <span class="go">│                       ├── input: source_column_name (string) =               │</span>
-<span class="go">│                       │   46e523ea-e0db-4f03-b6f8-e6eff226cb08               │</span>
+<span class="go">│                       │   01dfa8c8-7dbf-416b-a8cb-5c6303353a63               │</span>
 <span class="go">│                       └── input: target_column_name (string) =               │</span>
-<span class="go">│                           00d68352-29f1-476e-8f6a-8aef52179090               │</span>
+<span class="go">│                           2089f1b3-71cd-44a3-b0ca-b99dbb35a2a6               │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
 <p>As you can see, this basically describes what we've done so far, to get to this stage. You could now do a <code>kiara explain data value:&lt;value_id&gt;</code> on each of the value ids you see here, if you were so inclined.</p>
 <h3 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h3>
 <p>... to come ...</p>
+
+
+
 
               
             </article>
@@ -2336,10 +2293,11 @@ very power- and use-full. But if you are ever interested about what went into cr
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
+    
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.0238f547.min.js"></script>
+      <script src="../../assets/javascripts/bundle.0bc13b87.min.js"></script>
       
     
   </body>
