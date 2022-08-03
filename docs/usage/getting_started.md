@@ -39,7 +39,7 @@ git clone https://github.com/DHARPA-Project/kiara.examples.git
 cd kiara.examples
 ```
 
-Specifically, here we'll be using two csv files that were created by my colleague [Lena Jaskov](https://github.com/yaslena): [files](https://github.com/DHARPA-Project/kiara.examples/tree/main/data/journals)
+Specifically, here we'll be using two CSV files that were created by my colleague [Lena Jaskov](https://github.com/yaslena): [files](https://github.com/DHARPA-Project/kiara.examples/tree/main/examples/data/journals)
 
 The files contain information about connection (edges) between medical journals (``JournalEdges1902.csv``), as well as additional metadata for the journals themselves (``JournalNodes1902.csv``). We'll use that data to create table and graph structures with *kiara*.
 
@@ -61,10 +61,10 @@ First, let's have a look which operations are available, and what we can do with
 Tables are arguably the most used (and useful) data structures in data science and data engineering. They come in different
 forms; some people call them spreadsheets, or dataframes. We're not fancy, so we won't do that: we'll call them tables.
 
-A depressingly large amount of (tabular) data comes in csv files, which is why we'll use one as an example here. Specifically, we will
-use [``JournalNodes1902.csv``](https://github.com/DHARPA-Project/kiara.examples/blob/main/data/journals/JournalNodes1902.csv). As stated above, this file contains information about historical medical
+A depressingly large amount of (tabular) data comes in CSV files, which is why we'll use one as an example here. Specifically, we will
+use [``JournalNodes1902.csv``](https://github.com/DHARPA-Project/kiara.examples/blob/main/examples/data/journals/JournalNodes1902.csv). As stated above, this file contains information about historical medical
 journals (name, type, where it was from, etc.), and we'll later use it as the table which will provide node information in a network graph. We want to convert this file into a 'proper' table structure, because
-that will make subsequent processing faster, and also simpler in a lot of cases. 'Proper", in this case means we'll convert it into a better format for internal use, for example containing information about the data type in each column, among other things.
+that will make subsequent processing faster, and also simpler in a lot of cases. 'Proper', in this case means we'll convert it into a better format for internal use, for example containing information about the data type in each column, among other things.
 
 ### Finding the right command, and how to use it
 
@@ -83,8 +83,8 @@ After looking at the ``kiara operation list`` output, it looks like the ``import
 
 {{ cli("kiara", "run", "import.file", fail_ok=True) }}
 
-As makes obvious sense, we need to provide a ``path`` input, of type ``string``, letting *kiara* know where to pick up the file. The *kiara* commandline interface can
-take complex inputs like dicts, but fortunately this is not necessary here. If you ever come into a situation where you need that, check out [this section](../..//usage/#complex-inputs).
+As makes obvious sense, we need to provide a ``path`` input, of type ``string``, letting *kiara* know where to pick up the file. The *kiara* command-line interface can
+take complex inputs like dictionaries, but fortunately this is not necessary here. If you ever come into a situation where you need that, check out [this section](../..//usage/#complex-inputs).
 
 For simple inputs like string-type things, all we need to do is provide the input name, followed by '=' and the value itself:
 
@@ -109,9 +109,9 @@ To check whether that worked, we can list all of our items in the data store, an
 
 All right! Looks like this worked.
 
-#### Creating a table from an imported csv file
+#### Creating a table from an imported CSV file
 
-Csv files are usually not much use by themselves, in most cases we want to create a table-like structure from them, so we can efficiently query the data. This usually also makes sure that the structure and format of the file is valid.
+CSV files are usually not much use by themselves, in most cases we want to create a table-like structure from them, so we can efficiently query the data. This usually also makes sure that the structure and format of the file is valid.
 
 Let's ask kiara what 'create' related operations it has available:
 
@@ -135,7 +135,7 @@ That output looks good, right? Much more table-y then before. Only thing is: we 
 {{ cli("kiara", "run", "--output", "silent", "--save", "table=journal_nodes_table", "create.table.from.csv_file", "csv_file=alias:journal_nodes_file", extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
 !!! note
-    Here we use the `--output silent` command line option to surpress any output of values. We've seen this already in the
+    Here we use the `--output silent` command line option to supress any output of values. We've seen this already in the
     last invocation of this command. *kiara* will still tell us the id of the value it just saved.
 
 #### Checking the data store, again
@@ -166,7 +166,7 @@ This command loads the actual data, and prints out its content (or a representat
 This section is a bit more advanced, so you can skip it if you want. It's just to show an example of what can be done with
 a stored table data item.
 
-We'll be using the [sql](https://en.wikipedia.org/wiki/SQL) query language to find the names and types of all journals from Berlin. The query for this is:
+We'll be using the [SQL](https://en.wikipedia.org/wiki/SQL) query language to find the names and types of all journals from Berlin. The query for this is:
 
 ```sql
 select Label, JournalType from data where City='Berlin'
@@ -189,7 +189,7 @@ we might want to store the result of our work, similar to how we imported the or
 
 {{ cli("kiara", "run", "query.table", "--output=silent", "--save", "query_result=berlin_journals", "table=alias:journal_nodes_table", "query=\"select Label, JournalType from data where City=\'Berlin\'\"", extra_env={"KIARA_CONTEXT": "_getting_started"}, max_height=240) }}
 
-From looking at the output, it seems that saving our result has worked. We can make sure by letting *kiara* 'explain' to us the data that is stored under the alias 'berlin_journals'. This time, let's also display the result tables properies (by using the `--properties` flag:
+From looking at the output, it seems that saving our result has worked. We can make sure by letting *kiara* 'explain' to us the data that is stored under the alias 'berlin_journals'. This time, let's also display the result tables properties (by using the `--properties` flag:
 
 {{ cli("kiara", "data", "explain", "--properties", "alias:berlin_journals", extra_env={"KIARA_CONTEXT": "_getting_started"}, max_height=240) }}
 
@@ -199,17 +199,17 @@ From looking at the output, it seems that saving our result has worked. We can m
 Our goal for this tutorial is to create a network graph, and investigate its properties. Network graphs are usually created from
 one or two pieces of data (both tabular in nature):
 
-- *edges* (mandataor): information about what nodes exist, and if and how they are connected
+- *edges* (mandatory): information about what nodes exist, and if and how they are connected
 - *nodes information* (optional): information about attributes of each node
 
 !!! note
-    In this tutorial we'll go through all the steps necessary to create a network graph object from two csv files, one by one.
+    In this tutorial we'll go through all the steps necessary to create a network graph object from two CSV files, one by one.
     This is a bit cumbersome, but it'll help you understand what actually happens. In a later tutorial we'll show how to create a *kiara* pipeline
     to combine all those steps into one.
 
 ### Importing edges data, creating a table item from it
 
-We already have our nodes imported into kiara (with the alias `my_first_table`). Now we need to do the same for our edges. Simliar to what we have done above, we want to import the file into
+We already have our nodes imported into kiara (with the alias `my_first_table`). Now we need to do the same for our edges. Similar to what we have done above, we want to import the file into
 the *kiara* data store, and then convert it into a table. This time, let's just use a pre-pared (so-called) pipeline operation, which basically runs both operations in one, and feeds the right input(s) into the right input(s):
 
 {{ cli("kiara", "operation", "explain", "import.table.from.csv_file", max_height=240) }}
@@ -221,7 +221,7 @@ So, let's see:
 !!! note
     Here we've used a simple string (without '=') with the `--save` option, and as you can see, *kiara* created two namespaced aliases for the result items.
 
-At this stage we'll have two relevant tables in our store: `journal_edges.table`, and `journal_nodes_table` (note how both use different naming schems due to us using the `--save` option differently in both cases):
+At this stage we'll have two relevant tables in our store: `journal_edges.table`, and `journal_nodes_table` (note how both use different naming schemes due to us using the `--save` option differently in both cases):
 
 {{ cli("kiara", "data", "list", cache_key="3rd_run_data_list", extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
@@ -243,12 +243,12 @@ To confirm our graph data is created, let's check the data store:
 
 {{ cli("kiara", "data", "explain", "--properties", "alias:journals_graph", extra_env={"KIARA_CONTEXT": "_getting_started", "CONSOLE_WIDTH": "240"}, max_height=240) }}
 
-All good. Also, check out the meteadata *kiara* knows about the graph already.
+All good. Also, check out the metadata *kiara* knows about the graph already.
 
 ### Side-note: investigating the graph value lineage
 
 *kiara* keeps track of all the modules and inputs that went into producing a value, basically its entire ancestry. This is not the place to explain why, and how that can be
-very power- and use-full. But if you are ever interested about what went into creating a particular value, you can do this with:
+very powerful and useful. But if you are ever interested about what went into creating a particular value, you can do this with:
 
 {{ cli("kiara", "data", "explain", "--lineage", "alias:journals_graph",  extra_env={"KIARA_CONTEXT": "_getting_started", "COLUMN_WIDTH": "140"}) }}
 
