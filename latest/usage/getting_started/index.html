@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0rc1">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.476df7d4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -50,7 +50,7 @@
     
       <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,7 +84,9 @@
     </div>
     
       <div data-md-component="outdated" hidden>
-        
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
       </div>
     
     
@@ -825,7 +827,7 @@ own usage scenarios.</p>
 <span class="go">│   import.file_bundle                                                           Import a folder (file_bundle) from the local              │</span>
 <span class="go">│                                                                                filesystem.                                               │</span>
 <span class="go">│   import.network_data.from.csv_files                             pipeline      Load the edges table from a csv file.                     │</span>
-<span class="go">│   import.table.from.csv_file                                     pipeline      Load a table from a csv file.                             │</span>
+<span class="go">│   import.table.from.csv_file                                     pipeline      Import a table from a csv file.                           │</span>
 <span class="go">│   import.table.from.text_file_bundle                             pipeline      Load a table from a bundle of text files.                 │</span>
 <span class="go">│   kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module                 -- n/a --                                                 │</span>
 <span class="go">│   list.contains                                                                Check whether an element is in a list.                    │</span>
@@ -841,11 +843,7 @@ own usage scenarios.</p>
 <span class="go">│                                                                                strings.                                                  │</span>
 <span class="go">│   query.database                                                               Execute a sql query against a (sqlite) database.          │</span>
 <span class="go">│   query.table                                                                  Execute a sql query against an (Arrow) table.             │</span>
-<span class="go">│   string_filter.tokens                                           filter        -- n/a --                                                 │</span>
 <span class="go">│   table.cut_column                                                             Cut off one column from a table, returning an array.      │</span>
-<span class="go">│   table_filter.drop_columns                                      filter        -- n/a --                                                 │</span>
-<span class="go">│   table_filter.select_columns                                    filter        -- n/a --                                                 │</span>
-<span class="go">│   table_filter.select_rows                                       filter        -- n/a --                                                 │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -880,7 +878,7 @@ that will make subsequent processing faster, and also simpler in a lot of cases.
 <span class="go">│   import.file                                     Import a file from the local filesystem.                                               │</span>
 <span class="go">│   import.file_bundle                              Import a folder (file_bundle) from the local filesystem.                               │</span>
 <span class="go">│   import.network_data.from.csv_files   pipeline   Load the edges table from a csv file.                                                  │</span>
-<span class="go">│   import.table.from.csv_file           pipeline   Load a table from a csv file.                                                          │</span>
+<span class="go">│   import.table.from.csv_file           pipeline   Import a table from a csv file.                                                        │</span>
 <span class="go">│   import.table.from.text_file_bundle   pipeline   Load a table from a bundle of text files.                                              │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
@@ -1188,7 +1186,7 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 <span class="go">│                                                                              │</span>
 <span class="go">│   field   data type   stored id                         alias(es)            │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   file    file        24ed1d79-2f79-40c4-93d9-97db43…   journal_nodes_file   │</span>
+<span class="go">│   file    file        9fb7316b-1e60-4aca-ad8d-4f3788…   journal_nodes_file   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1238,10 +1236,9 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 <span class="go">│                     field                                                    │</span>
 <span class="go">│                     name       type       descrip…   Required   Default      │</span>
 <span class="go">│                    ──────────────────────────────────────────────────────    │</span>
-<span class="go">│                     csv_file   csv_file   The type   yes        -- no        │</span>
-<span class="go">│                                           of the                default      │</span>
-<span class="go">│                                           source                --           │</span>
-<span class="go">│                                           value.                             │</span>
+<span class="go">│                     csv_file   csv_file   The        yes        -- no        │</span>
+<span class="go">│                                           source                default      │</span>
+<span class="go">│                                           value.                --           │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   Outputs                                                                    │</span>
@@ -1320,7 +1317,7 @@ a dataset that lives in its data store, and we want to refer to it via its alias
 <span class="go">│                                                                              │</span>
 <span class="go">│   field   data type   stored id                        alias(es)             │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   table   table       84450455-d51f-48e8-ba70-dc718…   journal_nodes_table   │</span>
+<span class="go">│   table   table       053485b0-242c-4b88-a133-4fe77…   journal_nodes_table   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -1349,36 +1346,36 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <div style='max-height:300px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journal_nodes_table ───────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id          84450455-d51f-48e8-ba70-dc71873ca47c                     │</span>
-<span class="go">│   aliases           journal_nodes_table                                      │</span>
-<span class="go">│   kiara_id          98679ee6-f643-4875-8ff5-d8b2a45078b7                     │</span>
+<span class="go">│   value_id            053485b0-242c-4b88-a133-4fe7777212c0                   │</span>
+<span class="go">│   aliases             journal_nodes_table                                    │</span>
+<span class="go">│   kiara_id            6eddb9b3-c098-4e1a-bf17-c399c47914bd                   │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│                     ──────────────────────────────────────────────────────   │</span>
-<span class="go">│   authors                                                                    │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│   context                                                                    │</span>
-<span class="go">│                                                                              │</span>
+<span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                            │</span>
-<span class="go">│                       python_class_name    TableType                         │</span>
-<span class="go">│                       python_module_name   kiara_plugin.tabular.data_ty…     │</span>
-<span class="go">│                       full_name            kiara_plugin.tabular.data_ty…     │</span>
+<span class="go">│                         python_class_name    TableType                       │</span>
+<span class="go">│                         python_module_name   kiara_plugin.tabular.data_…     │</span>
+<span class="go">│                         full_name            kiara_plugin.tabular.data_…     │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   documentation     -- n/a --                                                │</span>
-<span class="go">│   enviroments       None                                                     │</span>
-<span class="go">│   is_internal       False                                                    │</span>
-<span class="go">│   is_persisted      True                                                     │</span>
-<span class="go">│   type_name         84450455-d51f-48e8-ba70-dc71873ca47c                     │</span>
-<span class="go">│   value_hash        zdpuAn89Et1ENzfoASJRYcWEceyfRiPg664mN4nnHLFnjRLyg        │</span>
+<span class="go">│   destiny_backlinks   {}                                                     │</span>
+<span class="go">│   destiny_links       {}                                                     │</span>
+<span class="go">│   enviroments         None                                                   │</span>
+<span class="go">│   property_links      {                                                      │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
+<span class="go">│                       &quot;046ed4e8-e655-4c09-a8ff-2c8b2969800b&quot;,                │</span>
+<span class="go">│                         &quot;metadata.table&quot;:                                    │</span>
+<span class="go">│                       &quot;56e1d814-6b3f-4cc5-9ab0-cbc5c554ceb9&quot;                 │</span>
+<span class="go">│                       }                                                      │</span>
+<span class="go">│   value_hash          zdpuAn89Et1ENzfoASJRYcWEceyfRiPg664mN4nnHLFnjRLyg      │</span>
 <span class="go">│   value_schema                                                               │</span>
-<span class="go">│                       type          table                                    │</span>
-<span class="go">│                       type_config   {}                                       │</span>
-<span class="go">│                       default       __not_set__                              │</span>
-<span class="go">│                       optional      False                                    │</span>
-<span class="go">│                       is_constant   False                                    │</span>
-<span class="go">│                       doc           The result value.                        │</span>
+<span class="go">│                         type          table                                  │</span>
+<span class="go">│                         type_config   {}                                     │</span>
+<span class="go">│                         default       __not_set__                            │</span>
+<span class="go">│                         optional      False                                  │</span>
+<span class="go">│                         is_constant   False                                  │</span>
+<span class="go">│                         doc           The result value.                      │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_size        42.79 KB                                                 │</span>
-<span class="go">│   value_status      -- set --                                                │</span>
+<span class="go">│   value_size          42.79 KB                                               │</span>
+<span class="go">│   value_status        -- set --                                              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1532,7 +1529,7 @@ we might want to store the result of our work, similar to how we imported the or
 <span class="go">│                                                                              │</span>
 <span class="go">│   field          data type   stored id                     alias(es)         │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   query_result   table       fbb31fc2-8dd5-4969-9c37-09…   berlin_journals   │</span>
+<span class="go">│   query_result   table       c74e65ad-e41d-4a10-8e32-8b…   berlin_journals   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1545,71 +1542,71 @@ we might want to store the result of our work, similar to how we imported the or
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:berlin_journals ───────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id          fbb31fc2-8dd5-4969-9c37-094ed337eaa0                     │</span>
-<span class="go">│   aliases           berlin_journals                                          │</span>
-<span class="go">│   kiara_id          98679ee6-f643-4875-8ff5-d8b2a45078b7                     │</span>
+<span class="go">│   value_id            c74e65ad-e41d-4a10-8e32-8b4529d71a1c                   │</span>
+<span class="go">│   aliases             berlin_journals                                        │</span>
+<span class="go">│   kiara_id            6eddb9b3-c098-4e1a-bf17-c399c47914bd                   │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│                     ──────────────────────────────────────────────────────   │</span>
-<span class="go">│   authors                                                                    │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│   context                                                                    │</span>
-<span class="go">│                                                                              │</span>
+<span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                            │</span>
-<span class="go">│                       python_class_name    TableType                         │</span>
-<span class="go">│                       python_module_name   kiara_plugin.tabular.data_ty…     │</span>
-<span class="go">│                       full_name            kiara_plugin.tabular.data_ty…     │</span>
+<span class="go">│                         python_class_name    TableType                       │</span>
+<span class="go">│                         python_module_name   kiara_plugin.tabular.data_…     │</span>
+<span class="go">│                         full_name            kiara_plugin.tabular.data_…     │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   documentation     -- n/a --                                                │</span>
-<span class="go">│   enviroments       None                                                     │</span>
-<span class="go">│   is_internal       False                                                    │</span>
-<span class="go">│   is_persisted      True                                                     │</span>
-<span class="go">│   type_name         fbb31fc2-8dd5-4969-9c37-094ed337eaa0                     │</span>
-<span class="go">│   value_hash        zdpuAq5Ty5hNtUaKWouPmS75LxteiQQv6Ue6Jsq9v39QoMPyw        │</span>
+<span class="go">│   destiny_backlinks   {}                                                     │</span>
+<span class="go">│   destiny_links       {}                                                     │</span>
+<span class="go">│   enviroments         None                                                   │</span>
+<span class="go">│   property_links      {                                                      │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
+<span class="go">│                       &quot;801bd417-7974-400b-aff2-75f1844e09a6&quot;,                │</span>
+<span class="go">│                         &quot;metadata.table&quot;:                                    │</span>
+<span class="go">│                       &quot;b211da63-362c-4a8a-bdca-f59b6402d060&quot;                 │</span>
+<span class="go">│                       }                                                      │</span>
+<span class="go">│   value_hash          zdpuAq5Ty5hNtUaKWouPmS75LxteiQQv6Ue6Jsq9v39QoMPyw      │</span>
 <span class="go">│   value_schema                                                               │</span>
-<span class="go">│                       type          table                                    │</span>
-<span class="go">│                       type_config   {}                                       │</span>
-<span class="go">│                       default       __not_set__                              │</span>
-<span class="go">│                       optional      False                                    │</span>
-<span class="go">│                       is_constant   False                                    │</span>
-<span class="go">│                       doc           The query result.                        │</span>
+<span class="go">│                         type          table                                  │</span>
+<span class="go">│                         type_config   {}                                     │</span>
+<span class="go">│                         default       __not_set__                            │</span>
+<span class="go">│                         optional      False                                  │</span>
+<span class="go">│                         is_constant   False                                  │</span>
+<span class="go">│                         doc           The query result.                      │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_size        2.63 KB                                                  │</span>
-<span class="go">│   value_status      -- set --                                                │</span>
+<span class="go">│   value_size          2.63 KB                                                │</span>
+<span class="go">│   value_status        -- set --                                              │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│                     ──────────────────────────────────────────────────────   │</span>
+<span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   properties                                                                 │</span>
-<span class="go">│                       metadata.python_class   {                              │</span>
-<span class="go">│                                                 &quot;python_class&quot;: {            │</span>
-<span class="go">│                                                   &quot;python_class_name&quot;: …     │</span>
-<span class="go">│                                                   &quot;python_module_name&quot;:…     │</span>
-<span class="go">│                                                   &quot;full_name&quot;: &quot;kiara_p…     │</span>
+<span class="go">│                         metadata.python_class   {                            │</span>
+<span class="go">│                                                   &quot;python_class&quot;: {          │</span>
+<span class="go">│                                                     &quot;python_class_name&quot;…     │</span>
+<span class="go">│                                                     &quot;python_module_name…     │</span>
+<span class="go">│                                                     &quot;full_name&quot;: &quot;kiara…     │</span>
+<span class="go">│                                                   }                          │</span>
 <span class="go">│                                                 }                            │</span>
-<span class="go">│                                               }                              │</span>
-<span class="go">│                       metadata.table          {                              │</span>
-<span class="go">│                                                 &quot;table&quot;: {                   │</span>
-<span class="go">│                                                   &quot;column_names&quot;: [          │</span>
-<span class="go">│                                                     &quot;Label&quot;,                 │</span>
-<span class="go">│                                                     &quot;JournalType&quot;            │</span>
-<span class="go">│                                                   ],                         │</span>
-<span class="go">│                                                   &quot;column_schema&quot;: {         │</span>
-<span class="go">│                                                     &quot;Label&quot;: {               │</span>
-<span class="go">│                                                       &quot;type_name&quot;: &quot;str…     │</span>
-<span class="go">│                                                       &quot;metadata&quot;: {          │</span>
-<span class="go">│                                                         &quot;arrow_type_id&quot;…     │</span>
+<span class="go">│                         metadata.table          {                            │</span>
+<span class="go">│                                                   &quot;table&quot;: {                 │</span>
+<span class="go">│                                                     &quot;column_names&quot;: [        │</span>
+<span class="go">│                                                       &quot;Label&quot;,               │</span>
+<span class="go">│                                                       &quot;JournalType&quot;          │</span>
+<span class="go">│                                                     ],                       │</span>
+<span class="go">│                                                     &quot;column_schema&quot;: {       │</span>
+<span class="go">│                                                       &quot;Label&quot;: {             │</span>
+<span class="go">│                                                         &quot;type_name&quot;: &quot;s…     │</span>
+<span class="go">│                                                         &quot;metadata&quot;: {        │</span>
+<span class="go">│                                                           &quot;arrow_type_i…     │</span>
+<span class="go">│                                                         }                    │</span>
+<span class="go">│                                                       },                     │</span>
+<span class="go">│                                                       &quot;JournalType&quot;: {       │</span>
+<span class="go">│                                                         &quot;type_name&quot;: &quot;s…     │</span>
+<span class="go">│                                                         &quot;metadata&quot;: {        │</span>
+<span class="go">│                                                           &quot;arrow_type_i…     │</span>
+<span class="go">│                                                         }                    │</span>
 <span class="go">│                                                       }                      │</span>
 <span class="go">│                                                     },                       │</span>
-<span class="go">│                                                     &quot;JournalType&quot;: {         │</span>
-<span class="go">│                                                       &quot;type_name&quot;: &quot;str…     │</span>
-<span class="go">│                                                       &quot;metadata&quot;: {          │</span>
-<span class="go">│                                                         &quot;arrow_type_id&quot;…     │</span>
-<span class="go">│                                                       }                      │</span>
-<span class="go">│                                                     }                        │</span>
-<span class="go">│                                                   },                         │</span>
-<span class="go">│                                                   &quot;rows&quot;: 22,                │</span>
-<span class="go">│                                                   &quot;size&quot;: 1666               │</span>
+<span class="go">│                                                     &quot;rows&quot;: 22,              │</span>
+<span class="go">│                                                     &quot;size&quot;: 1666             │</span>
+<span class="go">│                                                   }                          │</span>
 <span class="go">│                                                 }                            │</span>
-<span class="go">│                                               }                              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
@@ -1638,7 +1635,7 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: import.table.from.csv_file ──────────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   Documentation   Load a table from a csv file.                              │</span>
+<span class="go">│   Documentation   Import a table from a csv file.                            │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   Inputs                                                                     │</span>
 <span class="go">│                     field                                                    │</span>
@@ -1754,8 +1751,8 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                                              │</span>
 <span class="go">│   field           data type   stored id               alias(es)              │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   imported_file   file        711aa18a-e22e-401a-9…   journal_edges.impor…   │</span>
-<span class="go">│   table           table       bc3d9939-1013-4215-a…   journal_edges.table    │</span>
+<span class="go">│   imported_file   file        22606780-0831-4f61-9…   journal_edges.impor…   │</span>
+<span class="go">│   table           table       c5c3c644-2e3a-4e5c-9…   journal_edges.table    │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1773,10 +1770,10 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                                              │</span>
 <span class="go">│   alias                         type        size                             │</span>
 <span class="go">│  ────────────────────────────────────────────────                            │</span>
-<span class="go">│   journal_edges.table           table    9.13 KB                             │</span>
-<span class="go">│   journal_nodes_file            file    33.43 KB                             │</span>
-<span class="go">│   berlin_journals               table    2.63 KB                             │</span>
 <span class="go">│   journal_edges.imported_file   file     3.02 KB                             │</span>
+<span class="go">│   journal_nodes_file            file    33.43 KB                             │</span>
+<span class="go">│   journal_edges.table           table    9.13 KB                             │</span>
+<span class="go">│   berlin_journals               table    2.63 KB                             │</span>
 <span class="go">│   journal_nodes_table           table   42.79 KB                             │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
@@ -1948,7 +1945,7 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field          data type      stored id                              alias(es)                                                                                                                                                             │</span>
 <span class="go">│  ─────────────────────────────────────────────────────────────────────────────────────                                                                                                                                                       │</span>
-<span class="go">│   network_data   network_data   4a90fed9-226b-46e3-99da-44255a623e5b   journals_graph                                                                                                                                                        │</span>
+<span class="go">│   network_data   network_data   881ee1e5-cfc8-4adb-b488-ea83309f28bc   journals_graph                                                                                                                                                        │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1961,184 +1958,183 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journals_graph ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│   value_id          4a90fed9-226b-46e3-99da-44255a623e5b                                                                                                                                                                                     │</span>
-<span class="go">│   aliases           journals_graph                                                                                                                                                                                                           │</span>
-<span class="go">│   kiara_id          98679ee6-f643-4875-8ff5-d8b2a45078b7                                                                                                                                                                                     │</span>
+<span class="go">│   value_id            881ee1e5-cfc8-4adb-b488-ea83309f28bc                                                                                                                                                                                   │</span>
+<span class="go">│   aliases             journals_graph                                                                                                                                                                                                         │</span>
+<span class="go">│   kiara_id            6eddb9b3-c098-4e1a-bf17-c399c47914bd                                                                                                                                                                                   │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│                     ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │</span>
-<span class="go">│   authors                                                                                                                                                                                                                                    │</span>
-<span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│   context                                                                                                                                                                                                                                    │</span>
-<span class="go">│                                                                                                                                                                                                                                              │</span>
+<span class="go">│                       ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                                                                                                                                                                                            │</span>
-<span class="go">│                       python_class_name    NetworkDataType                                                                                                                                                                                   │</span>
-<span class="go">│                       python_module_name   kiara_plugin.network_analysis.data_types                                                                                                                                                          │</span>
-<span class="go">│                       full_name            kiara_plugin.network_analysis.data_types.NetworkDataType                                                                                                                                          │</span>
+<span class="go">│                         python_class_name    NetworkDataType                                                                                                                                                                                 │</span>
+<span class="go">│                         python_module_name   kiara_plugin.network_analysis.data_types                                                                                                                                                        │</span>
+<span class="go">│                         full_name            kiara_plugin.network_analysis.data_types.NetworkDataType                                                                                                                                        │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│   documentation     -- n/a --                                                                                                                                                                                                                │</span>
-<span class="go">│   enviroments       None                                                                                                                                                                                                                     │</span>
-<span class="go">│   is_internal       False                                                                                                                                                                                                                    │</span>
-<span class="go">│   is_persisted      True                                                                                                                                                                                                                     │</span>
-<span class="go">│   type_name         4a90fed9-226b-46e3-99da-44255a623e5b                                                                                                                                                                                     │</span>
-<span class="go">│   value_hash        zdpuAvzKSkXr3q9X66LTA8G5TT56jsT5SaMwFRATECSd7XtPb                                                                                                                                                                        │</span>
+<span class="go">│   destiny_backlinks   {}                                                                                                                                                                                                                     │</span>
+<span class="go">│   destiny_links       {}                                                                                                                                                                                                                     │</span>
+<span class="go">│   enviroments         None                                                                                                                                                                                                                   │</span>
+<span class="go">│   property_links      {                                                                                                                                                                                                                      │</span>
+<span class="go">│                         &quot;metadata.database&quot;: &quot;468f171f-b192-4f1f-8841-23f92f78a92a&quot;,                                                                                                                                                         │</span>
+<span class="go">│                         &quot;metadata.graph_properties&quot;: &quot;6eeda38e-4696-432e-9d82-496456d34532&quot;,                                                                                                                                                 │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;: &quot;baa1ae14-1790-419f-8005-d1d73b601b31&quot;                                                                                                                                                      │</span>
+<span class="go">│                       }                                                                                                                                                                                                                      │</span>
+<span class="go">│   value_hash          zdpuAoZJjYTx2q7sc4tGRsVLeJypMqHdxLPmdCNiMxsckHn35                                                                                                                                                                      │</span>
 <span class="go">│   value_schema                                                                                                                                                                                                                               │</span>
-<span class="go">│                       type          network_data                                                                                                                                                                                             │</span>
-<span class="go">│                       type_config   {}                                                                                                                                                                                                       │</span>
-<span class="go">│                       default       __not_set__                                                                                                                                                                                              │</span>
-<span class="go">│                       optional      False                                                                                                                                                                                                    │</span>
-<span class="go">│                       is_constant   False                                                                                                                                                                                                    │</span>
-<span class="go">│                       doc           The network/graph data.                                                                                                                                                                                  │</span>
+<span class="go">│                         type          network_data                                                                                                                                                                                           │</span>
+<span class="go">│                         type_config   {}                                                                                                                                                                                                     │</span>
+<span class="go">│                         default       __not_set__                                                                                                                                                                                            │</span>
+<span class="go">│                         optional      False                                                                                                                                                                                                  │</span>
+<span class="go">│                         is_constant   False                                                                                                                                                                                                  │</span>
+<span class="go">│                         doc           The network/graph data.                                                                                                                                                                                │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│   value_size        61.44 KB                                                                                                                                                                                                                 │</span>
-<span class="go">│   value_status      -- set --                                                                                                                                                                                                                │</span>
+<span class="go">│   value_size          61.44 KB                                                                                                                                                                                                               │</span>
+<span class="go">│   value_status        -- set --                                                                                                                                                                                                              │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│                     ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │</span>
+<span class="go">│                       ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   properties                                                                                                                                                                                                                                 │</span>
-<span class="go">│                       metadata.database           {                                                                                                                                                                                          │</span>
-<span class="go">│                                                     &quot;tables&quot;: {                                                                                                                                                                              │</span>
-<span class="go">│                                                       &quot;edges&quot;: {                                                                                                                                                                             │</span>
-<span class="go">│                                                         &quot;column_names&quot;: [                                                                                                                                                                    │</span>
-<span class="go">│                                                           &quot;source&quot;,                                                                                                                                                                          │</span>
-<span class="go">│                                                           &quot;target&quot;,                                                                                                                                                                          │</span>
-<span class="go">│                                                           &quot;weight&quot;                                                                                                                                                                           │</span>
-<span class="go">│                                                         ],                                                                                                                                                                                   │</span>
-<span class="go">│                                                         &quot;column_schema&quot;: {                                                                                                                                                                   │</span>
-<span class="go">│                                                           &quot;source&quot;: {                                                                                                                                                                        │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                          │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
+<span class="go">│                         metadata.database           {                                                                                                                                                                                        │</span>
+<span class="go">│                                                       &quot;tables&quot;: {                                                                                                                                                                            │</span>
+<span class="go">│                                                         &quot;edges&quot;: {                                                                                                                                                                           │</span>
+<span class="go">│                                                           &quot;column_names&quot;: [                                                                                                                                                                  │</span>
+<span class="go">│                                                             &quot;source&quot;,                                                                                                                                                                        │</span>
+<span class="go">│                                                             &quot;target&quot;,                                                                                                                                                                        │</span>
+<span class="go">│                                                             &quot;weight&quot;                                                                                                                                                                         │</span>
+<span class="go">│                                                           ],                                                                                                                                                                                 │</span>
+<span class="go">│                                                           &quot;column_schema&quot;: {                                                                                                                                                                 │</span>
+<span class="go">│                                                             &quot;source&quot;: {                                                                                                                                                                      │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;target&quot;: {                                                                                                                                                                      │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;weight&quot;: {                                                                                                                                                                      │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
 <span class="go">│                                                             }                                                                                                                                                                                │</span>
 <span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;target&quot;: {                                                                                                                                                                        │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                          │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;weight&quot;: {                                                                                                                                                                        │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                          │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           }                                                                                                                                                                                  │</span>
+<span class="go">│                                                           &quot;rows&quot;: 321,                                                                                                                                                                       │</span>
+<span class="go">│                                                           &quot;size&quot;: 4096                                                                                                                                                                       │</span>
 <span class="go">│                                                         },                                                                                                                                                                                   │</span>
-<span class="go">│                                                         &quot;rows&quot;: 321,                                                                                                                                                                         │</span>
-<span class="go">│                                                         &quot;size&quot;: 4096                                                                                                                                                                         │</span>
-<span class="go">│                                                       },                                                                                                                                                                                     │</span>
-<span class="go">│                                                       &quot;nodes&quot;: {                                                                                                                                                                             │</span>
-<span class="go">│                                                         &quot;column_names&quot;: [                                                                                                                                                                    │</span>
-<span class="go">│                                                           &quot;id&quot;,                                                                                                                                                                              │</span>
-<span class="go">│                                                           &quot;label&quot;,                                                                                                                                                                           │</span>
-<span class="go">│                                                           &quot;JournalType&quot;,                                                                                                                                                                     │</span>
-<span class="go">│                                                           &quot;City&quot;,                                                                                                                                                                            │</span>
-<span class="go">│                                                           &quot;CountryNetworkTime&quot;,                                                                                                                                                              │</span>
-<span class="go">│                                                           &quot;PresentDayCountry&quot;,                                                                                                                                                               │</span>
-<span class="go">│                                                           &quot;Latitude&quot;,                                                                                                                                                                        │</span>
-<span class="go">│                                                           &quot;Longitude&quot;,                                                                                                                                                                       │</span>
-<span class="go">│                                                           &quot;Language&quot;                                                                                                                                                                         │</span>
-<span class="go">│                                                         ],                                                                                                                                                                                   │</span>
-<span class="go">│                                                         &quot;column_schema&quot;: {                                                                                                                                                                   │</span>
-<span class="go">│                                                           &quot;id&quot;: {                                                                                                                                                                            │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                          │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
+<span class="go">│                                                         &quot;nodes&quot;: {                                                                                                                                                                           │</span>
+<span class="go">│                                                           &quot;column_names&quot;: [                                                                                                                                                                  │</span>
+<span class="go">│                                                             &quot;id&quot;,                                                                                                                                                                            │</span>
+<span class="go">│                                                             &quot;label&quot;,                                                                                                                                                                         │</span>
+<span class="go">│                                                             &quot;JournalType&quot;,                                                                                                                                                                   │</span>
+<span class="go">│                                                             &quot;City&quot;,                                                                                                                                                                          │</span>
+<span class="go">│                                                             &quot;CountryNetworkTime&quot;,                                                                                                                                                            │</span>
+<span class="go">│                                                             &quot;PresentDayCountry&quot;,                                                                                                                                                             │</span>
+<span class="go">│                                                             &quot;Latitude&quot;,                                                                                                                                                                      │</span>
+<span class="go">│                                                             &quot;Longitude&quot;,                                                                                                                                                                     │</span>
+<span class="go">│                                                             &quot;Language&quot;                                                                                                                                                                       │</span>
+<span class="go">│                                                           ],                                                                                                                                                                                 │</span>
+<span class="go">│                                                           &quot;column_schema&quot;: {                                                                                                                                                                 │</span>
+<span class="go">│                                                             &quot;id&quot;: {                                                                                                                                                                          │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;label&quot;: {                                                                                                                                                                       │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;JournalType&quot;: {                                                                                                                                                                 │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;City&quot;: {                                                                                                                                                                        │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;CountryNetworkTime&quot;: {                                                                                                                                                          │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;PresentDayCountry&quot;: {                                                                                                                                                           │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;Latitude&quot;: {                                                                                                                                                                    │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;REAL&quot;,                                                                                                                                                           │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;Longitude&quot;: {                                                                                                                                                                   │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;REAL&quot;,                                                                                                                                                           │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
+<span class="go">│                                                             },                                                                                                                                                                               │</span>
+<span class="go">│                                                             &quot;Language&quot;: {                                                                                                                                                                    │</span>
+<span class="go">│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │</span>
+<span class="go">│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │</span>
+<span class="go">│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │</span>
+<span class="go">│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │</span>
+<span class="go">│                                                               }                                                                                                                                                                              │</span>
 <span class="go">│                                                             }                                                                                                                                                                                │</span>
 <span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;label&quot;: {                                                                                                                                                                         │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                             │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;JournalType&quot;: {                                                                                                                                                                   │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                             │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;City&quot;: {                                                                                                                                                                          │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                             │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;CountryNetworkTime&quot;: {                                                                                                                                                            │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                             │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;PresentDayCountry&quot;: {                                                                                                                                                             │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                             │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;Latitude&quot;: {                                                                                                                                                                      │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;REAL&quot;,                                                                                                                                                             │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;Longitude&quot;: {                                                                                                                                                                     │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;REAL&quot;,                                                                                                                                                             │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           },                                                                                                                                                                                 │</span>
-<span class="go">│                                                           &quot;Language&quot;: {                                                                                                                                                                      │</span>
-<span class="go">│                                                             &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                             │</span>
-<span class="go">│                                                             &quot;metadata&quot;: {                                                                                                                                                                    │</span>
-<span class="go">│                                                               &quot;nullable&quot;: false,                                                                                                                                                             │</span>
-<span class="go">│                                                               &quot;primary_key&quot;: false                                                                                                                                                           │</span>
-<span class="go">│                                                             }                                                                                                                                                                                │</span>
-<span class="go">│                                                           }                                                                                                                                                                                  │</span>
-<span class="go">│                                                         },                                                                                                                                                                                   │</span>
-<span class="go">│                                                         &quot;rows&quot;: 276,                                                                                                                                                                         │</span>
-<span class="go">│                                                         &quot;size&quot;: 40960                                                                                                                                                                        │</span>
+<span class="go">│                                                           &quot;rows&quot;: 276,                                                                                                                                                                       │</span>
+<span class="go">│                                                           &quot;size&quot;: 40960                                                                                                                                                                      │</span>
+<span class="go">│                                                         }                                                                                                                                                                                    │</span>
 <span class="go">│                                                       }                                                                                                                                                                                      │</span>
 <span class="go">│                                                     }                                                                                                                                                                                        │</span>
-<span class="go">│                                                   }                                                                                                                                                                                          │</span>
-<span class="go">│                       metadata.graph_properties   {                                                                                                                                                                                          │</span>
-<span class="go">│                                                     &quot;number_of_nodes&quot;: 276,                                                                                                                                                                  │</span>
-<span class="go">│                                                     &quot;properties_by_graph_type&quot;: [                                                                                                                                                            │</span>
-<span class="go">│                                                       {                                                                                                                                                                                      │</span>
-<span class="go">│                                                         &quot;graph_type&quot;: &quot;directed&quot;,                                                                                                                                                            │</span>
-<span class="go">│                                                         &quot;number_of_edges&quot;: 321                                                                                                                                                               │</span>
-<span class="go">│                                                       },                                                                                                                                                                                     │</span>
-<span class="go">│                                                       {                                                                                                                                                                                      │</span>
-<span class="go">│                                                         &quot;graph_type&quot;: &quot;undirected&quot;,                                                                                                                                                          │</span>
-<span class="go">│                                                         &quot;number_of_edges&quot;: 313                                                                                                                                                               │</span>
-<span class="go">│                                                       },                                                                                                                                                                                     │</span>
-<span class="go">│                                                       {                                                                                                                                                                                      │</span>
-<span class="go">│                                                         &quot;graph_type&quot;: &quot;directed-multi&quot;,                                                                                                                                                      │</span>
-<span class="go">│                                                         &quot;number_of_edges&quot;: 321                                                                                                                                                               │</span>
-<span class="go">│                                                       },                                                                                                                                                                                     │</span>
-<span class="go">│                                                       {                                                                                                                                                                                      │</span>
-<span class="go">│                                                         &quot;graph_type&quot;: &quot;undirected-multi&quot;,                                                                                                                                                    │</span>
-<span class="go">│                                                         &quot;number_of_edges&quot;: 321                                                                                                                                                               │</span>
-<span class="go">│                                                       }                                                                                                                                                                                      │</span>
-<span class="go">│                                                     ]                                                                                                                                                                                        │</span>
-<span class="go">│                                                   }                                                                                                                                                                                          │</span>
-<span class="go">│                       metadata.python_class       {                                                                                                                                                                                          │</span>
-<span class="go">│                                                     &quot;python_class&quot;: {                                                                                                                                                                        │</span>
-<span class="go">│                                                       &quot;python_class_name&quot;: &quot;NetworkData&quot;,                                                                                                                                                    │</span>
-<span class="go">│                                                       &quot;python_module_name&quot;: &quot;kiara_plugin.network_analysis.models&quot;,                                                                                                                          │</span>
-<span class="go">│                                                       &quot;full_name&quot;: &quot;kiara_plugin.network_analysis.models.NetworkData&quot;                                                                                                                        │</span>
+<span class="go">│                         metadata.graph_properties   {                                                                                                                                                                                        │</span>
+<span class="go">│                                                       &quot;number_of_nodes&quot;: 276,                                                                                                                                                                │</span>
+<span class="go">│                                                       &quot;properties_by_graph_type&quot;: [                                                                                                                                                          │</span>
+<span class="go">│                                                         {                                                                                                                                                                                    │</span>
+<span class="go">│                                                           &quot;graph_type&quot;: &quot;directed&quot;,                                                                                                                                                          │</span>
+<span class="go">│                                                           &quot;number_of_edges&quot;: 321                                                                                                                                                             │</span>
+<span class="go">│                                                         },                                                                                                                                                                                   │</span>
+<span class="go">│                                                         {                                                                                                                                                                                    │</span>
+<span class="go">│                                                           &quot;graph_type&quot;: &quot;undirected&quot;,                                                                                                                                                        │</span>
+<span class="go">│                                                           &quot;number_of_edges&quot;: 313                                                                                                                                                             │</span>
+<span class="go">│                                                         },                                                                                                                                                                                   │</span>
+<span class="go">│                                                         {                                                                                                                                                                                    │</span>
+<span class="go">│                                                           &quot;graph_type&quot;: &quot;directed-multi&quot;,                                                                                                                                                    │</span>
+<span class="go">│                                                           &quot;number_of_edges&quot;: 321                                                                                                                                                             │</span>
+<span class="go">│                                                         },                                                                                                                                                                                   │</span>
+<span class="go">│                                                         {                                                                                                                                                                                    │</span>
+<span class="go">│                                                           &quot;graph_type&quot;: &quot;undirected-multi&quot;,                                                                                                                                                  │</span>
+<span class="go">│                                                           &quot;number_of_edges&quot;: 321                                                                                                                                                             │</span>
+<span class="go">│                                                         }                                                                                                                                                                                    │</span>
+<span class="go">│                                                       ]                                                                                                                                                                                      │</span>
 <span class="go">│                                                     }                                                                                                                                                                                        │</span>
-<span class="go">│                                                   }                                                                                                                                                                                          │</span>
+<span class="go">│                         metadata.python_class       {                                                                                                                                                                                        │</span>
+<span class="go">│                                                       &quot;python_class&quot;: {                                                                                                                                                                      │</span>
+<span class="go">│                                                         &quot;python_class_name&quot;: &quot;NetworkData&quot;,                                                                                                                                                  │</span>
+<span class="go">│                                                         &quot;python_module_name&quot;: &quot;kiara_plugin.network_analysis.models&quot;,                                                                                                                        │</span>
+<span class="go">│                                                         &quot;full_name&quot;: &quot;kiara_plugin.network_analysis.models.NetworkData&quot;                                                                                                                      │</span>
+<span class="go">│                                                       }                                                                                                                                                                                      │</span>
+<span class="go">│                                                     }                                                                                                                                                                                        │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
@@ -2154,77 +2150,76 @@ very powerful and useful. But if you are ever interested about what went into cr
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journals_graph ────────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id          4a90fed9-226b-46e3-99da-44255a623e5b                     │</span>
-<span class="go">│   aliases           journals_graph                                           │</span>
-<span class="go">│   kiara_id          98679ee6-f643-4875-8ff5-d8b2a45078b7                     │</span>
+<span class="go">│   value_id            881ee1e5-cfc8-4adb-b488-ea83309f28bc                   │</span>
+<span class="go">│   aliases             journals_graph                                         │</span>
+<span class="go">│   kiara_id            6eddb9b3-c098-4e1a-bf17-c399c47914bd                   │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│                     ──────────────────────────────────────────────────────   │</span>
-<span class="go">│   authors                                                                    │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│   context                                                                    │</span>
-<span class="go">│                                                                              │</span>
+<span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_class                                                            │</span>
-<span class="go">│                       python_class_name    NetworkDataType                   │</span>
-<span class="go">│                       python_module_name   kiara_plugin.network_analysi…     │</span>
-<span class="go">│                       full_name            kiara_plugin.network_analysi…     │</span>
+<span class="go">│                         python_class_name    NetworkDataType                 │</span>
+<span class="go">│                         python_module_name   kiara_plugin.network_analy…     │</span>
+<span class="go">│                         full_name            kiara_plugin.network_analy…     │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   documentation     -- n/a --                                                │</span>
-<span class="go">│   enviroments       None                                                     │</span>
-<span class="go">│   is_internal       False                                                    │</span>
-<span class="go">│   is_persisted      True                                                     │</span>
-<span class="go">│   type_name         4a90fed9-226b-46e3-99da-44255a623e5b                     │</span>
-<span class="go">│   value_hash        zdpuAvzKSkXr3q9X66LTA8G5TT56jsT5SaMwFRATECSd7XtPb        │</span>
+<span class="go">│   destiny_backlinks   {}                                                     │</span>
+<span class="go">│   destiny_links       {}                                                     │</span>
+<span class="go">│   enviroments         None                                                   │</span>
+<span class="go">│   property_links      {                                                      │</span>
+<span class="go">│                         &quot;metadata.database&quot;:                                 │</span>
+<span class="go">│                       &quot;468f171f-b192-4f1f-8841-23f92f78a92a&quot;,                │</span>
+<span class="go">│                         &quot;metadata.graph_properties&quot;:                         │</span>
+<span class="go">│                       &quot;6eeda38e-4696-432e-9d82-496456d34532&quot;,                │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
+<span class="go">│                       &quot;baa1ae14-1790-419f-8005-d1d73b601b31&quot;                 │</span>
+<span class="go">│                       }                                                      │</span>
+<span class="go">│   value_hash          zdpuAoZJjYTx2q7sc4tGRsVLeJypMqHdxLPmdCNiMxsckHn35      │</span>
 <span class="go">│   value_schema                                                               │</span>
-<span class="go">│                       type          network_data                             │</span>
-<span class="go">│                       type_config   {}                                       │</span>
-<span class="go">│                       default       __not_set__                              │</span>
-<span class="go">│                       optional      False                                    │</span>
-<span class="go">│                       is_constant   False                                    │</span>
-<span class="go">│                       doc           The network/graph data.                  │</span>
+<span class="go">│                         type          network_data                           │</span>
+<span class="go">│                         type_config   {}                                     │</span>
+<span class="go">│                         default       __not_set__                            │</span>
+<span class="go">│                         optional      False                                  │</span>
+<span class="go">│                         is_constant   False                                  │</span>
+<span class="go">│                         doc           The network/graph data.                │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_size        61.44 KB                                                 │</span>
-<span class="go">│   value_status      -- set --                                                │</span>
+<span class="go">│   value_size          61.44 KB                                               │</span>
+<span class="go">│   value_status        -- set --                                              │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│                     ──────────────────────────────────────────────────────   │</span>
+<span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   lineage           create.network_data.from.tables                          │</span>
-<span class="go">│                     ├── input: edges (table) =                               │</span>
-<span class="go">│                     │   bc3d9939-1013-4215-acd7-50b3eb0bf537                 │</span>
-<span class="go">│                     │   └── create.table                                     │</span>
-<span class="go">│                     │       └── input: csv_file (file) =                     │</span>
-<span class="go">│                     │           711aa18a-e22e-401a-97c0-63599cde7749         │</span>
-<span class="go">│                     │           └── import.file                              │</span>
-<span class="go">│                     │               └── input: path (string) =               │</span>
-<span class="go">│                     │                   f4a325b3-891c-4f5a-a52f-287c64bdc…   │</span>
-<span class="go">│                     ├── input: edges_column_map (none) =                     │</span>
-<span class="go">│                     │   00000000-0000-0000-0000-000000000002                 │</span>
-<span class="go">│                     ├── input: id_column_name (string) =                     │</span>
-<span class="go">│                     │   972c97dc-a0a6-4723-ac4b-31c32a3e4549                 │</span>
-<span class="go">│                     ├── input: label_column_name (string) =                  │</span>
-<span class="go">│                     │   ea3b6418-ad97-44c0-8bf0-3e18ce0bd4fb                 │</span>
-<span class="go">│                     ├── input: nodes (table) =                               │</span>
-<span class="go">│                     │   84450455-d51f-48e8-ba70-dc71873ca47c                 │</span>
-<span class="go">│                     │   └── create.table                                     │</span>
-<span class="go">│                     │       └── input: csv_file (file) =                     │</span>
-<span class="go">│                     │           24ed1d79-2f79-40c4-93d9-97db43b0d543         │</span>
-<span class="go">│                     │           └── import.file                              │</span>
-<span class="go">│                     │               └── input: path (string) =               │</span>
-<span class="go">│                     │                   78d3ebe4-27ad-4302-bf25-cb5dfc253…   │</span>
-<span class="go">│                     ├── input: nodes_column_map (none) =                     │</span>
-<span class="go">│                     │   00000000-0000-0000-0000-000000000002                 │</span>
-<span class="go">│                     ├── input: source_column_name (string) =                 │</span>
-<span class="go">│                     │   c505b651-bc15-4472-b678-641d2600ff1d                 │</span>
-<span class="go">│                     └── input: target_column_name (string) =                 │</span>
-<span class="go">│                         cb04b33d-be04-42d1-97c1-1d0054502eaf                 │</span>
+<span class="go">│   lineage             create.network_data.from.tables                        │</span>
+<span class="go">│                       ├── input: edges (table) =                             │</span>
+<span class="go">│                       │   c5c3c644-2e3a-4e5c-94d6-99fae6096d63               │</span>
+<span class="go">│                       │   └── create.table                                   │</span>
+<span class="go">│                       │       └── input: csv_file (file) =                   │</span>
+<span class="go">│                       │           22606780-0831-4f61-94e1-49fc7a2e1c55       │</span>
+<span class="go">│                       │           └── import.file                            │</span>
+<span class="go">│                       │               └── input: path (string) =             │</span>
+<span class="go">│                       │                   58d8b9fa-4466-457e-968a-26ab259…   │</span>
+<span class="go">│                       ├── input: edges_column_map (none) =                   │</span>
+<span class="go">│                       │   00000000-0000-0000-0000-000000000002               │</span>
+<span class="go">│                       ├── input: id_column_name (string) =                   │</span>
+<span class="go">│                       │   1f186066-444c-4f9d-9cd9-6bfb15f4bbbe               │</span>
+<span class="go">│                       ├── input: label_column_name (string) =                │</span>
+<span class="go">│                       │   653831ea-4c3e-4f69-999d-33e0d5f0b73e               │</span>
+<span class="go">│                       ├── input: nodes (table) =                             │</span>
+<span class="go">│                       │   053485b0-242c-4b88-a133-4fe7777212c0               │</span>
+<span class="go">│                       │   └── create.table                                   │</span>
+<span class="go">│                       │       └── input: csv_file (file) =                   │</span>
+<span class="go">│                       │           9fb7316b-1e60-4aca-ad8d-4f3788e83425       │</span>
+<span class="go">│                       │           └── import.file                            │</span>
+<span class="go">│                       │               └── input: path (string) =             │</span>
+<span class="go">│                       │                   ae9eec00-56b7-4de3-94c9-04406d1…   │</span>
+<span class="go">│                       ├── input: nodes_column_map (none) =                   │</span>
+<span class="go">│                       │   00000000-0000-0000-0000-000000000002               │</span>
+<span class="go">│                       ├── input: source_column_name (string) =               │</span>
+<span class="go">│                       │   35d89840-ef7a-4eba-b4ea-762f40f4a9f6               │</span>
+<span class="go">│                       └── input: target_column_name (string) =               │</span>
+<span class="go">│                           1937dd4c-7aa6-4c50-9e1c-226b26fadcf8               │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
 <p>As you can see, this basically describes what we've done so far, to get to this stage. You could now do a <code>kiara explain data value:&lt;value_id&gt;</code> on each of the value ids you see here, if you were so inclined.</p>
 <h3 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h3>
 <p>... to come ...</p>
-
-
-
 
               
             </article>
@@ -2292,11 +2287,10 @@ very powerful and useful. But if you are ever interested about what went into cr
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.0bc13b87.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
     
   </body>

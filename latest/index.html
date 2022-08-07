@@ -11,7 +11,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0rc1">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -19,7 +19,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.476df7d4.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
@@ -48,7 +48,7 @@
     
       <link rel="stylesheet" href="css/pandas-dataframe.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#macro-rendering-error" class="md-skip">
+        <a href="#kiara-plugin-documentation" class="md-skip">
           Skip to content
         </a>
       
@@ -82,7 +82,9 @@
     </div>
     
       <div data-md-component="outdated" hidden>
-        
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
       </div>
     
     
@@ -228,9 +230,74 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         Home
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-content" class="md-nav__link">
+    Package content
+  </a>
+  
+    <nav class="md-nav" aria-label="Package content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module_types" class="md-nav__link">
+    module_types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operations" class="md-nav__link">
+    operations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -405,6 +472,55 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-content" class="md-nav__link">
+    Package content
+  </a>
+  
+    <nav class="md-nav" aria-label="Package content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module_types" class="md-nav__link">
+    module_types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operations" class="md-nav__link">
+    operations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -421,23 +537,64 @@
 
 
 
-<h1 id="macro-rendering-error"><em>Macro Rendering Error</em><a class="headerlink" href="#macro-rendering-error" title="Permanent link">&para;</a></h1>
-<p><strong>UndefinedError</strong>: 'kiara.interfaces.python_api.models.info.ModuleTypesInfo object' has no attribute 'items'</p>
-<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/mkdocs_macros/plugin.py&quot;, line 480, in render
-    return md_template.render(**page_variables)
-  File &quot;/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/jinja2/environment.py&quot;, line 1301, in render
-    self.environment.handle_exception()
-  File &quot;/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/jinja2/environment.py&quot;, line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File &quot;&lt;template&gt;&quot;, line 14, in top-level template code
-  File &quot;/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/jinja2/utils.py&quot;, line 83, in from_obj
-    if hasattr(obj, &quot;jinja_pass_arg&quot;):
-jinja2.exceptions.UndefinedError: &#39;kiara.interfaces.python_api.models.info.ModuleTypesInfo object&#39; has no attribute &#39;items&#39;
-</code></pre></div>
-
-
-
+<h1 id="kiara-plugin-documentation"><a href="https://dharpa.org/kiara.documentation"><strong>kiara</strong></a> plugin: documentation<a class="headerlink" href="#kiara-plugin-documentation" title="Permanent link">&para;</a></h1>
+<p>This package contains a set of commonly used/useful modules, pipelines, types and metadata schemas for <a href="https://github.com/DHARPA-project/kiara"><em>Kiara</em></a>.</p>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Kiara user documentation.</p>
+<h2 id="package-content">Package content<a class="headerlink" href="#package-content" title="Permanent link">&para;</a></h2>
+<h3 id="module_types">module_types<a class="headerlink" href="#module_types" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.my_kiara_module.example"><code>my_kiara_module.example</code></a>: A very simple example module; concatenate two strings.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module"><code>kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module</code></a>: -- n/a --</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.filter.table"><code>filter.table</code></a>: Filter a table.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.filter.table_2"><code>filter.table_2</code></a>: Filter a table.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.filter.table_3"><code>filter.table_3</code></a>: Filter a table.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.filter.table_4"><code>filter.table_4</code></a>: Filter a table.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.filter.table_5"><code>filter.table_5</code></a>: Filter a table.</p>
+</li>
+</ul>
+<h3 id="operations">operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.filter.table"><code>filter.table</code></a>: Filter a table.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.filter.table_2"><code>filter.table_2</code></a>: Filter a table.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.filter.table_3"><code>filter.table_3</code></a>: Filter a table.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.filter.table_4"><code>filter.table_4</code></a>: Filter a table.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.filter.table_5"><code>filter.table_5</code></a>: Filter a table.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module"><code>kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module</code></a>: -- n/a --</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.my_kiara_module.example"><code>my_kiara_module.example</code></a>: A very simple example module; concatenate two strings.</p>
+</li>
+</ul>
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Documentation: <a href="https://DHARPA-Project.github.io/kiara.documentation">https://DHARPA-Project.github.io/kiara.documentation</a></li>
+<li>Code: <a href="https://github.com/DHARPA-Project/kiara.documentation">https://github.com/DHARPA-Project/kiara.documentation</a></li>
+</ul>
 
               
             </article>
@@ -490,11 +647,10 @@ jinja2.exceptions.UndefinedError: &#39;kiara.interfaces.python_api.models.info.M
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.0bc13b87.min.js"></script>
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
     
   </body>
