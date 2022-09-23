@@ -14,7 +14,7 @@ own usage scenarios.
 
 In order to use *kiara*, we'll need to install it into a Python virtual (or conda-) environment, along all the plugins we might want to use. For the purpose of this tutorial, we'll use [conda](https://docs.conda.io/en/latest/) to create such an environment, but you can of course use a 'normal' virtualenv if you prefer. How to install *conda* itself is out of scope of this tutorial, but you should not have problems finding instructions online.
 
-One simple way is to install the [Anaconda (individual edition)](https://docs.anaconda.com/anaconda/install/index.html), then use the Anaconda navigator to create a new environment, install the 'git' package in it (if your system does not already have it), and use the 'Open Terminal' option of that environment to start up a terminal that has that virtual-/conda-environment already activated.
+One simple way is to install the [Anaconda (individual edition)](https://docs.anaconda.com/anaconda/install/index.html), then use the Anaconda navigator to create a new environment, install the 'git' package in it if your system does not already have it (you can install 'git' by running the `conda install -c anaconda git` command in your terminal for example), and use the 'Open Terminal' option of that environment to start up a terminal that has that virtual-/conda-environment already activated.
 
 
 Here's how to create the environment, activate it, then install the necessary dependencies (assuming conda is installed). At some point in the process, you may be prompted by the terminal to confirm further proceeding (generally by typing "y" and enter) to complete all the steps.
