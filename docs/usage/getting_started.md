@@ -17,7 +17,7 @@ In order to use *kiara*, we'll need to install it into a Python virtual (or cond
 One simple way is to install the [Anaconda (individual edition)](https://docs.anaconda.com/anaconda/install/index.html), then use the Anaconda navigator to create a new environment, install the 'git' package in it (if your system does not already have it), and use the 'Open Terminal' option of that environment to start up a terminal that has that virtual-/conda-environment already activated.
 
 
-Here's how to create the environment, activate it, then install the necessary dependencies (assuming conda is installed):
+Here's how to create the environment, activate it, then install the necessary dependencies (assuming conda is installed). At some point in the process, you may be prompted by the terminal to confirm further proceeding (generally by typing "y" and enter) to complete all the steps.
 
 ```console
 conda create -n kiara_tutorial python=3.9
