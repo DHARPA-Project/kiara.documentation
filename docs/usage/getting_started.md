@@ -150,7 +150,7 @@ As you can see, there are 2 items now: one `file`, and one `table`. If you ever 
 
 {{ cli("kiara", "data", "explain", "alias:journal_nodes_table", max_height=300, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
-This command prints out the metadata *kiara* has stored about a value item. This commands supports displaying several internally important metadata details of stored datasets, check out the available options with ``kiara data explain --help``. One option that is particularly interesting is the `-p` one, which displays all the metadata properties *kiara* has collected about a value.
+This command prints out the metadata *kiara* has stored about a value item. This commands supports displaying several internally important metadata details of stored datasets, check out the available options with ``kiara data explain --help``. One option that is particularly interesting is the `--properties` one, which displays all the metadata properties *kiara* has collected about a value. We will experiment with this option a bit later in this tutorial.
 
 ##### Display the data itself: `kiara data load`
 
