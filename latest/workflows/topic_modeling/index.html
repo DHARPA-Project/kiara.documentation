@@ -1,0 +1,982 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Markus Binsteiner">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>Topic modeling - kiara.documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#creating-the-workflow-object" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="kiara.documentation" class="md-header__button md-logo" aria-label="kiara.documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            kiara.documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Topic modeling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DHARPA-Project/kiara.documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="kiara.documentation" class="md-nav__button md-logo" aria-label="kiara.documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    kiara.documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DHARPA-Project/kiara.documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../usage/">Usage</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Usage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Extending kiara
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Extending kiara" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Extending kiara
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_kiara/creating_modules/the_basics/" class="md-nav__link">
+        Creating modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Pipelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_kiara/pipelines/assemble_pipelines" class="md-nav__link">
+        Assemble a pipeline
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Workflows</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Workflows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Topic modeling
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xor/" class="md-nav__link">
+        Xor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/DHARPA-Project/kiara.documentation/edit/master/docs/workflows/topic_modeling.ipynb" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>%env CONSOLE_WIDTH=140
+
+from kiara.interfaces.python_api.workflow import Workflow
+from kiara.utils.jupyter import graph_to_image
+from kiara.utils.cli import terminal_print_model
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="creating-the-workflow-object">Creating the workflow object <a class="anchor" id="create_workflow_obj"></a><a class="headerlink" href="#creating-the-workflow-object" title="Permanent link">&para;</a></h1>
+<p>As the first step we create a <a href="https://dharpa.org/kiara/latest/reference/kiara/interfaces/python_api/workflow/"><code>Workflow</code></a> object, which is a convenience class that manages workflow state, internal consistency and history for us:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>doc = &quot;&quot;&quot;Example topic-modeling end-to-end workflow.&quot;&quot;&quot;
+workflow = Workflow.create(&quot;topic_modeling&quot;, doc=doc, replace_existing_alias=True)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="assembling-the-workflow">Assembling the workflow <a class="anchor" id="assembly"></a><a class="headerlink" href="#assembling-the-workflow" title="Permanent link">&para;</a></h1>
+<p>The first step in the creation of our workflow is to create the individual steps from the available <em>kiara</em> modules.</p>
+<p>A list of available modules and their aliases can be found here: TODO</p>
+<h2 id="creating-the-steps-of-the-workflow">Creating the steps of the workflow <a class="anchor" id="creating_steps"></a><a class="headerlink" href="#creating-the-steps-of-the-workflow" title="Permanent link">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Creating step: import_text_corpus
+workflow.add_step(operation=&quot;import.file_bundle&quot;, step_id=&quot;import_text_corpus&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Creating step: create_stopwords_list
+workflow.add_step(operation=&quot;create.stopwords_list&quot;, step_id=&quot;create_stopwords_list&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Creating step: create_text_corpus
+step_create_text_corpus_config = {&#39;constants&#39;: {}, &#39;defaults&#39;: {}, &#39;source_type&#39;: &#39;text_file_bundle&#39;, &#39;target_type&#39;: &#39;table&#39;, &#39;ignore_errors&#39;: False}
+workflow.add_step(
+    operation=&quot;create.table&quot;,
+    module_config=step_create_text_corpus_config,
+    step_id=&quot;create_text_corpus&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Connecting input(s) of step &#39;create_text_corpus&#39;
+workflow.connect_fields(&quot;create_text_corpus.text_file_bundle&quot;, &quot;import_text_corpus.file_bundle&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Creating step: extract_texts_column
+workflow.add_step(operation=&quot;table.cut_column&quot;, step_id=&quot;extract_texts_column&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Connecting input(s) of step &#39;extract_texts_column&#39;
+workflow.connect_fields(&quot;extract_texts_column.table&quot;, &quot;create_text_corpus.table&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Creating step: extract_filename_column
+workflow.add_step(operation=&quot;table.cut_column&quot;, step_id=&quot;extract_filename_column&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Connecting input(s) of step &#39;extract_filename_column&#39;
+workflow.connect_fields(&quot;extract_filename_column.table&quot;, &quot;create_text_corpus.table&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Creating step: create_date_array
+workflow.add_step(operation=&quot;parse.date_array&quot;, step_id=&quot;create_date_array&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Connecting input(s) of step &#39;create_date_array&#39;
+workflow.connect_fields(&quot;create_date_array.array&quot;, &quot;extract_filename_column.array&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Creating step: tokenize_content
+workflow.add_step(operation=&quot;tokenize.texts_array&quot;, step_id=&quot;tokenize_content&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Connecting input(s) of step &#39;tokenize_content&#39;
+workflow.connect_fields(&quot;tokenize_content.texts_array&quot;, &quot;extract_texts_column.array&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Creating step: preprocess_corpus
+workflow.add_step(operation=&quot;preprocess.tokens_array&quot;, step_id=&quot;preprocess_corpus&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Connecting input(s) of step &#39;preprocess_corpus&#39;
+workflow.connect_fields(&quot;preprocess_corpus.tokens_array&quot;, &quot;tokenize_content.tokens_array&quot;)
+workflow.connect_fields(&quot;preprocess_corpus.remove_stopwords&quot;, &quot;create_stopwords_list.stopwords_list&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Creating step: generate_lda
+workflow.add_step(operation=&quot;generate.LDA.for.tokens_array&quot;, step_id=&quot;generate_lda&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code># Connecting input(s) of step &#39;generate_lda&#39;
+workflow.connect_fields(&quot;generate_lda.tokens_array&quot;, &quot;preprocess_corpus.tokens_array&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="setting-workflow-inputoutput-names-optional">Setting workflow input/output names (optional)<a class="headerlink" href="#setting-workflow-inputoutput-names-optional" title="Permanent link">&para;</a></h2>
+<p>To make our workflow nicer to use, we can set aliases for its inputs and outputs.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>workflow.set_input_alias(input_field=&quot;extract_texts_column.column_name&quot;, alias=&quot;content_column_name&quot;)
+workflow.set_input_alias(input_field=&quot;extract_filename_column.column_name&quot;, alias=&quot;filename_column_name&quot;)
+workflow.set_input_alias(input_field=&quot;import_text_corpus.path&quot;, alias=&quot;text_corpus_folder_path&quot;)
+workflow.set_input_alias(input_field=&quot;create_date_array.min_index&quot;, alias=&quot;date_parse_min&quot;)
+workflow.set_input_alias(input_field=&quot;create_date_array.max_index&quot;, alias=&quot;date_parse_max&quot;)
+workflow.set_input_alias(input_field=&quot;create_date_array.force_non_null&quot;, alias=&quot;date_force_non_null&quot;)
+workflow.set_input_alias(input_field=&quot;create_date_array.remove_tokens&quot;, alias=&quot;date_remove_tokensl&quot;)
+workflow.set_input_alias(input_field=&quot;tokenize_content.tokenize_by_word&quot;, alias=&quot;tokenize_by_word&quot;)
+workflow.set_input_alias(input_field=&quot;generate_lda.num_topics_min&quot;, alias=&quot;num_topics_min&quot;)
+workflow.set_input_alias(input_field=&quot;generate_lda.num_topics_max&quot;, alias=&quot;num_topics_max&quot;)
+workflow.set_input_alias(input_field=&quot;generate_lda.compute_coherence&quot;, alias=&quot;compute_coherence&quot;)
+workflow.set_input_alias(input_field=&quot;generate_lda.words_per_topic&quot;, alias=&quot;words_per_topic&quot;)
+workflow.set_input_alias(input_field=&quot;create_stopwords_list.languages&quot;, alias=&quot;languages&quot;)
+workflow.set_input_alias(input_field=&quot;create_stopwords_list.stopword_lists&quot;, alias=&quot;stopword_lists&quot;)
+workflow.set_input_alias(input_field=&quot;preprocess_corpus.to_lowercase&quot;, alias=&quot;to_lowercase&quot;)
+workflow.set_input_alias(input_field=&quot;preprocess_corpus.remove_alphanumeric&quot;, alias=&quot;remove_alphanumeric&quot;)
+workflow.set_input_alias(input_field=&quot;preprocess_corpus.remove_non_alpha&quot;, alias=&quot;remove_non_alpha&quot;)
+workflow.set_input_alias(input_field=&quot;preprocess_corpus.remove_all_numeric&quot;, alias=&quot;remove_all_numeric&quot;)
+workflow.set_input_alias(input_field=&quot;preprocess_corpus.remove_short_tokens&quot;, alias=&quot;remove_short_tokens&quot;)
+workflow.set_input_alias(input_field=&quot;preprocess_corpus.remove_stopwords&quot;, alias=&quot;remove_stopwords&quot;)
+
+
+workflow.set_output_alias(output_field=&quot;import_text_corpus.file_bundle&quot;, alias=&quot;text_corpus_file_bundle&quot;)
+workflow.set_output_alias(output_field=&quot;create_text_corpus.table&quot;, alias=&quot;text_corpus_table&quot;)
+workflow.set_output_alias(output_field=&quot;extract_texts_column.array&quot;, alias=&quot;content_array&quot;)
+workflow.set_output_alias(output_field=&quot;tokenize_content.tokens_array&quot;, alias=&quot;tokenized_corpus&quot;)
+workflow.set_output_alias(output_field=&quot;preprocess_corpus.tokens_array&quot;, alias=&quot;preprocessed_corpus&quot;)
+workflow.set_output_alias(output_field=&quot;generate_lda.topic_models&quot;, alias=&quot;topic_models&quot;)
+workflow.set_output_alias(output_field=&quot;generate_lda.coherence_map&quot;, alias=&quot;coherence_map&quot;)
+workflow.set_output_alias(output_field=&quot;generate_lda.coherence_table&quot;, alias=&quot;coherence_table&quot;)
+workflow.set_output_alias(output_field=&quot;create_date_array.date_array&quot;, alias=&quot;date_array&quot;)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="workflow-information">Workflow information <a class="anchor" id="pipeline_info"></a><a class="headerlink" href="#workflow-information" title="Permanent link">&para;</a></h1>
+<p>After our workflow is wired up, we look can look at its structure, and other properties.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="workflow-status">Workflow status<a class="headerlink" href="#workflow-status" title="Permanent link">&para;</a></h2>
+<p>A workflow consists of a series of 'states', the most relevant is always the most recent one. We can investigate
+that latest states details like so:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>workflow.current_state
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="pipeline-execution-graph">Pipeline execution graph<a class="headerlink" href="#pipeline-execution-graph" title="Permanent link">&para;</a></h2>
+<p>Let's look at the current execution graph for the current workflow pipeline:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>graph_to_image(workflow.pipeline.execution_graph)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="workflow-inputs">Workflow inputs <a class="anchor" id="pipeline_inputs"></a><a class="headerlink" href="#workflow-inputs" title="Permanent link">&para;</a></h1>
+<p>Once a workflow has an assembled pipeline, we can set it's inputs. We use the input field
+names that we got from the result of the <code>workflow.current_state</code> call.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>workflow.set_input(&quot;text_corpus_folder_path&quot;, &quot;/home/markus/projects/kiara/dev/kiara.examples/examples/pipelines/topic_modeling/../../data/text_corpus/data&quot;)
+workflow.set_input(&quot;content_column_name&quot;, &quot;content&quot;)
+workflow.set_input(&quot;filename_column_name&quot;, &quot;file_name&quot;)
+workflow.set_input(&quot;date_force_non_null&quot;, None)
+workflow.set_input(&quot;date_parse_min&quot;, 11)
+workflow.set_input(&quot;date_parse_max&quot;, 21)
+workflow.set_input(&quot;date_remove_tokensl&quot;, None)
+workflow.set_input(&quot;tokenize_by_word&quot;, None)
+workflow.set_input(&quot;languages&quot;, [&#39;italian&#39;])
+workflow.set_input(&quot;stopword_lists&quot;, [])
+workflow.set_input(&quot;to_lowercase&quot;, None)
+workflow.set_input(&quot;remove_alphanumeric&quot;, None)
+workflow.set_input(&quot;remove_non_alpha&quot;, None)
+workflow.set_input(&quot;remove_all_numeric&quot;, None)
+workflow.set_input(&quot;remove_short_tokens&quot;, None)
+workflow.set_input(&quot;num_topics_min&quot;, None)
+workflow.set_input(&quot;num_topics_max&quot;, 7)
+workflow.set_input(&quot;compute_coherence&quot;, None)
+workflow.set_input(&quot;words_per_topic&quot;, None)
+
+
+# process all workflow steps that can be processed
+workflow.process_steps()
+
+# print the current state, after we set our inputs
+workflow.current_state
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="workflow-outputs">Workflow outputs <a class="anchor" id="pipeline_outputs"></a><a class="headerlink" href="#workflow-outputs" title="Permanent link">&para;</a></h1>
+<p>To print the actual data of the workflows' current outputs, we call the <code>current_output_values</code> property of the workflow object:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>workflow.current_output_values
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="workflow-snapshot">Workflow snapshot <a class="anchor" id="snapshot"></a><a class="headerlink" href="#workflow-snapshot" title="Permanent link">&para;</a></h1>
+<p>So far, our workflow only exists in memory. If we want to save it so we can have a look at it again at a later stage, we can snapshot the current state, which will save the current structure of the internal pipeline, as well as all inputs that are currently used. In addition, this will register the workflow under the alias we specified on top of this file when creating the <code>Workflow</code> object (in our case: <code>topic_modeling</code>).</p>
+<p>If we would not not specify <code>save=True</code>, the structure of the pipeline and inputs would still be frozen and kept, but only in memory, and we'd only be able to access it in our current session.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>workflow.snapshot(save=True)
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, we can access our workflow in other environments, for example from the commandline:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>! kiara workflow list
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>! kiara workflow explain topic_modeling
+</code></pre></div>
+
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Workflows" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Workflows
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../xor/" class="md-footer__link md-footer__link--next" aria-label="Next: Xor" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Xor
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>

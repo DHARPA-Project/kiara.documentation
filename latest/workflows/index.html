@@ -419,6 +419,20 @@
   
   
     <li class="md-nav__item">
+      <a href="topic_modeling/" class="md-nav__link">
+        Topic modeling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="xor/" class="md-nav__link">
         Xor
       </a>
@@ -460,9 +474,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#example-workflow" class="md-nav__link">
-    Example workflow
+  <a href="#example-workflows" class="md-nav__link">
+    Example workflows
   </a>
+  
+    <nav class="md-nav" aria-label="Example workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logicxor" class="md-nav__link">
+    logic.xor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic_modeling-example-pipeline" class="md-nav__link">
+    topic_modeling example pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -488,14 +522,21 @@
 
 <h1 id="workflows">Workflows<a class="headerlink" href="#workflows" title="Permanent link">&para;</a></h1>
 <p>This part of the documentation is work in progress, and very bare-bones at the moment.</p>
-<h2 id="example-workflow">Example workflow<a class="headerlink" href="#example-workflow" title="Permanent link">&para;</a></h2>
+<h2 id="example-workflows">Example workflows<a class="headerlink" href="#example-workflows" title="Permanent link">&para;</a></h2>
+<h3 id="logicxor"><code>logic.xor</code><a class="headerlink" href="#logicxor" title="Permanent link">&para;</a></h3>
 <p><em>kiara</em> can render different artefacts from pipeline descriptinos, most notably Jupyter notebooks. This can be done via the command-line:</p>
 <div class="highlight"><pre><span></span><code>kiara render pipeline logic.xor a=true b=true &gt; xor.ipynb
 </code></pre></div>
 <p>This command looks up the <code>logic.xor</code> pipeline operation (you can also specify a pipeline description file -- for example the one created when following <a href="/extending_kiara/pipelines/assemble_pipelines">this tutorial</a> ), and uses <a href="https://github.com/DHARPA-Project/kiara/tree/develop/src/kiara/resources/templates/render/pipeline/workflow_tutorial"><code>Jupyter_notebook.ipynb.j2</code> from this template folder</a> to render a Jupyter notebook that outlines how to use the <em>kiara</em> workflow api via Python. Rendered versions of this example can be found:</p>
 <ul>
 <li><a href="xor">here</a></li>
-<li>or <a href="">here</a></li>
+<li>or <a href="https://github.com/DHARPA-Project/kiara.documentation/blob/develop/docs/workflows/xor.ipynb">directly on Github</a></li>
+</ul>
+<h3 id="topic_modeling-example-pipeline"><code>topic_modeling</code> example pipeline<a class="headerlink" href="#topic_modeling-example-pipeline" title="Permanent link">&para;</a></h3>
+<p>As mentioned above, it's possible to use a pipeline description file as input for the render command. Here, we use <a href="https://github.com/DHARPA-Project/kiara.examples/blob/main/examples/pipelines/topic_modeling/topic_modeling.yaml">this pipeline</a> to render:</p>
+<ul>
+<li><a href="topic_modeling/">this</a></li>
+<li>or, the github-rendered version of the same notebook <a href="">here</a></li>
 </ul>
 
 
@@ -533,13 +574,13 @@
       
       
         
-        <a href="xor/" class="md-footer__link md-footer__link--next" aria-label="Next: Xor" rel="next">
+        <a href="topic_modeling/" class="md-footer__link md-footer__link--next" aria-label="Next: Topic modeling" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Xor
+              Topic modeling
             </div>
           </div>
           <div class="md-footer__button md-icon">
