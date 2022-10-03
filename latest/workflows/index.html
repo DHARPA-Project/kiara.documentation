@@ -536,8 +536,13 @@
 <p>As mentioned above, it's possible to use a pipeline description file as input for the render command. Here, we use <a href="https://github.com/DHARPA-Project/kiara.examples/blob/main/examples/pipelines/topic_modeling/topic_modeling.yaml">this pipeline</a> to render:</p>
 <ul>
 <li><a href="topic_modeling/">this</a></li>
-<li>or, the github-rendered version of the same notebook <a href="">here</a></li>
+<li>or, the github-rendered version of the same notebook <a href="https://github.com/DHARPA-Project/kiara.documentation/blob/develop/docs/workflows/topic_modeling.ipynb">here</a></li>
 </ul>
+<p>Assuming you have a working <em>kiara</em> virtual environment with all the necessary plugins, you can try that out yourself:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/DHARPA-Project/kiara.examples.git
+❯ kiara render pipeline kiara.examples/examples/pipelines/topic_modeling/topic_modeling.yaml &gt; topic_modeling.ipynb
+jupyter-lab topic_modeling.ipynb
+</code></pre></div>
 
 
 
