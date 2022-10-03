@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.3">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7a952b86.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -379,6 +379,60 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../workflows/">Workflows</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Workflows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workflows/xor/" class="md-nav__link">
+        Xor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -690,7 +744,7 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│   field            data type   stored id                              alias(es)                                                          │</span>
 <span class="go">│  ────────────────────────────────────────────────────────────────────────────────────────                                                │</span>
-<span class="go">│   filtered_table   table       31cee7cf-617c-4b37-9288-e001639c4c04   amsterdam_journals                                                 │</span>
+<span class="go">│   filtered_table   table       3deb9096-0869-42c9-916d-ced62e8fe76b   amsterdam_journals                                                 │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -699,8 +753,8 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:amsterdam_journals ────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                  │</span>
-<span class="go">│   value_id            31cee7cf-617c-4b37-9288-e001639c4c04                                       │</span>
-<span class="go">│   kiara_id            63c767a3-8b38-48c4-b2c9-e0586059a1e0                                       │</span>
+<span class="go">│   value_id            3deb9096-0869-42c9-916d-ced62e8fe76b                                       │</span>
+<span class="go">│   kiara_id            9031374d-30f4-4487-ad17-2e4d6d61a35c                                       │</span>
 <span class="go">│                                                                                                  │</span>
 <span class="go">│                       ────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_info                                                                                 │</span>
@@ -727,8 +781,8 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                                   └── import.file                                                │</span>
 <span class="go">│                                       └── input: path (string)                                   │</span>
 <span class="go">│   property_links      {                                                                          │</span>
-<span class="go">│                         &quot;metadata.python_class&quot;: &quot;5b3c018b-11ef-4376-be53-8f47217aa65d&quot;,         │</span>
-<span class="go">│                         &quot;metadata.table&quot;: &quot;b6f91971-2e88-4f00-953f-67b525465124&quot;                 │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;: &quot;c298bcd0-b269-4ee4-b00c-fc00bfb7bfbe&quot;,         │</span>
+<span class="go">│                         &quot;metadata.table&quot;: &quot;05f0f3e0-80ad-4529-afd8-a9eeb16de727&quot;                 │</span>
 <span class="go">│                       }                                                                          │</span>
 <span class="go">│   value_hash          zdpuAmca9P3gSGC6XipcksvC5aArdVeBJd8WHcwa6hLB9gqaF                          │</span>
 <span class="go">│   value_schema                                                                                   │</span>
@@ -745,15 +799,15 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                       ────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│                                                                                                  │</span>
 <span class="go">│   lineage             filter.table                                                             │</span>
-<span class="go">│                       ├── input: column_name (string) = cb44ef1c-8a19-4ebf-b4e7-060ff7347c01     │</span>
-<span class="go">│                       ├── input: filter_string (string) = 4e149a02-bc8e-47d0-b846-66bd0457339a   │</span>
-<span class="go">│                       └── input: table_input (table) = d5ffd695-9c1a-41e4-b84e-9020c79cab07      │</span>
+<span class="go">│                       ├── input: column_name (string) = f735ac6a-9941-4106-982a-7db009a04632     │</span>
+<span class="go">│                       ├── input: filter_string (string) = 36c5ad67-410c-4d25-a65c-c5618c9063ad   │</span>
+<span class="go">│                       └── input: table_input (table) = 2344a825-9523-4bba-9a2a-b8d42e3f312d      │</span>
 <span class="go">│                           └── create.table                                                       │</span>
 <span class="go">│                               └── input: csv_file (file) =                                       │</span>
-<span class="go">│                                   2aeff645-3576-4f5f-8c99-46b8139b5191                           │</span>
+<span class="go">│                                   79844fd9-45a5-421b-b0fc-46d4435e9855                           │</span>
 <span class="go">│                                   └── import.file                                                │</span>
 <span class="go">│                                       └── input: path (string) =                                 │</span>
-<span class="go">│                                           135f9a2c-7a0c-405e-b914-ff712c11abe4                   │</span>
+<span class="go">│                                           2156aabf-e76b-4643-b8b3-f386d9e9ebbf                   │</span>
 <span class="go">│                                                                                                  │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -852,7 +906,7 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
       
     
   </body>
