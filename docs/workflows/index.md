@@ -2,7 +2,9 @@
 
 This part of the documentation is work in progress, and very bare-bones at the moment.
 
-## Example workflow
+## Example workflows
+
+### `logic.xor`
 
 *kiara* can render different artefacts from pipeline descriptinos, most notably Jupyter notebooks. This can be done via the command-line:
 
@@ -14,3 +16,10 @@ This command looks up the `logic.xor` pipeline operation (you can also specify a
 
 - [here](xor)
 - or [directly on Github](https://github.com/DHARPA-Project/kiara.documentation/blob/develop/docs/workflows/xor.ipynb)
+
+### `topic_modeling` example pipeline
+
+As mentioned above, it's possible to use a pipeline description file as input for the render command. Here, we use [this pipeline](https://github.com/DHARPA-Project/kiara.examples/blob/main/examples/pipelines/topic_modeling/topic_modeling.yaml) to render:
+
+- [this](topic_modeling/)
+- or, the github-rendered version of the same notebook [here]()
