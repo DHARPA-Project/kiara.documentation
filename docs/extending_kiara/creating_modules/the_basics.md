@@ -73,7 +73,7 @@ Once this is done, you should see a new operation called `my_kiara_module.exampl
 !!! note
     The `example` string token at the end of the above command filters the output to operations that match the token.
 
-This module comes as example code with the project template, and is located in the `src/kiara_plugin/my_kiara_module/my_kiara_module.py` Python file. It only serves as an example and blueprint for your own modules, and you can delete the module class within the file if you wish.
+This module comes as example code with the project template, and is located in the `modules/__init__.py` Python file. It only serves as an example and blueprint for your own modules, and you can delete the module class within the file if you wish.
 
 ### Pre-loading a table dataset
 
@@ -89,7 +89,7 @@ Ok, let's get started and create a *kiara* module that filters a table, using di
 
 ### Module skeleton
 
-In most cases you'd delete the example module mentioned above, and create your module in the Python file where the example module was. For the purpose of this tutorial, we can just leave the example module in place, because it can serve as a quick reference for our own module. Use the editor of your choice, and paste the following text below the existing code into `src/kiara_plugin/my_kiara_module/my_kiara_module.py`:
+In most cases you'd delete the example module mentioned above, and create your module in the Python file where the example module was, or in a new Python file in the "modules" folder. For the purpose of this tutorial, we can just leave the example module in place, because it can serve as a quick reference for our own module. Use the editor of your choice, and paste the following text below the existing code into `modules/__init__.py`:
 
 ```python
 from kiara import KiaraModule

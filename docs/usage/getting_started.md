@@ -14,10 +14,10 @@ own usage scenarios.
 
 In order to use *kiara*, we'll need to install it into a Python virtual (or conda-) environment, along all the plugins we might want to use. For the purpose of this tutorial, we'll use [conda](https://docs.conda.io/en/latest/) to create such an environment, but you can of course use a 'normal' virtualenv if you prefer. How to install *conda* itself is out of scope of this tutorial, but you should not have problems finding instructions online.
 
-One simple way is to install the [Anaconda (individual edition)](https://docs.anaconda.com/anaconda/install/index.html), then use the Anaconda navigator to create a new environment, install the 'git' package in it (if your system does not already have it), and use the 'Open Terminal' option of that environment to start up a terminal that has that virtual-/conda-environment already activated.
+One simple way is to install the [Anaconda (individual edition)](https://docs.anaconda.com/anaconda/install/index.html), then use the Anaconda navigator to create a new environment, install the 'git' package in it if your system does not already have it (you can install 'git' by running the `conda install -c anaconda git` command in your terminal for example), and use the 'Open Terminal' option of that environment to start up a terminal that has that virtual-/conda-environment already activated.
 
 
-Here's how to create the environment, activate it, then install the necessary dependencies (assuming conda is installed):
+Here's how to create the environment, activate it, then install the necessary dependencies (assuming conda is installed). At some point in the process, you may be prompted by the terminal to confirm further proceeding (generally by typing "y" and enter) to complete all the steps.
 
 ```console
 conda create -n kiara_tutorial python=3.9
@@ -150,7 +150,7 @@ As you can see, there are 2 items now: one `file`, and one `table`. If you ever 
 
 {{ cli("kiara", "data", "explain", "alias:journal_nodes_table", max_height=300, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
-This command prints out the metadata *kiara* has stored about a value item. This commands supports displaying several internally important metadata details of stored datasets, check out the available options with ``kiara data explain --help``. One option that is particularly interesting is the `-p` one, which displays all the metadata properties *kiara* has collected about a value.
+This command prints out the metadata *kiara* has stored about a value item. This commands supports displaying several internally important metadata details of stored datasets, check out the available options with ``kiara data explain --help``. One option that is particularly interesting is the `--properties` one, which displays all the metadata properties *kiara* has collected about a value. We will experiment with this option a bit later in this tutorial.
 
 ##### Display the data itself: `kiara data load`
 
