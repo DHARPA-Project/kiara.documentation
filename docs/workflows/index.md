@@ -22,4 +22,12 @@ This command looks up the `logic.xor` pipeline operation (you can also specify a
 As mentioned above, it's possible to use a pipeline description file as input for the render command. Here, we use [this pipeline](https://github.com/DHARPA-Project/kiara.examples/blob/main/examples/pipelines/topic_modeling/topic_modeling.yaml) to render:
 
 - [this](topic_modeling/)
-- or, the github-rendered version of the same notebook [here]()
+- or, the github-rendered version of the same notebook [here](https://github.com/DHARPA-Project/kiara.documentation/blob/develop/docs/workflows/topic_modeling.ipynb)
+
+Assuming you have a working *kiara* virtual environment with all the necessary plugins, you can try that out yourself:
+
+```
+git clone https://github.com/DHARPA-Project/kiara.examples.git
+❯ kiara render pipeline kiara.examples/examples/pipelines/topic_modeling/topic_modeling.yaml > topic_modeling.ipynb
+jupyter-lab topic_modeling.ipynb
+```
