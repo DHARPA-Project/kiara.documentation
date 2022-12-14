@@ -231,11 +231,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -245,14 +260,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../usage/">Usage</a>
           
-            <label for="__nav_2">
+            <label for="__nav_3">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="Usage" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
+        <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Usage
         </label>
@@ -291,18 +306,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_3">
+        <label class="md-nav__link" for="__nav_4">
           Extending kiara
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Extending kiara" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Extending kiara
         </label>
@@ -447,18 +462,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3_2">
+        <label class="md-nav__link" for="__nav_4_2">
           Pipelines
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Pipelines" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_2">
+        <label class="md-nav__title" for="__nav_4_2">
           <span class="md-nav__icon md-icon"></span>
           Pipelines
         </label>
@@ -790,7 +805,7 @@ pip install -e .
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field   data type   stored id                              alias(es)                                                                                                                                                                       │</span>
 <span class="go">│  ────────────────────────────────────────────────────────────────────────────────                                                                                                                                                            │</span>
-<span class="go">│   table   table       eb8ad428-d564-4e7c-bded-e1f3b25e96d6   journal_nodes_table                                                                                                                                                             │</span>
+<span class="go">│   table   table       de5a40ea-e982-4e3e-89a3-049191e7af21   journal_nodes_table                                                                                                                                                             │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -987,7 +1002,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=eb8ad428-d564-4e7c-bded-e1f3b25e96d6, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=de5a40ea-e982-4e3e-89a3-049191e7af21, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 
 <span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
@@ -1160,7 +1175,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code><span class="go">kiara run --output silent filter.table table_input=alias:journal_nodes_table</span>
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=eb8ad428-d564-4e7c-bded-e1f3b25e96d6, type=table, status=set, initialized=True optional=False)</span>
+<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=de5a40ea-e982-4e3e-89a3-049191e7af21, type=table, status=set, initialized=True optional=False)</span>
 <span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
 <span class="go">Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,</span>
 <span class="go">       &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],</span>
