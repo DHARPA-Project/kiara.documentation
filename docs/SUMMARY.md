@@ -1,4 +1,5 @@
 * [Home](index.md)
+* [Installation](installation.md)
 * [Usage](usage/)
 * [Extending kiara](extending_kiara/)
 * [Workflows](workflows/)

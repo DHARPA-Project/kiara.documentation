@@ -6,17 +6,20 @@ This package contains a set of commonly used/useful modules, pipelines, types an
 
 Kiara user documentation.
 
-## Package content
+This site is work in progress, so far, check out those pages:
 
-{% for item_type, item_group in get_context_info().get_all_info().items() %}
+- [Getting started](/usage/getting_started)
+- [Create your own *kiara* module](/extending_kiara/creating_modules/the_basics)
+- [Assembing pipelines](/extending_kiara/pipelines/assemble_pipelines)
 
-### {{ item_type }}
-{% for item, details in item_group.item_infos.items() %}
-- [`{{ item }}`][kiara_info.{{ item_type }}.{{ item }}]: {{ details.documentation.description }}
-{% endfor %}
-{% endfor %}
+
 
 ## Links
 
- - Documentation: [https://DHARPA-Project.github.io/kiara.documentation](https://DHARPA-Project.github.io/kiara.documentation)
- - Code: [https://github.com/DHARPA-Project/kiara.documentation](https://github.com/DHARPA-Project/kiara.documentation)
+ - *kiara* main repository: [doc](https://dharpa.org/kiara) / [code](https://github.com/DHARPA-Project/kiara)
+ - 'official' plugin packages:
+
+    - `kiara_plugin.core_types`: [doc](https://dharpa.org/kiara_plugin.core_types) / [code](https://github.com/DHARPA-Project/kiara_plugin.core_types)
+    - `kiara_plugin.tabular`: [doc](https://dharpa.org/kiara_plugin.tabular) / [code](https://github.com/DHARPA-Project/kiara_plugin.tabular)
+    - `kiara_plugin.network_analysis`: [doc](https://dharpa.org/kiara_plugin.network_analysis) / [code](https://github.com/DHARPA-Project/kiara_plugin.network_analysis)
+    - `kiara_plugin.language_processing`: [doc](https://dharpa.org/kiara_plugin.language_processing) / [code](https://github.com/DHARPA-Project/kiara_plugin.language_processing)
