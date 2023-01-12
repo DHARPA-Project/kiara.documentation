@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import functools
 
 #  Copyright (c) 2021, University of Luxembourg / DHARPA project
 #
@@ -20,6 +21,7 @@ from kiara.interfaces import get_console
 # noqa
 # type: ignore
 from kiara.utils.cli import terminal_print
+from mkdocs.config import load_config
 from rich import box
 from rich.console import Group
 from rich.table import Table
@@ -29,6 +31,40 @@ from rich.table import Table
 @click.pass_context
 def doc_group(ctx):
     """Documentation helpers."""
+
+
+@doc_group.command("build")
+@click.option(
+    "--fail-on-cmd-error",
+    "-f",
+    help="Fail if any of the commands in the generation process fail..",
+    is_flag=True,
+    default=False,
+)
+@click.pass_context
+def build(ctx, fail_on_cmd_error: bool):
+    """ "Serve a 'live' version of the documentation page using the mkkdocs development server."""
+
+    if fail_on_cmd_error:
+        os.environ["FAIL_DOC_BUILD_ON_ERROR"] = "true"
+    # else:
+    #     os.environ["FAIL_DOC_BUILD_ON_ERROR"] = "false"
+
+    from mkdocs.commands import serve as mkdocs_serve
+
+    config_file = Path.cwd() / "mkdocs.yml"
+
+    get_config = functools.partial(
+        load_config,
+        config_file=config_file,
+        strict=None,
+        theme=None,
+        # theme_dir=theme_dir,
+        # site_dir=site_dir,
+        # **kwargs,
+    )
+    config = get_config(config_file=config_file.as_posix())
+    mkdocs_serve.build(config)
 
 
 @doc_group.command("serve")
@@ -52,8 +88,8 @@ def serve(ctx, dirty_reload: bool, fail_on_cmd_error: bool):
 
     if fail_on_cmd_error:
         os.environ["FAIL_DOC_BUILD_ON_ERROR"] = "true"
-    else:
-        os.environ["FAIL_DOC_BUILD_ON_ERROR"] = "false"
+    # else:
+    #     os.environ["FAIL_DOC_BUILD_ON_ERROR"] = "false"
 
     from mkdocs.commands import serve as mkdocs_serve
 
@@ -87,7 +123,7 @@ def cache(ctx):
 @cache.command("print")
 @click.argument("cmd_id", nargs=1, required=False, type=click.INT)
 @click.pass_context
-def print_cache(ctx, cmd_id: int = None):
+def print_cache(ctx, cmd_id: Union[int, None] = None):
     """Print information about the documentation build cache."""
 
     infos = get_cmd_infos(folder=KIARA_DOC_BUILD_CACHE_DIR)

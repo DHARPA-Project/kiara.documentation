@@ -4,7 +4,7 @@ doc: |
 
   Filtering is done by matching a 'filter_string' against all cells of a column, both specified by the user.
 steps:
-  - module_type: import.table.from.csv_file
+  - module_type: import.table.from.local_file_path
     step_id: import_table_step
   - module_type: filter.table_5
     step_id: filter_table_step

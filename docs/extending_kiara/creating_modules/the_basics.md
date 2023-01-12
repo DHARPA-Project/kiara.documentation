@@ -79,7 +79,7 @@ This module comes as example code with the project template, and is located in t
 
 In our tutorial we'll create a module to filter a table. In order to do this we'll need to pre-seed our *kiara* data store with a tabular dataset. Here is the command to run (with the project root as our working directory):
 
-{{ cli("kiara", "run", "--save", "table=journal_nodes_table", "import.table.from.csv_file", "path=examples/data/journals/JournalNodes1902.csv", max_height=200, extra_env={"CONSOLE_WIDTH": "240", "KIARA_CONTEXT": "_my_kiara_module"}) }}
+{{ cli("kiara", "run", "--save", "table=journal_nodes_table", "import.table.from.local_file_path", "path=examples/data/journals/JournalNodes1902.csv", max_height=200, extra_env={"CONSOLE_WIDTH": "240", "KIARA_CONTEXT": "_my_kiara_module"}) }}
 
 This should have created an item with alias `journal_nodes_table` in the *kiara* data store, which you can confirm with `kiara data list`.
 

@@ -77,7 +77,7 @@ So, in most cases, the first thing you (as a user) want to do is 'import' the so
 
 #### Importing the 'raw' file
 
-After looking at the ``kiara operation list`` output, it looks like the ``import.file`` module might be just what we need (to be honest, `import.table.from.csv_file` is what we'd really use if we weren't stuck in this getting-started guide, but doing that would skip over a few important basics that are worth understanding).
+After looking at the ``kiara operation list`` output, it looks like the ``import.file`` module might be just what we need (to be honest, `import.table.from.local_file_path` is what we'd really use if we weren't stuck in this getting-started guide, but doing that would skip over a few important basics that are worth understanding).
 
 *kiara* has the [``run``](../running_operations) sub-command, which is used to execute operations. If we only provide a module name, and not any input, this command will tell us what it expects:
 
@@ -212,11 +212,11 @@ one or two pieces of data (both tabular in nature):
 We already have our nodes imported into kiara (with the alias `my_first_table`). Now we need to do the same for our edges. Similar to what we have done above, we want to import the file into
 the *kiara* data store, and then convert it into a table. This time, let's just use a pre-pared (so-called) pipeline operation, which basically runs both operations in one, and feeds the right input(s) into the right input(s):
 
-{{ cli("kiara", "operation", "explain", "import.table.from.csv_file", max_height=240) }}
+{{ cli("kiara", "operation", "explain", "import.table.from.local_file_path", max_height=240) }}
 
 So, let's see:
 
-{{ cli("kiara", "run", "--save", "journal_edges", "import.table.from.csv_file", "path=examples/data/journals/JournalEdges1902.csv", extra_env={"KIARA_CONTEXT": "_getting_started"}, max_height=240 ) }}
+{{ cli("kiara", "run", "--save", "journal_edges", "import.table.from.local_file_path", "path=examples/data/journals/JournalEdges1902.csv", extra_env={"KIARA_CONTEXT": "_getting_started"}, max_height=240 ) }}
 
 !!! note
     Here we've used a simple string (without '=') with the `--save` option, and as you can see, *kiara* created two namespaced aliases for the result items.

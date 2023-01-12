@@ -44,11 +44,11 @@ As you can see, *kiara* turned this (single-step) pipeline into an operation, an
 
 In the previous tutorial we pre-seeded the *kiara* data store with a csv file/tabular dataset, to help us with developing our table filter module. In this tutorial, we'll remove the requirement to do that, by adding a step to our pipeline that lets the user specify a path to a csv file, and import and convert that into a table value.
 
-Previously, we've used the `import.table.from.csv_file` operation to import the csv file, and we can do the same now. Edit the pipeline file you created so it looks like the following:
+Previously, we've used the `import.table.from.local_file_path` operation to import the csv file, and we can do the same now. Edit the pipeline file you created so it looks like the following:
 
 ```yaml
 steps:
-  - module_type: import.table.from.csv_file
+  - module_type: import.table.from.local_file_path
     step_id: import_table_step
   - module_type: filter.table
     step_id: filter_table_step
@@ -58,7 +58,7 @@ steps:
 
 What we did here:
 
-- add a new step with the id `import_table_step`, which will execute the `import.table.from.csv_file` operation
+- add a new step with the id `import_table_step`, which will execute the `import.table.from.local_file_path` operation
 - leave our filter step in place, but connect the `table_input` input of this steps operation to the `table` output field of the `import_table_step` operation
 
 !!! note:
