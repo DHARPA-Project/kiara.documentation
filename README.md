@@ -54,7 +54,7 @@ https://github.com/<YOUR_FORKED_GITHUB_ID>/kiara.documentation
 
 ```
 cd kiara.documentation
-pip install -e '.[all_dev]'
+pip install -e '.[dev_utils]'
 ```
 
 ## Install some pre-commit check tooling (optional)
