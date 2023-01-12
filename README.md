@@ -83,7 +83,7 @@ kiara doc serve
 ...
 ```
 
-This will create the documentation, and run a webserver on http://localhost:8000 where you can preview the generated documentation site.
+This will create the documentation, and run a webserver on [http://localhost:8000](http://localhost:8000) where you can preview the generated documentation site.
 The first startup will take a bit, because some of the pages use dynamically generated results to prevent the documentation becoming
 out-of-date easily (and as a test against regressions). Those results are cached though, so the 2nd time around startup should be quicker.
 
