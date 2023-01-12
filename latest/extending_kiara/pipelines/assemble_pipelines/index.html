@@ -12,8 +12,10 @@
         <meta name="author" content="Markus Binsteiner">
       
       
+      
+      
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.4">
     
     
       
@@ -21,11 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.9c788c91.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
-        
       
       
 
@@ -60,7 +61,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
     
@@ -250,8 +251,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -304,12 +306,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
           Extending kiara
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -344,12 +347,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4_2">
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
           Pipelines
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -525,10 +529,9 @@
                 
                   
 
-  <a href="https://github.com/DHARPA-Project/kiara.documentation/edit/master/docs/extending_kiara/pipelines/assemble_pipelines.md" title="Edit this page" class="md-content__button md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
+  
+  
+
 
 
 <h1 id="assembling-a-kiara-pipeline">Assembling a kiara pipeline<a class="headerlink" href="#assembling-a-kiara-pipeline" title="Permanent link">&para;</a></h1>
@@ -540,9 +543,9 @@ development environment set-up from the latter guide, as well as the module crea
 <h3 id="a-single-step-pipeline">A single-step pipeline<a class="headerlink" href="#a-single-step-pipeline" title="Permanent link">&para;</a></h3>
 <p>The simplest pipeline contains a single operation, and is not useful in any way, since it's easier to just <code>kiara run</code>
 the operation directly. Nonetheless, below is how that would look like, we'll be using the module we created in the <a href="../../creating_modules/the_basics">writing your own <em>kiara</em> module</a> guide:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter.table</span><span class="w"></span>
-<span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_table_step</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter.table</span>
+<span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_table_step</span>
 </code></pre></div>
 <p>A pipeline step is a dictionary with 2 required keys (and some optional ones, which we'll cover later):</p>
 <ul>
@@ -577,18 +580,18 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <p>As you can see, <em>kiara</em> turned this (single-step) pipeline into an operation, and auto-generated some input- and output-fields, by assembling the step-id and step input-/output-field(s). Those long field names are a bit unwieldy, and we'll remedy that later, for now let's just ignore that.</p>
 <h3 id="adding-a-second-step">Adding a second step<a class="headerlink" href="#adding-a-second-step" title="Permanent link">&para;</a></h3>
 <p>In the previous tutorial we pre-seeded the <em>kiara</em> data store with a csv file/tabular dataset, to help us with developing our table filter module. In this tutorial, we'll remove the requirement to do that, by adding a step to our pipeline that lets the user specify a path to a csv file, and import and convert that into a table value.</p>
-<p>Previously, we've used the <code>import.table.from.csv_file</code> operation to import the csv file, and we can do the same now. Edit the pipeline file you created so it looks like the following:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">import.table.from.csv_file</span><span class="w"></span>
-<span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">import_table_step</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter.table</span><span class="w"></span>
-<span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_table_step</span><span class="w"></span>
-<span class="w">    </span><span class="nt">input_links</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">table_input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">import_table_step.table</span><span class="w"></span>
+<p>Previously, we've used the <code>import.table.from.local_file_path</code> operation to import the csv file, and we can do the same now. Edit the pipeline file you created so it looks like the following:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">import.table.from.local_file_path</span>
+<span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">import_table_step</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter.table</span>
+<span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_table_step</span>
+<span class="w">    </span><span class="nt">input_links</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">table_input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">import_table_step.table</span>
 </code></pre></div>
 <p>What we did here:</p>
 <ul>
-<li>add a new step with the id <code>import_table_step</code>, which will execute the <code>import.table.from.csv_file</code> operation</li>
+<li>add a new step with the id <code>import_table_step</code>, which will execute the <code>import.table.from.local_file_path</code> operation</li>
 <li>leave our filter step in place, but connect the <code>table_input</code> input of this steps operation to the <code>table</code> output field of the <code>import_table_step</code> operation</li>
 </ul>
 <p>!!! note:
@@ -613,7 +616,7 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                     field name                         type    description                                                               │</span>
 <span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
 <span class="go">│                     import_table_step__imported_file   file    The loaded files.                                                         │</span>
-<span class="go">│                     import_table_step__table           table   The result value.                                                         │</span>
+<span class="go">│                     import_table_step__table           table   The result value (of type &#39;table&#39;).                                       │</span>
 <span class="go">│                     filter_table_step__table_output    table   The filtered table.                                                       │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│                                                                                                                                          │</span>
@@ -654,15 +657,15 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <li><code>output_aliases</code>: a mapping of pipeline outputs to more user-friendly names</li>
 </ul>
 <p>Lets start with our inputs. Add the following to your pipeline file:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">input_aliases</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">import_table_step.path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csv_file_path</span><span class="w"></span>
-<span class="w">    </span><span class="nt">filter_table_step.column_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">column_name</span><span class="w"></span>
-<span class="w">    </span><span class="nt">filter_table_step.filter_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_string</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">input_aliases</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">import_table_step.path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csv_file_path</span>
+<span class="w">    </span><span class="nt">filter_table_step.column_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">column_name</span>
+<span class="w">    </span><span class="nt">filter_table_step.filter_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_string</span>
 </code></pre></div>
 <p>This is basically just a rename of one (or several, or all) pipeline-input-fields, to shorter names. If you specify the same value for several keys, then the user input for those fields will be re-used for all the keys that have that value (we'll cover that in a later tutorial).</p>
 <p>Now let's do our outputs:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">output_aliases</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">filter_table_step.table_output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filtered_table</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">output_aliases</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">filter_table_step.table_output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filtered_table</span>
 </code></pre></div>
 <p>Output aliases work a bit different to input aliases: for inputs, if we don't specify a field, <em>kiara</em> will just use the auto-generated name (since the need for the input to exist does not go away). For output aliases, if we don't specify a field, <em>kiara</em> will ignore that output, and not display it to the user. In our case, we are not really interested in the intermediate outputs of the first step, so we only add the <code>filtered_table</code> alias that represents our final, filtered result.</p>
 <p>Lets see what <em>kiara</em> has to say about the 'API' of our pipelines now:</p>
@@ -714,7 +717,7 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">│   field            data type   stored id                              alias(es)                                                          │</span>
 <span class="go">│  ────────────────────────────────────────────────────────────────────────────────────────                                                │</span>
-<span class="go">│   filtered_table   table       ed959407-202d-4bcf-9a67-7fe5b7a43806   amsterdam_journals                                                 │</span>
+<span class="go">│   filtered_table   table       cbf2a4f0-e8c4-4489-b8a8-55c1e2a3bd15   amsterdam_journals                                                 │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -723,8 +726,8 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:amsterdam_journals ────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                  │</span>
-<span class="go">│   value_id            ed959407-202d-4bcf-9a67-7fe5b7a43806                                       │</span>
-<span class="go">│   kiara_id            e3022014-94d5-4e0d-9288-a0a40548c566                                       │</span>
+<span class="go">│   value_id            cbf2a4f0-e8c4-4489-b8a8-55c1e2a3bd15                                       │</span>
+<span class="go">│   kiara_id            200774a7-6093-47d5-9042-07ad996cfcf2                                       │</span>
 <span class="go">│                                                                                                  │</span>
 <span class="go">│                       ────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_info                                                                                 │</span>
@@ -742,17 +745,9 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                                                                                                  │</span>
 <span class="go">│   destiny_backlinks   {}                                                                         │</span>
 <span class="go">│   enviroments         None                                                                       │</span>
-<span class="go">│   lineage             filter.table                                                             │</span>
-<span class="go">│                       ├── input: column_name (string)                                            │</span>
-<span class="go">│                       ├── input: filter_string (string)                                          │</span>
-<span class="go">│                       └── input: table_input (table)                                             │</span>
-<span class="go">│                           └── create.table                                                       │</span>
-<span class="go">│                               └── input: csv_file (file)                                         │</span>
-<span class="go">│                                   └── import.file                                                │</span>
-<span class="go">│                                       └── input: path (string)                                   │</span>
 <span class="go">│   property_links      {                                                                          │</span>
-<span class="go">│                         &quot;metadata.python_class&quot;: &quot;4f7daa52-2ffe-4736-8c36-40f516f32174&quot;,         │</span>
-<span class="go">│                         &quot;metadata.table&quot;: &quot;990939ec-a64b-4f66-8c41-a940def78ff9&quot;                 │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;: &quot;a4ce0e16-627a-4ff1-8a2f-55f9063a2a52&quot;,         │</span>
+<span class="go">│                         &quot;metadata.table&quot;: &quot;c4bfb382-cae5-4c9f-a089-095ac9d5adaa&quot;                 │</span>
 <span class="go">│                       }                                                                          │</span>
 <span class="go">│   value_hash          zdpuAmca9P3gSGC6XipcksvC5aArdVeBJd8WHcwa6hLB9gqaF                          │</span>
 <span class="go">│   value_schema                                                                                   │</span>
@@ -769,15 +764,14 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <span class="go">│                       ────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│                                                                                                  │</span>
 <span class="go">│   lineage             filter.table                                                             │</span>
-<span class="go">│                       ├── input: column_name (string) = c26fd0d6-3c6f-466b-9a98-0ccda7189af6     │</span>
-<span class="go">│                       ├── input: filter_string (string) = 9a8116f1-3c94-4457-9049-f0c616bd830e   │</span>
-<span class="go">│                       └── input: table_input (table) = 78907729-ef4e-4e02-a47e-cf0c097e306e      │</span>
+<span class="go">│                       ├── input: column_name (string) = 47b7a3d9-a8b2-48c0-ace0-b1010a972267     │</span>
+<span class="go">│                       ├── input: filter_string (string) = 811af4f7-b4e7-4ac6-9ea7-005dc6608ac9   │</span>
+<span class="go">│                       └── input: table_input (table) = 453c6ac4-94a1-45c4-87fb-19f5da047938      │</span>
 <span class="go">│                           └── create.table                                                       │</span>
-<span class="go">│                               └── input: csv_file (file) =                                       │</span>
-<span class="go">│                                   de7d6b02-d625-4b14-8f8e-4430604377d8                           │</span>
+<span class="go">│                               └── input: file (file) = 7d70f9de-810d-4bd2-a0d5-8af5d82be316      │</span>
 <span class="go">│                                   └── import.file                                                │</span>
 <span class="go">│                                       └── input: path (string) =                                 │</span>
-<span class="go">│                                           abfeadfa-fd23-4037-b872-65154aff0321                   │</span>
+<span class="go">│                                           e33bfb99-eade-49b8-b218-94cf8cf7b91e                   │</span>
 <span class="go">│                                                                                                  │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -804,11 +798,11 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <p><em>kiara</em> accepts paths to files or folders as the argument to <code>--pipelines</code>. If you specify a folder, <em>kiara</em> will look for valid pipeline descriptions under that folder.</p>
 </div>
 <p>Let's test that again, but this time we give our new pipeline a descriptive name, as well as some documentation. Add those two properties to your existing pipeline file:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">pipeline_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;import.filtered_table&quot;</span><span class="w"></span>
-<span class="nt">doc</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">  </span><span class="no">Import a table from a csv file, then filter it.</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">pipeline_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;import.filtered_table&quot;</span>
+<span class="nt">doc</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="no">Import a table from a csv file, then filter it.</span>
 
-<span class="w">  </span><span class="no">Filtering is done by matching a &#39;filter_string&#39; against all cells of a column, both specified by the user.</span><span class="w"></span>
+<span class="w">  </span><span class="no">Filtering is done by matching a &#39;filter_string&#39; against all cells of a column, both specified by the user.</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -818,15 +812,16 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Id                                   Type(s)    Description                                                                            │</span>
+<span class="go">│   Id                                          Type(s)    Description                                                                     │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   import.database.from.csv_file        pipeline   Import a database from a csv file.                                                     │</span>
-<span class="go">│   import.file                                     Import a file from the local filesystem.                                               │</span>
-<span class="go">│   import.file_bundle                              Import a folder (file_bundle) from the local filesystem.                               │</span>
-<span class="go">│   import.filtered_table                pipeline   Import a table from a csv file, then filter it.                                        │</span>
-<span class="go">│   import.network_data.from.csv_files   pipeline   Load the edges table from a csv file.                                                  │</span>
-<span class="go">│   import.table.from.csv_file           pipeline   Import a table from a csv file.                                                        │</span>
-<span class="go">│   import.table.from.text_file_bundle   pipeline   Load a table from a bundle of text files.                                              │</span>
+<span class="go">│   import.database.from.local_file_path        pipeline   Import a database from a csv file.                                              │</span>
+<span class="go">│   import.file                                            Import a file from the local filesystem.                                        │</span>
+<span class="go">│   import.file_bundle                                     Import a folder (file_bundle) from the local filesystem.                        │</span>
+<span class="go">│   import.network_data.from.local_file_paths   pipeline   Onboard the edges and nodes from local files, create table values from them,    │</span>
+<span class="go">│                                                          then assemble those to the network_data result.                                 │</span>
+<span class="go">│   import.table.from.local_file_path           pipeline   Import a table from a file on the local filesystem.                             │</span>
+<span class="go">│   import.table.from.local_folder_path         pipeline   Import a table from a local folder containing text files.                       │</span>
+<span class="go">│   import.filtered_table                       pipeline   Import a table from a csv file, then filter it.                                 │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -873,12 +868,11 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ba449ae6.min.js"></script>
       
-    
     
   </body>
 </html>

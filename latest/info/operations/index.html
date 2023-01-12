@@ -10,8 +10,10 @@
         <meta name="author" content="Markus Binsteiner">
       
       
+      
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.4">
     
     
       
@@ -19,11 +21,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9c788c91.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
-        
       
       
 
@@ -58,7 +59,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
     
@@ -248,8 +249,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -302,12 +304,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
           Extending kiara
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -342,12 +345,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4_2">
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
           Pipelines
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -489,367 +493,490 @@
                   
 
 
+
   <h1>Operations</h1>
 
 <h3 id="kiara_info.operations.filter.table"><code>filter.table</code><a class="headerlink" href="#kiara_info.operations.filter.table" title="Permanent link">&para;</a></h3>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                
- <span style="font-style: italic">Documentation    </span>                                                              
- <span style="font-style: italic">                 </span>   Filter a table.                                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Author(s)        </span>                                                              
- <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                        
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Context          </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  documentation                                 
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.documentation           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>:                                  
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://github.com/DHARPA-Project/kiara_plugin.documentation" target="_blank">https://github.com/DHARPA-Project/kiara_pl…</a>   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>:                                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://DHARPA-Project.github.io/kiara_plugin.documentation/" target="_blank">https://DHARPA-Project.github.io/kiara_plu…</a>   
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Operation details</span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Filter a table.                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">      </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> name  </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> desc… </span> <span style="font-weight: bold"> Requ… </span> <span style="font-weight: bold"> Def… </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table </span>  table   --      <span style="font-weight: bold">yes</span>     --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> _inpu </span>          n/a             no       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> t     </span>          --              def…     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>                          --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name   </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description   </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table_output </span>  table   -- n/a --         
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
-                                                                                
-</pre>
-<h3 id="kiara_info.operations.filter.table_2"><code>filter.table_2</code><a class="headerlink" href="#kiara_info.operations.filter.table_2" title="Permanent link">&para;</a></h3>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                
- <span style="font-style: italic">Documentation    </span>                                                              
- <span style="font-style: italic">                 </span>   Filter a table.                                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Author(s)        </span>                                                              
- <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                        
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Context          </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  documentation                                 
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.documentation           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>:                                  
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://github.com/DHARPA-Project/kiara_plugin.documentation" target="_blank">https://github.com/DHARPA-Project/kiara_pl…</a>   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>:                                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://DHARPA-Project.github.io/kiara_plugin.documentation/" target="_blank">https://DHARPA-Project.github.io/kiara_plu…</a>   
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Operation details</span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Filter a table.                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">      </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> name  </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> desc… </span> <span style="font-weight: bold"> Requ… </span> <span style="font-weight: bold"> Def… </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table </span>  table   The     <span style="font-weight: bold">yes</span>     --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> _inpu </span>          table           no       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> t     </span>          to              def…     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          filt…           --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name   </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description   </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table_output </span>  table   The filtered      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">              </span>          table.            
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
-                                                                                
-</pre>
-<h3 id="kiara_info.operations.filter.table_3"><code>filter.table_3</code><a class="headerlink" href="#kiara_info.operations.filter.table_3" title="Permanent link">&para;</a></h3>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                
- <span style="font-style: italic">Documentation    </span>                                                              
- <span style="font-style: italic">                 </span>   Filter a table.                                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Author(s)        </span>                                                              
- <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                        
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Context          </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  documentation                                 
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.documentation           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>:                                  
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://github.com/DHARPA-Project/kiara_plugin.documentation" target="_blank">https://github.com/DHARPA-Project/kiara_pl…</a>   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>:                                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://DHARPA-Project.github.io/kiara_plugin.documentation/" target="_blank">https://DHARPA-Project.github.io/kiara_plu…</a>   
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Operation details</span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Filter a table.                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">      </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> name  </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> desc… </span> <span style="font-weight: bold"> Requ… </span> <span style="font-weight: bold"> Def… </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table </span>  table   The     <span style="font-weight: bold">yes</span>     --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> _inpu </span>          table           no       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> t     </span>          to              def…     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          filt…           --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name   </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description   </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table_output </span>  table   The filtered      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">              </span>          table.            
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
-                                                                                
-</pre>
-<h3 id="kiara_info.operations.filter.table_4"><code>filter.table_4</code><a class="headerlink" href="#kiara_info.operations.filter.table_4" title="Permanent link">&para;</a></h3>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                
- <span style="font-style: italic">Documentation    </span>                                                              
- <span style="font-style: italic">                 </span>   Filter a table.                                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Author(s)        </span>                                                              
- <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                        
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Context          </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  documentation                                 
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.documentation           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>:                                  
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://github.com/DHARPA-Project/kiara_plugin.documentation" target="_blank">https://github.com/DHARPA-Project/kiara_pl…</a>   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>:                                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://DHARPA-Project.github.io/kiara_plugin.documentation/" target="_blank">https://DHARPA-Project.github.io/kiara_plu…</a>   
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Operation details</span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Filter a table.                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">      </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> name  </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> desc… </span> <span style="font-weight: bold"> Requ… </span> <span style="font-weight: bold"> Def… </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table </span>  table   The     <span style="font-weight: bold">yes</span>     --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> _inpu </span>          table           no       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> t     </span>          to              def…     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          filt…           --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name   </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description   </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table_output </span>  table   The filtered      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">              </span>          table.            
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
-                                                                                
-</pre>
-<h3 id="kiara_info.operations.filter.table_5"><code>filter.table_5</code><a class="headerlink" href="#kiara_info.operations.filter.table_5" title="Permanent link">&para;</a></h3>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                
- <span style="font-style: italic">Documentation    </span>                                                              
- <span style="font-style: italic">                 </span>   Filter a table.                                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Author(s)        </span>                                                              
- <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                        
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Context          </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  documentation                                 
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.documentation           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>:                                  
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://github.com/DHARPA-Project/kiara_plugin.documentation" target="_blank">https://github.com/DHARPA-Project/kiara_pl…</a>   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>:                                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://DHARPA-Project.github.io/kiara_plugin.documentation/" target="_blank">https://DHARPA-Project.github.io/kiara_plu…</a>   
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Operation details</span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Filter a table.                            
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">      </span> <span style="font-weight: bold">       </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> name  </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> desc… </span> <span style="font-weight: bold"> Req… </span> <span style="font-weight: bold"> Defa… </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table </span>  table   The     <span style="font-weight: bold">yes</span>    -- no     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> _inpu </span>          table          defa…     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> t     </span>          to             --        
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          filt…                    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> colum </span>  stri…   The     no     City      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> n_nam </span>          colu…                    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> e     </span>          cont…                    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          the                      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          elem…                    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          to                       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          use                      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          as                       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          filt…                    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> filte </span>  stri…   The     <span style="font-weight: bold">yes</span>    -- no     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> r_str </span>          stri…          defa…     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> ing   </span>          to             --        
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          use                      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          as                       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          filt…                    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name   </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description   </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table_output </span>  table   The filtered      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">              </span>          table.            
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
-                                                                                
-</pre>
-<h3 id="kiara_info.operations.kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module"><code>kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module</code><a class="headerlink" href="#kiara_info.operations.kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module" title="Permanent link">&para;</a></h3>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                
- <span style="font-style: italic">Documentation    </span>                                                              
- <span style="font-style: italic">                 </span>   -- n/a --                                                  
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Author(s)        </span>                                                              
- <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                        
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Context          </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  documentation                                 
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.documentation           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>:                                  
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://github.com/DHARPA-Project/kiara_plugin.documentation" target="_blank">https://github.com/DHARPA-Project/kiara_pl…</a>   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>:                                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://DHARPA-Project.github.io/kiara_plugin.documentation/" target="_blank">https://DHARPA-Project.github.io/kiara_plu…</a>   
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Operation details</span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  -- n/a --                                  
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">      </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> name  </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> desc… </span> <span style="font-weight: bold"> Requ… </span> <span style="font-weight: bold"> Def… </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table </span>  table   --      <span style="font-weight: bold">yes</span>     --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          n/a             no       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          --              def…     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>                          --       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description     </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table      </span>  table   -- n/a --           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
-                                                                                
-</pre>
-<h3 id="kiara_info.operations.my_kiara_module.example"><code>my_kiara_module.example</code><a class="headerlink" href="#kiara_info.operations.my_kiara_module.example" title="Permanent link">&para;</a></h3>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                
- <span style="font-style: italic">Documentation    </span>                                                              
- <span style="font-style: italic">                 </span>   A very simple example module; concatenate two strings.     
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>   The purpose of this modules is to show the main elements   
- <span style="font-style: italic">                 </span>   of a [<span style="color: #ffffff; text-decoration-color: #ffffff; background-color: #000000">KiaraModule</span>][kiara.modules.KiaraModule]:             
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span><span style="font-weight: bold; font-style: italic">the (optional) configuration class</span>: must inherit from   
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>[<span style="color: #ffffff; text-decoration-color: #ffffff; background-color: #000000">KiaraModuleConfig</span>][kiara.modules.KiaraModuleConfig],   
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>and the config class must be set as the <span style="color: #ffffff; text-decoration-color: #ffffff; background-color: #000000">_config_cls</span>     
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>attribute on the <span style="color: #ffffff; text-decoration-color: #ffffff; background-color: #000000">KiaraModule</span> class. Configuration       
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>values can be retrieved via the                         
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>[<span style="color: #ffffff; text-decoration-color: #ffffff; background-color: #000000">self.get_config_value(key)</span>][kiara.modules.KiaraModu…   
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>method                                                  
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span><span style="font-weight: bold; font-style: italic">the inputs description</span>: must return a dictionary,       
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>containing the input name(s) as keys, and another       
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>dictionary containing type_name information and         
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>documentation about the input data as value             
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span><span style="font-weight: bold; font-style: italic">the outputs description</span>: must return a dictionary,      
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>containing the output name(s) as keys, and another      
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>dictionary containing type_name information and         
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>documentation about the output data as value            
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span><span style="font-weight: bold; font-style: italic">the </span><span style="color: #ffffff; text-decoration-color: #ffffff; background-color: #000000; font-weight: bold; font-style: italic">process</span><span style="font-weight: bold; font-style: italic"> method</span>: this is where the actual work       
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>gets done. Input data can be accessed via               
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span><span style="color: #ffffff; text-decoration-color: #ffffff; background-color: #000000">inputs.get_value_data(key)</span>, results can be set with     
- <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold">   </span>the <span style="color: #ffffff; text-decoration-color: #ffffff; background-color: #000000">outputs.set_value(key, value)</span> method                
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>   Example:                                                   
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #272822">This example module can be tested on the commandline </span><span style="background-color: #272822">   </span>   
- <span style="font-style: italic">                 </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #272822">with the ``kiara run`` command:</span><span style="background-color: #272822">                         </span>   
- <span style="font-style: italic">                 </span>   <span style="background-color: #272822">                                                        </span>   
- <span style="font-style: italic">                 </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #272822">```</span><span style="background-color: #272822">                                                     </span>   
- <span style="font-style: italic">                 </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #272822">kiara run core_types.example text_1="xxx" text_2="yyy"</span><span style="background-color: #272822">  </span>   
- <span style="font-style: italic">                 </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #272822">```</span><span style="background-color: #272822">                                                     </span>   
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Author(s)        </span>                                                              
- <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                        
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Context          </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  documentation                                 
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.documentation           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>:                                  
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://github.com/DHARPA-Project/kiara_plugin.documentation" target="_blank">https://github.com/DHARPA-Project/kiara_pl…</a>   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>:                                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <a href="https://DHARPA-Project.github.io/kiara_plugin.documentation/" target="_blank">https://DHARPA-Project.github.io/kiara_plu…</a>   
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">Operation details</span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  A very simple example module;              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  concatenate two strings.                   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  The purpose of this modules is to show     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  the main elements of a [`KiaraModule`]:    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  - ***the (optional) configuration          
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  class***: must inherit from                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  [`KiaraModuleConfig`], and the config      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  class must be set as the `_config_cls`     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  attribute                                  
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>       on the `KiaraModule` class.           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  Configuration values can be retrieved      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  via the [`self.get_config_value(key)`]     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  method                                     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  - ***the inputs description***: must       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  return a dictionary, containing the        
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  input name(s) as keys, and another         
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  dictionary containing type_name            
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  information                                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>       and documentation about the input     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  data as value                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  - ***the outputs description***: must      
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  return a dictionary, containing the        
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  output name(s) as keys, and another        
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  dictionary containing type_name            
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  information                                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>       and documentation about the output    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  data as value                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  - ***the ``process`` method***: this is    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  where the actual work gets done. Input     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  data can be accessed via                   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  ``inputs.get_value_data(key)``, results    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>       can be set with the                   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  ``outputs.set_value(key, value)`` method   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  Example:                                   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>      This example module can be tested on   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  the commandline with the ``kiara run``     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  command:                                   
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>      ```                                    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>      kiara run core_types.example           
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  text_1="xxx" text_2="yyy"                  
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>      ```                                    
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">       </span> <span style="font-weight: bold">      </span> <span style="font-weight: bold">       </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> name  </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> desc… </span> <span style="font-weight: bold"> Req… </span> <span style="font-weight: bold"> Defa… </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> text_ </span>  stri…   The     <span style="font-weight: bold">yes</span>    -- no     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> 1     </span>          first          defa…     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          text.          --        
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> text_ </span>  stri…   The     <span style="font-weight: bold">yes</span>    -- no     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> 2     </span>          seco…          defa…     
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">       </span>          text.          --        
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                             
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name </span> <span style="font-weight: bold"> type   </span> <span style="font-weight: bold"> description    </span>    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────    
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> text       </span>  string   The                
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">            </span>           concatenated       
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">            </span>           text.              
- <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                             
- <span style="font-style: italic">                 </span>                                                              
-                                                                                
-</pre>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Filter a table.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_input</td>
+<td>table</td>
+<td>-- n/a --</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_output</td>
+<td>table</td>
+<td>-- n/a --</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.filter.table_2"><code>filter.table_2</code><a class="headerlink" href="#kiara_info.operations.filter.table_2" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Filter a table.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_input</td>
+<td>table</td>
+<td>The table to filter.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_output</td>
+<td>table</td>
+<td>The filtered table.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.filter.table_3"><code>filter.table_3</code><a class="headerlink" href="#kiara_info.operations.filter.table_3" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Filter a table.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_input</td>
+<td>table</td>
+<td>The table to filter.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_output</td>
+<td>table</td>
+<td>The filtered table.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.filter.table_4"><code>filter.table_4</code><a class="headerlink" href="#kiara_info.operations.filter.table_4" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Filter a table.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_input</td>
+<td>table</td>
+<td>The table to filter.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_output</td>
+<td>table</td>
+<td>The filtered table.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.filter.table_5"><code>filter.table_5</code><a class="headerlink" href="#kiara_info.operations.filter.table_5" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Filter a table.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_input</td>
+<td>table</td>
+<td>The table to filter.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>column_name</td>
+<td>string</td>
+<td>The column containing the element to use as filter.</td>
+<td>no</td>
+<td>City</td>
+    </tr>
+
+<td>filter_string</td>
+<td>string</td>
+<td>The string to use as filter.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table_output</td>
+<td>table</td>
+<td>The filtered table.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module"><code>kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module</code><a class="headerlink" href="#kiara_info.operations.kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>-- n/a --</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table</td>
+<td>table</td>
+<td>-- n/a --</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table</td>
+<td>table</td>
+<td>-- n/a --</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.my_kiara_module.example"><code>my_kiara_module.example</code><a class="headerlink" href="#kiara_info.operations.my_kiara_module.example" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>A very simple example module; concatenate two strings.</p>
+<p>The purpose of this modules is to show the main elements of a [<code>KiaraModule</code>][kiara.modules.KiaraModule]:</p>
+<ul>
+<li>*<strong>the (optional) configuration class</strong>*: must inherit from [<code>KiaraModuleConfig</code>][kiara.modules.KiaraModuleConfig], and the config class must be set as the <code>_config_cls</code> attribute
+   on the <code>KiaraModule</code> class. Configuration values can be retrieved via the [<code>self.get_config_value(key)</code>][kiara.modules.KiaraModule.get_config_value] method</li>
+<li>*<strong>the inputs description</strong>*: must return a dictionary, containing the input name(s) as keys, and another dictionary containing type_name information
+   and documentation about the input data as value</li>
+<li>*<strong>the outputs description</strong>*: must return a dictionary, containing the output name(s) as keys, and another dictionary containing type_name information
+   and documentation about the output data as value</li>
+<li>*<strong>the <code>process</code> method</strong>*: this is where the actual work gets done. Input data can be accessed via <code>inputs.get_value_data(key)</code>, results
+   can be set with the <code>outputs.set_value(key, value)</code> method</li>
+</ul>
+<p>Example:</p>
+<pre><code>This example module can be tested on the commandline with the ``kiara run`` command:
+
+```
+kiara run core_types.example text_1=&quot;xxx&quot; text_2=&quot;yyy&quot;
+```
+</code></pre>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>text_1</td>
+<td>string</td>
+<td>The first text.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>text_2</td>
+<td>string</td>
+<td>The second text.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>text</td>
+<td>string</td>
+<td>The concatenated text.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table>
 
 
 
@@ -887,12 +1014,11 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ba449ae6.min.js"></script>
       
-    
     
   </body>
 </html>

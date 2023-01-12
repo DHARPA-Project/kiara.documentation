@@ -12,8 +12,14 @@
         <meta name="author" content="Markus Binsteiner">
       
       
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../extending_kiara/creating_modules/the_basics/">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.4">
     
     
       
@@ -21,11 +27,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9c788c91.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
-        
       
       
 
@@ -60,7 +65,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
     
@@ -252,8 +257,9 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -496,12 +502,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
           Extending kiara
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -536,12 +543,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4_2">
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
           Pipelines
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -791,10 +799,9 @@
                 
                   
 
-  <a href="https://github.com/DHARPA-Project/kiara.documentation/edit/master/docs/usage/getting_started.md" title="Edit this page" class="md-content__button md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
+  
+  
+
 
 
 <h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
@@ -833,9 +840,14 @@ own usage scenarios.</p>
 <span class="go">│   create.database.from.csv_file                                  create_from   Create a database from a csv_file value.                  │</span>
 <span class="go">│   create.database.from.csv_file_bundle                           create_from   Create a database from a csv_file_bundle value.           │</span>
 <span class="go">│   create.database.from.table                                     create_from   Create a database value from a table.                     │</span>
+<span class="go">│   create.network_data.from.files                                 pipeline      Create table values from files containing edges and       │</span>
+<span class="go">│                                                                                node data, then assemble those to the network_data        │</span>
+<span class="go">│                                                                                result.                                                   │</span>
 <span class="go">│   create.network_data.from.tables                                              Create a graph object from one or two tables.             │</span>
 <span class="go">│   create.table.from.csv_file                                     create_from   Create a table from a csv_file value.                     │</span>
-<span class="go">│   create.table.from.text_file_bundle                             create_from   Create a table value from a text file_bundle.             │</span>
+<span class="go">│   create.table.from.file                                         create_from   Create a table from a file, trying to auto-determine      │</span>
+<span class="go">│                                                                                the format of said file.                                  │</span>
+<span class="go">│   create.table.from.file_bundle                                  create_from   Create a table value from a text file_bundle.             │</span>
 <span class="go">│   date.check_range                                                             Check whether a date falls within a specified date        │</span>
 <span class="go">│                                                                                range.                                                    │</span>
 <span class="go">│   date.extract_from_string                                                     Extract a date object from a string.                      │</span>
@@ -849,13 +861,16 @@ own usage scenarios.</p>
 <span class="go">│   extract.date_array.from.table                                  pipeline      Extract a date array from a table column.                 │</span>
 <span class="go">│   file_bundle.pick_file                                                        Pick a single file from a file_bundle value.              │</span>
 <span class="go">│   filter.table                                                                 Filter a table.                                           │</span>
-<span class="go">│   import.database.from.csv_file                                  pipeline      Import a database from a csv file.                        │</span>
+<span class="go">│   import.database.from.local_file_path                           pipeline      Import a database from a csv file.                        │</span>
 <span class="go">│   import.file                                                                  Import a file from the local filesystem.                  │</span>
 <span class="go">│   import.file_bundle                                                           Import a folder (file_bundle) from the local              │</span>
 <span class="go">│                                                                                filesystem.                                               │</span>
-<span class="go">│   import.network_data.from.csv_files                             pipeline      Load the edges table from a csv file.                     │</span>
-<span class="go">│   import.table.from.csv_file                                     pipeline      Import a table from a csv file.                           │</span>
-<span class="go">│   import.table.from.text_file_bundle                             pipeline      Load a table from a bundle of text files.                 │</span>
+<span class="go">│   import.network_data.from.local_file_paths                      pipeline      Onboard the edges and nodes from local files, create      │</span>
+<span class="go">│                                                                                table values from them, then assemble those to the        │</span>
+<span class="go">│                                                                                network_data result.                                      │</span>
+<span class="go">│   import.table.from.local_file_path                              pipeline      Import a table from a file on the local filesystem.       │</span>
+<span class="go">│   import.table.from.local_folder_path                            pipeline      Import a table from a local folder containing text        │</span>
+<span class="go">│                                                                                files.                                                    │</span>
 <span class="go">│   kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module                 -- n/a --                                                 │</span>
 <span class="go">│   list.contains                                                                Check whether an element is in a list.                    │</span>
 <span class="go">│   logic.and                                                                    Returns &#39;True&#39; if both inputs are &#39;True&#39;.                 │</span>
@@ -903,14 +918,15 @@ that will make subsequent processing faster, and also simpler in a lot of cases.
 <div style='max-height:320px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Id                                   Type(s)    Description                                                                            │</span>
+<span class="go">│   Id                                          Type(s)    Description                                                                     │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   import.database.from.csv_file        pipeline   Import a database from a csv file.                                                     │</span>
-<span class="go">│   import.file                                     Import a file from the local filesystem.                                               │</span>
-<span class="go">│   import.file_bundle                              Import a folder (file_bundle) from the local filesystem.                               │</span>
-<span class="go">│   import.network_data.from.csv_files   pipeline   Load the edges table from a csv file.                                                  │</span>
-<span class="go">│   import.table.from.csv_file           pipeline   Import a table from a csv file.                                                        │</span>
-<span class="go">│   import.table.from.text_file_bundle   pipeline   Load a table from a bundle of text files.                                              │</span>
+<span class="go">│   import.database.from.local_file_path        pipeline   Import a database from a csv file.                                              │</span>
+<span class="go">│   import.file                                            Import a file from the local filesystem.                                        │</span>
+<span class="go">│   import.file_bundle                                     Import a folder (file_bundle) from the local filesystem.                        │</span>
+<span class="go">│   import.network_data.from.local_file_paths   pipeline   Onboard the edges and nodes from local files, create table values from them,    │</span>
+<span class="go">│                                                          then assemble those to the network_data result.                                 │</span>
+<span class="go">│   import.table.from.local_file_path           pipeline   Import a table from a file on the local filesystem.                             │</span>
+<span class="go">│   import.table.from.local_folder_path         pipeline   Import a table from a local folder containing text files.                       │</span>
 <span class="go">│                                                                                                                                          │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -918,7 +934,7 @@ that will make subsequent processing faster, and also simpler in a lot of cases.
 </div>
 
 <h4 id="importing-the-raw-file">Importing the 'raw' file<a class="headerlink" href="#importing-the-raw-file" title="Permanent link">&para;</a></h4>
-<p>After looking at the <code>kiara operation list</code> output, it looks like the <code>import.file</code> module might be just what we need (to be honest, <code>import.table.from.csv_file</code> is what we'd really use if we weren't stuck in this getting-started guide, but doing that would skip over a few important basics that are worth understanding).</p>
+<p>After looking at the <code>kiara operation list</code> output, it looks like the <code>import.file</code> module might be just what we need (to be honest, <code>import.table.from.local_file_path</code> is what we'd really use if we weren't stuck in this getting-started guide, but doing that would skip over a few important basics that are worth understanding).</p>
 <p><em>kiara</em> has the <a href="../running_operations"><code>run</code></a> sub-command, which is used to execute operations. If we only provide a module name, and not any input, this command will tell us what it expects:</p>
 <p><div class="highlight"><pre><span></span><code><span class="go">kiara run import.file</span>
 </code></pre></div>
@@ -1217,7 +1233,7 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 <span class="go">│                                                                              │</span>
 <span class="go">│   field   data type   stored id                         alias(es)            │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   file    file        e886d9cc-9468-4e29-8cb0-9a96aa…   journal_nodes_file   │</span>
+<span class="go">│   file    file        cd7e8c3b-b3b7-47bd-8b3c-e16732…   journal_nodes_file   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1249,9 +1265,13 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 <span class="go">│   create.database.from.csv_file          create_from   Create a database from a csv_file value.                      │</span>
 <span class="go">│   create.database.from.csv_file_bundle   create_from   Create a database from a csv_file_bundle value.               │</span>
 <span class="go">│   create.database.from.table             create_from   Create a database value from a table.                         │</span>
+<span class="go">│   create.network_data.from.files         pipeline      Create table values from files containing edges and node      │</span>
+<span class="go">│                                                        data, then assemble those to the network_data result.         │</span>
 <span class="go">│   create.network_data.from.tables                      Create a graph object from one or two tables.                 │</span>
 <span class="go">│   create.table.from.csv_file             create_from   Create a table from a csv_file value.                         │</span>
-<span class="go">│   create.table.from.text_file_bundle     create_from   Create a table value from a text file_bundle.                 │</span>
+<span class="go">│   create.table.from.file                 create_from   Create a table from a file, trying to auto-determine the      │</span>
+<span class="go">│                                                        format of said file.                                          │</span>
+<span class="go">│   create.table.from.file_bundle          create_from   Create a table value from a text file_bundle.                 │</span>
 <span class="go">│                                                                                                                      │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -1267,16 +1287,18 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 <span class="go">│                     field                                                    │</span>
 <span class="go">│                     name       type       descrip…   Required   Default      │</span>
 <span class="go">│                    ──────────────────────────────────────────────────────    │</span>
-<span class="go">│                     csv_file   csv_file   The type   yes        -- no        │</span>
-<span class="go">│                                           of the                default      │</span>
-<span class="go">│                                           source                --           │</span>
-<span class="go">│                                           value.                             │</span>
+<span class="go">│                     csv_file   csv_file   The        yes        -- no        │</span>
+<span class="go">│                                           source                default      │</span>
+<span class="go">│                                           value                 --           │</span>
+<span class="go">│                                           (of type                           │</span>
+<span class="go">│                                           &#39;csv_fi…                           │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   Outputs                                                                    │</span>
 <span class="go">│                     field name   type    description                         │</span>
 <span class="go">│                    ──────────────────────────────────────────────────────    │</span>
-<span class="go">│                     table        table   The result value.                   │</span>
+<span class="go">│                     table        table   The result value (of type           │</span>
+<span class="go">│                                          &#39;table&#39;).                           │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
@@ -1349,7 +1371,7 @@ a dataset that lives in its data store, and we want to refer to it via its alias
 <span class="go">│                                                                              │</span>
 <span class="go">│   field   data type   stored id                        alias(es)             │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   table   table       a1cd3f5e-75c0-4e8f-9cd7-dab89…   journal_nodes_table   │</span>
+<span class="go">│   table   table       41dc6db2-e7e4-4bbe-a7b6-9e6b4…   journal_nodes_table   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -1378,8 +1400,8 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <div style='max-height:300px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journal_nodes_table ───────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id            a1cd3f5e-75c0-4e8f-9cd7-dab891db948a                   │</span>
-<span class="go">│   kiara_id            33cc09a1-16e6-441a-a42a-ff9f6073c363                   │</span>
+<span class="go">│   value_id            41dc6db2-e7e4-4bbe-a7b6-9e6b4944cabf                   │</span>
+<span class="go">│   kiara_id            b05791d8-c0a8-4795-b3ec-940fef9acd5c                   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_info                                                             │</span>
@@ -1400,9 +1422,9 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <span class="go">│   enviroments         None                                                   │</span>
 <span class="go">│   property_links      {                                                      │</span>
 <span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
-<span class="go">│                       &quot;aa677cfe-f218-4b5a-b66f-168035cd97c9&quot;,                │</span>
+<span class="go">│                       &quot;91ad9f7a-8ef4-49a6-98a4-8b5618915cfe&quot;,                │</span>
 <span class="go">│                         &quot;metadata.table&quot;:                                    │</span>
-<span class="go">│                       &quot;bc11834f-c2d1-4d84-b764-15b0f61189d2&quot;                 │</span>
+<span class="go">│                       &quot;4bc22d2a-eeb2-47f3-aa92-0dbc4b143d49&quot;                 │</span>
 <span class="go">│                       }                                                      │</span>
 <span class="go">│   value_hash          zdpuAn89Et1ENzfoASJRYcWEceyfRiPg664mN4nnHLFnjRLyg      │</span>
 <span class="go">│   value_schema                                                               │</span>
@@ -1411,7 +1433,8 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <span class="go">│                         default       __not_set__                            │</span>
 <span class="go">│                         optional      False                                  │</span>
 <span class="go">│                         is_constant   False                                  │</span>
-<span class="go">│                         doc           The result value.                      │</span>
+<span class="go">│                         doc           The result value (of type              │</span>
+<span class="go">│                                       &#39;table&#39;).                              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   value_size          42.79 KB                                               │</span>
 <span class="go">│   value_status        -- set --                                              │</span>
@@ -1475,7 +1498,7 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <p>This section is a bit more advanced, so you can skip it if you want. It's just to show an example of what can be done with
 a stored table data item.</p>
 <p>We'll be using the <a href="https://en.wikipedia.org/wiki/SQL">SQL</a> query language to find the names and types of all journals from Berlin. The query for this is:</p>
-<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">Label</span><span class="p">,</span><span class="w"> </span><span class="n">JournalType</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">City</span><span class="o">=</span><span class="s1">&#39;Berlin&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="n">Label</span><span class="p">,</span><span class="w"> </span><span class="n">JournalType</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">City</span><span class="o">=</span><span class="s1">&#39;Berlin&#39;</span>
 </code></pre></div>
 <p>The <em>kiara</em> module we are going to use is called <code>query.table</code>. Let's check again the parameters this module expects:</p>
 <p><div class="highlight"><pre><span></span><code><span class="go">kiara run query.table</span>
@@ -1500,7 +1523,12 @@ a stored table data item.</p>
 <span class="go">│                                                                              │</span>
 <span class="go">│   field name      status    type     description        required   default   │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   query           not set   string   The query.         yes                  │</span>
+<span class="go">│   query           not set   string   The query, use     yes                  │</span>
+<span class="go">│                                      the value of the                        │</span>
+<span class="go">│                                      &#39;relation_name&#39;                         │</span>
+<span class="go">│                                      input as table,                         │</span>
+<span class="go">│                                      e.g. &#39;select *                          │</span>
+<span class="go">│                                      from data&#39;.                             │</span>
 <span class="go">│   relation_name   valid     string   The name the       no         data      │</span>
 <span class="go">│                                      table is                                │</span>
 <span class="go">│                                      referred to in                          │</span>
@@ -1568,7 +1596,7 @@ we might want to store the result of our work, similar to how we imported the or
 <span class="go">│                                                                              │</span>
 <span class="go">│   field          data type   stored id                     alias(es)         │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   query_result   table       649dc50d-743c-41c7-8bea-23…   berlin_journals   │</span>
+<span class="go">│   query_result   table       41fc1c5c-a5df-478e-b407-21…   berlin_journals   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1581,8 +1609,8 @@ we might want to store the result of our work, similar to how we imported the or
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:berlin_journals ───────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id            649dc50d-743c-41c7-8bea-239d5d5e005b                   │</span>
-<span class="go">│   kiara_id            33cc09a1-16e6-441a-a42a-ff9f6073c363                   │</span>
+<span class="go">│   value_id            41fc1c5c-a5df-478e-b407-218898452f2b                   │</span>
+<span class="go">│   kiara_id            b05791d8-c0a8-4795-b3ec-940fef9acd5c                   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_info                                                             │</span>
@@ -1638,9 +1666,9 @@ we might want to store the result of our work, similar to how we imported the or
 <span class="go">│                                                                              │</span>
 <span class="go">│   property_links      {                                                      │</span>
 <span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
-<span class="go">│                       &quot;bd965082-197e-4b03-9d20-a3d8e5af7345&quot;,                │</span>
+<span class="go">│                       &quot;b2887464-860c-4c1f-b698-b0a9e4ecb2b3&quot;,                │</span>
 <span class="go">│                         &quot;metadata.table&quot;:                                    │</span>
-<span class="go">│                       &quot;142ffc0e-a1dc-4866-8fcc-febfd8d2ce77&quot;                 │</span>
+<span class="go">│                       &quot;20ced649-9d65-41c6-adc9-c38c5e0bdcef&quot;                 │</span>
 <span class="go">│                       }                                                      │</span>
 <span class="go">│   value_hash          zdpuAq5Ty5hNtUaKWouPmS75LxteiQQv6Ue6Jsq9v39QoMPyw      │</span>
 <span class="go">│   value_schema                                                               │</span>
@@ -1711,12 +1739,12 @@ to combine all those steps into one.</p>
 <h3 id="importing-edges-data-creating-a-table-item-from-it">Importing edges data, creating a table item from it<a class="headerlink" href="#importing-edges-data-creating-a-table-item-from-it" title="Permanent link">&para;</a></h3>
 <p>We already have our nodes imported into kiara (with the alias <code>my_first_table</code>). Now we need to do the same for our edges. Similar to what we have done above, we want to import the file into
 the <em>kiara</em> data store, and then convert it into a table. This time, let's just use a pre-pared (so-called) pipeline operation, which basically runs both operations in one, and feeds the right input(s) into the right input(s):</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara operation explain import.table.from.csv_file</span>
+<div class="highlight"><pre><span></span><code><span class="go">kiara operation explain import.table.from.local_file_path</span>
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: import.table.from.csv_file ──────────────────────────────────────╮</span>
+<div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: import.table.from.local_file_path ───────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   Documentation   Import a table from a csv file.                            │</span>
+<span class="go">│   Documentation   Import a table from a file on the local filesystem.        │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│   Inputs                                                                     │</span>
 <span class="go">│                     field                                                    │</span>
@@ -1733,7 +1761,8 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                     field name      type    description                      │</span>
 <span class="go">│                    ──────────────────────────────────────────────────────    │</span>
 <span class="go">│                     imported_file   file    The loaded files.                │</span>
-<span class="go">│                     table           table   The result value.                │</span>
+<span class="go">│                     table           table   The result value (of type        │</span>
+<span class="go">│                                             &#39;table&#39;).                        │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
@@ -1742,7 +1771,7 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 </div>
 
 <p>So, let's see:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara run --save journal_edges import.table.from.csv_file path=examples/data/journals/JournalEdges1902.csv</span>
+<div class="highlight"><pre><span></span><code><span class="go">kiara run --save journal_edges import.table.from.local_file_path path=examples/data/journals/JournalEdges1902.csv</span>
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Results ────────────────────────────────────────────────────────────────────╮</span>
@@ -1832,8 +1861,8 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                                              │</span>
 <span class="go">│   field           data type   stored id               alias(es)              │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   imported_file   file        431b12d3-dd54-478a-8…   journal_edges.impor…   │</span>
-<span class="go">│   table           table       b4e17f3d-f4d2-48f1-9…   journal_edges.table    │</span>
+<span class="go">│   imported_file   file        844f8011-8479-4b16-9…   journal_edges.impor…   │</span>
+<span class="go">│   table           table       d63a6333-8279-4d32-9…   journal_edges.table    │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -1852,10 +1881,10 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│   alias                         type        size                             │</span>
 <span class="go">│  ────────────────────────────────────────────────                            │</span>
 <span class="go">│   journal_nodes_file            file    33.43 KB                             │</span>
-<span class="go">│   journal_edges.table           table    9.13 KB                             │</span>
-<span class="go">│   berlin_journals               table    2.63 KB                             │</span>
 <span class="go">│   journal_edges.imported_file   file     3.02 KB                             │</span>
 <span class="go">│   journal_nodes_table           table   42.79 KB                             │</span>
+<span class="go">│   journal_edges.table           table    9.13 KB                             │</span>
+<span class="go">│   berlin_journals               table    2.63 KB                             │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -1866,14 +1895,16 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div style='max-height:320px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                                                                                                  │</span>
-<span class="go">│   Id                                    Type(s)     Description                                                                                                                  │</span>
+<span class="go">│   Id                                          Type(s)     Description                                                                                                            │</span>
 <span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   create.network_data.from.tables                   Create a graph object from one or two tables.                                                                                │</span>
-<span class="go">│   export.network_data.as.csv_files      export_as   Export network data as 2 csv files (one for edges, one for nodes.                                                            │</span>
-<span class="go">│   export.network_data.as.graphml_file   export_as   Export network data as graphml file.                                                                                         │</span>
-<span class="go">│   export.network_data.as.sql_dump       export_as   Export network data as a sql dump file.                                                                                      │</span>
-<span class="go">│   export.network_data.as.sqlite_db      export_as   Export network data as a sqlite database file.                                                                               │</span>
-<span class="go">│   import.network_data.from.csv_files    pipeline    Load the edges table from a csv file.                                                                                        │</span>
+<span class="go">│   create.network_data.from.files              pipeline    Create table values from files containing edges and node data, then assemble those to the network_data result.         │</span>
+<span class="go">│   create.network_data.from.tables                         Create a graph object from one or two tables.                                                                          │</span>
+<span class="go">│   export.network_data.as.csv_files            export_as   Export network data as 2 csv files (one for edges, one for nodes.                                                      │</span>
+<span class="go">│   export.network_data.as.graphml_file         export_as   Export network data as graphml file.                                                                                   │</span>
+<span class="go">│   export.network_data.as.sql_dump             export_as   Export network data as a sql dump file.                                                                                │</span>
+<span class="go">│   export.network_data.as.sqlite_db            export_as   Export network data as a sqlite database file.                                                                         │</span>
+<span class="go">│   import.network_data.from.local_file_paths   pipeline    Onboard the edges and nodes from local files, create table values from them, then assemble those to the network_data   │</span>
+<span class="go">│                                                           result.                                                                                                                │</span>
 <span class="go">│                                                                                                                                                                                  │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -2027,7 +2058,7 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   field          data type      stored id                              alias(es)                                                                                                                                                             │</span>
 <span class="go">│  ─────────────────────────────────────────────────────────────────────────────────────                                                                                                                                                       │</span>
-<span class="go">│   network_data   network_data   f956eab3-dfb9-4fea-82b1-6e1b0375a6b8   journals_graph                                                                                                                                                        │</span>
+<span class="go">│   network_data   network_data   88c0c135-0207-4884-831c-586327c4cdf9   journals_graph                                                                                                                                                        │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div>
@@ -2040,8 +2071,8 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journals_graph ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│   value_id            f956eab3-dfb9-4fea-82b1-6e1b0375a6b8                                                                                                                                                                                   │</span>
-<span class="go">│   kiara_id            33cc09a1-16e6-441a-a42a-ff9f6073c363                                                                                                                                                                                   │</span>
+<span class="go">│   value_id            88c0c135-0207-4884-831c-586327c4cdf9                                                                                                                                                                                   │</span>
+<span class="go">│   kiara_id            b05791d8-c0a8-4795-b3ec-940fef9acd5c                                                                                                                                                                                   │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_info                                                                                                                                                                                                                             │</span>
@@ -2208,11 +2239,11 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <span class="go">│                                                     }                                                                                                                                                                                        │</span>
 <span class="go">│                                                                                                                                                                                                                                              │</span>
 <span class="go">│   property_links      {                                                                                                                                                                                                                      │</span>
-<span class="go">│                         &quot;metadata.database&quot;: &quot;a622fdb3-1b9b-4635-a491-e4114dbb2ae5&quot;,                                                                                                                                                         │</span>
-<span class="go">│                         &quot;metadata.graph_properties&quot;: &quot;d9ceb2ca-0e83-4494-94d7-30dd15eada05&quot;,                                                                                                                                                 │</span>
-<span class="go">│                         &quot;metadata.python_class&quot;: &quot;c35da82c-5dff-44fd-a3e2-a85ebde11907&quot;                                                                                                                                                      │</span>
+<span class="go">│                         &quot;metadata.database&quot;: &quot;9ae4cd0b-55dc-4263-808a-2e85074505bf&quot;,                                                                                                                                                         │</span>
+<span class="go">│                         &quot;metadata.graph_properties&quot;: &quot;14f3ebb4-3c89-4d33-9c26-2787cb44b592&quot;,                                                                                                                                                 │</span>
+<span class="go">│                         &quot;metadata.python_class&quot;: &quot;b73c4ca5-35a5-4e5f-8bb1-d63e268d1063&quot;                                                                                                                                                      │</span>
 <span class="go">│                       }                                                                                                                                                                                                                      │</span>
-<span class="go">│   value_hash          zdpuB2XF4kFJ8MxLjYcPZ5PuYLxg2Ga2Xybfonn2w9zb9xjQ4                                                                                                                                                                      │</span>
+<span class="go">│   value_hash          zdpuB17oZEahwMpecZvwQWEGDB17D9ppcHWaUQ6pWNLWsWKNX                                                                                                                                                                      │</span>
 <span class="go">│   value_schema                                                                                                                                                                                                                               │</span>
 <span class="go">│                         type          network_data                                                                                                                                                                                           │</span>
 <span class="go">│                         type_config   {}                                                                                                                                                                                                     │</span>
@@ -2386,8 +2417,8 @@ very powerful and useful. But if you are ever interested about what went into cr
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:journals_graph ────────────────────────────────────╮</span>
 <span class="go">│                                                                              │</span>
-<span class="go">│   value_id            f956eab3-dfb9-4fea-82b1-6e1b0375a6b8                   │</span>
-<span class="go">│   kiara_id            33cc09a1-16e6-441a-a42a-ff9f6073c363                   │</span>
+<span class="go">│   value_id            88c0c135-0207-4884-831c-586327c4cdf9                   │</span>
+<span class="go">│   kiara_id            b05791d8-c0a8-4795-b3ec-940fef9acd5c                   │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">│                       ────────────────────────────────────────────────────   │</span>
 <span class="go">│   data_type_info                                                             │</span>
@@ -2406,32 +2437,15 @@ very powerful and useful. But if you are ever interested about what went into cr
 <span class="go">│                                                                              │</span>
 <span class="go">│   destiny_backlinks   {}                                                     │</span>
 <span class="go">│   enviroments         None                                                   │</span>
-<span class="go">│   lineage             create.network_data.from.tables                        │</span>
-<span class="go">│                       ├── input: edges (table)                               │</span>
-<span class="go">│                       │   └── create.table                                   │</span>
-<span class="go">│                       │       └── input: csv_file (file)                     │</span>
-<span class="go">│                       │           └── import.file                            │</span>
-<span class="go">│                       │               └── input: path (string)               │</span>
-<span class="go">│                       ├── input: edges_column_map (dict)                     │</span>
-<span class="go">│                       ├── input: id_column_name (string)                     │</span>
-<span class="go">│                       ├── input: label_column_name (string)                  │</span>
-<span class="go">│                       ├── input: nodes (table)                               │</span>
-<span class="go">│                       │   └── create.table                                   │</span>
-<span class="go">│                       │       └── input: csv_file (file)                     │</span>
-<span class="go">│                       │           └── import.file                            │</span>
-<span class="go">│                       │               └── input: path (string)               │</span>
-<span class="go">│                       ├── input: nodes_column_map (dict)                     │</span>
-<span class="go">│                       ├── input: source_column_name (string)                 │</span>
-<span class="go">│                       └── input: target_column_name (string)                 │</span>
 <span class="go">│   property_links      {                                                      │</span>
 <span class="go">│                         &quot;metadata.database&quot;:                                 │</span>
-<span class="go">│                       &quot;a622fdb3-1b9b-4635-a491-e4114dbb2ae5&quot;,                │</span>
+<span class="go">│                       &quot;9ae4cd0b-55dc-4263-808a-2e85074505bf&quot;,                │</span>
 <span class="go">│                         &quot;metadata.graph_properties&quot;:                         │</span>
-<span class="go">│                       &quot;d9ceb2ca-0e83-4494-94d7-30dd15eada05&quot;,                │</span>
+<span class="go">│                       &quot;14f3ebb4-3c89-4d33-9c26-2787cb44b592&quot;,                │</span>
 <span class="go">│                         &quot;metadata.python_class&quot;:                             │</span>
-<span class="go">│                       &quot;c35da82c-5dff-44fd-a3e2-a85ebde11907&quot;                 │</span>
+<span class="go">│                       &quot;b73c4ca5-35a5-4e5f-8bb1-d63e268d1063&quot;                 │</span>
 <span class="go">│                       }                                                      │</span>
-<span class="go">│   value_hash          zdpuB2XF4kFJ8MxLjYcPZ5PuYLxg2Ga2Xybfonn2w9zb9xjQ4      │</span>
+<span class="go">│   value_hash          zdpuB17oZEahwMpecZvwQWEGDB17D9ppcHWaUQ6pWNLWsWKNX      │</span>
 <span class="go">│   value_schema                                                               │</span>
 <span class="go">│                         type          network_data                           │</span>
 <span class="go">│                         type_config   {}                                     │</span>
@@ -2447,33 +2461,33 @@ very powerful and useful. But if you are ever interested about what went into cr
 <span class="go">│                                                                              │</span>
 <span class="go">│   lineage             create.network_data.from.tables                        │</span>
 <span class="go">│                       ├── input: edges (table) =                             │</span>
-<span class="go">│                       │   b4e17f3d-f4d2-48f1-9771-0a158405ef34               │</span>
+<span class="go">│                       │   d63a6333-8279-4d32-93fc-abc3e981570a               │</span>
 <span class="go">│                       │   └── create.table                                   │</span>
-<span class="go">│                       │       └── input: csv_file (file) =                   │</span>
-<span class="go">│                       │           431b12d3-dd54-478a-8401-b152fe1e33e5       │</span>
+<span class="go">│                       │       └── input: file (file) =                       │</span>
+<span class="go">│                       │           844f8011-8479-4b16-9cf8-8bb850e8c0b7       │</span>
 <span class="go">│                       │           └── import.file                            │</span>
 <span class="go">│                       │               └── input: path (string) =             │</span>
-<span class="go">│                       │                   0461c78e-6906-43e7-9770-ce2d4a0…   │</span>
+<span class="go">│                       │                   c9c31836-6770-4768-93c9-292a90a…   │</span>
 <span class="go">│                       ├── input: edges_column_map (dict) =                   │</span>
-<span class="go">│                       │   0517b58e-a8ac-456e-b173-97f0d494078c               │</span>
+<span class="go">│                       │   6ebc77ea-87da-4bed-aa16-cdf85e5bd687               │</span>
 <span class="go">│                       ├── input: id_column_name (string) =                   │</span>
-<span class="go">│                       │   8df48684-a414-41c9-b062-3f8bfa893a74               │</span>
+<span class="go">│                       │   ab1f2037-2fc6-4c43-8740-415eb7601207               │</span>
 <span class="go">│                       ├── input: label_column_name (string) =                │</span>
-<span class="go">│                       │   38007a42-f36d-434e-b4f9-0850e019ecef               │</span>
+<span class="go">│                       │   f59fb777-65d6-44be-9a31-aac30f74a3ad               │</span>
 <span class="go">│                       ├── input: nodes (table) =                             │</span>
-<span class="go">│                       │   a1cd3f5e-75c0-4e8f-9cd7-dab891db948a               │</span>
+<span class="go">│                       │   41dc6db2-e7e4-4bbe-a7b6-9e6b4944cabf               │</span>
 <span class="go">│                       │   └── create.table                                   │</span>
 <span class="go">│                       │       └── input: csv_file (file) =                   │</span>
-<span class="go">│                       │           e886d9cc-9468-4e29-8cb0-9a96aaf7fd3e       │</span>
+<span class="go">│                       │           cd7e8c3b-b3b7-47bd-8b3c-e16732fb2937       │</span>
 <span class="go">│                       │           └── import.file                            │</span>
 <span class="go">│                       │               └── input: path (string) =             │</span>
-<span class="go">│                       │                   9f3f414c-2f80-467c-96da-9882515…   │</span>
+<span class="go">│                       │                   ee580aa9-bafa-4a5e-8fbf-1c0531f…   │</span>
 <span class="go">│                       ├── input: nodes_column_map (dict) =                   │</span>
-<span class="go">│                       │   bf1848c8-affd-4d06-99cc-8d2d9449235e               │</span>
+<span class="go">│                       │   e6972367-0aea-418a-8519-3ddda6ac8723               │</span>
 <span class="go">│                       ├── input: source_column_name (string) =               │</span>
-<span class="go">│                       │   7dcdc96e-3630-4c16-a0ae-2b3864cbb86d               │</span>
+<span class="go">│                       │   d576d9d9-08ac-4c1a-bcb6-aa44efe6fb74               │</span>
 <span class="go">│                       └── input: target_column_name (string) =               │</span>
-<span class="go">│                           7c1545c5-7d7e-40cb-8f3b-e1cf3a9f2954               │</span>
+<span class="go">│                           556a2a3d-ef5f-4e00-a0b4-9eb1be520eab               │</span>
 <span class="go">│                                                                              │</span>
 <span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
 </code></pre></div></p>
@@ -2496,42 +2510,6 @@ very powerful and useful. But if you are ever interested about what went into cr
       
         <footer class="md-footer">
   
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Usage" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Usage
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../../extending_kiara/creating_modules/the_basics/" class="md-footer__link md-footer__link--next" aria-label="Next: Creating modules" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Creating modules
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -2553,12 +2531,11 @@ very powerful and useful. But if you are ever interested about what went into cr
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ba449ae6.min.js"></script>
       
-    
     
   </body>
 </html>
