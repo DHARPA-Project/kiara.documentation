@@ -1,0 +1,878 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to assemble multiple kiara modules into a pipeline">
+      
+      
+        <meta name="author" content="Markus Binsteiner">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.5">
+    
+    
+      
+        <title>Assembling a pipeline - kiara.documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#assembling-a-kiara-pipeline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="kiara.documentation" class="md-header__button md-logo" aria-label="kiara.documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            kiara.documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Assembling a pipeline
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DHARPA-Project/kiara.documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="kiara.documentation" class="md-nav__button md-logo" aria-label="kiara.documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    kiara.documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DHARPA-Project/kiara.documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../usage/">Usage</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Usage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../usage/getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+          Extending kiara
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Extending kiara" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Extending kiara
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../creating_modules/the_basics/" class="md-nav__link">
+        Creating modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          Pipelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="." class="md-nav__link">
+        Assemble a pipeline
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workflows/" class="md-nav__link">
+        Workflows
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    Preparation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-pipeline" class="md-nav__link">
+    Creating a pipeline
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-single-step-pipeline" class="md-nav__link">
+    A single-step pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-second-step" class="md-nav__link">
+    Adding a second step
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-note-visualizing-the-pipeline" class="md-nav__link">
+    Side-note: visualizing the pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-the-input-output-field-names" class="md-nav__link">
+    Adjusting the input-/output-field names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-pipeline" class="md-nav__link">
+    Run the pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-the-pipeline-discoverable" class="md-nav__link">
+    Making the pipeline discoverable
+  </a>
+  
+    <nav class="md-nav" aria-label="Making the pipeline discoverable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-extra_pipeline-property" class="md-nav__link">
+    Using the extra_pipeline property
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#including-the-pipeline-in-a-kiara-plugin" class="md-nav__link">
+    Including the pipeline in a kiara plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="assembling-a-kiara-pipeline">Assembling a kiara pipeline<a class="headerlink" href="#assembling-a-kiara-pipeline" title="Permanent link">&para;</a></h1>
+<h2 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permanent link">&para;</a></h2>
+<p>If you haven't already, it would make sense for you to go through the <a href="../../../usage/getting_started/"><em>kiara</em> getting started guide</a>, as well as <a href="../../creating_modules/the_basics">writing your own <em>kiara</em> module</a>. We'll use the
+development environment set-up from the latter guide, as well as the module created there as a step in our pipeline.</p>
+<h2 id="creating-a-pipeline">Creating a pipeline<a class="headerlink" href="#creating-a-pipeline" title="Permanent link">&para;</a></h2>
+<p>A <em>kiara</em> pipeline is a dict-like data structure that includes one or several processing steps (implemented by <em>kiara</em> operations), connected (or not) in a specific way so that some steps outputs feed into other steps' inputs.</p>
+<h3 id="a-single-step-pipeline">A single-step pipeline<a class="headerlink" href="#a-single-step-pipeline" title="Permanent link">&para;</a></h3>
+<p>The simplest pipeline contains a single operation, and is not useful in any way, since it's easier to just <code>kiara run</code>
+the operation directly. Nonetheless, below is how that would look like, we'll be using the module we created in the <a href="../../creating_modules/the_basics">writing your own <em>kiara</em> module</a> guide:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter.table</span>
+<span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_table_step</span>
+</code></pre></div>
+<p>A pipeline step is a dictionary with 2 required keys (and some optional ones, which we'll cover later):</p>
+<ul>
+<li><strong><code>module_type</code></strong>: the name of the module or operation that should be used.</li>
+<li><strong><code>step_id</code></strong>: the name of the step, ideally a short, descriptive name outlining what the step does. It can't contain special characters except '_', and it must be unique within the pipeline.</li>
+</ul>
+<p>An assembled pipeline has the same characteristics as a <em>kiara</em> module, and in fact is a perfectly valid operation, like any other one, and can be called the same way.</p>
+<p>Create a new file <code>my_first_pipeline.yaml</code>, and copy and paste the above code into it. Then, run the <code>operation explain</code> command against the file:</p>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>my_first_pipeline.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>╭─ Operation: my_first_pipeline.yaml.yaml ──────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Documentation   -- n/a --                                                                                                              │
+│                                                                                                                                          │
+│   Inputs                                                                                                                                 │
+│                     field name                         type     description                              Required   Default              │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     filter_table_step__table_input     table    The table to filter.                     yes        -- no default --     │
+│                     filter_table_step__column_name     string   The column containing the element to     no         City                 │
+│                                                                 use as filter.                                                           │
+│                     filter_table_step__filter_string   string   The string to use as filter.             yes        -- no default --     │
+│                                                                                                                                          │
+│                                                                                                                                          │
+│   Outputs                                                                                                                                │
+│                     field name                        type    description                                                                │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     filter_table_step__table_output   table   The filtered table.                                                        │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div></p>
+<p>As you can see, <em>kiara</em> turned this (single-step) pipeline into an operation, and auto-generated some input- and output-fields, by assembling the step-id and step input-/output-field(s). Those long field names are a bit unwieldy, and we'll remedy that later, for now let's just ignore that.</p>
+<h3 id="adding-a-second-step">Adding a second step<a class="headerlink" href="#adding-a-second-step" title="Permanent link">&para;</a></h3>
+<p>In the previous tutorial we pre-seeded the <em>kiara</em> data store with a csv file/tabular dataset, to help us with developing our table filter module. In this tutorial, we'll remove the requirement to do that, by adding a step to our pipeline that lets the user specify a path to a csv file, and import and convert that into a table value.</p>
+<p>Previously, we've used the <code>import.table.from.local_file_path</code> operation to import the csv file, and we can do the same now. Edit the pipeline file you created so it looks like the following:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">import.table.from.local_file_path</span>
+<span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">import_table_step</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter.table</span>
+<span class="w">    </span><span class="nt">step_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_table_step</span>
+<span class="w">    </span><span class="nt">input_links</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">table_input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">import_table_step.table</span>
+</code></pre></div>
+<p>What we did here:</p>
+<ul>
+<li>add a new step with the id <code>import_table_step</code>, which will execute the <code>import.table.from.local_file_path</code> operation</li>
+<li>leave our filter step in place, but connect the <code>table_input</code> input of this steps operation to the <code>table</code> output field of the <code>import_table_step</code> operation</li>
+</ul>
+<p>!!! note:
+    To find out the input/output field names of each step, use <code>kiara operation explain &lt;MODULE_TYPE&gt;</code>.</p>
+<p>We can ask <em>kiara</em> again about what it thinks of this new pipeline/operation:</p>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>my_first_pipeline.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>╭─ Operation: my_first_pipeline.yaml.yaml ──────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Documentation   -- n/a --                                                                                                              │
+│                                                                                                                                          │
+│   Inputs                                                                                                                                 │
+│                     field name                         type     description                              Required   Default              │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     import_table_step__path            string   The local path to the file.              yes        -- no default --     │
+│                     filter_table_step__column_name     string   The column containing the element to     no         City                 │
+│                                                                 use as filter.                                                           │
+│                     filter_table_step__filter_string   string   The string to use as filter.             yes        -- no default --     │
+│                                                                                                                                          │
+│                                                                                                                                          │
+│   Outputs                                                                                                                                │
+│                     field name                         type    description                                                               │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     import_table_step__imported_file   file    The loaded files.                                                         │
+│                     import_table_step__table           table   The result value (of type &#39;table&#39;).                                       │
+│                     filter_table_step__table_output    table   The filtered table.                                                       │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div></p>
+<p>As you can see, the previously existing input with the field name <code>filter_table_step__table_input</code> (type: <code>table</code>) is gone now, replaced by a new one, with the field name <code>import_table_step__path</code> (type: <code>string</code>). The other two inputs remain the same (since we did not connect a step output to them).</p>
+<h3 id="side-note-visualizing-the-pipeline">Side-note: visualizing the pipeline<a class="headerlink" href="#side-note-visualizing-the-pipeline" title="Permanent link">&para;</a></h3>
+<p>We can let <em>kiara</em> visualize our pipeline at each step in the development process. This is quite useful, as it can serve as a visual aid to debug and assemble pipelines and their steps.</p>
+<p>If you want to do this in your own environment, you need to have Java installed, as well as an additional Python dependency in your virtual- or conda-environment:</p>
+<div class="highlight"><pre><span></span><code>pip install &#39;git+https://github.com/cosminbasca/asciinet.git#egg=asciinet&amp;subdirectory=pyasciinet&#39;
+</code></pre></div>
+<p>Currently, the following commands exist to print a pipeline as graph on the command-line:</p>
+<ul>
+<li><code>kiara pipeline execution-graph &lt;pipeline_file&gt;</code>: display the pipeline steps in the order they will be executed.</li>
+<li><code>kiara pipeline data-flow-graph &lt;pipeline_file&gt;</code>: display the the connections of inputs/outputs as well as processing steps.</li>
+</ul>
+<p>As an example, let's look at the execution graph of our current pipeline:</p>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>pipeline<span class="w"> </span>execution-graph<span class="w"> </span>my_first_pipeline.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>     ┌────────┐     
+     │__root__│     
+     └────┬───┘     
+          │         
+          v         
+ ┌─────────────────┐
+ │import_table_step│
+ └────────┬────────┘
+          │         
+          v         
+ ┌─────────────────┐
+ │filter_table_step│
+ └─────────────────┘
+</code></pre></div></p>
+<h3 id="adjusting-the-input-output-field-names">Adjusting the input-/output-field names<a class="headerlink" href="#adjusting-the-input-output-field-names" title="Permanent link">&para;</a></h3>
+<p>We could run our pipeline as is, but let's adjust its input- and output field names first. Mainly to make it more intuitive to use. To do that we can add one or both of the following keys to our pipeline description:</p>
+<ul>
+<li><code>input_aliases</code>: a mapping of pipeline inputs to more user-friendly names</li>
+<li><code>output_aliases</code>: a mapping of pipeline outputs to more user-friendly names</li>
+</ul>
+<p>Lets start with our inputs. Add the following to your pipeline file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">input_aliases</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">import_table_step.path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csv_file_path</span>
+<span class="w">    </span><span class="nt">filter_table_step.column_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">column_name</span>
+<span class="w">    </span><span class="nt">filter_table_step.filter_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter_string</span>
+</code></pre></div>
+<p>This is basically just a rename of one (or several, or all) pipeline-input-fields, to shorter names. If you specify the same value for several keys, then the user input for those fields will be re-used for all the keys that have that value (we'll cover that in a later tutorial).</p>
+<p>Now let's do our outputs:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">output_aliases</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">filter_table_step.table_output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filtered_table</span>
+</code></pre></div>
+<p>Output aliases work a bit different to input aliases: for inputs, if we don't specify a field, <em>kiara</em> will just use the auto-generated name (since the need for the input to exist does not go away). For output aliases, if we don't specify a field, <em>kiara</em> will ignore that output, and not display it to the user. In our case, we are not really interested in the intermediate outputs of the first step, so we only add the <code>filtered_table</code> alias that represents our final, filtered result.</p>
+<p>Lets see what <em>kiara</em> has to say about the 'API' of our pipelines now:</p>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>my_first_pipeline.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>╭─ Operation: my_first_pipeline.yaml.yaml ──────────────────────────────────────────────────╮
+│                                                                                                  │
+│   Documentation   -- n/a --                                                                      │
+│                                                                                                  │
+│   Inputs                                                                                         │
+│                     field name      type     description         Required   Default              │
+│                    ──────────────────────────────────────────────────────────────────────────    │
+│                     csv_file_path   string   The local path to   yes        -- no default --     │
+│                                              the file.                                           │
+│                     column_name     string   The column          no         City                 │
+│                                              containing the                                      │
+│                                              element to use as                                   │
+│                                              filter.                                             │
+│                     filter_string   string   The string to use   yes        -- no default --     │
+│                                              as filter.                                          │
+│                                                                                                  │
+│                                                                                                  │
+│   Outputs                                                                                        │
+│                     field name       type    description                                         │
+│                    ──────────────────────────────────────────────────────────────────────────    │
+│                     filtered_table   table   The filtered table.                                 │
+│                                                                                                  │
+│                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div></p>
+<p>Much nicer!</p>
+<h3 id="run-the-pipeline">Run the pipeline<a class="headerlink" href="#run-the-pipeline" title="Permanent link">&para;</a></h3>
+<p>Now, all that is left to do is run the pipeline:</p>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>--save<span class="w"> </span><span class="nv">filtered_table</span><span class="o">=</span>amsterdam_journals<span class="w"> </span>my_first_pipeline.yaml<span class="w"> </span><span class="nv">csv_file_path</span><span class="o">=</span>examples/data/journals/JournalNodes1902.csv<span class="w"> </span><span class="nv">filter_string</span><span class="o">=</span>Amsterdam<span class="w"> </span><span class="nv">column_name</span><span class="o">=</span>City
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   field            data_type   value                                                                                                     │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   filtered_table   table                                                                                                                 │
+│                                  Id   Label      JournalT   City       CountryN   PresentD   Latitude   Longitu   Language   __index     │
+│                                 ─────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                                  75   Psychiat   speciali   Amsterda   Netherla   Netherla   52.36666   4.9       Dutch      0           │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─ Stored result value ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   field            data type   stored id                              alias(es)                                                          │
+│  ────────────────────────────────────────────────────────────────────────────────────────                                                │
+│   filtered_table   table       0d25ce1d-0ee4-4068-82bc-6e52ea3f5be5   amsterdam_journals                                                 │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div></p>
+<p>And to confirm this worked, we ask <em>kiara</em> about the value we just stored (alias: <code>amsterdam_journals</code>), including it's lineage, which should give us the value ids of the intermediate results (in case we ever needed them -- they won't have an alias associated with it, but are still persisted in the <em>kiara</em> data store and can be looked up with <code>kiara data explain &lt;VALUE_ID&gt;</code> and/or `kiara data load <VALUE_ID>):</p>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>data<span class="w"> </span>explain<span class="w"> </span>--lineage<span class="w"> </span>alias:amsterdam_journals
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>╭─ Value details for: alias:amsterdam_journals ────────────────────────────────────────────────────╮
+│                                                                                                  │
+│   value_id            0d25ce1d-0ee4-4068-82bc-6e52ea3f5be5                                       │
+│   kiara_id            046e85e9-ee94-4538-90fd-091cad9510b4                                       │
+│                                                                                                  │
+│                       ────────────────────────────────────────────────────────────────────────   │
+│   data_type_info                                                                                 │
+│                         data_type_name     table                                                 │
+│                         data_type_config   {}                                                    │
+│                         characteristics    {                                                     │
+│                                              &quot;is_scalar&quot;: false,                                 │
+│                                              &quot;is_json_serializable&quot;: false                       │
+│                                            }                                                     │
+│                         data_type_class                                                          │
+│                                              python_class_name    TableType                      │
+│                                              python_module_name   kiara_plugin.tabular.da…       │
+│                                              full_name            kiara_plugin.tabular.da…       │
+│                                                                                                  │
+│                                                                                                  │
+│   destiny_backlinks   {}                                                                         │
+│   enviroments         None                                                                       │
+│   property_links      {                                                                          │
+│                         &quot;metadata.python_class&quot;: &quot;9d20d171-0ffd-4e0a-948e-d13d2211371a&quot;,         │
+│                         &quot;metadata.table&quot;: &quot;b7570283-679b-44f8-8237-1650842b56d9&quot;                 │
+│                       }                                                                          │
+│   value_hash          zdpuAmca9P3gSGC6XipcksvC5aArdVeBJd8WHcwa6hLB9gqaF                          │
+│   value_schema                                                                                   │
+│                         type          table                                                      │
+│                         type_config   {}                                                         │
+│                         default       __not_set__                                                │
+│                         optional      False                                                      │
+│                         is_constant   False                                                      │
+│                         doc           The filtered table.                                        │
+│                                                                                                  │
+│   value_size          4.97 KB                                                                    │
+│   value_status        -- set --                                                                  │
+│                                                                                                  │
+│                       ────────────────────────────────────────────────────────────────────────   │
+│                                                                                                  │
+│   lineage             filter.table                                                             │
+│                       ├── input: column_name (string) = e83cdf9a-689f-47fb-8cb3-d708fec4b202     │
+│                       ├── input: filter_string (string) = dff46cb3-bc8a-41f1-b77d-99cfbd2712e0   │
+│                       └── input: table_input (table) = 46f845df-4e73-45aa-b74a-4bd8a805b349      │
+│                           └── create.table                                                       │
+│                               └── input: file (file) = d9cf5245-0305-4d11-bace-249ed2104aef      │
+│                                   └── import.file                                                │
+│                                       └── input: path (string) =                                 │
+│                                           6d65cc18-32ea-49cb-a8ee-85deb09cb02f                   │
+│                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div></p>
+<h3 id="making-the-pipeline-discoverable">Making the pipeline discoverable<a class="headerlink" href="#making-the-pipeline-discoverable" title="Permanent link">&para;</a></h3>
+<p>One of the main concepts that <em>kiara</em> is trying to facilitate is a modular approach to assembling data workflows. The main ingredient here is the fact that assembled pipelines behave like any other operation in <em>kiara</em>, which means that pipelines can also be used as (single) steps in other pipelines.</p>
+<p>To make that work in an intuitive and simple way for users, <em>kiara</em> needs to know about all the pipeline descriptions the user intends to use as building blocks. If we are only concerned about a single 'top-level' pipeline (as we have done in this tutorial so far), this is not a problem, and all we need to do is point <em>kiara</em> to a (yaml- or json-) file containing the pipeline description.</p>
+<p>If we want to re-use our pipelines in other pipelines, we need to 'register' them in a <em>kiara</em> context, and give it its own operation id.</p>
+<p><em>kiara</em> tries to make this as simple as possible, so, if you don't do anything, <em>kiara</em> will use the file name that contains the pipeline description (without extension), and convert it to a valid operation id. In our case, we'd end up with an operation called 'my_first_pipeline'.</p>
+<p>If we want to have more control over this, we can add a property <code>pipeline_name</code> to our description, that will override the auto-generated operation id.</p>
+<h4 id="using-the-extra_pipeline-property">Using the <code>extra_pipeline</code> property<a class="headerlink" href="#using-the-extra_pipeline-property" title="Permanent link">&para;</a></h4>
+<p>Each <em>kiara</em> context has a property called <code>extra_pipeline</code>. On the command-line, you can specify one or several of those via the <code>--pipelines</code> (or: <code>-p</code>) argument (after the <code>kiara</code> command-name, before the sub-command name):</p>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>--pipelines<span class="w"> </span>my_first_pipeline.yaml<span class="w"> </span>operation<span class="w"> </span>list<span class="w"> </span>my_first
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Id                  Type(s)    Description                                                                                             │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   my_first_pipeline   pipeline   -- n/a --                                                                                               │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>kiara</em> accepts paths to files or folders as the argument to <code>--pipelines</code>. If you specify a folder, <em>kiara</em> will look for valid pipeline descriptions under that folder.</p>
+</div>
+<p>Let's test that again, but this time we give our new pipeline a descriptive name, as well as some documentation. Add those two properties to your existing pipeline file:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">pipeline_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;import.filtered_table&quot;</span>
+<span class="nt">doc</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="no">Import a table from a csv file, then filter it.</span>
+
+<span class="w">  </span><span class="no">Filtering is done by matching a &#39;filter_string&#39; against all cells of a column, both specified by the user.</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here, we use a <a href="https://www.baeldung.com/yaml-multi-line#literal-style">yaml literal multiline string</a> to specify our pipeline documentation (the: '<code>|</code>'). This allows us to write as much documentation as we need to, without being restricted to a single line.</p>
+</div>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>--pipelines<span class="w"> </span>my_first_pipeline.yaml<span class="w"> </span>operation<span class="w"> </span>list<span class="w"> </span>import
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Id                                          Type(s)    Description                                                                     │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   import.database.from.local_file_path        pipeline   Import a database from a csv file.                                              │
+│   import.file                                            Import a file from the local filesystem.                                        │
+│   import.file_bundle                                     Import a folder (file_bundle) from the local filesystem.                        │
+│   import.network_data.from.local_file_paths   pipeline   Onboard the edges and nodes from local files, create table values from them,    │
+│                                                          then assemble those to the network_data result.                                 │
+│   import.table.from.local_file_path           pipeline   Import a table from a file on the local filesystem.                             │
+│   import.table.from.local_folder_path         pipeline   Import a table from a local folder containing text files.                       │
+│   import.filtered_table                       pipeline   Import a table from a csv file, then filter it.                                 │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div></p>
+<p>Going with the information contained in this output, instead of running our pipeline with the path to its file after the <code>run</code> sub-command, we could also do it like:</p>
+<div class="highlight"><pre><span></span><code>kiara --pipelines my_first_pipeline.yaml run import.filtered_table ... ... ...
+</code></pre></div>
+<h4 id="including-the-pipeline-in-a-kiara-plugin">Including the pipeline in a <em>kiara</em> plugin<a class="headerlink" href="#including-the-pipeline-in-a-kiara-plugin" title="Permanent link">&para;</a></h4>
+<p>In case we want to 'publish' our pipeline so it can be re-used as part of a <em>kiara</em> plugin (which may or may not contain native 'Python' modules/operations, custom data-types, etc.), this is also easy to do. If you have followed the 'writing your own <em>kiara</em> module' tutorial, you'd have created a <em>kiara</em> plugin project from a template. To add your pipeline to this plugin, simply copy/move it into the directory <code>src/kiara_plugin/&lt;YOUR_PLUGIN_NAME&gt;/pipelines</code>. Naming the pipeline and adding documentation works the same as outlined in the previous chapter.</p>
+<p>If you add pipelines to a <em>kiara</em> context this way, nothing else should be necessary, <em>kiara</em> will auto-discover all the pipelines added like this, and you can use the assigned 'pipeline_name' as value of the <code>module_type</code> key in your step description, if you want to run it within another pipeline.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>
