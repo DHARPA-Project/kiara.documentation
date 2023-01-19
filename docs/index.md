@@ -8,9 +8,9 @@ Kiara user documentation.
 
 This site is work in progress, so far, check out those pages:
 
-- [Getting started](/usage/getting_started)
-- [Create your own *kiara* module](/extending_kiara/creating_modules/the_basics)
-- [Assembing pipelines](/extending_kiara/pipelines/assemble_pipelines)
+- [Getting started](usage/getting_started)
+- [Create your own *kiara* module](extending_kiara/creating_modules/the_basics)
+- [Assembing pipelines](extending_kiara/pipelines/assemble_pipelines)
 
 
 

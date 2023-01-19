@@ -117,22 +117,22 @@ Let's ask kiara what 'create' related operations it has available:
 
 {{ cli("kiara", "operation", "list", "create", extra_env={"CONSOLE_WIDTH": "120"}) }}
 
-Righto, looks like `create.table.from.csv_file` might be our ticket! Let's see what it does:
+Righto, looks like `create.table.from.file` might be our ticket! Let's see what it does:
 
-{{ cli("kiara", "operation", "explain", "create.table.from.csv_file", max_height=320) }}
+{{ cli("kiara", "operation", "explain", "create.table.from.file", max_height=320) }}
 
-So, it needs an input `csv_file` of type `file`, and will return a 'table'-named output of type, well ... `table`. Looks good. Here is how we run this:
+So, it needs an input `file` of type ... `file`, and will return a 'table'-named output of type, well ... `table`. Looks good. Here is how we run this:
 
-{{ cli("kiara", "run", "create.table.from.csv_file", "csv_file=alias:journal_nodes_file", max_height=240, extra_env={"KIARA_CONTEXT": "_getting_started", "CONSOLE_WIDTH": "200"}) }}
+{{ cli("kiara", "run", "create.table.from.file", "file=alias:journal_nodes_file", max_height=240, extra_env={"KIARA_CONTEXT": "_getting_started", "CONSOLE_WIDTH": "200"}) }}
 
 !!! note
-    In this example we pre-pend the right side of the `csv_file=` argument with `alias:`. This is necessary to make it clear to *kiara* that we mean
+    In this example we pre-pend the right side of the `file=` argument with `alias:`. This is necessary to make it clear to *kiara* that we mean
     a dataset that lives in its data store, and we want to refer to it via its alias. Otherwise, *kiara* would have just interpreted the input as a string, and since that is of the wrong input type
     (we needed a table), it would have thrown an error.
 
 That output looks good, right? Much more table-y then before. Only thing is: we want to again 'save' this output, so we can use it later directly. No big deal, just like last time:
 
-{{ cli("kiara", "run", "--output", "silent", "--save", "table=journal_nodes_table", "create.table.from.csv_file", "csv_file=alias:journal_nodes_file", extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
+{{ cli("kiara", "run", "--output", "silent", "--save", "table=journal_nodes_table", "create.table.from.file", "file=alias:journal_nodes_file", extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
 !!! note
     Here we use the `--output silent` command line option to supress any output of values. We've seen this already in the

@@ -30,7 +30,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11"
 ]
 dependencies = [
-    "kiara>=0.4.22",
+    "kiara>=0.4.25",
     "kiara_plugin.network_analysis>=0.4.5",
     "icecream>=2.1.0",
     "mike>=1.0.1",
@@ -39,7 +39,7 @@ dependencies = [
     "mkdocs-macros-plugin>=0.7.0",
     "mkdocs-material>=8.0.0",
     "mkdocs-section-index>0.3.0",
-    "mkdocstrings-python-legacy",
+    "mkdocstrings-python",
     "mknotebooks>=0.7.0",
     "mkdocs-gen-files>=0.3.1"
 ]
