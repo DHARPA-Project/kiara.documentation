@@ -844,8 +844,6 @@ own usage scenarios.</p>
 │                                                                                node data, then assemble those to the network_data        │
 │                                                                                result.                                                   │
 │   create.network_data.from.tables                                              Create a graph object from one or two tables.             │
-│   create.stopwords_list                                                        Create a list of stopwords from one or multiple           │
-│                                                                                sources.                                                  │
 │   create.table.from.file                                         create_from   Create a table from a file, trying to auto-determine      │
 │                                                                                the format of said file.                                  │
 │   create.table.from.file_bundle                                  create_from   Create a table value from a text file_bundle.             │
@@ -864,8 +862,6 @@ own usage scenarios.</p>
 │   file_bundle.pick.sub_folder                                                  Pick a sub-folder from a file_bundle, resulting in a      │
 │                                                                                new file_bundle.                                          │
 │   filter.table                                                                 Filter a table.                                           │
-│   generate.LDA.for.tokens_array                                                Perform Latent Dirichlet Allocation on a tokenized        │
-│                                                                                corpus.                                                   │
 │   import.database.from.local_file_path                           pipeline      Import a database from a csv file.                        │
 │   import.file                                                                  Import a file from the local filesystem.                  │
 │   import.file_bundle                                                           Import a folder (file_bundle) from the local              │
@@ -888,18 +884,13 @@ own usage scenarios.</p>
 │   my_kiara_module.example                                                      A very simple example module; concatenate two strings.    │
 │   parse.date_array                                                             Create an array of date objects from an array of          │
 │                                                                                strings.                                                  │
-│   preprocess.tokens_array                                                      Preprocess lists of tokens, incl. lowercasing, remove     │
-│                                                                                special characers, etc.                                   │
 │   query.database                                                               Execute a sql query against a (sqlite) database.          │
 │   query.table                                                                  Execute a sql query against an (Arrow) table.             │
-│   remove_stopwords.from.tokens_array                                           Remove stopwords from an array of token-lists.            │
 │   string_filter.tokens                                           filter        -- n/a --                                                 │
 │   table.pick.column                                                            Pick one column from a table, returning an array.         │
 │   table_filter.drop_columns                                      filter        -- n/a --                                                 │
 │   table_filter.select_columns                                    filter        -- n/a --                                                 │
 │   table_filter.select_rows                                       filter        -- n/a --                                                 │
-│   tokenize.string                                                              Tokenize a string.                                        │
-│   tokenize.texts_array                                                         Split sentences into words or words into characters.      │
 │                                                                                                                                          │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1243,7 +1234,7 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 │                                                                              │
 │   field   data type   stored id                         alias(es)            │
 │  ──────────────────────────────────────────────────────────────────────────  │
-│   file    file        ecfcbebf-7657-406d-90c4-a224d7…   journal_nodes_file   │
+│   file    file        570b5927-5a6c-4511-9a3d-5dc4e5…   journal_nodes_file   │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1256,14 +1247,9 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>╭─ Available aliases ──────────────────────────────────────────────────────────╮
 │                                                                              │
-│   alias                         type               size                      │
-│  ───────────────────────────────────────────────────────                     │
-│   journal_nodes_file            file           33.43 KB                      │
-│   journals_graph                network_data   61.44 KB                      │
-│   berlin_journals               table           2.63 KB                      │
-│   journal_edges.imported_file   file            3.02 KB                      │
-│   journal_edges.table           table           9.13 KB                      │
-│   journal_nodes_table           table          42.79 KB                      │
+│   alias                type       size                                       │
+│  ──────────────────────────────────────                                      │
+│   journal_nodes_file   file   33.43 KB                                       │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
@@ -1283,7 +1269,6 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 │   create.network_data.from.files     pipeline      Create table values from files containing edges and node data,    │
 │                                                    then assemble those to the network_data result.                   │
 │   create.network_data.from.tables                  Create a graph object from one or two tables.                     │
-│   create.stopwords_list                            Create a list of stopwords from one or multiple sources.          │
 │   create.table.from.file             create_from   Create a table from a file, trying to auto-determine the format   │
 │                                                    of said file.                                                     │
 │   create.table.from.file_bundle      create_from   Create a table value from a text file_bundle.                     │
@@ -1386,7 +1371,7 @@ a dataset that lives in its data store, and we want to refer to it via its alias
 │                                                                              │
 │   field   data type   stored id                        alias(es)             │
 │  ──────────────────────────────────────────────────────────────────────────  │
-│   table   table       dca421f4-0534-4778-94e7-58bc5…   journal_nodes_table   │
+│   table   table       7bdf6ac1-a5db-4243-b4a9-868b5…   journal_nodes_table   │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
@@ -1401,14 +1386,10 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>╭─ Available aliases ──────────────────────────────────────────────────────────╮
 │                                                                              │
-│   alias                         type               size                      │
-│  ───────────────────────────────────────────────────────                     │
-│   journal_nodes_file            file           33.43 KB                      │
-│   journals_graph                network_data   61.44 KB                      │
-│   berlin_journals               table           2.63 KB                      │
-│   journal_edges.imported_file   file            3.02 KB                      │
-│   journal_edges.table           table           9.13 KB                      │
-│   journal_nodes_table           table          42.79 KB                      │
+│   alias                 type        size                                     │
+│  ────────────────────────────────────────                                    │
+│   journal_nodes_file    file    33.43 KB                                     │
+│   journal_nodes_table   table   42.79 KB                                     │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
@@ -1419,8 +1400,8 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <div style='max-height:300px;overflow:auto'>
 <div class="highlight"><pre><span></span><code>╭─ Value details for: alias:journal_nodes_table ───────────────────────────────╮
 │                                                                              │
-│   value_id            dca421f4-0534-4778-94e7-58bc58d077eb                   │
-│   kiara_id            b804dd4f-71c2-4f08-9e1c-1fa70fe2d2e6                   │
+│   value_id            7bdf6ac1-a5db-4243-b4a9-868b5850c08a                   │
+│   kiara_id            b40c9a51-cef4-45e7-b22b-1234396a5eb8                   │
 │                                                                              │
 │                       ────────────────────────────────────────────────────   │
 │   data_type_info                                                             │
@@ -1441,9 +1422,9 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 │   enviroments         None                                                   │
 │   property_links      {                                                      │
 │                         &quot;metadata.python_class&quot;:                             │
-│                       &quot;d53ff4a7-e788-4704-88c6-6733ea162a09&quot;,                │
+│                       &quot;0c8548b2-4828-4e6a-a528-da2fee4fc47c&quot;,                │
 │                         &quot;metadata.table&quot;:                                    │
-│                       &quot;fca96c86-79dc-4715-841c-2618bdbfe141&quot;                 │
+│                       &quot;353d4421-1a2b-4b0b-8113-1a30de58b157&quot;                 │
 │                       }                                                      │
 │   value_hash          zdpuAn89Et1ENzfoASJRYcWEceyfRiPg664mN4nnHLFnjRLyg      │
 │   value_schema                                                               │
@@ -1615,7 +1596,7 @@ we might want to store the result of our work, similar to how we imported the or
 │                                                                              │
 │   field          data type   stored id                     alias(es)         │
 │  ──────────────────────────────────────────────────────────────────────────  │
-│   query_result   table       3056bf5b-1200-4983-ae49-2b…   berlin_journals   │
+│   query_result   table       2fa7cb97-700b-4cff-a9d8-62…   berlin_journals   │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1628,8 +1609,8 @@ we might want to store the result of our work, similar to how we imported the or
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code>╭─ Value details for: alias:berlin_journals ───────────────────────────────────╮
 │                                                                              │
-│   value_id            3056bf5b-1200-4983-ae49-2b51f44b0a2a                   │
-│   kiara_id            b804dd4f-71c2-4f08-9e1c-1fa70fe2d2e6                   │
+│   value_id            2fa7cb97-700b-4cff-a9d8-62c7e658a9ec                   │
+│   kiara_id            b40c9a51-cef4-45e7-b22b-1234396a5eb8                   │
 │                                                                              │
 │                       ────────────────────────────────────────────────────   │
 │   data_type_info                                                             │
@@ -1685,9 +1666,9 @@ we might want to store the result of our work, similar to how we imported the or
 │                                                                              │
 │   property_links      {                                                      │
 │                         &quot;metadata.python_class&quot;:                             │
-│                       &quot;eb0a5845-c615-4588-a565-d3a3672f072b&quot;,                │
+│                       &quot;163b01de-2dea-4547-93ea-0d95be3a45c6&quot;,                │
 │                         &quot;metadata.table&quot;:                                    │
-│                       &quot;41b2b897-d66a-4b12-a09a-4353bd58c787&quot;                 │
+│                       &quot;d5531831-2f28-4fc2-94d3-042de4b9d7bb&quot;                 │
 │                       }                                                      │
 │   value_hash          zdpuAq5Ty5hNtUaKWouPmS75LxteiQQv6Ue6Jsq9v39QoMPyw      │
 │   value_schema                                                               │
@@ -1880,8 +1861,8 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 │                                                                              │
 │   field           data type   stored id               alias(es)              │
 │  ──────────────────────────────────────────────────────────────────────────  │
-│   imported_file   file        a7c19e38-5819-43e3-a…   journal_edges.impor…   │
-│   table           table       cf3c8a66-591b-4b92-8…   journal_edges.table    │
+│   imported_file   file        9129858a-2280-4b84-a…   journal_edges.impor…   │
+│   table           table       9c6c1e54-8ad2-4a86-b…   journal_edges.table    │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1897,14 +1878,13 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>╭─ Available aliases ──────────────────────────────────────────────────────────╮
 │                                                                              │
-│   alias                         type               size                      │
-│  ───────────────────────────────────────────────────────                     │
-│   journal_nodes_file            file           33.43 KB                      │
-│   journals_graph                network_data   61.44 KB                      │
-│   berlin_journals               table           2.63 KB                      │
-│   journal_edges.imported_file   file            3.02 KB                      │
-│   journal_edges.table           table           9.13 KB                      │
-│   journal_nodes_table           table          42.79 KB                      │
+│   alias                         type        size                             │
+│  ────────────────────────────────────────────────                            │
+│   berlin_journals               table    2.63 KB                             │
+│   journal_nodes_file            file    33.43 KB                             │
+│   journal_nodes_table           table   42.79 KB                             │
+│   journal_edges.imported_file   file     3.02 KB                             │
+│   journal_edges.table           table    9.13 KB                             │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
@@ -2078,7 +2058,7 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 │                                                                                                                                                                                                                                              │
 │   field          data type      stored id                              alias(es)                                                                                                                                                             │
 │  ─────────────────────────────────────────────────────────────────────────────────────                                                                                                                                                       │
-│   network_data   network_data   76d765a8-96ce-473d-8190-f7c2a85820a8   journals_graph                                                                                                                                                        │
+│   network_data   network_data   05d318c2-f562-47be-9e61-b34ba993d224   journals_graph                                                                                                                                                        │
 │                                                                                                                                                                                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -2091,8 +2071,8 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div style='max-height:240px;overflow:auto'>
 <div class="highlight"><pre><span></span><code>╭─ Value details for: alias:journals_graph ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                                                                                                                                                                                                              │
-│   value_id            0a858d0b-8223-4884-bcfb-c42f9971c77b                                                                                                                                                                                   │
-│   kiara_id            b804dd4f-71c2-4f08-9e1c-1fa70fe2d2e6                                                                                                                                                                                   │
+│   value_id            05d318c2-f562-47be-9e61-b34ba993d224                                                                                                                                                                                   │
+│   kiara_id            b40c9a51-cef4-45e7-b22b-1234396a5eb8                                                                                                                                                                                   │
 │                                                                                                                                                                                                                                              │
 │                       ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │
 │   data_type_info                                                                                                                                                                                                                             │
@@ -2259,11 +2239,11 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 │                                                     }                                                                                                                                                                                        │
 │                                                                                                                                                                                                                                              │
 │   property_links      {                                                                                                                                                                                                                      │
-│                         &quot;metadata.database&quot;: &quot;9247b0e1-dbaf-4d9b-9b3c-eba346c6b409&quot;,                                                                                                                                                         │
-│                         &quot;metadata.graph_properties&quot;: &quot;14f38814-7044-412a-82e7-63c23abd0bec&quot;,                                                                                                                                                 │
-│                         &quot;metadata.python_class&quot;: &quot;f9228daf-b4e9-449c-ab16-60cfd2758aa5&quot;                                                                                                                                                      │
+│                         &quot;metadata.database&quot;: &quot;4ff3180c-b8c3-4be9-912d-7d82a4ac24bb&quot;,                                                                                                                                                         │
+│                         &quot;metadata.graph_properties&quot;: &quot;8c17b76e-774d-4538-a8f5-ed95dc091c05&quot;,                                                                                                                                                 │
+│                         &quot;metadata.python_class&quot;: &quot;e4dfc71e-e182-480d-a5e1-c7564fe5b625&quot;                                                                                                                                                      │
 │                       }                                                                                                                                                                                                                      │
-│   value_hash          zdpuAstJHssbYPinNasXbCx76LQXAaRDTeAecwG6eBpTaz8qQ                                                                                                                                                                      │
+│   value_hash          zdpuB17oZEahwMpecZvwQWEGDB17D9ppcHWaUQ6pWNLWsWKNX                                                                                                                                                                      │
 │   value_schema                                                                                                                                                                                                                               │
 │                         type          network_data                                                                                                                                                                                           │
 │                         type_config   {}                                                                                                                                                                                                     │
@@ -2437,8 +2417,8 @@ very powerful and useful. But if you are ever interested about what went into cr
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>╭─ Value details for: alias:journals_graph ────────────────────────────────────╮
 │                                                                              │
-│   value_id            0a858d0b-8223-4884-bcfb-c42f9971c77b                   │
-│   kiara_id            b804dd4f-71c2-4f08-9e1c-1fa70fe2d2e6                   │
+│   value_id            05d318c2-f562-47be-9e61-b34ba993d224                   │
+│   kiara_id            b40c9a51-cef4-45e7-b22b-1234396a5eb8                   │
 │                                                                              │
 │                       ────────────────────────────────────────────────────   │
 │   data_type_info                                                             │
@@ -2459,13 +2439,13 @@ very powerful and useful. But if you are ever interested about what went into cr
 │   enviroments         None                                                   │
 │   property_links      {                                                      │
 │                         &quot;metadata.database&quot;:                                 │
-│                       &quot;9247b0e1-dbaf-4d9b-9b3c-eba346c6b409&quot;,                │
+│                       &quot;4ff3180c-b8c3-4be9-912d-7d82a4ac24bb&quot;,                │
 │                         &quot;metadata.graph_properties&quot;:                         │
-│                       &quot;14f38814-7044-412a-82e7-63c23abd0bec&quot;,                │
+│                       &quot;8c17b76e-774d-4538-a8f5-ed95dc091c05&quot;,                │
 │                         &quot;metadata.python_class&quot;:                             │
-│                       &quot;f9228daf-b4e9-449c-ab16-60cfd2758aa5&quot;                 │
+│                       &quot;e4dfc71e-e182-480d-a5e1-c7564fe5b625&quot;                 │
 │                       }                                                      │
-│   value_hash          zdpuAstJHssbYPinNasXbCx76LQXAaRDTeAecwG6eBpTaz8qQ      │
+│   value_hash          zdpuB17oZEahwMpecZvwQWEGDB17D9ppcHWaUQ6pWNLWsWKNX      │
 │   value_schema                                                               │
 │                         type          network_data                           │
 │                         type_config   {}                                     │
@@ -2481,33 +2461,33 @@ very powerful and useful. But if you are ever interested about what went into cr
 │                                                                              │
 │   lineage             create.network_data.from.tables                        │
 │                       ├── input: edges (table) =                             │
-│                       │   cf3c8a66-591b-4b92-8d23-c059c5352d1a               │
+│                       │   9c6c1e54-8ad2-4a86-b07b-fe92661d7b28               │
 │                       │   └── create.table                                   │
 │                       │       └── input: file (file) =                       │
-│                       │           a7c19e38-5819-43e3-a9d4-519fe761f84d       │
+│                       │           9129858a-2280-4b84-a7c9-dce05f7c2852       │
 │                       │           └── import.file                            │
 │                       │               └── input: path (string) =             │
-│                       │                   0f4fd590-9633-48e6-ad9c-8be3d47…   │
+│                       │                   50536da4-ba7b-4eb4-aa0d-333d18f…   │
 │                       ├── input: edges_column_map (dict) =                   │
-│                       │   89dd6cd7-2a95-4fe0-96bf-c18c69cc3f01               │
+│                       │   287406be-9d6b-418d-bf8e-853edfb86bb5               │
 │                       ├── input: id_column_name (string) =                   │
-│                       │   5032c940-66ee-4d96-8e97-1e087516d2a2               │
+│                       │   649f0bec-4eff-47ab-b002-a59768b48786               │
 │                       ├── input: label_column_name (string) =                │
-│                       │   8068d8bc-36ec-4983-9ebb-90f231a3b712               │
+│                       │   42f2d19c-ca1a-409f-9554-d9e40508d33b               │
 │                       ├── input: nodes (table) =                             │
-│                       │   dca421f4-0534-4778-94e7-58bc58d077eb               │
+│                       │   7bdf6ac1-a5db-4243-b4a9-868b5850c08a               │
 │                       │   └── create.table                                   │
 │                       │       └── input: file (file) =                       │
-│                       │           025b0a44-4cdd-4a85-ada8-42b068fa09cf       │
+│                       │           570b5927-5a6c-4511-9a3d-5dc4e59010c2       │
 │                       │           └── import.file                            │
 │                       │               └── input: path (string) =             │
-│                       │                   cf42d8bf-5908-4519-a357-d0df0b9…   │
+│                       │                   3b212826-f27f-432f-b373-13a7056…   │
 │                       ├── input: nodes_column_map (dict) =                   │
-│                       │   73d73446-a9e1-4b6f-b1f8-d703d4a60d55               │
+│                       │   81aa2e7f-c1e7-4575-90f9-29f4ab95356c               │
 │                       ├── input: source_column_name (string) =               │
-│                       │   58f603d3-96b2-4dbf-aa87-4db93738bd7a               │
+│                       │   431c6b53-34d0-48f0-97ca-ed25f65c1d3c               │
 │                       └── input: target_column_name (string) =               │
-│                           fe754be4-b892-4bb6-8a56-f701b67eee0f               │
+│                           76d0456a-2690-4097-851b-fea1938fdd06               │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
