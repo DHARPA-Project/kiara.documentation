@@ -434,32 +434,6 @@
     kiara_plugin.documentation.interfaces.cli.doc
   </a>
   
-    <nav class="md-nav" aria-label="kiara_plugin.documentation.interfaces.cli.doc">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kiara_plugin.documentation.interfaces.cli.doc.commands" class="md-nav__link">
-    commands
-  </a>
-  
-    <nav class="md-nav" aria-label="commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kiara_plugin.documentation.interfaces.cli.doc.commands.get_cmd_infos" class="md-nav__link">
-    get_cmd_infos()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -485,38 +459,11 @@
 
 <div class="doc doc-object doc-module">
 
+
 <a id="kiara_plugin.documentation.interfaces.cli.doc"></a>
-    <div class="doc doc-contents first">
+  <div class="doc doc-contents first">
 
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-  <div class="doc doc-object doc-module">
-
-
-
-<h3 id="kiara_plugin.documentation.interfaces.cli.doc.commands" class="doc doc-heading">
-        <code>commands</code>
-
-
-
-<a href="#kiara_plugin.documentation.interfaces.cli.doc.commands" class="headerlink" title="Permanent link">&para;</a></h3>
-
-    <div class="doc doc-contents ">
-
-
-
+  
 
   <div class="doc doc-children">
 
@@ -527,77 +474,14 @@
 
 
 
-  <div class="doc doc-object doc-function">
-
-
-
-<h5 id="kiara_plugin.documentation.interfaces.cli.doc.commands.get_cmd_infos" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_cmd_infos</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/home/markus/.cache/kiara/doc_gen&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span></code>
-
-
-<a href="#kiara_plugin.documentation.interfaces.cli.doc.commands.get_cmd_infos" class="headerlink" title="Permanent link">&para;</a></h5>
-
-    <div class="doc doc-contents ">
-
-
-        <details class="quote">
-          <summary>Source code in <code>documentation/interfaces/cli/doc/commands.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_cmd_infos</span><span class="p">(</span>
-    <span class="n">folder</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="n">KIARA_DOC_BUILD_CACHE_DIR</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
-
-    <span class="n">infos</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Tuple</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">commands</span> <span class="o">=</span> <span class="n">folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.command&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">cmd_file</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
-        <span class="n">info</span> <span class="o">=</span> <span class="n">orjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">cmd_file</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">())</span>
-        <span class="n">cmd</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;command&quot;</span><span class="p">])</span>
-        <span class="n">infos</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
-
-    <span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">infos</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">cmd_infos</span> <span class="o">=</span> <span class="n">infos</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span>
-        <span class="n">runs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmd_infos</span><span class="p">)</span>
-        <span class="n">all_success</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;success&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cmd_infos</span><span class="p">)</span>
-        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="n">cmd</span><span class="p">,</span>
-                <span class="s2">&quot;no_runs&quot;</span><span class="p">:</span> <span class="n">runs</span><span class="p">,</span>
-                <span class="s2">&quot;all_success&quot;</span><span class="p">:</span> <span class="n">all_success</span><span class="p">,</span>
-                <span class="s2">&quot;infos&quot;</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">cmd_infos</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;started&quot;</span><span class="p">]),</span>
-            <span class="p">}</span>
-        <span class="p">)</span>
-
-    <span class="n">sorted_result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;infos&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;started&quot;</span><span class="p">])</span>
-    <span class="n">result_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">idx</span><span class="p">:</span> <span class="n">d</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sorted_result</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
-    <span class="k">return</span> <span class="n">result_dict</span>
-</code></pre></div>
-        </details>
-    </div>
-
-  </div>
-
-
-
 
 
 
   </div>
 
-    </div>
-
   </div>
 
-
-
-
-  </div>
-
-    </div>
-
-  </div>
+</div>
 
 
 
