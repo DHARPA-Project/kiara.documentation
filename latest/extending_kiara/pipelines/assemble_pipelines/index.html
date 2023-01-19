@@ -636,9 +636,19 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <p>As an example, let's look at the execution graph of our current pipeline:</p>
 <p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>pipeline<span class="w"> </span>execution-graph<span class="w"> </span>my_first_pipeline.yaml
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Can&#39;t print graph on terminal, package &#39;asciinet&#39; not available. Please install it into the current virtualenv using:
-
-pip install &#39;git+https://github.com/cosminbasca/asciinet.git#egg=asciinet&amp;subdirectory=pyasciinet&#39;
+<div class="highlight"><pre><span></span><code>     ┌────────┐     
+     │__root__│     
+     └────┬───┘     
+          │         
+          v         
+ ┌─────────────────┐
+ │import_table_step│
+ └────────┬────────┘
+          │         
+          v         
+ ┌─────────────────┐
+ │filter_table_step│
+ └─────────────────┘
 </code></pre></div></p>
 <h3 id="adjusting-the-input-output-field-names">Adjusting the input-/output-field names<a class="headerlink" href="#adjusting-the-input-output-field-names" title="Permanent link">&para;</a></h3>
 <p>We could run our pipeline as is, but let's adjust its input- and output field names first. Mainly to make it more intuitive to use. To do that we can add one or both of the following keys to our pipeline description:</p>

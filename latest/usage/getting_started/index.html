@@ -1243,7 +1243,7 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 │                                                                              │
 │   field   data type   stored id                         alias(es)            │
 │  ──────────────────────────────────────────────────────────────────────────  │
-│   file    file        025b0a44-4cdd-4a85-ada8-42b068…   journal_nodes_file   │
+│   file    file        65a34205-bba3-4bbc-a712-f52bfe…   journal_nodes_file   │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1256,9 +1256,14 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>╭─ Available aliases ──────────────────────────────────────────────────────────╮
 │                                                                              │
-│   alias                type       size                                       │
-│  ──────────────────────────────────────                                      │
-│   journal_nodes_file   file   33.43 KB                                       │
+│   alias                         type               size                      │
+│  ───────────────────────────────────────────────────────                     │
+│   journal_nodes_file            file           33.43 KB                      │
+│   journals_graph                network_data   61.44 KB                      │
+│   berlin_journals               table           2.63 KB                      │
+│   journal_edges.imported_file   file            3.02 KB                      │
+│   journal_edges.table           table           9.13 KB                      │
+│   journal_nodes_table           table          42.79 KB                      │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
@@ -1285,42 +1290,105 @@ take complex inputs like dictionaries, but fortunately this is not necessary her
 │                                                                                                                      │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
-<p>Righto, looks like <code>create.table.from.csv_file</code> might be our ticket! Let's see what it does:</p>
-<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>create.table.from.csv_file
+<p>Righto, looks like <code>create.table.from.file</code> might be our ticket! Let's see what it does:</p>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>create.table.from.file
 </code></pre></div>
 <div style='max-height:320px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Error: No operation with id &#39;create.table.from.csv_file&#39; available.
+<div class="highlight"><pre><span></span><code>╭─ Operation: create.table.from.file ──────────────────────────────────────────╮
+│                                                                              │
+│   Documentation   Create a table from a file, trying to auto-determine the   │
+│                   format of said file.                                       │
+│                                                                              │
+│   Inputs                                                                     │
+│                     field                                                    │
+│                     name        type   descripti…   Required   Default       │
+│                    ──────────────────────────────────────────────────────    │
+│                     file        file   The source   yes        -- no         │
+│                                        value (of               default       │
+│                                        type                    --            │
+│                                        &#39;file&#39;).                              │
+│                                                                              │
+│                                                                              │
+│   Outputs                                                                    │
+│                     field name   type    description                         │
+│                    ──────────────────────────────────────────────────────    │
+│                     table        table   The result value (of type           │
+│                                          &#39;table&#39;).                           │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
 
-<p>So, it needs an input <code>csv_file</code> of type <code>file</code>, and will return a 'table'-named output of type, well ... <code>table</code>. Looks good. Here is how we run this:</p>
-<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>create.table.from.csv_file<span class="w"> </span><span class="nv">csv_file</span><span class="o">=</span>alias:journal_nodes_file
+<p>So, it needs an input <code>file</code> of type ... <code>file</code>, and will return a 'table'-named output of type, well ... <code>table</code>. Looks good. Here is how we run this:</p>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>create.table.from.file<span class="w"> </span><span class="nv">file</span><span class="o">=</span>alias:journal_nodes_file
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Error when trying to validate the operation &#39;create.table.from.csv_file&#39;:
-
-    Could not parse module or operation: create.table.from.csv_file
-
-Could not parse module or operation: create.table.from.csv_file                                                                                                                                         
+<div class="highlight"><pre><span></span><code>╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                      │
+│   field   data_type   value                                                                                                                                                                          │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   table   table                                                                                                                                                                                      │
+│                         Id    Label                              JournalType                         City        CountryNetworkTime        PresentDayCountry   Latitude    Longitude    Language     │
+│                        ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                         75    Psychiatrische en neurologische    specialized: psychiatry and neuro   Amsterdam   Netherlands               Netherlands         52.366667   4.9          Dutch        │
+│                         36    The American Journal of Insanity   specialized: psychiatry and neuro   Baltimore   United States             United States       39.289444   -76.615278   English      │
+│                         208   The American Journal of Psycholo   specialized: psychology             Baltimore   United States             United States       39.289444   -76.615278   English      │
+│                         295   Die Krankenpflege                  specialized: therapy                Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         296   Die deutsche Klinik am Eingange    general medicine                    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         300   Therapeutische Monatshefte         specialized: therapy                Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         1     Allgemeine Zeitschrift für Psych   specialized: psychiatry and neuro   Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         7     Archiv für Psychiatrie und Nerve   specialized: psychiatry and neuro   Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         10    Berliner klinische Wochenschrift   general medicine                    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         13    Charité Annalen                    general medicine                    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         21    Monatsschrift für Psychiatrie un   specialized: psychiatry and neuro   Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         29    Virchows Archiv                    specialized: anatomy, physiology    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         31    Zeitschrift für pädagogische Psy   specialized: psychology and pedag   Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         42    Vierteljahrsschrift für gerichtl   specialized: anthropology, crimin   Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         47    Centralblatt für Nervenheilkunde   specialized: psychiatry and neuro   Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         50    Russische medicinische Rundschau   general medicine                    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                         ...   ...                                ...                                 ...         ...                       ...                 ...         ...          ...          │
+│                         ...   ...                                ...                                 ...         ...                       ...                 ...         ...          ...          │
+│                         277   L&#39;arte medica                      general medicine                    Turin       Italy                     Italy               45.079167   7.676111     Italian      │
+│                         288   Allgemeine österreichische Geric   specialized: anthropology, crimin   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         18    Jahrbücher für Psychiatrie         specialized: psychiatry and neuro   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         30    Wiener klinische Rundschau         general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         44    Wiener klinische Wochenschrift     general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         45    Wiener medizinische Wochenschrif   general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         72    Wiener medizinische Presse         general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         81    Monatsschrift für Gesundheitspfl   general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         93    Klinisch-therapeutische Wochensc   general medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         151   Medicinisch-chirurgisches Centra   specialized: surgery                Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         199   Der Militärazt                     specialized: military medicine      Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                         261   Медицинская беседа                 general medicine                    Voronezh    Russian Empire            Russia              51.671667   39.210556    Russian      │
+│                         77    Medycyna                           general medicine                    Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │
+│                         150   Kronika Lekarska                   general medicine                    Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │
+│                         86    Grenzfragen des Nerven- und Seel   specialized: psychiatry and neuro   Wiesbaden   German Empire             Germany             50.0825     8.24         German       │
+│                         206   Ergebnisse der Allgemeinen Patho   specialized: anatomy, physiology    Wiesbaden   German Empire             Germany             50.0825     8.24         German       │
+│                                                                                                                                                                                                      │
+│                                                                                                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this example we pre-pend the right side of the <code>csv_file=</code> argument with <code>alias:</code>. This is necessary to make it clear to <em>kiara</em> that we mean
+<p>In this example we pre-pend the right side of the <code>file=</code> argument with <code>alias:</code>. This is necessary to make it clear to <em>kiara</em> that we mean
 a dataset that lives in its data store, and we want to refer to it via its alias. Otherwise, <em>kiara</em> would have just interpreted the input as a string, and since that is of the wrong input type
 (we needed a table), it would have thrown an error.</p>
 </div>
 <p>That output looks good, right? Much more table-y then before. Only thing is: we want to again 'save' this output, so we can use it later directly. No big deal, just like last time:</p>
-<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>--output<span class="w"> </span>silent<span class="w"> </span>--save<span class="w"> </span><span class="nv">table</span><span class="o">=</span>journal_nodes_table<span class="w"> </span>create.table.from.csv_file<span class="w"> </span><span class="nv">csv_file</span><span class="o">=</span>alias:journal_nodes_file
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>--output<span class="w"> </span>silent<span class="w"> </span>--save<span class="w"> </span><span class="nv">table</span><span class="o">=</span>journal_nodes_table<span class="w"> </span>create.table.from.file<span class="w"> </span><span class="nv">file</span><span class="o">=</span>alias:journal_nodes_file
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Error when trying to validate the operation &#39;create.table.from.csv_file&#39;:
-
-    Could not parse module or operation: create.table.from.csv_file
-
-Could not parse module or operation: create.table.from.csv_file                 
+<div class="highlight"><pre><span></span><code>╭─ Stored result value ────────────────────────────────────────────────────────╮
+│                                                                              │
+│   field   data type   stored id                        alias(es)             │
+│  ──────────────────────────────────────────────────────────────────────────  │
+│   table   table       dca421f4-0534-4778-94e7-58bc5…   journal_nodes_table   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1333,9 +1401,14 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>╭─ Available aliases ──────────────────────────────────────────────────────────╮
 │                                                                              │
-│   alias                type       size                                       │
-│  ──────────────────────────────────────                                      │
-│   journal_nodes_file   file   33.43 KB                                       │
+│   alias                         type               size                      │
+│  ───────────────────────────────────────────────────────                     │
+│   journal_nodes_file            file           33.43 KB                      │
+│   journals_graph                network_data   61.44 KB                      │
+│   berlin_journals               table           2.63 KB                      │
+│   journal_edges.imported_file   file            3.02 KB                      │
+│   journal_edges.table           table           9.13 KB                      │
+│   journal_nodes_table           table          42.79 KB                      │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
@@ -1344,8 +1417,48 @@ last invocation of this command. <em>kiara</em> will still tell us the id of the
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>data<span class="w"> </span>explain<span class="w"> </span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:300px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Error: Can&#39;t retrive value for alias &#39;journal_nodes_table&#39;: no such alias 
-registered.
+<div class="highlight"><pre><span></span><code>╭─ Value details for: alias:journal_nodes_table ───────────────────────────────╮
+│                                                                              │
+│   value_id            dca421f4-0534-4778-94e7-58bc58d077eb                   │
+│   kiara_id            b804dd4f-71c2-4f08-9e1c-1fa70fe2d2e6                   │
+│                                                                              │
+│                       ────────────────────────────────────────────────────   │
+│   data_type_info                                                             │
+│                         data_type_name     table                             │
+│                         data_type_config   {}                                │
+│                         characteristics    {                                 │
+│                                              &quot;is_scalar&quot;: false,             │
+│                                              &quot;is_json_serializable&quot;:         │
+│                                            false                             │
+│                                            }                                 │
+│                         data_type_class                                      │
+│                                              python_cla…   TableType         │
+│                                              python_mod…   kiara_plug…       │
+│                                              full_name     kiara_plug…       │
+│                                                                              │
+│                                                                              │
+│   destiny_backlinks   {}                                                     │
+│   enviroments         None                                                   │
+│   property_links      {                                                      │
+│                         &quot;metadata.python_class&quot;:                             │
+│                       &quot;d53ff4a7-e788-4704-88c6-6733ea162a09&quot;,                │
+│                         &quot;metadata.table&quot;:                                    │
+│                       &quot;fca96c86-79dc-4715-841c-2618bdbfe141&quot;                 │
+│                       }                                                      │
+│   value_hash          zdpuAn89Et1ENzfoASJRYcWEceyfRiPg664mN4nnHLFnjRLyg      │
+│   value_schema                                                               │
+│                         type          table                                  │
+│                         type_config   {}                                     │
+│                         default       __not_set__                            │
+│                         optional      False                                  │
+│                         is_constant   False                                  │
+│                         doc           The result value (of type              │
+│                                       &#39;table&#39;).                              │
+│                                                                              │
+│   value_size          42.79 KB                                               │
+│   value_status        -- set --                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -1355,7 +1468,42 @@ registered.
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>data<span class="w"> </span>load<span class="w"> </span>-s<span class="w"> </span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Error: Can&#39;t retrive value for alias &#39;journal_nodes_table&#39;: no such alias registered.
+<div class="highlight"><pre><span></span><code>  Id    Label                                            JournalType                                       City        CountryNetworkTime        PresentDayCountry   Latitude    Longitude    Language  
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+  75    Psychiatrische en neurologische bladen           specialized: psychiatry and neurology             Amsterdam   Netherlands               Netherlands         52.366667   4.9          Dutch     
+  36    The American Journal of Insanity                 specialized: psychiatry and neurology             Baltimore   United States             United States       39.289444   -76.615278   English   
+  208   The American Journal of Psychology               specialized: psychology                           Baltimore   United States             United States       39.289444   -76.615278   English   
+  295   Die Krankenpflege                                specialized: therapy                              Berlin      German Empire             Germany             52.52       13.405       German    
+  296   Die deutsche Klinik am Eingange des zwanzigste   general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German    
+  300   Therapeutische Monatshefte                       specialized: therapy                              Berlin      German Empire             Germany             52.52       13.405       German    
+  1     Allgemeine Zeitschrift für Psychiatrie           specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German    
+  7     Archiv für Psychiatrie und Nervenkrankheiten     specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German    
+  10    Berliner klinische Wochenschrift                 general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German    
+  13    Charité Annalen                                  general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German    
+  21    Monatsschrift für Psychiatrie und Neurologie     specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German    
+  29    Virchows Archiv                                  specialized: anatomy, physiology and pathology    Berlin      German Empire             Germany             52.52       13.405       German    
+  31    Zeitschrift für pädagogische Psychologie und P   specialized: psychology and pedagogy              Berlin      German Empire             Germany             52.52       13.405       German    
+  42    Vierteljahrsschrift für gerichtliche Medizin u   specialized: anthropology, criminology and fore   Berlin      German Empire             Germany             52.52       13.405       German    
+  47    Centralblatt für Nervenheilkunde und Psychiatr   specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German    
+  50    Russische medicinische Rundschau                 general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German    
+  ...   ...                                              ...                                               ...         ...                       ...                 ...         ...          ...       
+  ...   ...                                              ...                                               ...         ...                       ...                 ...         ...          ...       
+  277   L&#39;arte medica                                    general medicine                                  Turin       Italy                     Italy               45.079167   7.676111     Italian   
+  288   Allgemeine österreichische Gerichts-Zeitung      specialized: anthropology, criminology and fore   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  18    Jahrbücher für Psychiatrie                       specialized: psychiatry and neurology             Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  30    Wiener klinische Rundschau                       general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  44    Wiener klinische Wochenschrift                   general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  45    Wiener medizinische Wochenschrift                general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  72    Wiener medizinische Presse                       general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  81    Monatsschrift für Gesundheitspflege              general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  93    Klinisch-therapeutische Wochenschrift            general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  151   Medicinisch-chirurgisches Centralblatt           specialized: surgery                              Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  199   Der Militärazt                                   specialized: military medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German    
+  261   Медицинская беседа                               general medicine                                  Voronezh    Russian Empire            Russia              51.671667   39.210556    Russian   
+  77    Medycyna                                         general medicine                                  Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish    
+  150   Kronika Lekarska                                 general medicine                                  Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish    
+  86    Grenzfragen des Nerven- und Seelenlebens         specialized: psychiatry and neurology             Wiesbaden   German Empire             Germany             50.0825     8.24         German    
+  206   Ergebnisse der Allgemeinen Pathologie und Path   specialized: anatomy, physiology and pathology    Wiesbaden   German Empire             Germany             50.0825     8.24         German    
 </code></pre></div>
 
 </div>
@@ -1420,36 +1568,36 @@ a stored table data item.</p>
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>query.table<span class="w"> </span><span class="nv">table</span><span class="o">=</span>alias:journal_nodes_table<span class="w"> </span><span class="nv">query</span><span class="o">=</span><span class="s2">&quot;select Label, JournalType from data where City=&#39;Berlin&#39;&quot;</span>
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>╭─ Run info: query.table ──────────────────────────────────────────────────────╮
+<div class="highlight"><pre><span></span><code>╭─ Result ─────────────────────────────────────────────────────────────────────╮
 │                                                                              │
-│ Can&#39;t run operation: Can&#39;t create values instance: table: Can&#39;t retrive      │
-│ value for alias &#39;journal_nodes_table&#39;: no such alias registered.             │
-│                                                                              │
-│ ──────────────────────────────────────────────────────────────────────────── │
-│                                                                              │
-│ Operation: query.table                                                       │
-│                                                                              │
-│ Execute a sql query against an (Arrow) table.                                │
-│                                                                              │
-│ The default relation name for the sql query is &#39;data&#39;, but can be modified   │
-│ by the &#39;relation_name&#39; config option/input.                                  │
-│                                                                              │
-│ If the &#39;query&#39; module config option is not set, users can provide their own  │
-│ query, otherwise the pre-set one will be used.                               │
-│                                                                              │
-│ Inputs:                                                                      │
-│                                                                              │
-│   field name   error                                                         │
+│   field          data_type   value                                           │
 │  ──────────────────────────────────────────────────────────────────────────  │
-│   table        Can&#39;t retrive value for alias &#39;journal_nodes_table&#39;: no       │
-│                such alias registered.                                        │
+│   query_result   table                                                       │
+│                                Label                 JournalType             │
+│                               ───────────────────────────────────────────    │
+│                                Die Krankenpflege     specialized: therap     │
+│                                Die deutsche Klinik   general medicine        │
+│                                Therapeutische Mona   specialized: therap     │
+│                                Allgemeine Zeitschr   specialized: psychi     │
+│                                Archiv für Psychiat   specialized: psychi     │
+│                                Berliner klinische    general medicine        │
+│                                Charité Annalen       general medicine        │
+│                                Monatsschrift für P   specialized: psychi     │
+│                                Virchows Archiv       specialized: anatom     │
+│                                Zeitschrift für päd   specialized: psycho     │
+│                                Vierteljahrsschrift   specialized: anthro     │
+│                                Centralblatt für Ne   specialized: psychi     │
+│                                Russische medicinis   general medicine        │
+│                                Deutsche Aerzte-Zei   general medicine        │
+│                                Monatsschrift für G   specialized: gyneco     │
+│                                Archiv für klinisch   specialized: surger     │
+│                                Zeitschrift für kli   general medicine        │
+│                                Deutsche militärärz   specialized: milita     │
+│                                Jahresbericht über    specialized: psychi     │
+│                                Ärztliche Sachverst   general medicine        │
+│                                Zeitschrift für die   specialized: psychi     │
+│                                Der Pfarrbote         news media              │
 │                                                                              │
-│                                                                              │
-│ Outputs:                                                                     │
-│                                                                              │
-│   field name     type    description                                         │
-│  ──────────────────────────────────────────────────────────────────────────  │
-│   query_result   table   The query result.                                   │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1463,36 +1611,11 @@ we might want to store the result of our work, similar to how we imported the or
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>query.table<span class="w"> </span>--output<span class="o">=</span>silent<span class="w"> </span>--save<span class="w"> </span><span class="nv">query_result</span><span class="o">=</span>berlin_journals<span class="w"> </span><span class="nv">table</span><span class="o">=</span>alias:journal_nodes_table<span class="w"> </span><span class="nv">query</span><span class="o">=</span><span class="s2">&quot;select Label, JournalType from data where City=&#39;Berlin&#39;&quot;</span>
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>╭─ Run info: query.table ──────────────────────────────────────────────────────╮
+<div class="highlight"><pre><span></span><code>╭─ Stored result value ────────────────────────────────────────────────────────╮
 │                                                                              │
-│ Can&#39;t run operation: Can&#39;t create values instance: table: Can&#39;t retrive      │
-│ value for alias &#39;journal_nodes_table&#39;: no such alias registered.             │
-│                                                                              │
-│ ──────────────────────────────────────────────────────────────────────────── │
-│                                                                              │
-│ Operation: query.table                                                       │
-│                                                                              │
-│ Execute a sql query against an (Arrow) table.                                │
-│                                                                              │
-│ The default relation name for the sql query is &#39;data&#39;, but can be modified   │
-│ by the &#39;relation_name&#39; config option/input.                                  │
-│                                                                              │
-│ If the &#39;query&#39; module config option is not set, users can provide their own  │
-│ query, otherwise the pre-set one will be used.                               │
-│                                                                              │
-│ Inputs:                                                                      │
-│                                                                              │
-│   field name   error                                                         │
+│   field          data type   stored id                     alias(es)         │
 │  ──────────────────────────────────────────────────────────────────────────  │
-│   table        Can&#39;t retrive value for alias &#39;journal_nodes_table&#39;: no       │
-│                such alias registered.                                        │
-│                                                                              │
-│                                                                              │
-│ Outputs:                                                                     │
-│                                                                              │
-│   field name     type    description                                         │
-│  ──────────────────────────────────────────────────────────────────────────  │
-│   query_result   table   The query result.                                   │
+│   query_result   table       3056bf5b-1200-4983-ae49-2b…   berlin_journals   │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1503,8 +1626,118 @@ we might want to store the result of our work, similar to how we imported the or
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>data<span class="w"> </span>explain<span class="w"> </span>--properties<span class="w"> </span>alias:berlin_journals
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Error: Can&#39;t retrive value for alias &#39;berlin_journals&#39;: no such alias 
-registered.
+<div class="highlight"><pre><span></span><code>╭─ Value details for: alias:berlin_journals ───────────────────────────────────╮
+│                                                                              │
+│   value_id            3056bf5b-1200-4983-ae49-2b51f44b0a2a                   │
+│   kiara_id            b804dd4f-71c2-4f08-9e1c-1fa70fe2d2e6                   │
+│                                                                              │
+│                       ────────────────────────────────────────────────────   │
+│   data_type_info                                                             │
+│                         data_type_name     table                             │
+│                         data_type_config   {}                                │
+│                         characteristics    {                                 │
+│                                              &quot;is_scalar&quot;: false,             │
+│                                              &quot;is_json_serializable&quot;:         │
+│                                            false                             │
+│                                            }                                 │
+│                         data_type_class                                      │
+│                                              python_cla…   TableType         │
+│                                              python_mod…   kiara_plug…       │
+│                                              full_name     kiara_plug…       │
+│                                                                              │
+│                                                                              │
+│   destiny_backlinks   {}                                                     │
+│   enviroments         None                                                   │
+│   properties                                                                 │
+│                         field                   value                        │
+│                        ──────────────────────────────────────────────────    │
+│                         metadata.python_class   {                            │
+│                                                   &quot;python_class&quot;: {          │
+│                                                     &quot;python_class_name&quot;…     │
+│                                                     &quot;python_module_name…     │
+│                                                     &quot;full_name&quot;: &quot;kiara…     │
+│                                                   }                          │
+│                                                 }                            │
+│                         metadata.table          {                            │
+│                                                   &quot;table&quot;: {                 │
+│                                                     &quot;column_names&quot;: [        │
+│                                                       &quot;Label&quot;,               │
+│                                                       &quot;JournalType&quot;          │
+│                                                     ],                       │
+│                                                     &quot;column_schema&quot;: {       │
+│                                                       &quot;Label&quot;: {             │
+│                                                         &quot;type_name&quot;: &quot;s…     │
+│                                                         &quot;metadata&quot;: {        │
+│                                                           &quot;arrow_type_i…     │
+│                                                         }                    │
+│                                                       },                     │
+│                                                       &quot;JournalType&quot;: {       │
+│                                                         &quot;type_name&quot;: &quot;s…     │
+│                                                         &quot;metadata&quot;: {        │
+│                                                           &quot;arrow_type_i…     │
+│                                                         }                    │
+│                                                       }                      │
+│                                                     },                       │
+│                                                     &quot;rows&quot;: 22,              │
+│                                                     &quot;size&quot;: 1672             │
+│                                                   }                          │
+│                                                 }                            │
+│                                                                              │
+│   property_links      {                                                      │
+│                         &quot;metadata.python_class&quot;:                             │
+│                       &quot;eb0a5845-c615-4588-a565-d3a3672f072b&quot;,                │
+│                         &quot;metadata.table&quot;:                                    │
+│                       &quot;41b2b897-d66a-4b12-a09a-4353bd58c787&quot;                 │
+│                       }                                                      │
+│   value_hash          zdpuAq5Ty5hNtUaKWouPmS75LxteiQQv6Ue6Jsq9v39QoMPyw      │
+│   value_schema                                                               │
+│                         type          table                                  │
+│                         type_config   {}                                     │
+│                         default       __not_set__                            │
+│                         optional      False                                  │
+│                         is_constant   False                                  │
+│                         doc           The query result.                      │
+│                                                                              │
+│   value_size          2.63 KB                                                │
+│   value_status        -- set --                                              │
+│                                                                              │
+│                       ────────────────────────────────────────────────────   │
+│                                                                              │
+│   properties                                                                 │
+│                         metadata.python_class   {                            │
+│                                                   &quot;python_class&quot;: {          │
+│                                                     &quot;python_class_name&quot;…     │
+│                                                     &quot;python_module_name…     │
+│                                                     &quot;full_name&quot;: &quot;kiara…     │
+│                                                   }                          │
+│                                                 }                            │
+│                         metadata.table          {                            │
+│                                                   &quot;table&quot;: {                 │
+│                                                     &quot;column_names&quot;: [        │
+│                                                       &quot;Label&quot;,               │
+│                                                       &quot;JournalType&quot;          │
+│                                                     ],                       │
+│                                                     &quot;column_schema&quot;: {       │
+│                                                       &quot;Label&quot;: {             │
+│                                                         &quot;type_name&quot;: &quot;s…     │
+│                                                         &quot;metadata&quot;: {        │
+│                                                           &quot;arrow_type_i…     │
+│                                                         }                    │
+│                                                       },                     │
+│                                                       &quot;JournalType&quot;: {       │
+│                                                         &quot;type_name&quot;: &quot;s…     │
+│                                                         &quot;metadata&quot;: {        │
+│                                                           &quot;arrow_type_i…     │
+│                                                         }                    │
+│                                                       }                      │
+│                                                     },                       │
+│                                                     &quot;rows&quot;: 22,              │
+│                                                     &quot;size&quot;: 1672             │
+│                                                   }                          │
+│                                                 }                            │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -1664,11 +1897,14 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>╭─ Available aliases ──────────────────────────────────────────────────────────╮
 │                                                                              │
-│   alias                         type        size                             │
-│  ────────────────────────────────────────────────                            │
-│   journal_nodes_file            file    33.43 KB                             │
-│   journal_edges.imported_file   file     3.02 KB                             │
-│   journal_edges.table           table    9.13 KB                             │
+│   alias                         type               size                      │
+│  ───────────────────────────────────────────────────────                     │
+│   journal_nodes_file            file           33.43 KB                      │
+│   journals_graph                network_data   61.44 KB                      │
+│   berlin_journals               table           2.63 KB                      │
+│   journal_edges.imported_file   file            3.02 KB                      │
+│   journal_edges.table           table           9.13 KB                      │
+│   journal_nodes_table           table          42.79 KB                      │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
@@ -1752,31 +1988,97 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>--save<span class="w"> </span><span class="nv">network_data</span><span class="o">=</span>journals_graph<span class="w"> </span>create.network_data.from.tables<span class="w"> </span><span class="nv">edges</span><span class="o">=</span>alias:journal_edges.table<span class="w"> </span><span class="nv">source_column_name</span><span class="o">=</span>Source<span class="w"> </span><span class="nv">target_column_name</span><span class="o">=</span>Target<span class="w"> </span><span class="nv">nodes</span><span class="o">=</span>alias:journal_nodes_table<span class="w"> </span><span class="nv">id_column_name</span><span class="o">=</span>Id<span class="w"> </span><span class="nv">label_column_name</span><span class="o">=</span>Label
 </code></pre></div>
 <div style='max-height:320px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>╭─ Run info: create.network_data.from.tables ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+<div class="highlight"><pre><span></span><code>╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                                                                                                                                                                                                              │
-│ Can&#39;t run operation: Can&#39;t create values instance: nodes: Can&#39;t retrive value for alias &#39;journal_nodes_table&#39;: no such alias registered.                                                                                                     │
-│                                                                                                                                                                                                                                              │
-│ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── │
-│                                                                                                                                                                                                                                              │
-│ Operation: create.network_data.from.tables                                                                                                                                                                                                   │
-│                                                                                                                                                                                                                                              │
-│ Create a graph object from one or two tables.                                                                                                                                                                                                │
-│                                                                                                                                                                                                                                              │
-│ This module needs at least one table as input, providing the edges of the resulting network data set. If no further table is created, basic node information will be automatically created by using unique values from the edges source and  │
-│ target columns.                                                                                                                                                                                                                              │
-│                                                                                                                                                                                                                                              │
-│ Inputs:                                                                                                                                                                                                                                      │
-│                                                                                                                                                                                                                                              │
-│   field name   error                                                                                                                                                                                                                         │
-│  ─────────────────────────────────────────────────────────────────────────────────────────────                                                                                                                                               │
-│   nodes        Can&#39;t retrive value for alias &#39;journal_nodes_table&#39;: no such alias registered.                                                                                                                                                │
-│                                                                                                                                                                                                                                              │
-│                                                                                                                                                                                                                                              │
-│ Outputs:                                                                                                                                                                                                                                     │
-│                                                                                                                                                                                                                                              │
-│   field name     type           description                                                                                                                                                                                                  │
+│   field          data_type      value                                                                                                                                                                                                        │
 │  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
-│   network_data   network_data   The network/graph data.                                                                                                                                                                                      │
+│   network_data   network_data                                                                                                                                                                                                                │
+│                                 Table: edges                                                                                                                                                                                                 │
+│                                                                                                                                                                                                                                              │
+│                                   source   target   weight                                                                                                                                                                                   │
+│                                  ──────────────────────────                                                                                                                                                                                  │
+│                                   1        1        11                                                                                                                                                                                       │
+│                                   1        5        1                                                                                                                                                                                        │
+│                                   1        7        6                                                                                                                                                                                        │
+│                                   1        8        15                                                                                                                                                                                       │
+│                                   1        10       24                                                                                                                                                                                       │
+│                                   1        13       1                                                                                                                                                                                        │
+│                                   1        14       2                                                                                                                                                                                        │
+│                                   1        15       8                                                                                                                                                                                        │
+│                                   1        18       7                                                                                                                                                                                        │
+│                                   1        20       48                                                                                                                                                                                       │
+│                                   1        21       7                                                                                                                                                                                        │
+│                                   1        22       4                                                                                                                                                                                        │
+│                                   1        23       75                                                                                                                                                                                       │
+│                                   1        24       1                                                                                                                                                                                        │
+│                                   1        26       8                                                                                                                                                                                        │
+│                                   1        29       1                                                                                                                                                                                        │
+│                                   ...      ...      ...                                                                                                                                                                                      │
+│                                   ...      ...      ...                                                                                                                                                                                      │
+│                                   51       108      1                                                                                                                                                                                        │
+│                                   51       109      5                                                                                                                                                                                        │
+│                                   51       110      1                                                                                                                                                                                        │
+│                                   51       111      1                                                                                                                                                                                        │
+│                                   51       112      1                                                                                                                                                                                        │
+│                                   51       113      1                                                                                                                                                                                        │
+│                                   51       114      2                                                                                                                                                                                        │
+│                                   51       115      2                                                                                                                                                                                        │
+│                                   51       116      1                                                                                                                                                                                        │
+│                                   51       118      3                                                                                                                                                                                        │
+│                                   51       119      2                                                                                                                                                                                        │
+│                                   51       120      1                                                                                                                                                                                        │
+│                                   51       121      1                                                                                                                                                                                        │
+│                                   63       102      1                                                                                                                                                                                        │
+│                                   147      27       11                                                                                                                                                                                       │
+│                                   147      241      1                                                                                                                                                                                        │
+│                                                                                                                                                                                                                                              │
+│                                 Table: nodes                                                                                                                                                                                                 │
+│                                                                                                                                                                                                                                              │
+│                                   id    label                                              JournalType                                       City        CountryNetworkTime        PresentDayCountry   Latitude    Longitude    Language     │
+│                                  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                                   75    Psychiatrische en neurologische bladen             specialized: psychiatry and neurology             Amsterdam   Netherlands               Netherlands         52.366667   4.9          Dutch        │
+│                                   36    The American Journal of Insanity                   specialized: psychiatry and neurology             Baltimore   United States             United States       39.289444   -76.615278   English      │
+│                                   208   The American Journal of Psychology                 specialized: psychology                           Baltimore   United States             United States       39.289444   -76.615278   English      │
+│                                   295   Die Krankenpflege                                  specialized: therapy                              Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   296   Die deutsche Klinik am Eingange des zwanzigsten    general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   300   Therapeutische Monatshefte                         specialized: therapy                              Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   1     Allgemeine Zeitschrift für Psychiatrie             specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   7     Archiv für Psychiatrie und Nervenkrankheiten       specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   10    Berliner klinische Wochenschrift                   general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   13    Charité Annalen                                    general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   21    Monatsschrift für Psychiatrie und Neurologie       specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   29    Virchows Archiv                                    specialized: anatomy, physiology and pathology    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   31    Zeitschrift für pädagogische Psychologie und Pat   specialized: psychology and pedagogy              Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   42    Vierteljahrsschrift für gerichtliche Medizin und   specialized: anthropology, criminology and fore   Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   47    Centralblatt für Nervenheilkunde und Psychiatrie   specialized: psychiatry and neurology             Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   50    Russische medicinische Rundschau                   general medicine                                  Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                   ...   ...                                                ...                                               ...         ...                       ...                 ...         ...          ...          │
+│                                   ...   ...                                                ...                                               ...         ...                       ...                 ...         ...          ...          │
+│                                   277   L&#39;arte medica                                      general medicine                                  Turin       Italy                     Italy               45.079167   7.676111     Italian      │
+│                                   288   Allgemeine österreichische Gerichts-Zeitung        specialized: anthropology, criminology and fore   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   18    Jahrbücher für Psychiatrie                         specialized: psychiatry and neurology             Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   30    Wiener klinische Rundschau                         general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   44    Wiener klinische Wochenschrift                     general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   45    Wiener medizinische Wochenschrift                  general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   72    Wiener medizinische Presse                         general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   81    Monatsschrift für Gesundheitspflege                general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   93    Klinisch-therapeutische Wochenschrift              general medicine                                  Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   151   Medicinisch-chirurgisches Centralblatt             specialized: surgery                              Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   199   Der Militärazt                                     specialized: military medicine                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                   261   Медицинская беседа                                 general medicine                                  Voronezh    Russian Empire            Russia              51.671667   39.210556    Russian      │
+│                                   77    Medycyna                                           general medicine                                  Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │
+│                                   150   Kronika Lekarska                                   general medicine                                  Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │
+│                                   86    Grenzfragen des Nerven- und Seelenlebens           specialized: psychiatry and neurology             Wiesbaden   German Empire             Germany             50.0825     8.24         German       │
+│                                   206   Ergebnisse der Allgemeinen Pathologie und Pathol   specialized: anatomy, physiology and pathology    Wiesbaden   German Empire             Germany             50.0825     8.24         German       │
+│                                                                                                                                                                                                                                              │
+│                                                                                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─ Stored result value ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                                                              │
+│   field          data type      stored id                              alias(es)                                                                                                                                                             │
+│  ─────────────────────────────────────────────────────────────────────────────────────                                                                                                                                                       │
+│   network_data   network_data   dd518f12-d062-484e-957c-d41192579b2e   journals_graph                                                                                                                                                        │
 │                                                                                                                                                                                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1787,7 +2089,342 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>data<span class="w"> </span>explain<span class="w"> </span>--properties<span class="w"> </span>alias:journals_graph
 </code></pre></div>
 <div style='max-height:240px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Error: Can&#39;t retrive value for alias &#39;journals_graph&#39;: no such alias registered.
+<div class="highlight"><pre><span></span><code>╭─ Value details for: alias:journals_graph ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                                                              │
+│   value_id            0a858d0b-8223-4884-bcfb-c42f9971c77b                                                                                                                                                                                   │
+│   kiara_id            b804dd4f-71c2-4f08-9e1c-1fa70fe2d2e6                                                                                                                                                                                   │
+│                                                                                                                                                                                                                                              │
+│                       ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │
+│   data_type_info                                                                                                                                                                                                                             │
+│                         data_type_name     network_data                                                                                                                                                                                      │
+│                         data_type_config   {}                                                                                                                                                                                                │
+│                         characteristics    {                                                                                                                                                                                                 │
+│                                              &quot;is_scalar&quot;: false,                                                                                                                                                                             │
+│                                              &quot;is_json_serializable&quot;: false                                                                                                                                                                   │
+│                                            }                                                                                                                                                                                                 │
+│                         data_type_class                                                                                                                                                                                                      │
+│                                              python_class_name    NetworkDataType                                                                                                                                                            │
+│                                              python_module_name   kiara_plugin.network_analysis.data_types                                                                                                                                   │
+│                                              full_name            kiara_plugin.network_analysis.data_types.NetworkDataType                                                                                                                   │
+│                                                                                                                                                                                                                                              │
+│                                                                                                                                                                                                                                              │
+│   destiny_backlinks   {}                                                                                                                                                                                                                     │
+│   enviroments         None                                                                                                                                                                                                                   │
+│   properties                                                                                                                                                                                                                                 │
+│                         field                       value                                                                                                                                                                                    │
+│                        ─────────────────────────────────────────────────────────────────────────────────────────────────                                                                                                                     │
+│                         metadata.database           {                                                                                                                                                                                        │
+│                                                       &quot;tables&quot;: {                                                                                                                                                                            │
+│                                                         &quot;edges&quot;: {                                                                                                                                                                           │
+│                                                           &quot;column_names&quot;: [                                                                                                                                                                  │
+│                                                             &quot;source&quot;,                                                                                                                                                                        │
+│                                                             &quot;target&quot;,                                                                                                                                                                        │
+│                                                             &quot;weight&quot;                                                                                                                                                                         │
+│                                                           ],                                                                                                                                                                                 │
+│                                                           &quot;column_schema&quot;: {                                                                                                                                                                 │
+│                                                             &quot;source&quot;: {                                                                                                                                                                      │
+│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;target&quot;: {                                                                                                                                                                      │
+│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;weight&quot;: {                                                                                                                                                                      │
+│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             }                                                                                                                                                                                │
+│                                                           },                                                                                                                                                                                 │
+│                                                           &quot;rows&quot;: 321,                                                                                                                                                                       │
+│                                                           &quot;size&quot;: 4096                                                                                                                                                                       │
+│                                                         },                                                                                                                                                                                   │
+│                                                         &quot;nodes&quot;: {                                                                                                                                                                           │
+│                                                           &quot;column_names&quot;: [                                                                                                                                                                  │
+│                                                             &quot;id&quot;,                                                                                                                                                                            │
+│                                                             &quot;label&quot;,                                                                                                                                                                         │
+│                                                             &quot;JournalType&quot;,                                                                                                                                                                   │
+│                                                             &quot;City&quot;,                                                                                                                                                                          │
+│                                                             &quot;CountryNetworkTime&quot;,                                                                                                                                                            │
+│                                                             &quot;PresentDayCountry&quot;,                                                                                                                                                             │
+│                                                             &quot;Latitude&quot;,                                                                                                                                                                      │
+│                                                             &quot;Longitude&quot;,                                                                                                                                                                     │
+│                                                             &quot;Language&quot;                                                                                                                                                                       │
+│                                                           ],                                                                                                                                                                                 │
+│                                                           &quot;column_schema&quot;: {                                                                                                                                                                 │
+│                                                             &quot;id&quot;: {                                                                                                                                                                          │
+│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;label&quot;: {                                                                                                                                                                       │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;JournalType&quot;: {                                                                                                                                                                 │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;City&quot;: {                                                                                                                                                                        │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;CountryNetworkTime&quot;: {                                                                                                                                                          │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;PresentDayCountry&quot;: {                                                                                                                                                           │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;Latitude&quot;: {                                                                                                                                                                    │
+│                                                               &quot;type_name&quot;: &quot;REAL&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;Longitude&quot;: {                                                                                                                                                                   │
+│                                                               &quot;type_name&quot;: &quot;REAL&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;Language&quot;: {                                                                                                                                                                    │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             }                                                                                                                                                                                │
+│                                                           },                                                                                                                                                                                 │
+│                                                           &quot;rows&quot;: 276,                                                                                                                                                                       │
+│                                                           &quot;size&quot;: 40960                                                                                                                                                                      │
+│                                                         }                                                                                                                                                                                    │
+│                                                       }                                                                                                                                                                                      │
+│                                                     }                                                                                                                                                                                        │
+│                         metadata.graph_properties   {                                                                                                                                                                                        │
+│                                                       &quot;number_of_nodes&quot;: 276,                                                                                                                                                                │
+│                                                       &quot;properties_by_graph_type&quot;: [                                                                                                                                                          │
+│                                                         {                                                                                                                                                                                    │
+│                                                           &quot;graph_type&quot;: &quot;directed&quot;,                                                                                                                                                          │
+│                                                           &quot;number_of_edges&quot;: 321                                                                                                                                                             │
+│                                                         },                                                                                                                                                                                   │
+│                                                         {                                                                                                                                                                                    │
+│                                                           &quot;graph_type&quot;: &quot;undirected&quot;,                                                                                                                                                        │
+│                                                           &quot;number_of_edges&quot;: 313                                                                                                                                                             │
+│                                                         },                                                                                                                                                                                   │
+│                                                         {                                                                                                                                                                                    │
+│                                                           &quot;graph_type&quot;: &quot;directed-multi&quot;,                                                                                                                                                    │
+│                                                           &quot;number_of_edges&quot;: 321                                                                                                                                                             │
+│                                                         },                                                                                                                                                                                   │
+│                                                         {                                                                                                                                                                                    │
+│                                                           &quot;graph_type&quot;: &quot;undirected-multi&quot;,                                                                                                                                                  │
+│                                                           &quot;number_of_edges&quot;: 321                                                                                                                                                             │
+│                                                         }                                                                                                                                                                                    │
+│                                                       ]                                                                                                                                                                                      │
+│                                                     }                                                                                                                                                                                        │
+│                         metadata.python_class       {                                                                                                                                                                                        │
+│                                                       &quot;python_class&quot;: {                                                                                                                                                                      │
+│                                                         &quot;python_class_name&quot;: &quot;NetworkData&quot;,                                                                                                                                                  │
+│                                                         &quot;python_module_name&quot;: &quot;kiara_plugin.network_analysis.models&quot;,                                                                                                                        │
+│                                                         &quot;full_name&quot;: &quot;kiara_plugin.network_analysis.models.NetworkData&quot;                                                                                                                      │
+│                                                       }                                                                                                                                                                                      │
+│                                                     }                                                                                                                                                                                        │
+│                                                                                                                                                                                                                                              │
+│   property_links      {                                                                                                                                                                                                                      │
+│                         &quot;metadata.database&quot;: &quot;9247b0e1-dbaf-4d9b-9b3c-eba346c6b409&quot;,                                                                                                                                                         │
+│                         &quot;metadata.graph_properties&quot;: &quot;14f38814-7044-412a-82e7-63c23abd0bec&quot;,                                                                                                                                                 │
+│                         &quot;metadata.python_class&quot;: &quot;f9228daf-b4e9-449c-ab16-60cfd2758aa5&quot;                                                                                                                                                      │
+│                       }                                                                                                                                                                                                                      │
+│   value_hash          zdpuAstJHssbYPinNasXbCx76LQXAaRDTeAecwG6eBpTaz8qQ                                                                                                                                                                      │
+│   value_schema                                                                                                                                                                                                                               │
+│                         type          network_data                                                                                                                                                                                           │
+│                         type_config   {}                                                                                                                                                                                                     │
+│                         default       __not_set__                                                                                                                                                                                            │
+│                         optional      False                                                                                                                                                                                                  │
+│                         is_constant   False                                                                                                                                                                                                  │
+│                         doc           The network/graph data.                                                                                                                                                                                │
+│                                                                                                                                                                                                                                              │
+│   value_size          61.44 KB                                                                                                                                                                                                               │
+│   value_status        -- set --                                                                                                                                                                                                              │
+│                                                                                                                                                                                                                                              │
+│                       ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────   │
+│                                                                                                                                                                                                                                              │
+│   properties                                                                                                                                                                                                                                 │
+│                         metadata.database           {                                                                                                                                                                                        │
+│                                                       &quot;tables&quot;: {                                                                                                                                                                            │
+│                                                         &quot;edges&quot;: {                                                                                                                                                                           │
+│                                                           &quot;column_names&quot;: [                                                                                                                                                                  │
+│                                                             &quot;source&quot;,                                                                                                                                                                        │
+│                                                             &quot;target&quot;,                                                                                                                                                                        │
+│                                                             &quot;weight&quot;                                                                                                                                                                         │
+│                                                           ],                                                                                                                                                                                 │
+│                                                           &quot;column_schema&quot;: {                                                                                                                                                                 │
+│                                                             &quot;source&quot;: {                                                                                                                                                                      │
+│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;target&quot;: {                                                                                                                                                                      │
+│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;weight&quot;: {                                                                                                                                                                      │
+│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             }                                                                                                                                                                                │
+│                                                           },                                                                                                                                                                                 │
+│                                                           &quot;rows&quot;: 321,                                                                                                                                                                       │
+│                                                           &quot;size&quot;: 4096                                                                                                                                                                       │
+│                                                         },                                                                                                                                                                                   │
+│                                                         &quot;nodes&quot;: {                                                                                                                                                                           │
+│                                                           &quot;column_names&quot;: [                                                                                                                                                                  │
+│                                                             &quot;id&quot;,                                                                                                                                                                            │
+│                                                             &quot;label&quot;,                                                                                                                                                                         │
+│                                                             &quot;JournalType&quot;,                                                                                                                                                                   │
+│                                                             &quot;City&quot;,                                                                                                                                                                          │
+│                                                             &quot;CountryNetworkTime&quot;,                                                                                                                                                            │
+│                                                             &quot;PresentDayCountry&quot;,                                                                                                                                                             │
+│                                                             &quot;Latitude&quot;,                                                                                                                                                                      │
+│                                                             &quot;Longitude&quot;,                                                                                                                                                                     │
+│                                                             &quot;Language&quot;                                                                                                                                                                       │
+│                                                           ],                                                                                                                                                                                 │
+│                                                           &quot;column_schema&quot;: {                                                                                                                                                                 │
+│                                                             &quot;id&quot;: {                                                                                                                                                                          │
+│                                                               &quot;type_name&quot;: &quot;INTEGER&quot;,                                                                                                                                                        │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;label&quot;: {                                                                                                                                                                       │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;JournalType&quot;: {                                                                                                                                                                 │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;City&quot;: {                                                                                                                                                                        │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;CountryNetworkTime&quot;: {                                                                                                                                                          │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;PresentDayCountry&quot;: {                                                                                                                                                           │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;Latitude&quot;: {                                                                                                                                                                    │
+│                                                               &quot;type_name&quot;: &quot;REAL&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;Longitude&quot;: {                                                                                                                                                                   │
+│                                                               &quot;type_name&quot;: &quot;REAL&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             },                                                                                                                                                                               │
+│                                                             &quot;Language&quot;: {                                                                                                                                                                    │
+│                                                               &quot;type_name&quot;: &quot;TEXT&quot;,                                                                                                                                                           │
+│                                                               &quot;metadata&quot;: {                                                                                                                                                                  │
+│                                                                 &quot;nullable&quot;: false,                                                                                                                                                           │
+│                                                                 &quot;primary_key&quot;: false                                                                                                                                                         │
+│                                                               }                                                                                                                                                                              │
+│                                                             }                                                                                                                                                                                │
+│                                                           },                                                                                                                                                                                 │
+│                                                           &quot;rows&quot;: 276,                                                                                                                                                                       │
+│                                                           &quot;size&quot;: 40960                                                                                                                                                                      │
+│                                                         }                                                                                                                                                                                    │
+│                                                       }                                                                                                                                                                                      │
+│                                                     }                                                                                                                                                                                        │
+│                         metadata.graph_properties   {                                                                                                                                                                                        │
+│                                                       &quot;number_of_nodes&quot;: 276,                                                                                                                                                                │
+│                                                       &quot;properties_by_graph_type&quot;: [                                                                                                                                                          │
+│                                                         {                                                                                                                                                                                    │
+│                                                           &quot;graph_type&quot;: &quot;directed&quot;,                                                                                                                                                          │
+│                                                           &quot;number_of_edges&quot;: 321                                                                                                                                                             │
+│                                                         },                                                                                                                                                                                   │
+│                                                         {                                                                                                                                                                                    │
+│                                                           &quot;graph_type&quot;: &quot;undirected&quot;,                                                                                                                                                        │
+│                                                           &quot;number_of_edges&quot;: 313                                                                                                                                                             │
+│                                                         },                                                                                                                                                                                   │
+│                                                         {                                                                                                                                                                                    │
+│                                                           &quot;graph_type&quot;: &quot;directed-multi&quot;,                                                                                                                                                    │
+│                                                           &quot;number_of_edges&quot;: 321                                                                                                                                                             │
+│                                                         },                                                                                                                                                                                   │
+│                                                         {                                                                                                                                                                                    │
+│                                                           &quot;graph_type&quot;: &quot;undirected-multi&quot;,                                                                                                                                                  │
+│                                                           &quot;number_of_edges&quot;: 321                                                                                                                                                             │
+│                                                         }                                                                                                                                                                                    │
+│                                                       ]                                                                                                                                                                                      │
+│                                                     }                                                                                                                                                                                        │
+│                         metadata.python_class       {                                                                                                                                                                                        │
+│                                                       &quot;python_class&quot;: {                                                                                                                                                                      │
+│                                                         &quot;python_class_name&quot;: &quot;NetworkData&quot;,                                                                                                                                                  │
+│                                                         &quot;python_module_name&quot;: &quot;kiara_plugin.network_analysis.models&quot;,                                                                                                                        │
+│                                                         &quot;full_name&quot;: &quot;kiara_plugin.network_analysis.models.NetworkData&quot;                                                                                                                      │
+│                                                       }                                                                                                                                                                                      │
+│                                                     }                                                                                                                                                                                        │
+│                                                                                                                                                                                                                                              │
+│                                                                                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -1798,7 +2435,81 @@ the <em>kiara</em> data store, and then convert it into a table. This time, let'
 very powerful and useful. But if you are ever interested about what went into creating a particular value, you can do this with:</p>
 <p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>data<span class="w"> </span>explain<span class="w"> </span>--lineage<span class="w"> </span>alias:journals_graph
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Error: Can&#39;t retrive value for alias &#39;journals_graph&#39;: no such alias registered.
+<div class="highlight"><pre><span></span><code>╭─ Value details for: alias:journals_graph ────────────────────────────────────╮
+│                                                                              │
+│   value_id            0a858d0b-8223-4884-bcfb-c42f9971c77b                   │
+│   kiara_id            b804dd4f-71c2-4f08-9e1c-1fa70fe2d2e6                   │
+│                                                                              │
+│                       ────────────────────────────────────────────────────   │
+│   data_type_info                                                             │
+│                         data_type_name     network_data                      │
+│                         data_type_config   {}                                │
+│                         characteristics    {                                 │
+│                                              &quot;is_scalar&quot;: false,             │
+│                                              &quot;is_json_serializable&quot;:         │
+│                                            false                             │
+│                                            }                                 │
+│                         data_type_class                                      │
+│                                              python_cla…   NetworkDat…       │
+│                                              python_mod…   kiara_plug…       │
+│                                              full_name     kiara_plug…       │
+│                                                                              │
+│                                                                              │
+│   destiny_backlinks   {}                                                     │
+│   enviroments         None                                                   │
+│   property_links      {                                                      │
+│                         &quot;metadata.database&quot;:                                 │
+│                       &quot;9247b0e1-dbaf-4d9b-9b3c-eba346c6b409&quot;,                │
+│                         &quot;metadata.graph_properties&quot;:                         │
+│                       &quot;14f38814-7044-412a-82e7-63c23abd0bec&quot;,                │
+│                         &quot;metadata.python_class&quot;:                             │
+│                       &quot;f9228daf-b4e9-449c-ab16-60cfd2758aa5&quot;                 │
+│                       }                                                      │
+│   value_hash          zdpuAstJHssbYPinNasXbCx76LQXAaRDTeAecwG6eBpTaz8qQ      │
+│   value_schema                                                               │
+│                         type          network_data                           │
+│                         type_config   {}                                     │
+│                         default       __not_set__                            │
+│                         optional      False                                  │
+│                         is_constant   False                                  │
+│                         doc           The network/graph data.                │
+│                                                                              │
+│   value_size          61.44 KB                                               │
+│   value_status        -- set --                                              │
+│                                                                              │
+│                       ────────────────────────────────────────────────────   │
+│                                                                              │
+│   lineage             create.network_data.from.tables                        │
+│                       ├── input: edges (table) =                             │
+│                       │   cf3c8a66-591b-4b92-8d23-c059c5352d1a               │
+│                       │   └── create.table                                   │
+│                       │       └── input: file (file) =                       │
+│                       │           a7c19e38-5819-43e3-a9d4-519fe761f84d       │
+│                       │           └── import.file                            │
+│                       │               └── input: path (string) =             │
+│                       │                   0f4fd590-9633-48e6-ad9c-8be3d47…   │
+│                       ├── input: edges_column_map (dict) =                   │
+│                       │   89dd6cd7-2a95-4fe0-96bf-c18c69cc3f01               │
+│                       ├── input: id_column_name (string) =                   │
+│                       │   5032c940-66ee-4d96-8e97-1e087516d2a2               │
+│                       ├── input: label_column_name (string) =                │
+│                       │   8068d8bc-36ec-4983-9ebb-90f231a3b712               │
+│                       ├── input: nodes (table) =                             │
+│                       │   dca421f4-0534-4778-94e7-58bc58d077eb               │
+│                       │   └── create.table                                   │
+│                       │       └── input: file (file) =                       │
+│                       │           025b0a44-4cdd-4a85-ada8-42b068fa09cf       │
+│                       │           └── import.file                            │
+│                       │               └── input: path (string) =             │
+│                       │                   cf42d8bf-5908-4519-a357-d0df0b9…   │
+│                       ├── input: nodes_column_map (dict) =                   │
+│                       │   73d73446-a9e1-4b6f-b1f8-d703d4a60d55               │
+│                       ├── input: source_column_name (string) =               │
+│                       │   58f603d3-96b2-4dbf-aa87-4db93738bd7a               │
+│                       └── input: target_column_name (string) =               │
+│                           fe754be4-b892-4bb6-8a56-f701b67eee0f               │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
 <p>As you can see, this basically describes what we've done so far, to get to this stage. You could now do a <code>kiara explain data value:&lt;value_id&gt;</code> on each of the value ids you see here, if you were so inclined.</p>
 <h3 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h3>
