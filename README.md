@@ -67,7 +67,7 @@ pip install 'git+https://github.com/cosminbasca/asciinet.git#egg=asciinet&subdir
 
 This is not strictly necessary, documentation generation won't fail without it, but any ascii-graphs won't be generated. This also needs Java to be available on your machine.
 
-#### Try it out
+## Try it out
 
 If you followed the instructions above, you should see an additional `doc` subcommand when doing a `kiara --help`. Check out the available commands by using the `--help` flag.
 
@@ -87,29 +87,6 @@ The 'serve' command will watch documents under `docs`, if any of them is changed
 and reload the browser(s) that are viewing it.
 
 Another important command is `cache clear`, which cleares the build cache of the dynamic commands that were executed while building the page for the first time.
-
-### ``make`` targets (Linux & Mac OS X)
-
-- ``init``: init development project (install project & dev dependencies into virtualenv, as well as pre-commit git hook)
-- ``update-dependencies``: update development dependencies (mainly the core ``kiara`` package from git)
-- ``flake``: run *flake8* tests
-- ``mypy``: run mypy tests
-- ``test``: run unit tests
-- ``docs``: create static documentation pages (under ``build/site``)
-- ``serve-docs``: serve documentation pages (incl. auto-reload) for getting direct feedback when working on documentation
-- ``clean``: clean build directories
-
-For details (and other, minor targets), check the ``Makefile``.
-
-
-### Running tests
-
-``` console
-> make test
-# or
-> make coverage
-```
-
 
 ## Copyright & license
 
