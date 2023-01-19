@@ -59,20 +59,6 @@ cd kiara.documentation
 pip install -e '.[dev_utils]'
 ```
 
-## Install some pre-commit check tooling (optional)
-
-This step is optional, but helps with keeping the code clean and CI from failing. By installing [pre-commit](https://pre-commit.com/) hooks like here,
-whenever you do a `git commit` in this repo, a series of checks and cleanup tasks are run, until everything is in a state
-that will hopefully make Github Actions not complain when you push your changes.
-
-```
-pre-commit install
-pre-commit install --hook-type commit-msg
-```
-
-In addition to some Python-specific checks and cleanup tasks, this will also check your commit message so it's in line with the suggested format:
-https://www.conventionalcommits.org/en/v1.0.0/
-
 #### Try it out
 
 If you followed the instructions above, you should see an additional `doc` subcommand when doing a `kiara --help`. Check out the available commands by using the `--help` flag.
