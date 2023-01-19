@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.5">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.9c788c91.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
@@ -143,7 +143,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -554,28 +554,28 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 </ul>
 <p>An assembled pipeline has the same characteristics as a <em>kiara</em> module, and in fact is a perfectly valid operation, like any other one, and can be called the same way.</p>
 <p>Create a new file <code>my_first_pipeline.yaml</code>, and copy and paste the above code into it. Then, run the <code>operation explain</code> command against the file:</p>
-<p><div class="highlight"><pre><span></span><code><span class="go">kiara operation explain my_first_pipeline.yaml</span>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>my_first_pipeline.yaml
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: my_first_pipeline.yaml.yaml ──────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Documentation   -- n/a --                                                                                                              │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Inputs                                                                                                                                 │</span>
-<span class="go">│                     field name                         type     description                              Required   Default              │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     filter_table_step__table_input     table    The table to filter.                     yes        -- no default --     │</span>
-<span class="go">│                     filter_table_step__column_name     string   The column containing the element to     no         City                 │</span>
-<span class="go">│                                                                 use as filter.                                                           │</span>
-<span class="go">│                     filter_table_step__filter_string   string   The string to use as filter.             yes        -- no default --     │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Outputs                                                                                                                                │</span>
-<span class="go">│                     field name                        type    description                                                                │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     filter_table_step__table_output   table   The filtered table.                                                        │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Operation: my_first_pipeline.yaml.yaml ──────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Documentation   -- n/a --                                                                                                              │
+│                                                                                                                                          │
+│   Inputs                                                                                                                                 │
+│                     field name                         type     description                              Required   Default              │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     filter_table_step__table_input     table    The table to filter.                     yes        -- no default --     │
+│                     filter_table_step__column_name     string   The column containing the element to     no         City                 │
+│                                                                 use as filter.                                                           │
+│                     filter_table_step__filter_string   string   The string to use as filter.             yes        -- no default --     │
+│                                                                                                                                          │
+│                                                                                                                                          │
+│   Outputs                                                                                                                                │
+│                     field name                        type    description                                                                │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     filter_table_step__table_output   table   The filtered table.                                                        │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
 <p>As you can see, <em>kiara</em> turned this (single-step) pipeline into an operation, and auto-generated some input- and output-fields, by assembling the step-id and step input-/output-field(s). Those long field names are a bit unwieldy, and we'll remedy that later, for now let's just ignore that.</p>
 <h3 id="adding-a-second-step">Adding a second step<a class="headerlink" href="#adding-a-second-step" title="Permanent link">&para;</a></h3>
@@ -597,30 +597,30 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <p>!!! note:
     To find out the input/output field names of each step, use <code>kiara operation explain &lt;MODULE_TYPE&gt;</code>.</p>
 <p>We can ask <em>kiara</em> again about what it thinks of this new pipeline/operation:</p>
-<p><div class="highlight"><pre><span></span><code><span class="go">kiara operation explain my_first_pipeline.yaml</span>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>my_first_pipeline.yaml
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: my_first_pipeline.yaml.yaml ──────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Documentation   -- n/a --                                                                                                              │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Inputs                                                                                                                                 │</span>
-<span class="go">│                     field name                         type     description                              Required   Default              │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     import_table_step__path            string   The local path to the file.              yes        -- no default --     │</span>
-<span class="go">│                     filter_table_step__column_name     string   The column containing the element to     no         City                 │</span>
-<span class="go">│                                                                 use as filter.                                                           │</span>
-<span class="go">│                     filter_table_step__filter_string   string   The string to use as filter.             yes        -- no default --     │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Outputs                                                                                                                                │</span>
-<span class="go">│                     field name                         type    description                                                               │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     import_table_step__imported_file   file    The loaded files.                                                         │</span>
-<span class="go">│                     import_table_step__table           table   The result value (of type &#39;table&#39;).                                       │</span>
-<span class="go">│                     filter_table_step__table_output    table   The filtered table.                                                       │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Operation: my_first_pipeline.yaml.yaml ──────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Documentation   -- n/a --                                                                                                              │
+│                                                                                                                                          │
+│   Inputs                                                                                                                                 │
+│                     field name                         type     description                              Required   Default              │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     import_table_step__path            string   The local path to the file.              yes        -- no default --     │
+│                     filter_table_step__column_name     string   The column containing the element to     no         City                 │
+│                                                                 use as filter.                                                           │
+│                     filter_table_step__filter_string   string   The string to use as filter.             yes        -- no default --     │
+│                                                                                                                                          │
+│                                                                                                                                          │
+│   Outputs                                                                                                                                │
+│                     field name                         type    description                                                               │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     import_table_step__imported_file   file    The loaded files.                                                         │
+│                     import_table_step__table           table   The result value (of type &#39;table&#39;).                                       │
+│                     filter_table_step__table_output    table   The filtered table.                                                       │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
 <p>As you can see, the previously existing input with the field name <code>filter_table_step__table_input</code> (type: <code>table</code>) is gone now, replaced by a new one, with the field name <code>import_table_step__path</code> (type: <code>string</code>). The other two inputs remain the same (since we did not connect a step output to them).</p>
 <h3 id="side-note-visualizing-the-pipeline">Side-note: visualizing the pipeline<a class="headerlink" href="#side-note-visualizing-the-pipeline" title="Permanent link">&para;</a></h3>
@@ -634,21 +634,11 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <li><code>kiara pipeline data-flow-graph &lt;pipeline_file&gt;</code>: display the the connections of inputs/outputs as well as processing steps.</li>
 </ul>
 <p>As an example, let's look at the execution graph of our current pipeline:</p>
-<p><div class="highlight"><pre><span></span><code><span class="go">kiara pipeline execution-graph my_first_pipeline.yaml</span>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>pipeline<span class="w"> </span>execution-graph<span class="w"> </span>my_first_pipeline.yaml
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go">     ┌────────┐     </span>
-<span class="go">     │__root__│     </span>
-<span class="go">     └────┬───┘     </span>
-<span class="go">          │         </span>
-<span class="go">          v         </span>
-<span class="go"> ┌─────────────────┐</span>
-<span class="go"> │import_table_step│</span>
-<span class="go"> └────────┬────────┘</span>
-<span class="go">          │         </span>
-<span class="go">          v         </span>
-<span class="go"> ┌─────────────────┐</span>
-<span class="go"> │filter_table_step│</span>
-<span class="go"> └─────────────────┘</span>
+<div class="highlight"><pre><span></span><code>Can&#39;t print graph on terminal, package &#39;asciinet&#39; not available. Please install it into the current virtualenv using:
+
+pip install &#39;git+https://github.com/cosminbasca/asciinet.git#egg=asciinet&amp;subdirectory=pyasciinet&#39;
 </code></pre></div></p>
 <h3 id="adjusting-the-input-output-field-names">Adjusting the input-/output-field names<a class="headerlink" href="#adjusting-the-input-output-field-names" title="Permanent link">&para;</a></h3>
 <p>We could run our pipeline as is, but let's adjust its input- and output field names first. Mainly to make it more intuitive to use. To do that we can add one or both of the following keys to our pipeline description:</p>
@@ -669,111 +659,111 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 </code></pre></div>
 <p>Output aliases work a bit different to input aliases: for inputs, if we don't specify a field, <em>kiara</em> will just use the auto-generated name (since the need for the input to exist does not go away). For output aliases, if we don't specify a field, <em>kiara</em> will ignore that output, and not display it to the user. In our case, we are not really interested in the intermediate outputs of the first step, so we only add the <code>filtered_table</code> alias that represents our final, filtered result.</p>
 <p>Lets see what <em>kiara</em> has to say about the 'API' of our pipelines now:</p>
-<p><div class="highlight"><pre><span></span><code><span class="go">kiara operation explain my_first_pipeline.yaml</span>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>my_first_pipeline.yaml
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: my_first_pipeline.yaml.yaml ──────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│   Documentation   -- n/a --                                                                      │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│   Inputs                                                                                         │</span>
-<span class="go">│                     field name      type     description         Required   Default              │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     csv_file_path   string   The local path to   yes        -- no default --     │</span>
-<span class="go">│                                              the file.                                           │</span>
-<span class="go">│                     column_name     string   The column          no         City                 │</span>
-<span class="go">│                                              containing the                                      │</span>
-<span class="go">│                                              element to use as                                   │</span>
-<span class="go">│                                              filter.                                             │</span>
-<span class="go">│                     filter_string   string   The string to use   yes        -- no default --     │</span>
-<span class="go">│                                              as filter.                                          │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│   Outputs                                                                                        │</span>
-<span class="go">│                     field name       type    description                                         │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     filtered_table   table   The filtered table.                                 │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Operation: my_first_pipeline.yaml.yaml ──────────────────────────────────────────────────╮
+│                                                                                                  │
+│   Documentation   -- n/a --                                                                      │
+│                                                                                                  │
+│   Inputs                                                                                         │
+│                     field name      type     description         Required   Default              │
+│                    ──────────────────────────────────────────────────────────────────────────    │
+│                     csv_file_path   string   The local path to   yes        -- no default --     │
+│                                              the file.                                           │
+│                     column_name     string   The column          no         City                 │
+│                                              containing the                                      │
+│                                              element to use as                                   │
+│                                              filter.                                             │
+│                     filter_string   string   The string to use   yes        -- no default --     │
+│                                              as filter.                                          │
+│                                                                                                  │
+│                                                                                                  │
+│   Outputs                                                                                        │
+│                     field name       type    description                                         │
+│                    ──────────────────────────────────────────────────────────────────────────    │
+│                     filtered_table   table   The filtered table.                                 │
+│                                                                                                  │
+│                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
 <p>Much nicer!</p>
 <h3 id="run-the-pipeline">Run the pipeline<a class="headerlink" href="#run-the-pipeline" title="Permanent link">&para;</a></h3>
 <p>Now, all that is left to do is run the pipeline:</p>
-<p><div class="highlight"><pre><span></span><code><span class="go">kiara run --save filtered_table=amsterdam_journals my_first_pipeline.yaml csv_file_path=examples/data/journals/JournalNodes1902.csv filter_string=Amsterdam column_name=City</span>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>--save<span class="w"> </span><span class="nv">filtered_table</span><span class="o">=</span>amsterdam_journals<span class="w"> </span>my_first_pipeline.yaml<span class="w"> </span><span class="nv">csv_file_path</span><span class="o">=</span>examples/data/journals/JournalNodes1902.csv<span class="w"> </span><span class="nv">filter_string</span><span class="o">=</span>Amsterdam<span class="w"> </span><span class="nv">column_name</span><span class="o">=</span>City
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   field            data_type   value                                                                                                     │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   filtered_table   table                                                                                                                 │</span>
-<span class="go">│                                  Id   Label      JournalT   City       CountryN   PresentD   Latitude   Longitu   Language   __index     │</span>
-<span class="go">│                                 ─────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                                  75   Psychiat   speciali   Amsterda   Netherla   Netherla   52.36666   4.9       Dutch      0           │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   field            data_type   value                                                                                                     │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   filtered_table   table                                                                                                                 │
+│                                  Id   Label      JournalT   City       CountryN   PresentD   Latitude   Longitu   Language   __index     │
+│                                 ─────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                                  75   Psychiat   speciali   Amsterda   Netherla   Netherla   52.36666   4.9       Dutch      0           │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
-<span class="go">╭─ Stored result value ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   field            data type   stored id                              alias(es)                                                          │</span>
-<span class="go">│  ────────────────────────────────────────────────────────────────────────────────────────                                                │</span>
-<span class="go">│   filtered_table   table       c23ee6e7-895f-47df-a05f-6e16eea26e88   amsterdam_journals                                                 │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+╭─ Stored result value ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   field            data type   stored id                              alias(es)                                                          │
+│  ────────────────────────────────────────────────────────────────────────────────────────                                                │
+│   filtered_table   table       0d25ce1d-0ee4-4068-82bc-6e52ea3f5be5   amsterdam_journals                                                 │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
 <p>And to confirm this worked, we ask <em>kiara</em> about the value we just stored (alias: <code>amsterdam_journals</code>), including it's lineage, which should give us the value ids of the intermediate results (in case we ever needed them -- they won't have an alias associated with it, but are still persisted in the <em>kiara</em> data store and can be looked up with <code>kiara data explain &lt;VALUE_ID&gt;</code> and/or `kiara data load <VALUE_ID>):</p>
-<p><div class="highlight"><pre><span></span><code><span class="go">kiara data explain --lineage alias:amsterdam_journals</span>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>data<span class="w"> </span>explain<span class="w"> </span>--lineage<span class="w"> </span>alias:amsterdam_journals
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Value details for: alias:amsterdam_journals ────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│   value_id            c23ee6e7-895f-47df-a05f-6e16eea26e88                                       │</span>
-<span class="go">│   kiara_id            f08cc480-7344-44a4-a77d-7c97ac98679b                                       │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│                       ────────────────────────────────────────────────────────────────────────   │</span>
-<span class="go">│   data_type_info                                                                                 │</span>
-<span class="go">│                         data_type_name     table                                                 │</span>
-<span class="go">│                         data_type_config   {}                                                    │</span>
-<span class="go">│                         characteristics    {                                                     │</span>
-<span class="go">│                                              &quot;is_scalar&quot;: false,                                 │</span>
-<span class="go">│                                              &quot;is_json_serializable&quot;: false                       │</span>
-<span class="go">│                                            }                                                     │</span>
-<span class="go">│                         data_type_class                                                          │</span>
-<span class="go">│                                              python_class_name    TableType                      │</span>
-<span class="go">│                                              python_module_name   kiara_plugin.tabular.da…       │</span>
-<span class="go">│                                              full_name            kiara_plugin.tabular.da…       │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│   destiny_backlinks   {}                                                                         │</span>
-<span class="go">│   enviroments         None                                                                       │</span>
-<span class="go">│   property_links      {                                                                          │</span>
-<span class="go">│                         &quot;metadata.python_class&quot;: &quot;c7e0b6bb-e3d3-4608-b96b-067161197fb8&quot;,         │</span>
-<span class="go">│                         &quot;metadata.table&quot;: &quot;b52a2f07-087a-48df-ae2d-e59eb749df7b&quot;                 │</span>
-<span class="go">│                       }                                                                          │</span>
-<span class="go">│   value_hash          zdpuAmca9P3gSGC6XipcksvC5aArdVeBJd8WHcwa6hLB9gqaF                          │</span>
-<span class="go">│   value_schema                                                                                   │</span>
-<span class="go">│                         type          table                                                      │</span>
-<span class="go">│                         type_config   {}                                                         │</span>
-<span class="go">│                         default       __not_set__                                                │</span>
-<span class="go">│                         optional      False                                                      │</span>
-<span class="go">│                         is_constant   False                                                      │</span>
-<span class="go">│                         doc           The filtered table.                                        │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│   value_size          4.97 KB                                                                    │</span>
-<span class="go">│   value_status        -- set --                                                                  │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│                       ────────────────────────────────────────────────────────────────────────   │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">│   lineage             filter.table                                                             │</span>
-<span class="go">│                       ├── input: column_name (string) = d0563b29-f3b7-4bba-9c8d-77499c97de6c     │</span>
-<span class="go">│                       ├── input: filter_string (string) = b875698e-3042-4517-a083-dd7cf815aed7   │</span>
-<span class="go">│                       └── input: table_input (table) = e1776ba2-f276-4e0c-b3fe-cbfb5b2e1a32      │</span>
-<span class="go">│                           └── create.table                                                       │</span>
-<span class="go">│                               └── input: file (file) = c27de411-114c-47f2-94f2-1ca856d6195c      │</span>
-<span class="go">│                                   └── import.file                                                │</span>
-<span class="go">│                                       └── input: path (string) =                                 │</span>
-<span class="go">│                                           fc3e516c-7d7b-4aac-b29a-8de6125e2725                   │</span>
-<span class="go">│                                                                                                  │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Value details for: alias:amsterdam_journals ────────────────────────────────────────────────────╮
+│                                                                                                  │
+│   value_id            0d25ce1d-0ee4-4068-82bc-6e52ea3f5be5                                       │
+│   kiara_id            046e85e9-ee94-4538-90fd-091cad9510b4                                       │
+│                                                                                                  │
+│                       ────────────────────────────────────────────────────────────────────────   │
+│   data_type_info                                                                                 │
+│                         data_type_name     table                                                 │
+│                         data_type_config   {}                                                    │
+│                         characteristics    {                                                     │
+│                                              &quot;is_scalar&quot;: false,                                 │
+│                                              &quot;is_json_serializable&quot;: false                       │
+│                                            }                                                     │
+│                         data_type_class                                                          │
+│                                              python_class_name    TableType                      │
+│                                              python_module_name   kiara_plugin.tabular.da…       │
+│                                              full_name            kiara_plugin.tabular.da…       │
+│                                                                                                  │
+│                                                                                                  │
+│   destiny_backlinks   {}                                                                         │
+│   enviroments         None                                                                       │
+│   property_links      {                                                                          │
+│                         &quot;metadata.python_class&quot;: &quot;9d20d171-0ffd-4e0a-948e-d13d2211371a&quot;,         │
+│                         &quot;metadata.table&quot;: &quot;b7570283-679b-44f8-8237-1650842b56d9&quot;                 │
+│                       }                                                                          │
+│   value_hash          zdpuAmca9P3gSGC6XipcksvC5aArdVeBJd8WHcwa6hLB9gqaF                          │
+│   value_schema                                                                                   │
+│                         type          table                                                      │
+│                         type_config   {}                                                         │
+│                         default       __not_set__                                                │
+│                         optional      False                                                      │
+│                         is_constant   False                                                      │
+│                         doc           The filtered table.                                        │
+│                                                                                                  │
+│   value_size          4.97 KB                                                                    │
+│   value_status        -- set --                                                                  │
+│                                                                                                  │
+│                       ────────────────────────────────────────────────────────────────────────   │
+│                                                                                                  │
+│   lineage             filter.table                                                             │
+│                       ├── input: column_name (string) = e83cdf9a-689f-47fb-8cb3-d708fec4b202     │
+│                       ├── input: filter_string (string) = dff46cb3-bc8a-41f1-b77d-99cfbd2712e0   │
+│                       └── input: table_input (table) = 46f845df-4e73-45aa-b74a-4bd8a805b349      │
+│                           └── create.table                                                       │
+│                               └── input: file (file) = d9cf5245-0305-4d11-bace-249ed2104aef      │
+│                                   └── import.file                                                │
+│                                       └── input: path (string) =                                 │
+│                                           6d65cc18-32ea-49cb-a8ee-85deb09cb02f                   │
+│                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
 <h3 id="making-the-pipeline-discoverable">Making the pipeline discoverable<a class="headerlink" href="#making-the-pipeline-discoverable" title="Permanent link">&para;</a></h3>
 <p>One of the main concepts that <em>kiara</em> is trying to facilitate is a modular approach to assembling data workflows. The main ingredient here is the fact that assembled pipelines behave like any other operation in <em>kiara</em>, which means that pipelines can also be used as (single) steps in other pipelines.</p>
@@ -783,15 +773,15 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <p>If we want to have more control over this, we can add a property <code>pipeline_name</code> to our description, that will override the auto-generated operation id.</p>
 <h4 id="using-the-extra_pipeline-property">Using the <code>extra_pipeline</code> property<a class="headerlink" href="#using-the-extra_pipeline-property" title="Permanent link">&para;</a></h4>
 <p>Each <em>kiara</em> context has a property called <code>extra_pipeline</code>. On the command-line, you can specify one or several of those via the <code>--pipelines</code> (or: <code>-p</code>) argument (after the <code>kiara</code> command-name, before the sub-command name):</p>
-<p><div class="highlight"><pre><span></span><code><span class="go">kiara --pipelines my_first_pipeline.yaml operation list my_first</span>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>--pipelines<span class="w"> </span>my_first_pipeline.yaml<span class="w"> </span>operation<span class="w"> </span>list<span class="w"> </span>my_first
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Id                  Type(s)    Description                                                                                             │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   my_first_pipeline   pipeline   -- n/a --                                                                                               │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Id                  Type(s)    Description                                                                                             │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   my_first_pipeline   pipeline   -- n/a --                                                                                               │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -808,22 +798,22 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 <p class="admonition-title">Note</p>
 <p>Here, we use a <a href="https://www.baeldung.com/yaml-multi-line#literal-style">yaml literal multiline string</a> to specify our pipeline documentation (the: '<code>|</code>'). This allows us to write as much documentation as we need to, without being restricted to a single line.</p>
 </div>
-<p><div class="highlight"><pre><span></span><code><span class="go">kiara --pipelines my_first_pipeline.yaml operation list import</span>
+<p><div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>--pipelines<span class="w"> </span>my_first_pipeline.yaml<span class="w"> </span>operation<span class="w"> </span>list<span class="w"> </span>import
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Id                                          Type(s)    Description                                                                     │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   import.database.from.local_file_path        pipeline   Import a database from a csv file.                                              │</span>
-<span class="go">│   import.file                                            Import a file from the local filesystem.                                        │</span>
-<span class="go">│   import.file_bundle                                     Import a folder (file_bundle) from the local filesystem.                        │</span>
-<span class="go">│   import.network_data.from.local_file_paths   pipeline   Onboard the edges and nodes from local files, create table values from them,    │</span>
-<span class="go">│                                                          then assemble those to the network_data result.                                 │</span>
-<span class="go">│   import.table.from.local_file_path           pipeline   Import a table from a file on the local filesystem.                             │</span>
-<span class="go">│   import.table.from.local_folder_path         pipeline   Import a table from a local folder containing text files.                       │</span>
-<span class="go">│   import.filtered_table                       pipeline   Import a table from a csv file, then filter it.                                 │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Id                                          Type(s)    Description                                                                     │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   import.database.from.local_file_path        pipeline   Import a database from a csv file.                                              │
+│   import.file                                            Import a file from the local filesystem.                                        │
+│   import.file_bundle                                     Import a folder (file_bundle) from the local filesystem.                        │
+│   import.network_data.from.local_file_paths   pipeline   Onboard the edges and nodes from local files, create table values from them,    │
+│                                                          then assemble those to the network_data result.                                 │
+│   import.table.from.local_file_path           pipeline   Import a table from a file on the local filesystem.                             │
+│   import.table.from.local_folder_path         pipeline   Import a table from a local folder containing text files.                       │
+│   import.filtered_table                       pipeline   Import a table from a csv file, then filter it.                                 │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
 <p>Going with the information contained in this output, instead of running our pipeline with the path to its file after the <code>run</code> sub-command, we could also do it like:</p>
 <div class="highlight"><pre><span></span><code>kiara --pipelines my_first_pipeline.yaml run import.filtered_table ... ... ...
@@ -871,7 +861,7 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ba449ae6.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
       
     
   </body>

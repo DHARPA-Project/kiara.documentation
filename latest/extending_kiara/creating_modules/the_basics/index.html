@@ -19,7 +19,7 @@
         <link rel="next" href="../../../workflows/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.5">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.9c788c91.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
@@ -147,7 +147,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -699,16 +699,16 @@ pip install -e .
 <p>TODO: explain what happened here?</p>
 </div>
 <p>Once this is done, you should see a new operation called <code>my_kiara_module.example</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara operation list example</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>list<span class="w"> </span>example
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Id                        Type(s)   Description                                                                                        │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   my_kiara_module.example             A very simple example module; concatenate two strings.                                             │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Id                        Type(s)   Description                                                                                        │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   my_kiara_module.example             A very simple example module; concatenate two strings.                                             │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -720,101 +720,101 @@ pip install -e .
 <p>This module comes as example code with the project template, and is located in the <code>modules/__init__.py</code> Python file. It only serves as an example and blueprint for your own modules, and you can delete the module class within the file if you wish.</p>
 <h3 id="pre-loading-a-table-dataset">Pre-loading a table dataset<a class="headerlink" href="#pre-loading-a-table-dataset" title="Permanent link">&para;</a></h3>
 <p>In our tutorial we'll create a module to filter a table. In order to do this we'll need to pre-seed our <em>kiara</em> data store with a tabular dataset. Here is the command to run (with the project root as our working directory):</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara run --save table=journal_nodes_table import.table.from.local_file_path path=examples/data/journals/JournalNodes1902.csv</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>--save<span class="w"> </span><span class="nv">table</span><span class="o">=</span>journal_nodes_table<span class="w"> </span>import.table.from.local_file_path<span class="w"> </span><span class="nv">path</span><span class="o">=</span>examples/data/journals/JournalNodes1902.csv
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Results ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│   field           data_type   value                                                                                                                                                                                                          │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   imported_file   file        ﻿Id,Label,JournalType,City,CountryNetworkTime,PresentDayCountry,Latitude,Longitude,Language                                                                                                                    │</span>
-<span class="go">│                               75,Psychiatrische en neurologische bladen,specialized: psychiatry and neurology,Amsterdam,Netherlands,Netherlands,52.366667,4.9,Dutch                                                                          │</span>
-<span class="go">│                               36,The American Journal of Insanity,specialized: psychiatry and neurology,Baltimore,United States,United States,39.289444,-76.615278,English                                                                   │</span>
-<span class="go">│                               208,The American Journal of Psychology,specialized: psychology,Baltimore,United States,United States,39.289444,-76.615278,English                                                                              │</span>
-<span class="go">│                               295,Die Krankenpflege,specialized: therapy,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                                    │</span>
-<span class="go">│                               296,Die deutsche Klinik am Eingange des zwanzigsten Jahrhunderts,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                             │</span>
-<span class="go">│                               300,Therapeutische Monatshefte,specialized: therapy,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                           │</span>
-<span class="go">│                               1,Allgemeine Zeitschrift für Psychiatrie,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                                                │</span>
-<span class="go">│                               7,Archiv für Psychiatrie und Nervenkrankheiten,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                                          │</span>
-<span class="go">│                               10,Berliner klinische Wochenschrift,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                          │</span>
-<span class="go">│                               13,Charité Annalen,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                                           │</span>
-<span class="go">│                               21,Monatsschrift für Psychiatrie und Neurologie,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                                         │</span>
-<span class="go">│                               29,Virchows Archiv,&quot;specialized: anatomy, physiology and pathology&quot;,Berlin,German Empire,Germany,52.52,13.405,German                                                                                           │</span>
-<span class="go">│                               31,Zeitschrift für pädagogische Psychologie und Pathologie,specialized: psychology and pedagogy,Berlin,German Empire,Germany,52.52,13.405,German                                                               │</span>
-<span class="go">│                               42,Vierteljahrsschrift für gerichtliche Medizin und öffentliches Sanitätswesen,&quot;specialized: anthropology, criminology and forensics&quot;,Berlin,German Empire,Germany,52.52,13.405,German                         │</span>
-<span class="go">│                               47,Centralblatt für Nervenheilkunde und Psychiatrie,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                                     │</span>
-<span class="go">│                               50,Russische medicinische Rundschau,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                          │</span>
-<span class="go">│                               76,Deutsche Aerzte-Zeitung,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                                   │</span>
-<span class="go">│                               87,Monatsschrift für Geburtshülfe und Gynäkologie,specialized: gynecology,Berlin,German Empire,Germany,52.52,13.405,German                                                                                     │</span>
-<span class="go">│                               108,Archiv für klinische Chirurgie,specialized: surgery,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                       │</span>
-<span class="go">│                               113,Zeitschrift für klinische Medicin,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                        │</span>
-<span class="go">│                               159,Deutsche militärärztliche Zeitschrift,specialized: military medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                      │</span>
-<span class="go">│                               162,Jahresbericht über die Leistungen und Fortschritte auf dem Gebiete der Neurologie und Psychiatrie,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                   │</span>
-<span class="go">│                               192,Ärztliche Sachverständigen-Zeitung,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                       │</span>
-<span class="go">│                               198,Zeitschrift für die Behandlung Schwachsinniger und Epileptischer,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                    │</span>
-<span class="go">│                               258,Der Pfarrbote,news media,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                                                  │</span>
-<span class="go">│                               71,Correspondenz-Blatt für Schweizer Aerzte,general medicine,Bern,Switzerland,Switzerland,46.948056,7.4475,German                                                                                              │</span>
-<span class="go">│                               6,Archiv für mikroskopische Anatomie,&quot;specialized: anatomy, physiology and pathology&quot;,Bonn,German Empire,Germany,50.733333,7.1,German                                                                          │</span>
-<span class="go">│                               203,The Journal of Abnormal Psychology,specialized: psychology,Boston,United States,United States,42.358056,-71.063611,English                                                                                 │</span>
-<span class="go">│                               273,&quot;Correspondenz-Blatt der Deutschen Gesellschaft für Anthropologie, Ethnologie und Urgeschichte&quot;,&quot;specialized: anthropology, criminology and forensics&quot;,Braunschweig,German                                 │</span>
-<span class="go">│                               Empire,Germany,52.266667,10.516667,German                                                                                                                                                                      │</span>
-<span class="go">│                               303,Policlinique de Bruxelles,general medicine,Brussels,Belgium,Belgium,50.85,4.35,French                                                                                                                      │</span>
-<span class="go">│                               306,Annales de la Société Belge de Neurologie,specialized: psychiatry and neurology,Brussels,Belgium,Belgium,50.85,4.35,French                                                                                 │</span>
-<span class="go">│                               19,Journal de neurologie,specialized: psychiatry and neurology,Brussels,Belgium,Belgium,50.85,4.35,French                                                                                                      │</span>
-<span class="go">│                               25,&quot;Revue internationale d&#39;électrothérapie, de physiologie, de médecine, de chirurgie, d&#39;obstétrique, de thérapeutique, de chimie et de pharmacie&quot;,general                                                     │</span>
-<span class="go">│                               medicine,Brussels,Belgium,Belgium,50.85,4.35,French                                                                                                                                                            │</span>
-<span class="go">│                               35,Bulletin de la Société de Médecine Mentale de Belgique,specialized: psychiatry and neurology,Brussels,Belgium,Belgium,50.85,4.35,French                                                                     │</span>
-<span class="go">│                               ...                                                                                                                                                                                                            │</span>
-<span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│                               ...                                                                                                                                                                                                            │</span>
-<span class="go">│   table           table                                                                                                                                                                                                                      │</span>
-<span class="go">│                                 Id    Label                                              JournalType                                         City        CountryNetworkTime        PresentDayCountry   Latitude    Longitude    Language     │</span>
-<span class="go">│                                ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                                 75    Psychiatrische en neurologische bladen             specialized: psychiatry and neurology               Amsterdam   Netherlands               Netherlands         52.366667   4.9          Dutch        │</span>
-<span class="go">│                                 36    The American Journal of Insanity                   specialized: psychiatry and neurology               Baltimore   United States             United States       39.289444   -76.615278   English      │</span>
-<span class="go">│                                 208   The American Journal of Psychology                 specialized: psychology                             Baltimore   United States             United States       39.289444   -76.615278   English      │</span>
-<span class="go">│                                 295   Die Krankenpflege                                  specialized: therapy                                Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 296   Die deutsche Klinik am Eingange des zwanzigsten    general medicine                                    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 300   Therapeutische Monatshefte                         specialized: therapy                                Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 1     Allgemeine Zeitschrift für Psychiatrie             specialized: psychiatry and neurology               Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 7     Archiv für Psychiatrie und Nervenkrankheiten       specialized: psychiatry and neurology               Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 10    Berliner klinische Wochenschrift                   general medicine                                    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 13    Charité Annalen                                    general medicine                                    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 21    Monatsschrift für Psychiatrie und Neurologie       specialized: psychiatry and neurology               Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 29    Virchows Archiv                                    specialized: anatomy, physiology and pathology      Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 31    Zeitschrift für pädagogische Psychologie und Pat   specialized: psychology and pedagogy                Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 42    Vierteljahrsschrift für gerichtliche Medizin und   specialized: anthropology, criminology and forens   Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 47    Centralblatt für Nervenheilkunde und Psychiatrie   specialized: psychiatry and neurology               Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 50    Russische medicinische Rundschau                   general medicine                                    Berlin      German Empire             Germany             52.52       13.405       German       │</span>
-<span class="go">│                                 ...   ...                                                ...                                                 ...         ...                       ...                 ...         ...          ...          │</span>
-<span class="go">│                                 ...   ...                                                ...                                                 ...         ...                       ...                 ...         ...          ...          │</span>
-<span class="go">│                                 277   L&#39;arte medica                                      general medicine                                    Turin       Italy                     Italy               45.079167   7.676111     Italian      │</span>
-<span class="go">│                                 288   Allgemeine österreichische Gerichts-Zeitung        specialized: anthropology, criminology and forens   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 18    Jahrbücher für Psychiatrie                         specialized: psychiatry and neurology               Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 30    Wiener klinische Rundschau                         general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 44    Wiener klinische Wochenschrift                     general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 45    Wiener medizinische Wochenschrift                  general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 72    Wiener medizinische Presse                         general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 81    Monatsschrift für Gesundheitspflege                general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 93    Klinisch-therapeutische Wochenschrift              general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 151   Medicinisch-chirurgisches Centralblatt             specialized: surgery                                Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 199   Der Militärazt                                     specialized: military medicine                      Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │</span>
-<span class="go">│                                 261   Медицинская беседа                                 general medicine                                    Voronezh    Russian Empire            Russia              51.671667   39.210556    Russian      │</span>
-<span class="go">│                                 77    Medycyna                                           general medicine                                    Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │</span>
-<span class="go">│                                 150   Kronika Lekarska                                   general medicine                                    Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │</span>
-<span class="go">│                                 86    Grenzfragen des Nerven- und Seelenlebens           specialized: psychiatry and neurology               Wiesbaden   German Empire             Germany             50.0825     8.24         German       │</span>
-<span class="go">│                                 206   Ergebnisse der Allgemeinen Pathologie und Pathol   specialized: anatomy, physiology and pathology      Wiesbaden   German Empire             Germany             50.0825     8.24         German       │</span>
-<span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Results ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                                                              │
+│   field           data_type   value                                                                                                                                                                                                          │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   imported_file   file        ﻿Id,Label,JournalType,City,CountryNetworkTime,PresentDayCountry,Latitude,Longitude,Language                                                                                                                    │
+│                               75,Psychiatrische en neurologische bladen,specialized: psychiatry and neurology,Amsterdam,Netherlands,Netherlands,52.366667,4.9,Dutch                                                                          │
+│                               36,The American Journal of Insanity,specialized: psychiatry and neurology,Baltimore,United States,United States,39.289444,-76.615278,English                                                                   │
+│                               208,The American Journal of Psychology,specialized: psychology,Baltimore,United States,United States,39.289444,-76.615278,English                                                                              │
+│                               295,Die Krankenpflege,specialized: therapy,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                                    │
+│                               296,Die deutsche Klinik am Eingange des zwanzigsten Jahrhunderts,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                             │
+│                               300,Therapeutische Monatshefte,specialized: therapy,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                           │
+│                               1,Allgemeine Zeitschrift für Psychiatrie,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                                                │
+│                               7,Archiv für Psychiatrie und Nervenkrankheiten,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                                          │
+│                               10,Berliner klinische Wochenschrift,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                          │
+│                               13,Charité Annalen,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                                           │
+│                               21,Monatsschrift für Psychiatrie und Neurologie,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                                         │
+│                               29,Virchows Archiv,&quot;specialized: anatomy, physiology and pathology&quot;,Berlin,German Empire,Germany,52.52,13.405,German                                                                                           │
+│                               31,Zeitschrift für pädagogische Psychologie und Pathologie,specialized: psychology and pedagogy,Berlin,German Empire,Germany,52.52,13.405,German                                                               │
+│                               42,Vierteljahrsschrift für gerichtliche Medizin und öffentliches Sanitätswesen,&quot;specialized: anthropology, criminology and forensics&quot;,Berlin,German Empire,Germany,52.52,13.405,German                         │
+│                               47,Centralblatt für Nervenheilkunde und Psychiatrie,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                                     │
+│                               50,Russische medicinische Rundschau,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                          │
+│                               76,Deutsche Aerzte-Zeitung,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                                   │
+│                               87,Monatsschrift für Geburtshülfe und Gynäkologie,specialized: gynecology,Berlin,German Empire,Germany,52.52,13.405,German                                                                                     │
+│                               108,Archiv für klinische Chirurgie,specialized: surgery,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                       │
+│                               113,Zeitschrift für klinische Medicin,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                        │
+│                               159,Deutsche militärärztliche Zeitschrift,specialized: military medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                      │
+│                               162,Jahresbericht über die Leistungen und Fortschritte auf dem Gebiete der Neurologie und Psychiatrie,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                   │
+│                               192,Ärztliche Sachverständigen-Zeitung,general medicine,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                       │
+│                               198,Zeitschrift für die Behandlung Schwachsinniger und Epileptischer,specialized: psychiatry and neurology,Berlin,German Empire,Germany,52.52,13.405,German                                                    │
+│                               258,Der Pfarrbote,news media,Berlin,German Empire,Germany,52.52,13.405,German                                                                                                                                  │
+│                               71,Correspondenz-Blatt für Schweizer Aerzte,general medicine,Bern,Switzerland,Switzerland,46.948056,7.4475,German                                                                                              │
+│                               6,Archiv für mikroskopische Anatomie,&quot;specialized: anatomy, physiology and pathology&quot;,Bonn,German Empire,Germany,50.733333,7.1,German                                                                          │
+│                               203,The Journal of Abnormal Psychology,specialized: psychology,Boston,United States,United States,42.358056,-71.063611,English                                                                                 │
+│                               273,&quot;Correspondenz-Blatt der Deutschen Gesellschaft für Anthropologie, Ethnologie und Urgeschichte&quot;,&quot;specialized: anthropology, criminology and forensics&quot;,Braunschweig,German                                 │
+│                               Empire,Germany,52.266667,10.516667,German                                                                                                                                                                      │
+│                               303,Policlinique de Bruxelles,general medicine,Brussels,Belgium,Belgium,50.85,4.35,French                                                                                                                      │
+│                               306,Annales de la Société Belge de Neurologie,specialized: psychiatry and neurology,Brussels,Belgium,Belgium,50.85,4.35,French                                                                                 │
+│                               19,Journal de neurologie,specialized: psychiatry and neurology,Brussels,Belgium,Belgium,50.85,4.35,French                                                                                                      │
+│                               25,&quot;Revue internationale d&#39;électrothérapie, de physiologie, de médecine, de chirurgie, d&#39;obstétrique, de thérapeutique, de chimie et de pharmacie&quot;,general                                                     │
+│                               medicine,Brussels,Belgium,Belgium,50.85,4.35,French                                                                                                                                                            │
+│                               35,Bulletin de la Société de Médecine Mentale de Belgique,specialized: psychiatry and neurology,Brussels,Belgium,Belgium,50.85,4.35,French                                                                     │
+│                               ...                                                                                                                                                                                                            │
+│                                                                                                                                                                                                                                              │
+│                               ...                                                                                                                                                                                                            │
+│   table           table                                                                                                                                                                                                                      │
+│                                 Id    Label                                              JournalType                                         City        CountryNetworkTime        PresentDayCountry   Latitude    Longitude    Language     │
+│                                ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                                 75    Psychiatrische en neurologische bladen             specialized: psychiatry and neurology               Amsterdam   Netherlands               Netherlands         52.366667   4.9          Dutch        │
+│                                 36    The American Journal of Insanity                   specialized: psychiatry and neurology               Baltimore   United States             United States       39.289444   -76.615278   English      │
+│                                 208   The American Journal of Psychology                 specialized: psychology                             Baltimore   United States             United States       39.289444   -76.615278   English      │
+│                                 295   Die Krankenpflege                                  specialized: therapy                                Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 296   Die deutsche Klinik am Eingange des zwanzigsten    general medicine                                    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 300   Therapeutische Monatshefte                         specialized: therapy                                Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 1     Allgemeine Zeitschrift für Psychiatrie             specialized: psychiatry and neurology               Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 7     Archiv für Psychiatrie und Nervenkrankheiten       specialized: psychiatry and neurology               Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 10    Berliner klinische Wochenschrift                   general medicine                                    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 13    Charité Annalen                                    general medicine                                    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 21    Monatsschrift für Psychiatrie und Neurologie       specialized: psychiatry and neurology               Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 29    Virchows Archiv                                    specialized: anatomy, physiology and pathology      Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 31    Zeitschrift für pädagogische Psychologie und Pat   specialized: psychology and pedagogy                Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 42    Vierteljahrsschrift für gerichtliche Medizin und   specialized: anthropology, criminology and forens   Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 47    Centralblatt für Nervenheilkunde und Psychiatrie   specialized: psychiatry and neurology               Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 50    Russische medicinische Rundschau                   general medicine                                    Berlin      German Empire             Germany             52.52       13.405       German       │
+│                                 ...   ...                                                ...                                                 ...         ...                       ...                 ...         ...          ...          │
+│                                 ...   ...                                                ...                                                 ...         ...                       ...                 ...         ...          ...          │
+│                                 277   L&#39;arte medica                                      general medicine                                    Turin       Italy                     Italy               45.079167   7.676111     Italian      │
+│                                 288   Allgemeine österreichische Gerichts-Zeitung        specialized: anthropology, criminology and forens   Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 18    Jahrbücher für Psychiatrie                         specialized: psychiatry and neurology               Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 30    Wiener klinische Rundschau                         general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 44    Wiener klinische Wochenschrift                     general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 45    Wiener medizinische Wochenschrift                  general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 72    Wiener medizinische Presse                         general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 81    Monatsschrift für Gesundheitspflege                general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 93    Klinisch-therapeutische Wochenschrift              general medicine                                    Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 151   Medicinisch-chirurgisches Centralblatt             specialized: surgery                                Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 199   Der Militärazt                                     specialized: military medicine                      Vienna      Austro-Hungarian Empire   Austria             48.2        16.366667    German       │
+│                                 261   Медицинская беседа                                 general medicine                                    Voronezh    Russian Empire            Russia              51.671667   39.210556    Russian      │
+│                                 77    Medycyna                                           general medicine                                    Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │
+│                                 150   Kronika Lekarska                                   general medicine                                    Warsaw      Russian Empire            Poland              52.233333   21.016667    Polish       │
+│                                 86    Grenzfragen des Nerven- und Seelenlebens           specialized: psychiatry and neurology               Wiesbaden   German Empire             Germany             50.0825     8.24         German       │
+│                                 206   Ergebnisse der Allgemeinen Pathologie und Pathol   specialized: anatomy, physiology and pathology      Wiesbaden   German Empire             Germany             50.0825     8.24         German       │
+│                                                                                                                                                                                                                                              │
+│                                                                                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
-<span class="go">╭─ Stored result value ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">│   field   data type   stored id                              alias(es)                                                                                                                                                                       │</span>
-<span class="go">│  ────────────────────────────────────────────────────────────────────────────────                                                                                                                                                            │</span>
-<span class="go">│   table   table       6ceb58b5-641b-4073-85f6-02721f8de1fc   journal_nodes_table                                                                                                                                                             │</span>
-<span class="go">│                                                                                                                                                                                                                                              │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+╭─ Stored result value ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                                                              │
+│   field   data type   stored id                              alias(es)                                                                                                                                                                       │
+│  ────────────────────────────────────────────────────────────────────────────────                                                                                                                                                            │
+│   table   table       d848ebee-be36-40a6-b2a4-9b0490b73dbb   journal_nodes_table                                                                                                                                                             │
+│                                                                                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -847,16 +847,16 @@ pip install -e .
 </code></pre></div>
 <p>This module skeleton describes a <em>kiara</em> module that takes a dataset of type <code>table</code> as input (using <code>table_input</code> as input field name), and produces another table dataset as output (accordingly, using <code>table_output</code> as output field name). For your own modules, you'd probably use the field name <code>table</code> for both input and outputs, but in this tutorial we'll use the longer forms, to avoid any confusion.</p>
 <p>On the next <em>kiara</em> run, the new module should be picked up by the <code>operation list</code> command:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara operation list tutorial_module</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>list<span class="w"> </span>tutorial_module
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Id                                                             Type(s)   Description                                                   │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module             -- n/a --                                                     │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Id                                                             Type(s)   Description                                                   │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   kiara_plugin.my_kiara_module.my_kiara_module.tutorial_module             -- n/a --                                                     │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -877,45 +877,45 @@ pip install -e .
 <span class="o">...</span>
 </code></pre></div>
 <p>The output for our new module in the operation list is much prettier now:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara operation list filter</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>list<span class="w"> </span>filter
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Id                            Type(s)   Description                                                                                    │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   filter.table                            Filter a table.                                                                                │</span>
-<span class="go">│   string_filter.tokens          filter    -- n/a --                                                                                      │</span>
-<span class="go">│   table_filter.drop_columns     filter    -- n/a --                                                                                      │</span>
-<span class="go">│   table_filter.select_columns   filter    -- n/a --                                                                                      │</span>
-<span class="go">│   table_filter.select_rows      filter    -- n/a --                                                                                      │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Filtered operations ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Id                            Type(s)   Description                                                                                    │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   filter.table                            Filter a table.                                                                                │
+│   string_filter.tokens          filter    -- n/a --                                                                                      │
+│   table_filter.drop_columns     filter    -- n/a --                                                                                      │
+│   table_filter.select_columns   filter    -- n/a --                                                                                      │
+│   table_filter.select_rows      filter    -- n/a --                                                                                      │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
 
 <p>We can also let <em>kiara</em> tell us about what it knows about the operation itself:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara operation explain filter.table</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>filter.table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: filter.table ────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Documentation   Filter a table.                                                                                                        │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Inputs                                                                                                                                 │</span>
-<span class="go">│                     field name    type    description                                                    Required   Default              │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     table_input   table   -- n/a --                                                      yes        -- no default --     │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Outputs                                                                                                                                │</span>
-<span class="go">│                     field name     type    description                                                                                   │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     table_output   table   -- n/a --                                                                                     │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Operation: filter.table ────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Documentation   Filter a table.                                                                                                        │
+│                                                                                                                                          │
+│   Inputs                                                                                                                                 │
+│                     field name    type    description                                                    Required   Default              │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     table_input   table   -- n/a --                                                      yes        -- no default --     │
+│                                                                                                                                          │
+│                                                                                                                                          │
+│   Outputs                                                                                                                                │
+│                     field name     type    description                                                                                   │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     table_output   table   -- n/a --                                                                                     │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -943,26 +943,26 @@ pip install -e .
     <span class="o">...</span>
 </code></pre></div>
 <p>Run the <code>explain</code> command again, to check what <em>kiara</em> thinks of our module now:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara operation explain filter.table</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>operation<span class="w"> </span>explain<span class="w"> </span>filter.table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Operation: filter.table ──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Documentation   Filter a table.                                                                                                        │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Inputs                                                                                                                                 │</span>
-<span class="go">│                     field name    type    description                                                    Required   Default              │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     table_input   table   The table to filter.                                           yes        -- no default --     │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   Outputs                                                                                                                                │</span>
-<span class="go">│                     field name     type    description                                                                                   │</span>
-<span class="go">│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                     table_output   table   The filtered table.                                                                           │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Operation: filter.table ──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   Documentation   Filter a table.                                                                                                        │
+│                                                                                                                                          │
+│   Inputs                                                                                                                                 │
+│                     field name    type    description                                                    Required   Default              │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     table_input   table   The table to filter.                                           yes        -- no default --     │
+│                                                                                                                                          │
+│                                                                                                                                          │
+│   Outputs                                                                                                                                │
+│                     field name     type    description                                                                                   │
+│                    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                     table_output   table   The filtered table.                                                                           │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -1006,161 +1006,161 @@ The class/type of the data depends on the data type of the value, so you'll have
     <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;table_output&quot;</span><span class="p">,</span> <span class="n">table_obj</span><span class="p">)</span>
 </code></pre></div>
 <p>If we <code>run</code> our module in this state, we should see our debug output, as well as the resulting table (which will be the unmodified input):</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>filter.table<span class="w"> </span><span class="nv">table_input</span><span class="o">=</span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=6ceb58b5-641b-4073-85f6-02721f8de1fc, type=table, status=set, initialized=True optional=False)</span>
-<span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
+<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=d848ebee-be36-40a6-b2a4-9b0490b73dbb, type=table, status=set, initialized=True optional=False)
+Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])
 
-<span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   field          data_type   value                                                                                                       │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   table_output   table                                                                                                                   │</span>
-<span class="go">│                                Id    Label        JournalTyp   City        CountryNe   PresentDay   Latitude    Longitude   Language     │</span>
-<span class="go">│                               ───────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                                75    Psychiatri   specialize   Amsterdam   Netherlan   Netherland   52.366667   4.9         Dutch        │</span>
-<span class="go">│                                36    The Americ   specialize   Baltimore   United St   United Sta   39.289444   -76.61527   English      │</span>
-<span class="go">│                                208   The Americ   specialize   Baltimore   United St   United Sta   39.289444   -76.61527   English      │</span>
-<span class="go">│                                295   Die Kranke   specialize   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                296   Die deutsc   general me   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                300   Therapeuti   specialize   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                1     Allgemeine   specialize   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                7     Archiv für   specialize   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                10    Berliner k   general me   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                13    Charité An   general me   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                21    Monatsschr   specialize   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                29    Virchows A   specialize   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                31    Zeitschrif   specialize   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                42    Vierteljah   specialize   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                47    Centralbla   specialize   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                50    Russische    general me   Berlin      German Em   Germany      52.52       13.405      German       │</span>
-<span class="go">│                                ...   ...          ...          ...         ...         ...          ...         ...         ...          │</span>
-<span class="go">│                                ...   ...          ...          ...         ...         ...          ...         ...         ...          │</span>
-<span class="go">│                                277   L&#39;arte med   general me   Turin       Italy       Italy        45.079167   7.676111    Italian      │</span>
-<span class="go">│                                288   Allgemeine   specialize   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                18    Jahrbücher   specialize   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                30    Wiener kli   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                44    Wiener kli   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                45    Wiener med   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                72    Wiener med   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                81    Monatsschr   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                93    Klinisch-t   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                151   Medicinisc   specialize   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                199   Der Militä   specialize   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │</span>
-<span class="go">│                                261   Медицинска   general me   Voronezh    Russian E   Russia       51.671667   39.210556   Russian      │</span>
-<span class="go">│                                77    Medycyna     general me   Warsaw      Russian E   Poland       52.233333   21.016667   Polish       │</span>
-<span class="go">│                                150   Kronika Le   general me   Warsaw      Russian E   Poland       52.233333   21.016667   Polish       │</span>
-<span class="go">│                                86    Grenzfrage   specialize   Wiesbaden   German Em   Germany      50.0825     8.24        German       │</span>
-<span class="go">│                                206   Ergebnisse   specialize   Wiesbaden   German Em   Germany      50.0825     8.24        German       │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   field          data_type   value                                                                                                       │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   table_output   table                                                                                                                   │
+│                                Id    Label        JournalTyp   City        CountryNe   PresentDay   Latitude    Longitude   Language     │
+│                               ───────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                                75    Psychiatri   specialize   Amsterdam   Netherlan   Netherland   52.366667   4.9         Dutch        │
+│                                36    The Americ   specialize   Baltimore   United St   United Sta   39.289444   -76.61527   English      │
+│                                208   The Americ   specialize   Baltimore   United St   United Sta   39.289444   -76.61527   English      │
+│                                295   Die Kranke   specialize   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                296   Die deutsc   general me   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                300   Therapeuti   specialize   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                1     Allgemeine   specialize   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                7     Archiv für   specialize   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                10    Berliner k   general me   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                13    Charité An   general me   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                21    Monatsschr   specialize   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                29    Virchows A   specialize   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                31    Zeitschrif   specialize   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                42    Vierteljah   specialize   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                47    Centralbla   specialize   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                50    Russische    general me   Berlin      German Em   Germany      52.52       13.405      German       │
+│                                ...   ...          ...          ...         ...         ...          ...         ...         ...          │
+│                                ...   ...          ...          ...         ...         ...          ...         ...         ...          │
+│                                277   L&#39;arte med   general me   Turin       Italy       Italy        45.079167   7.676111    Italian      │
+│                                288   Allgemeine   specialize   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                18    Jahrbücher   specialize   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                30    Wiener kli   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                44    Wiener kli   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                45    Wiener med   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                72    Wiener med   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                81    Monatsschr   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                93    Klinisch-t   general me   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                151   Medicinisc   specialize   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                199   Der Militä   specialize   Vienna      Austro-Hu   Austria      48.2        16.366667   German       │
+│                                261   Медицинска   general me   Voronezh    Russian E   Russia       51.671667   39.210556   Russian      │
+│                                77    Medycyna     general me   Warsaw      Russian E   Poland       52.233333   21.016667   Polish       │
+│                                150   Kronika Le   general me   Warsaw      Russian E   Poland       52.233333   21.016667   Polish       │
+│                                86    Grenzfrage   specialize   Wiesbaden   German Em   Germany      50.0825     8.24        German       │
+│                                206   Ergebnisse   specialize   Wiesbaden   German Em   Germany      50.0825     8.24        German       │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
 
 <p>Now it's time to drill a bit deeper into our input table, and figure out how to access the information it contains. <em>kiara</em> wraps data that shares some schema/structure into so-called 'data types'. You can access a list of the data types that are available in your current <em>kiara</em> environment with the <code>data-type list</code> sub-command:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara data-type list</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>data-type<span class="w"> </span>list
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Available data types ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   type name      type lineage   (qualifier) profiles   description                                                                       │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   any            -- n/a --      -- n/a --              &#39;Any&#39; type, the parent type for most other types.                                 │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   array          -- n/a --      -- n/a --              An array, in most cases used as a column within a table.                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   boolean        -- n/a --      -- n/a --              A boolean.                                                                        │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   bytes          -- n/a --      -- n/a --              An array of bytes.                                                                │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   database       -- n/a --      -- n/a --              A database, containing one or several tables.                                     │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   date           -- n/a --      -- n/a --              A date.                                                                           │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   dict           -- n/a --      -- n/a --              A dictionary.                                                                     │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   file           -- n/a --      -- n/a --              A file.                                                                           │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   file_bundle    -- n/a --      -- n/a --              A bundle of files (like a folder, zip archive, etc.).                             │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   float          -- n/a --      -- n/a --              A float.                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   integer        -- n/a --      -- n/a --              An integer.                                                                       │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   list           -- n/a --      -- n/a --              A list.                                                                           │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   network_data   -- n/a --      -- n/a --              Data that can be assembled into a graph.                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   string         -- n/a --      -- n/a --              A string.                                                                         │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   table          -- n/a --      -- n/a --              Tabular data (table, spreadsheet, data_frame, what have you).                     │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Available data types ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   type name      type lineage   (qualifier) profiles   description                                                                       │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   any            -- n/a --      -- n/a --              &#39;Any&#39; type, the parent type for most other types.                                 │
+│                                                                                                                                          │
+│   array          -- n/a --      -- n/a --              An array, in most cases used as a column within a table.                          │
+│                                                                                                                                          │
+│   boolean        -- n/a --      -- n/a --              A boolean.                                                                        │
+│                                                                                                                                          │
+│   bytes          -- n/a --      -- n/a --              An array of bytes.                                                                │
+│                                                                                                                                          │
+│   database       -- n/a --      -- n/a --              A database, containing one or several tables.                                     │
+│                                                                                                                                          │
+│   date           -- n/a --      -- n/a --              A date.                                                                           │
+│                                                                                                                                          │
+│   dict           -- n/a --      -- n/a --              A dictionary.                                                                     │
+│                                                                                                                                          │
+│   file           -- n/a --      -- n/a --              A file.                                                                           │
+│                                                                                                                                          │
+│   file_bundle    -- n/a --      -- n/a --              A bundle of files (like a folder, zip archive, etc.).                             │
+│                                                                                                                                          │
+│   float          -- n/a --      -- n/a --              A float.                                                                          │
+│                                                                                                                                          │
+│   integer        -- n/a --      -- n/a --              An integer.                                                                       │
+│                                                                                                                                          │
+│   list           -- n/a --      -- n/a --              A list.                                                                           │
+│                                                                                                                                          │
+│   network_data   -- n/a --      -- n/a --              Data that can be assembled into a graph.                                          │
+│                                                                                                                                          │
+│   string         -- n/a --      -- n/a --              A string.                                                                         │
+│                                                                                                                                          │
+│   table          -- n/a --      -- n/a --              Tabular data (table, spreadsheet, data_frame, what have you).                     │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
 
 <p>To find out more about a specific data type, you can use <code>data-type explain</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara data-type explain table</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>data-type<span class="w"> </span>explain<span class="w"> </span>table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Data type: table ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   type_name     table                                                                                                                    │</span>
-<span class="go">│   type_config   {}                                                                                                                       │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│  lineage              table                                                                                                              │</span>
-<span class="go">│                       any                                                                                                                │</span>
-<span class="go">│  qualifier profile(s) -- n/a --                                                                                                          │</span>
-<span class="go">│  Documentation                                                                                                                           │</span>
-<span class="go">│                         Tabular data (table, spreadsheet, data_frame, what have you).                                                    │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                         The table data is organized in sets of columns (arrays of data of the same type), with each column having a      │</span>
-<span class="go">│                         string identifier.                                                                                               │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                         kiara uses an instance of the [KiaraTable][kiara_plugin.tabular.models.table.KiaraTable] class to manage the     │</span>
-<span class="go">│                         table data, which let&#39;s developers access it in different formats (Apache Arrow Table, Pandas dataframe,         │</span>
-<span class="go">│                         Python dict of lists, more to follow...).                                                                        │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                         Please consult the API doc of the KiaraTable class for more information about how to access and query the        │</span>
-<span class="go">│                         data:                                                                                                            │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                          • KiaraTable API doc                                                                                            │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                         Internally, the data is stored in Apache Feather format -- both in memory and on disk when saved, which          │</span>
-<span class="go">│                         enables some advanced usage to preserve memory and compute overhead.                                             │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│  Author(s)                                                                                                                               │</span>
-<span class="go">│                         Markus Binsteiner   markus@frkl.io                                                                               │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│  Context                                                                                                                                 │</span>
-<span class="go">│                         Tags         tabular                                                                                             │</span>
-<span class="go">│                         Labels       package: kiara_plugin.tabular                                                                       │</span>
-<span class="go">│                         References   source_repo: https://github.com/DHARPA-Project/kiara_plugin.tabular                                 │</span>
-<span class="go">│                                      documentation: https://DHARPA-Project.github.io/kiara_plugin.tabular/                               │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│  Python class                                                                                                                            │</span>
-<span class="go">│                         python_class_name    TableType                                                                                   │</span>
-<span class="go">│                         python_module_name   kiara_plugin.tabular.data_types.table                                                       │</span>
-<span class="go">│                         full_name            kiara_plugin.tabular.data_types.table.TableType                                             │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│  Config class                                                                                                                            │</span>
-<span class="go">│                         python_class_name    DataTypeConfig                                                                              │</span>
-<span class="go">│                         python_module_name   kiara.data_types                                                                            │</span>
-<span class="go">│                         full_name            kiara.data_types.DataTypeConfig                                                             │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│  Value class                                                                                                                             │</span>
-<span class="go">│                         python_class_name    KiaraTable                                                                                  │</span>
-<span class="go">│                         python_module_name   kiara_plugin.tabular.models.table                                                           │</span>
-<span class="go">│                         full_name            kiara_plugin.tabular.models.table.KiaraTable                                                │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Data type: table ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   type_name     table                                                                                                                    │
+│   type_config   {}                                                                                                                       │
+│                                                                                                                                          │
+│ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── │
+│                                                                                                                                          │
+│  lineage              table                                                                                                              │
+│                       any                                                                                                                │
+│  qualifier profile(s) -- n/a --                                                                                                          │
+│  Documentation                                                                                                                           │
+│                         Tabular data (table, spreadsheet, data_frame, what have you).                                                    │
+│                                                                                                                                          │
+│                         The table data is organized in sets of columns (arrays of data of the same type), with each column having a      │
+│                         string identifier.                                                                                               │
+│                                                                                                                                          │
+│                         kiara uses an instance of the [KiaraTable][kiara_plugin.tabular.models.table.KiaraTable] class to manage the     │
+│                         table data, which let&#39;s developers access it in different formats (Apache Arrow Table, Pandas dataframe,         │
+│                         Python dict of lists, more to follow...).                                                                        │
+│                                                                                                                                          │
+│                         Please consult the API doc of the KiaraTable class for more information about how to access and query the        │
+│                         data:                                                                                                            │
+│                                                                                                                                          │
+│                          • KiaraTable API doc                                                                                            │
+│                                                                                                                                          │
+│                         Internally, the data is stored in Apache Feather format -- both in memory and on disk when saved, which          │
+│                         enables some advanced usage to preserve memory and compute overhead.                                             │
+│                                                                                                                                          │
+│  Author(s)                                                                                                                               │
+│                         Markus Binsteiner   markus@frkl.io                                                                               │
+│                                                                                                                                          │
+│  Context                                                                                                                                 │
+│                         Tags         tabular                                                                                             │
+│                         Labels       package: kiara_plugin.tabular                                                                       │
+│                         References   source_repo: https://github.com/DHARPA-Project/kiara_plugin.tabular                                 │
+│                                      documentation: https://DHARPA-Project.github.io/kiara_plugin.tabular/                               │
+│                                                                                                                                          │
+│  Python class                                                                                                                            │
+│                         python_class_name    TableType                                                                                   │
+│                         python_module_name   kiara_plugin.tabular.data_types.table                                                       │
+│                         full_name            kiara_plugin.tabular.data_types.table.TableType                                             │
+│                                                                                                                                          │
+│  Config class                                                                                                                            │
+│                         python_class_name    DataTypeConfig                                                                              │
+│                         python_module_name   kiara.data_types                                                                            │
+│                         full_name            kiara.data_types.DataTypeConfig                                                             │
+│                                                                                                                                          │
+│  Value class                                                                                                                             │
+│                         python_class_name    KiaraTable                                                                                  │
+│                         python_module_name   kiara_plugin.tabular.models.table                                                           │
+│                         full_name            kiara_plugin.tabular.models.table.KiaraTable                                                │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -1179,14 +1179,14 @@ The class/type of the data depends on the data type of the value, so you'll have
     <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;table_output&quot;</span><span class="p">,</span> <span class="n">table_obj</span><span class="p">)</span>
 </code></pre></div>
 <p>Again, let's run and see what's what (this time surpressing the result output we don't need right now, using <code>--output silent</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara run --output silent filter.table table_input=alias:journal_nodes_table</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>--output<span class="w"> </span>silent<span class="w"> </span>filter.table<span class="w"> </span><span class="nv">table_input</span><span class="o">=</span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">Filter module, table input value: Value(id=6ceb58b5-641b-4073-85f6-02721f8de1fc, type=table, status=set, initialized=True optional=False)</span>
-<span class="go">Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])</span>
-<span class="go">Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,</span>
-<span class="go">       &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],</span>
-<span class="go">      dtype=&#39;object&#39;)</span>
+<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=d848ebee-be36-40a6-b2a4-9b0490b73dbb, type=table, status=set, initialized=True optional=False)
+Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])
+Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,
+       &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],
+      dtype=&#39;object&#39;)
 </code></pre></div>
 
 </div>
@@ -1207,41 +1207,41 @@ The class/type of the data depends on the data type of the value, so you'll have
     <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;table_output&quot;</span><span class="p">,</span> <span class="n">berlin_df</span><span class="p">)</span>
 </code></pre></div>
 <p>And again, we run our module using our example dataset, and now we actually get something that is filtered:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>filter.table<span class="w"> </span><span class="nv">table_input</span><span class="o">=</span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   field          data_type   value                                                                                                       │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   table_output   table                                                                                                                   │</span>
-<span class="go">│                                Id    Label      JournalT   City     CountryN   PresentD   Latitude   Longitude   Language   __index_     │</span>
-<span class="go">│                               ───────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                                295   Die Kran   speciali   Berlin   German E   Germany    52.52      13.405      German     3            │</span>
-<span class="go">│                                296   Die deut   general    Berlin   German E   Germany    52.52      13.405      German     4            │</span>
-<span class="go">│                                300   Therapeu   speciali   Berlin   German E   Germany    52.52      13.405      German     5            │</span>
-<span class="go">│                                1     Allgemei   speciali   Berlin   German E   Germany    52.52      13.405      German     6            │</span>
-<span class="go">│                                7     Archiv f   speciali   Berlin   German E   Germany    52.52      13.405      German     7            │</span>
-<span class="go">│                                10    Berliner   general    Berlin   German E   Germany    52.52      13.405      German     8            │</span>
-<span class="go">│                                13    Charité    general    Berlin   German E   Germany    52.52      13.405      German     9            │</span>
-<span class="go">│                                21    Monatssc   speciali   Berlin   German E   Germany    52.52      13.405      German     10           │</span>
-<span class="go">│                                29    Virchows   speciali   Berlin   German E   Germany    52.52      13.405      German     11           │</span>
-<span class="go">│                                31    Zeitschr   speciali   Berlin   German E   Germany    52.52      13.405      German     12           │</span>
-<span class="go">│                                42    Viertelj   speciali   Berlin   German E   Germany    52.52      13.405      German     13           │</span>
-<span class="go">│                                47    Centralb   speciali   Berlin   German E   Germany    52.52      13.405      German     14           │</span>
-<span class="go">│                                50    Russisch   general    Berlin   German E   Germany    52.52      13.405      German     15           │</span>
-<span class="go">│                                76    Deutsche   general    Berlin   German E   Germany    52.52      13.405      German     16           │</span>
-<span class="go">│                                87    Monatssc   speciali   Berlin   German E   Germany    52.52      13.405      German     17           │</span>
-<span class="go">│                                108   Archiv f   speciali   Berlin   German E   Germany    52.52      13.405      German     18           │</span>
-<span class="go">│                                113   Zeitschr   general    Berlin   German E   Germany    52.52      13.405      German     19           │</span>
-<span class="go">│                                159   Deutsche   speciali   Berlin   German E   Germany    52.52      13.405      German     20           │</span>
-<span class="go">│                                162   Jahresbe   speciali   Berlin   German E   Germany    52.52      13.405      German     21           │</span>
-<span class="go">│                                192   Ärztlich   general    Berlin   German E   Germany    52.52      13.405      German     22           │</span>
-<span class="go">│                                198   Zeitschr   speciali   Berlin   German E   Germany    52.52      13.405      German     23           │</span>
-<span class="go">│                                258   Der Pfar   news med   Berlin   German E   Germany    52.52      13.405      German     24           │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   field          data_type   value                                                                                                       │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   table_output   table                                                                                                                   │
+│                                Id    Label      JournalT   City     CountryN   PresentD   Latitude   Longitude   Language   __index_     │
+│                               ───────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                                295   Die Kran   speciali   Berlin   German E   Germany    52.52      13.405      German     3            │
+│                                296   Die deut   general    Berlin   German E   Germany    52.52      13.405      German     4            │
+│                                300   Therapeu   speciali   Berlin   German E   Germany    52.52      13.405      German     5            │
+│                                1     Allgemei   speciali   Berlin   German E   Germany    52.52      13.405      German     6            │
+│                                7     Archiv f   speciali   Berlin   German E   Germany    52.52      13.405      German     7            │
+│                                10    Berliner   general    Berlin   German E   Germany    52.52      13.405      German     8            │
+│                                13    Charité    general    Berlin   German E   Germany    52.52      13.405      German     9            │
+│                                21    Monatssc   speciali   Berlin   German E   Germany    52.52      13.405      German     10           │
+│                                29    Virchows   speciali   Berlin   German E   Germany    52.52      13.405      German     11           │
+│                                31    Zeitschr   speciali   Berlin   German E   Germany    52.52      13.405      German     12           │
+│                                42    Viertelj   speciali   Berlin   German E   Germany    52.52      13.405      German     13           │
+│                                47    Centralb   speciali   Berlin   German E   Germany    52.52      13.405      German     14           │
+│                                50    Russisch   general    Berlin   German E   Germany    52.52      13.405      German     15           │
+│                                76    Deutsche   general    Berlin   German E   Germany    52.52      13.405      German     16           │
+│                                87    Monatssc   speciali   Berlin   German E   Germany    52.52      13.405      German     17           │
+│                                108   Archiv f   speciali   Berlin   German E   Germany    52.52      13.405      German     18           │
+│                                113   Zeitschr   general    Berlin   German E   Germany    52.52      13.405      German     19           │
+│                                159   Deutsche   speciali   Berlin   German E   Germany    52.52      13.405      German     20           │
+│                                162   Jahresbe   speciali   Berlin   German E   Germany    52.52      13.405      German     21           │
+│                                192   Ärztlich   general    Berlin   German E   Germany    52.52      13.405      German     22           │
+│                                198   Zeitschr   speciali   Berlin   German E   Germany    52.52      13.405      German     23           │
+│                                258   Der Pfar   news med   Berlin   German E   Germany    52.52      13.405      German     24           │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -1282,59 +1282,59 @@ The class/type of the data depends on the data type of the value, so you'll have
         <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;table_output&quot;</span><span class="p">,</span> <span class="n">berlin_df</span><span class="p">)</span>
 </code></pre></div>
 <p>In this example, I've used a default value for the <code>column_name</code> input ('City'). This probably doesn't make a whole lot of sense, but it shows how to set defaults for input fields, which in a lot of cases does make sense. We can try to run this command using a missing <code>filter_string</code> argument, which shows off nicely what the <em>kiara</em> command-line interface has to say about something like this:</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>filter.table<span class="w"> </span><span class="nv">table_input</span><span class="o">=</span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Run info: filter.table ───────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│ Can&#39;t run operation, invalid or insufficient inputs.                         │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│ ──────────────────────────────────────────────────────────────────────────── │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│ Operation: filter.table                                                    │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│ Filter a table.                                                              │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│ Inputs:                                                                      │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│   field name      status    type     description        required   default   │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   column_name     valid     string   The column         no         City      │</span>
-<span class="go">│                                      containing the                          │</span>
-<span class="go">│                                      element to use                          │</span>
-<span class="go">│                                      as filter.                              │</span>
-<span class="go">│   filter_string   not set   string   The string to      yes                  │</span>
-<span class="go">│                                      use as filter.                          │</span>
-<span class="go">│   table_input     valid     table    The table to       yes                  │</span>
-<span class="go">│                                      filter.                                 │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│ Outputs:                                                                     │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">│   field name     type    description                                         │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   table_output   table   The filtered table.                                 │</span>
-<span class="go">│                                                                              │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Run info: filter.table ───────────────────────────────────────────────────╮
+│                                                                              │
+│ Can&#39;t run operation, invalid or insufficient inputs.                         │
+│                                                                              │
+│ ──────────────────────────────────────────────────────────────────────────── │
+│                                                                              │
+│ Operation: filter.table                                                    │
+│                                                                              │
+│ Filter a table.                                                              │
+│                                                                              │
+│ Inputs:                                                                      │
+│                                                                              │
+│   field name      status    type     description        required   default   │
+│  ──────────────────────────────────────────────────────────────────────────  │
+│   column_name     valid     string   The column         no         City      │
+│                                      containing the                          │
+│                                      element to use                          │
+│                                      as filter.                              │
+│   filter_string   not set   string   The string to      yes                  │
+│                                      use as filter.                          │
+│   table_input     valid     table    The table to       yes                  │
+│                                      filter.                                 │
+│                                                                              │
+│                                                                              │
+│ Outputs:                                                                     │
+│                                                                              │
+│   field name     type    description                                         │
+│  ──────────────────────────────────────────────────────────────────────────  │
+│   table_output   table   The filtered table.                                 │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
 
 <p>As you can see, <em>kiara</em> complains about the missing input, but has used 'City' as default for the missing <code>column_name</code> input, and therefor is ok with the user not providing this. Ok, one more time, let's look for 'Amsterdam':</p>
-<div class="highlight"><pre><span></span><code><span class="go">kiara run filter.table table_input=alias:journal_nodes_table filter_string=Amsterdam</span>
+<div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>filter.table<span class="w"> </span><span class="nv">table_input</span><span class="o">=</span>alias:journal_nodes_table<span class="w"> </span><span class="nv">filter_string</span><span class="o">=</span>Amsterdam
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code><span class="go">╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│   field          data_type   value                                                                                                       │</span>
-<span class="go">│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │</span>
-<span class="go">│   table_output   table                                                                                                                   │</span>
-<span class="go">│                                Id   Label      JournalT   City       CountryN   PresentD   Latitude   Longitud   Language   __index_     │</span>
-<span class="go">│                               ───────────────────────────────────────────────────────────────────────────────────────────────────────    │</span>
-<span class="go">│                                75   Psychiat   speciali   Amsterda   Netherla   Netherla   52.36666   4.9        Dutch      0            │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">│                                                                                                                                          │</span>
-<span class="go">╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯</span>
+<div class="highlight"><pre><span></span><code>╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│   field          data_type   value                                                                                                       │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│   table_output   table                                                                                                                   │
+│                                Id   Label      JournalT   City       CountryN   PresentD   Latitude   Longitud   Language   __index_     │
+│                               ───────────────────────────────────────────────────────────────────────────────────────────────────────    │
+│                                75   Psychiat   speciali   Amsterda   Netherla   Netherla   52.36666   4.9        Dutch      0            │
+│                                                                                                                                          │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 
 </div>
@@ -1380,7 +1380,7 @@ The class/type of the data depends on the data type of the value, so you'll have
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ba449ae6.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
       
     
   </body>
