@@ -59,6 +59,14 @@ cd kiara.documentation
 pip install -e '.[dev_utils]'
 ```
 
+## Install asciinet dependency (optional)
+
+```
+pip install 'git+https://github.com/cosminbasca/asciinet.git#egg=asciinet&subdirectory=pyasciinet'
+```
+
+This is not strictly necessary, documentation generation won't fail without it, but any ascii-graphs won't be generated. This also needs Java to be available on your machine.
+
 #### Try it out
 
 If you followed the instructions above, you should see an additional `doc` subcommand when doing a `kiara --help`. Check out the available commands by using the `--help` flag.
