@@ -77,18 +77,18 @@ So, in most cases, the first thing you (as a user) want to do is 'import' the so
 
 #### Importing the 'raw' file
 
-After looking at the ``kiara operation list`` output, it looks like the ``import.file`` module might be just what we need (to be honest, `import.table.from.local_file_path` is what we'd really use if we weren't stuck in this getting-started guide, but doing that would skip over a few important basics that are worth understanding).
+After looking at the ``kiara operation list`` output, it looks like the ``import.local.file`` module might be just what we need (to be honest, `import.table.from.local_file_path` is what we'd really use if we weren't stuck in this getting-started guide, but doing that would skip over a few important basics that are worth understanding).
 
 *kiara* has the [``run``](../running_operations) sub-command, which is used to execute operations. If we only provide a module name, and not any input, this command will tell us what it expects:
 
-{{ cli("kiara", "run", "import.file", fail_ok=True) }}
+{{ cli("kiara", "run", "import.local.file", fail_ok=True) }}
 
 As makes obvious sense, we need to provide a ``path`` input, of type ``string``, letting *kiara* know where to pick up the file. The *kiara* command-line interface can
 take complex inputs like dictionaries, but fortunately this is not necessary here. If you ever come into a situation where you need that, check out [this section](../..//usage/#complex-inputs).
 
 For simple inputs like string-type things, all we need to do is provide the input name, followed by '=' and the value itself:
 
-{{ cli("kiara", "run", "import.file", "path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
+{{ cli("kiara", "run", "import.local.file", "path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
 As you can see from the terminal output, this produced one piece of output data: `file` (referring to the imported file), and it displays a preview of the file in question for us. By itself, this doesn't do anything yet, it just reads the file and then stops. What we want in this case is to 'save' the file, so we can refer to it again later. The process of 'saving' a value in *kiara* persists the file (rather: it's content and some metadata) into the *kiara* data store, giving it an internal unique id (string), and allows the user to 'tag' the value with one or multiple aliases. Aliases are names that are meaningful to the user, in order to make it easy to refer to datasets later on.
 
@@ -99,7 +99,7 @@ As you can see from the terminal output, this produced one piece of output data:
 
 In our case, lets opt for the second option:
 
-{{ cli("kiara", "run", "--save", "file=journal_nodes_file", "import.file", "path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
+{{ cli("kiara", "run", "--save", "file=journal_nodes_file", "import.local.file", "path=examples/data/journals/JournalNodes1902.csv", max_height=340, extra_env={"KIARA_CONTEXT": "_getting_started"}) }}
 
 #### Checking the data store
 

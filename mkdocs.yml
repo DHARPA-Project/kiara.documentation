@@ -32,6 +32,11 @@ extra:
 plugins:
 - search
 - autorefs
+- mknotebooks:
+    binder: true
+    binder_service_name: "gh"
+    binder_branch: "develop"
+    binder_ui: "lab"
 - mkdocstrings:
     default_handler: python
     handlers:
