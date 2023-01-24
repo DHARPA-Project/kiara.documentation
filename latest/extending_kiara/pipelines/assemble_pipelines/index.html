@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.5">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
     
     
       
@@ -45,6 +45,12 @@
       <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -399,9 +405,78 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../workflows/">Workflows</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Workflows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../../workflows/" class="md-nav__link">
-        Workflows
+      <a href="../../../workflows/topic_modeling/" class="md-nav__link">
+        Topic modeling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workflows/xor/" class="md-nav__link">
+        Xor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshop/workshop/" class="md-nav__link">
+        Workshop
       </a>
     </li>
   
@@ -717,7 +792,7 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 │                                                                                                                                          │
 │   field            data type   stored id                              alias(es)                                                          │
 │  ────────────────────────────────────────────────────────────────────────────────────────                                                │
-│   filtered_table   table       54db7725-7751-43d1-b292-647c618a825f   amsterdam_journals                                                 │
+│   filtered_table   table       00840142-fbe1-427e-bf0e-f2aaf9a54ec3   amsterdam_journals                                                 │
 │                                                                                                                                          │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
@@ -726,8 +801,8 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>╭─ Value details for: alias:amsterdam_journals ────────────────────────────────────────────────────╮
 │                                                                                                  │
-│   value_id            54db7725-7751-43d1-b292-647c618a825f                                       │
-│   kiara_id            35fdd67d-d922-483e-a16c-bb196514bebc                                       │
+│   value_id            00840142-fbe1-427e-bf0e-f2aaf9a54ec3                                       │
+│   kiara_id            08db8f0e-6848-4492-b3eb-9c6c7a8dc1f6                                       │
 │                                                                                                  │
 │                       ────────────────────────────────────────────────────────────────────────   │
 │   data_type_info                                                                                 │
@@ -746,8 +821,8 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 │   destiny_backlinks   {}                                                                         │
 │   enviroments         None                                                                       │
 │   property_links      {                                                                          │
-│                         &quot;metadata.python_class&quot;: &quot;5bc8e2d6-a344-4825-8064-2fb080734233&quot;,         │
-│                         &quot;metadata.table&quot;: &quot;bd54cd4f-6e79-4473-a1dd-01ef87984528&quot;                 │
+│                         &quot;metadata.python_class&quot;: &quot;f19c6c8e-476e-45fe-bdd4-73247b5cb841&quot;,         │
+│                         &quot;metadata.table&quot;: &quot;6f4d4a6e-0edc-40b8-a897-c03fefc0d2da&quot;                 │
 │                       }                                                                          │
 │   value_hash          zdpuAmca9P3gSGC6XipcksvC5aArdVeBJd8WHcwa6hLB9gqaF                          │
 │   value_schema                                                                                   │
@@ -764,14 +839,14 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 │                       ────────────────────────────────────────────────────────────────────────   │
 │                                                                                                  │
 │   lineage             filter.table                                                             │
-│                       ├── input: column_name (string) = 5ca781b6-5114-4fa3-b5be-b96da3ac4efb     │
-│                       ├── input: filter_string (string) = ec1f82f9-878b-4ca6-bed0-4fd552d69e40   │
-│                       └── input: table_input (table) = cfab160e-2c26-4a9c-b7e3-e5171d98aac5      │
+│                       ├── input: column_name (string) = 67a09a21-0571-4a39-8b65-27b11088f26f     │
+│                       ├── input: filter_string (string) = 41a161f9-3510-46f7-bd5e-f5f075066ab7   │
+│                       └── input: table_input (table) = 98df1a27-684a-4b42-820b-62b935788f11      │
 │                           └── create.table                                                       │
-│                               └── input: file (file) = 91ef705c-af93-4552-8cc4-2eff9d79b579      │
-│                                   └── import.file                                                │
+│                               └── input: file (file) = 15f53ba7-270e-4372-a7af-3ad182ba6e2a      │
+│                                   └── import.local.file                                          │
 │                                       └── input: path (string) =                                 │
-│                                           b020b55f-5dc3-4965-b8ab-97047ade9719                   │
+│                                           48c3831d-771f-486e-9520-69a9f5823826                   │
 │                                                                                                  │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div></p>
@@ -815,8 +890,8 @@ the operation directly. Nonetheless, below is how that would look like, we'll be
 │   Id                                          Type(s)    Description                                                                     │
 │  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
 │   import.database.from.local_file_path        pipeline   Import a database from a csv file.                                              │
-│   import.file                                            Import a file from the local filesystem.                                        │
-│   import.file_bundle                                     Import a folder (file_bundle) from the local filesystem.                        │
+│   import.local.file                                      Import a file from the local filesystem.                                        │
+│   import.local.file_bundle                               Import a folder (file_bundle) from the local filesystem.                        │
 │   import.network_data.from.local_file_paths   pipeline   Onboard the edges and nodes from local files, create table values from them,    │
 │                                                          then assemble those to the network_data result.                                 │
 │   import.table.from.local_file_path           pipeline   Import a table from a file on the local filesystem.                             │

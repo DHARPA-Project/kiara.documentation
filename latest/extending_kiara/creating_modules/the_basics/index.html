@@ -19,7 +19,7 @@
         <link rel="next" href="../../../workflows/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.5">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
     
     
       
@@ -49,6 +49,12 @@
       <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../../css/pandas-dataframe.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -521,9 +527,78 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../workflows/">Workflows</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Workflows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../../workflows/" class="md-nav__link">
-        Workflows
+      <a href="../../../workflows/topic_modeling/" class="md-nav__link">
+        Topic modeling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workflows/xor/" class="md-nav__link">
+        Xor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshop/workshop/" class="md-nav__link">
+        Workshop
       </a>
     </li>
   
@@ -808,11 +883,12 @@ pip install -e .
 │                                                                                                                                                                                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
-╭─ Stored result value ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+╭─ Stored result values ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                                                                                                                                                                                                              │
-│   field   data type   stored id                              alias(es)                                                                                                                                                                       │
-│  ────────────────────────────────────────────────────────────────────────────────                                                                                                                                                            │
-│   table   table       0b17af2b-00d7-4d3c-805d-deb94c894829   journal_nodes_table                                                                                                                                                             │
+│   field           data type   stored id                              alias(es)                                                                                                                                                               │
+│  ────────────────────────────────────────────────────────────────────────────────────────                                                                                                                                                    │
+│   imported_file   file        c6c5f2a6-2321-4fe4-8fec-c39a3d63979c                                                                                                                                                                           │
+│   table           table       e535c3e2-a410-43eb-b971-a8e1b15541f2   journal_nodes_table                                                                                                                                                     │
 │                                                                                                                                                                                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1009,7 +1085,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>filter.table<span class="w"> </span><span class="nv">table_input</span><span class="o">=</span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=0b17af2b-00d7-4d3c-805d-deb94c894829, type=table, status=set, initialized=True optional=False)
+<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=e535c3e2-a410-43eb-b971-a8e1b15541f2, type=table, status=set, initialized=True optional=False)
 Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])
 
 ╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
@@ -1182,7 +1258,7 @@ Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>--output<span class="w"> </span>silent<span class="w"> </span>filter.table<span class="w"> </span><span class="nv">table_input</span><span class="o">=</span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=0b17af2b-00d7-4d3c-805d-deb94c894829, type=table, status=set, initialized=True optional=False)
+<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=e535c3e2-a410-43eb-b971-a8e1b15541f2, type=table, status=set, initialized=True optional=False)
 Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])
 Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,
        &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],
@@ -1287,7 +1363,7 @@ Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;
 <div style='max-height:200px;overflow:auto'>
 <div class="highlight"><pre><span></span><code>╭─ Run info: filter.table ───────────────────────────────────────────────────╮
 │                                                                              │
-│ Can&#39;t run operation, invalid or insufficient inputs.                         │
+│ Can&#39;t run operation: invalid or insufficient input(s)                        │
 │                                                                              │
 │ ──────────────────────────────────────────────────────────────────────────── │
 │                                                                              │
