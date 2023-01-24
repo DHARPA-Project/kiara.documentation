@@ -49,7 +49,7 @@ First, fork the [kiara.documentation](https://github.com/DHARPA-Project/kiara.do
 Then, use the resulting url (in my case: https://github.com/makkus/kiara.documentation.git) to clone the repository locally:
 
 ```
-https://github.com/<YOUR_FORKED_GITHUB_ID>/kiara.documentation
+git clone https://github.com/<YOUR_FORKED_GITHUB_ID>/kiara.documentation
 ```
 
 ## Install the kiara documentation package into it
