@@ -76,6 +76,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#requirements" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -477,9 +482,45 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Workshop
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Workshop
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-kiara" class="md-nav__link">
+    Connect to kiara
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -503,6 +544,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-kiara" class="md-nav__link">
+    Connect to kiara
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -519,6 +582,8 @@
   
 
 
+
+  <h1>Workshop</h1>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script>
@@ -558,6 +623,15 @@
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<p>As a first step, we check if <em>kiara</em> and its plugins are installed, and install them should that not be the case.</p>
+<p>You can just always copy and paste the cell below into your notebook.</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -572,6 +646,122 @@
 <span class="n">ensure_kiara_plugins</span><span class="p">()</span>
 </code></pre></div>
 
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea ">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #008000; text-decoration-color: #008000">⠧</span> Installing kiara plugins...
+<span style="color: #008000; text-decoration-color: #008000">⠧</span> Installing kiara plugins...</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea ">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">╭─ kiara plugin(s) installed ─────────────────────────────────────────────────────────────────────────────────────╮
+│ Installed packages:                                                                                             │
+│                                                                                                                 │
+│ <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>kiara-plugin.core-types                                                                                      │
+│ <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>kiara-plugin.tabular                                                                                         │
+│ <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>kiara-plugin.onboarding                                                                                      │
+│ <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>kiara-plugin.network-analysis                                                                                │
+│ <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>kiara-plugin.language-processing                                                                             │
+│ <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>kiara-plugin.html                                                                                            │
+│ <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>kiara-plugin.streamlit                                                                                       │
+│                                                                                                                 │
+│ Depending on the state of your current environment, you might see error messages below, in which case you'll    │
+│ have to restart the jupyter kernel manually.                                                                    │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="connect-to-kiara">Connect to <em>kiara</em><a class="headerlink" href="#connect-to-kiara" title="Permanent link">&para;</a></h2>
+<p>To interact with <em>kiara</em>, we need to create an instance of a <code>KiaraAPI</code> object. This object will allow us to control the <em>kiara</em> backend, as well as get information about the context we work in (what operations are available, what data was saved, etc.)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">kiara</span> <span class="kn">import</span> <span class="n">KiaraAPI</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">KiaraAPI</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="n">api</span><span class="o">.</span><span class="n">list_operation_ids</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[&#39;create.database.from.file&#39;,
+ &#39;create.database.from.file_bundle&#39;,
+ &#39;create.database.from.table&#39;,
+ &#39;create.network_data.from.files&#39;,
+ &#39;create.network_data.from.tables&#39;,
+ &#39;create.stopwords_list&#39;,
+ &#39;create.table.from.file&#39;,
+ &#39;create.table.from.file_bundle&#39;,
+ &#39;date.check_range&#39;,
+ &#39;date.extract_from_string&#39;,
+ &#39;download.file&#39;,
+ &#39;download.file_bundle&#39;,
+ &#39;export.file.as.file&#39;,
+ &#39;export.network_data.as.csv_files&#39;,
+ &#39;export.network_data.as.graphml_file&#39;,
+ &#39;export.network_data.as.sql_dump&#39;,
+ &#39;export.network_data.as.sqlite_db&#39;,
+ &#39;export.table.as.csv_file&#39;,
+ &#39;extract.date_array.from.table&#39;,
+ &#39;file_bundle.pick.file&#39;,
+ &#39;file_bundle.pick.sub_folder&#39;,
+ &#39;generate.LDA.for.tokens_array&#39;,
+ &#39;import.database.from.local_file_path&#39;,
+ &#39;import.file&#39;,
+ &#39;import.file_bundle&#39;,
+ &#39;import.local.file&#39;,
+ &#39;import.local.file_bundle&#39;,
+ &#39;import.network_data.from.local_file_paths&#39;,
+ &#39;import.table.from.local_file_path&#39;,
+ &#39;import.table.from.local_folder_path&#39;,
+ &#39;jupyter.example&#39;,
+ &#39;list.contains&#39;,
+ &#39;logic.and&#39;,
+ &#39;logic.nand&#39;,
+ &#39;logic.nor&#39;,
+ &#39;logic.not&#39;,
+ &#39;logic.or&#39;,
+ &#39;logic.xor&#39;,
+ &#39;onboard.zenodo_record&#39;,
+ &#39;parse.date_array&#39;,
+ &#39;preprocess.tokens_array&#39;,
+ &#39;query.database&#39;,
+ &#39;query.table&#39;,
+ &#39;remove_stopwords.from.tokens_array&#39;,
+ &#39;render.markdown.to.html&#39;,
+ &#39;string_filter.tokens&#39;,
+ &#39;table.pick.column&#39;,
+ &#39;table_filter.drop_columns&#39;,
+ &#39;table_filter.select_columns&#39;,
+ &#39;table_filter.select_rows&#39;,
+ &#39;tokenize.string&#39;,
+ &#39;tokenize.texts_array&#39;]</code>
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
