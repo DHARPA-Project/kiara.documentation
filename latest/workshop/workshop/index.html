@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#requirements" class="md-skip">
+        <a href="#hello-kiara" class="md-skip">
           Skip to content
         </a>
       
@@ -481,6 +481,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Workshop
@@ -497,6 +499,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -505,16 +509,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    Requirements
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#connect-to-kiara" class="md-nav__link">
-    Connect to kiara
+  <a href="#running-kiara" class="md-nav__link">
+    Running kiara
   </a>
+  
+    <nav class="md-nav" aria-label="Running kiara">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-files" class="md-nav__link">
+    Downloading Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-formats-creating-and-converting" class="md-nav__link">
+    New Formats: Creating and Converting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-our-data" class="md-nav__link">
+    Querying our Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recording-and-tracing-our-data" class="md-nav__link">
+    Recording and Tracing our Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-next" class="md-nav__link">
+    What next...?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -543,6 +588,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -551,16 +598,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    Requirements
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#connect-to-kiara" class="md-nav__link">
-    Connect to kiara
+  <a href="#running-kiara" class="md-nav__link">
+    Running kiara
   </a>
+  
+    <nav class="md-nav" aria-label="Running kiara">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-files" class="md-nav__link">
+    Downloading Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-formats-creating-and-converting" class="md-nav__link">
+    New Formats: Creating and Converting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-our-data" class="md-nav__link">
+    Querying our Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recording-and-tracing-our-data" class="md-nav__link">
+    Recording and Tracing our Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-next" class="md-nav__link">
+    What next...?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -582,8 +670,6 @@
   
 
 
-
-  <h1>Workshop</h1>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script>
@@ -626,9 +712,23 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
-<p>As a first step, we check if <em>kiara</em> and its plugins are installed, and install them should that not be the case.</p>
-<p>You can just always copy and paste the cell below into your notebook.</p>
+<h1 id="hello-kiara">Hello <i>kiara</i>.<a class="headerlink" href="#hello-kiara" title="Permanent link">&para;</a></h1>
+<p>This tutorial introduces <em>kiara</em>, a data orchestration software.
+It will walk you through installation of the software in Jupyter Notebooks, and some basic but essential functions that can be built on in further notebooks.</p>
+<p>This tutorial requires you to know <strong>python</strong> and <strong>SQL</strong>.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>First, we need to check if <em>kiara</em> and its plugins are already installed, and install them if not. There are currently seven plugins:</p>
+<ul>
+<li><code>kiara_plugin.core-types</code></li>
+<li><code>kiara_plugin.onboarding</code></li>
+<li><code>kiara_plugin.tabular</code></li>
+<li><code>kiara_plugin.network_analysis</code></li>
+<li><code>kiara_plugin.language_processing</code></li>
+<li><code>kiara_plugin.html</code></li>
+<li><code>kiara_plugin.streamlit</code></li>
+</ul>
+<p>All of these will be installed automatically alongside <em>kiara</em>, using the code below.</p>
+<p><span style="color:blue">* Note: would be great if this could link out to further documentation, with a separate section for each plugin, describing overall what is in each, then with specific details of the functions in each</span></p>
 </div>
 </div>
 </div>
@@ -686,8 +786,9 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="connect-to-kiara">Connect to <em>kiara</em><a class="headerlink" href="#connect-to-kiara" title="Permanent link">&para;</a></h2>
-<p>To interact with <em>kiara</em>, we need to create an instance of a <code>KiaraAPI</code> object. This object will allow us to control the <em>kiara</em> backend, as well as get information about the context we work in (what operations are available, what data was saved, etc.)</p>
+<h2 id="running-kiara">Running <i>kiara</i><a class="headerlink" href="#running-kiara" title="Permanent link">&para;</a></h2>
+<p>In order to use <em>kiara</em>, we need to create a <code>KiaraAPI</code> instance. An API allows us to control and interact with <em>kiara</em> and its functions. In <em>kiara</em> this also allows us to get more information about what can be done (and what is happening) to our data as we go.</p>
+<p><span style="color:blue">* Note: I'm calling the API 'kiara' at the moment because I think it simplifies it for people who don't know what an API is/how it functions and might get confused by the variable name. This keeps it grounded in 'kiara' (whilst indicating it's an API for those who want to know/already know more) - the first instance of kiara isn't used again in this notebook, but we can always reverse this if it makes things more complicated for follow-on notebooks!</span></p>
 </div>
 </div>
 </div>
@@ -696,71 +797,301 @@
 
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">kiara</span> <span class="kn">import</span> <span class="n">KiaraAPI</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">KiaraAPI</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
-<span class="n">api</span><span class="o">.</span><span class="n">list_operation_ids</span><span class="p">()</span>
+<span class="n">kiara</span> <span class="o">=</span> <span class="n">KiaraAPI</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 </code></pre></div>
 
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_text output_subarea output_execute_result">
-<pre>
-<code>[&#39;create.database.from.file&#39;,
- &#39;create.database.from.file_bundle&#39;,
- &#39;create.database.from.table&#39;,
- &#39;create.network_data.from.files&#39;,
- &#39;create.network_data.from.tables&#39;,
- &#39;create.stopwords_list&#39;,
- &#39;create.table.from.file&#39;,
- &#39;create.table.from.file_bundle&#39;,
- &#39;date.check_range&#39;,
- &#39;date.extract_from_string&#39;,
- &#39;download.file&#39;,
- &#39;download.file_bundle&#39;,
- &#39;export.file.as.file&#39;,
- &#39;export.network_data.as.csv_files&#39;,
- &#39;export.network_data.as.graphml_file&#39;,
- &#39;export.network_data.as.sql_dump&#39;,
- &#39;export.network_data.as.sqlite_db&#39;,
- &#39;export.table.as.csv_file&#39;,
- &#39;extract.date_array.from.table&#39;,
- &#39;file_bundle.pick.file&#39;,
- &#39;file_bundle.pick.sub_folder&#39;,
- &#39;generate.LDA.for.tokens_array&#39;,
- &#39;import.database.from.local_file_path&#39;,
- &#39;import.file&#39;,
- &#39;import.file_bundle&#39;,
- &#39;import.local.file&#39;,
- &#39;import.local.file_bundle&#39;,
- &#39;import.network_data.from.local_file_paths&#39;,
- &#39;import.table.from.local_file_path&#39;,
- &#39;import.table.from.local_folder_path&#39;,
- &#39;jupyter.example&#39;,
- &#39;list.contains&#39;,
- &#39;logic.and&#39;,
- &#39;logic.nand&#39;,
- &#39;logic.nor&#39;,
- &#39;logic.not&#39;,
- &#39;logic.or&#39;,
- &#39;logic.xor&#39;,
- &#39;onboard.zenodo_record&#39;,
- &#39;parse.date_array&#39;,
- &#39;preprocess.tokens_array&#39;,
- &#39;query.database&#39;,
- &#39;query.table&#39;,
- &#39;remove_stopwords.from.tokens_array&#39;,
- &#39;render.markdown.to.html&#39;,
- &#39;string_filter.tokens&#39;,
- &#39;table.pick.column&#39;,
- &#39;table_filter.drop_columns&#39;,
- &#39;table_filter.select_columns&#39;,
- &#39;table_filter.select_rows&#39;,
- &#39;tokenize.string&#39;,
- &#39;tokenize.texts_array&#39;]</code>
-</pre>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we have an API in place, we can get more information about what we can do in <em>kiara</em>. Let's start by asking <em>kiara</em> to list all the operations that are included with the plugins we just installed.</p>
+<p>The documentation for each of these functions can be found <a href="https://dharpa.org/kiara/latest/reference/kiara/interfaces/python_api/__init__/#kiara.interfaces.python_api.KiaraAPI">here</a></p>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">list_operation_ids</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="downloading-files">Downloading Files<a class="headerlink" href="#downloading-files" title="Permanent link">&para;</a></h3>
+<p>Great, now we know the different kind of operations we can use with <em>kiara</em>. Let's start by introducing some files to our notebook, using the <code>download.file</code> function.<br/>
+First we want to find out what this operation does, and just as importantly, what inputs it needs to work.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operation_info</span><span class="p">(</span><span class="s1">&#39;download.file&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So from this, we know that <code>download.file</code> will download a single file from a remote location for us to use in <em>kiara</em>. <br/>
+We need to give the function a <strong>url</strong> and, if we want, a <strong>file name</strong>. These are the <span style="color:green"><strong>inputs</strong></span>. <br/>
+In return, we will get the <strong>file</strong> and <strong>metadata</strong> about the file as our <span style="color:red"><strong>outputs</strong></span>.</p>
+<p>Let's give this a go using some <em>kiara</em> sample data.</p>
+<p>First we define our <span style="color:green">inputs</span>, then use <code>kiara.run_job</code> with our chosen operation, <code>download.file</code>, and save this as our <span style="color:red">outputs</span>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/DHARPA-Project/kiara.examples/main/examples/data/journals/JournalNodes1902.csv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="s2">&quot;JournalNodes1902.csv&quot;</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;download.file&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's print out our <span style="color:red">outputs</span> and see what that looks like.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Great! We've successfully downloaded the file, and we can see there's lots of information here.</p>
+<p>At the moment, we're most interested in the <strong>file</strong> output. This contains the actual <em>contents</em> of the file that we have just downloaded.</p>
+<p>Let's separate this out and store it in a separate variable for us to use.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">downloaded_file</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="new-formats-creating-and-converting">New Formats: Creating and Converting<a class="headerlink" href="#new-formats-creating-and-converting" title="Permanent link">&para;</a></h3>
+<p>What next? We could transform the downloaded file contents into a different format. <br/>
+Let's use the operation list earlier, and look for something that allows us to create something out of our new file.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">list_operation_ids</span><span class="p">(</span><span class="s1">&#39;create&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our file was orginally in a CSV format, so let's make a table using <code>create.table.from.file</code>. </p>
+<p>Just like when we used <code>download.file</code>, we can double check what this does, and what <span style="color:green">inputs</span> and <span style="color:red">outputs</span> this involves.</p>
+<p>This time, we're also going to use a variable to store the operation in - this is especially handy if the operation has a long name, or if you want to use the same operation more than once without retyping it.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">op_id</span> <span class="o">=</span> <span class="s1">&#39;create.table.from.file&#39;</span>
+
+<span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operation_info</span><span class="p">(</span><span class="n">op_id</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Great, we have all the information we need now.</p>
+<p>Let's go again.</p>
+<p>First we define our <span style="color:green">inputs</span>, the downloaded file we saved earlier.</p>
+<p>Then use <code>kiara.run_job</code> with our chosen operation, this time stored as <code>op_id</code>.</p>
+<p>Once this is saved as our <span style="color:red">outputs</span>, we can print it out.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="n">downloaded_file</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="n">op_id</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This has done exactly what we wanted, and shown the contents from the downloaded file as a table. But we are also interested in some general (mostly internal) information and metadata, this time for the new table we have just created, rather than the original file itself.</p>
+<p>Let's have a look.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">outputs_table</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">]</span>
+
+<span class="n">outputs_table</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="querying-our-data">Querying our Data<a class="headerlink" href="#querying-our-data" title="Permanent link">&para;</a></h3>
+<p>So now we have downloaded our file and converted it into a table, we want to actually explore it.</p>
+<p>To do this, we can query the table using <strong>SQL</strong> and some functions already included in <em>kiara</em>.</p>
+<p>Let's take another look at that operation list, this time looking for functions that let us 'query'.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">list_operation_ids</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Well, we already know our file has been converted into a table, so let's have a look at <code>query.table</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operation_info</span><span class="p">(</span><span class="s1">&#39;query.table&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So from this information, we only need to provide the <strong>table</strong> itself, and our <strong>query</strong>.</p>
+<p>Let's work out how many of these journals were published in Berlin.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;table&quot;</span> <span class="o">=</span> <span class="n">outputs_table</span>
+    <span class="s2">&quot;query&quot;</span> <span class="o">=</span> <span class="s2">&quot;SELECT * from data where City like &#39;Berlin&#39;&quot;</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;query.table&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The function has returned the table with just the results we were looking for from the SQL query. </p>
+<p>Let's narrow this further, and find all the journals that are just about general medicine and published in Berlin.</p>
+<p>We can re-use the <code>query.table</code> function and the table we've just made, stored in <code>outputs['query_result']</code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;table&quot;</span> <span class="p">:</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;query_result&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;query&quot;</span> <span class="p">:</span> <span class="s2">&quot;SELECT * from data where JournalType like &#39;general medicine&#39;&quot;</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;query.table&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="recording-and-tracing-our-data">Recording and Tracing our Data<a class="headerlink" href="#recording-and-tracing-our-data" title="Permanent link">&para;</a></h3>
+<p>We've quite a few changes to this table, so let's double check the information about this new table we've created with our queries.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">query_output</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;query_result&#39;</span><span class="p">]</span>
+
+<span class="n">query_output</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looks good!</p>
+<p>We might have changed things around, but we can still get lots of information about all our data.</p>
+<p>More importantly, <em>kiara</em> is able to trace all of these changes, tracking the inputs and outputs and giving them all different identifiers, so you know exactly what has happened to your data. <br/>Check it out!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">query_output</span><span class="o">.</span><span class="n">lineage</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Even though we are only actually asking for the <strong>data lineage</strong> using the <em>last</em> SQL query and the table it made, <em>kiara</em> shows us everything that has happened since we first downloaded the file. This helps us keep an eye on the research process <em>and</em> the changes we are making to the data at the same time!</p>
+<h3 id="what-next">What next...?<a class="headerlink" href="#what-next" title="Permanent link">&para;</a></h3>
+<p>That's great, you've completed the first notebook and successfully installed <em>kiara</em>, downloaded files, tested out some functions, and are able to see what this does to your data. </p>
+<p>Now you can check out the other plugin packages to explore how this helps you manage and trace your data while using digital analysis tools!</p>
 </div>
 </div>
 </div>
