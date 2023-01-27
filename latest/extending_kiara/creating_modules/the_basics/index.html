@@ -596,10 +596,50 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../workshop/Topic_Modelling/">Workshop</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Workshop" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Workshop
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../workshop/workshop/" class="md-nav__link">
         Workshop
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -887,8 +927,8 @@ pip install -e .
 │                                                                                                                                                                                                                                              │
 │   field           data type   stored id                              alias(es)                                                                                                                                                               │
 │  ────────────────────────────────────────────────────────────────────────────────────────                                                                                                                                                    │
-│   imported_file   file        65ce0ae7-935d-4cfa-8225-6818e3c5299e                                                                                                                                                                           │
-│   table           table       bc6137b2-be27-4cf9-aca7-4de40030b50b   journal_nodes_table                                                                                                                                                     │
+│   imported_file   file        bd5d20cd-e5c0-49d0-a878-b9d7ecdcc096                                                                                                                                                                           │
+│   table           table       c49b3b99-dc9d-474f-9c11-4f27b85d7c55   journal_nodes_table                                                                                                                                                     │
 │                                                                                                                                                                                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
@@ -1085,7 +1125,7 @@ The class/type of the data depends on the data type of the value, so you'll have
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>filter.table<span class="w"> </span><span class="nv">table_input</span><span class="o">=</span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=bc6137b2-be27-4cf9-aca7-4de40030b50b, type=table, status=set, initialized=True optional=False)
+<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=c49b3b99-dc9d-474f-9c11-4f27b85d7c55, type=table, status=set, initialized=True optional=False)
 Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])
 
 ╭─ Result ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
@@ -1258,7 +1298,7 @@ Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields
 <div class="highlight"><pre><span></span><code>kiara<span class="w"> </span>run<span class="w"> </span>--output<span class="w"> </span>silent<span class="w"> </span>filter.table<span class="w"> </span><span class="nv">table_input</span><span class="o">=</span>alias:journal_nodes_table
 </code></pre></div>
 <div style='max-height:200px;overflow:auto'>
-<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=bc6137b2-be27-4cf9-aca7-4de40030b50b, type=table, status=set, initialized=True optional=False)
+<div class="highlight"><pre><span></span><code>Filter module, table input value: Value(id=c49b3b99-dc9d-474f-9c11-4f27b85d7c55, type=table, status=set, initialized=True optional=False)
 Table data instance: KiaraTable(model_id=-- n/a --, category=kiara_table, fields=[data_path])
 Column names: Index([&#39;Id&#39;, &#39;Label&#39;, &#39;JournalType&#39;, &#39;City&#39;, &#39;CountryNetworkTime&#39;,
        &#39;PresentDayCountry&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;Language&#39;],

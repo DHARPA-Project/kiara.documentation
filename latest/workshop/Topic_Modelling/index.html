@@ -1,0 +1,1772 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Markus Binsteiner">
+      
+      
+      
+        <link rel="prev" href="../../workflows/xor/">
+      
+      
+        <link rel="next" href="../workshop/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Workshop - kiara.documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kiara-language-processing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="kiara.documentation" class="md-header__button md-logo" aria-label="kiara.documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            kiara.documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Workshop
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DHARPA-Project/kiara.documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="kiara.documentation" class="md-nav__button md-logo" aria-label="kiara.documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    kiara.documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DHARPA-Project/kiara.documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../usage/">Usage</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Usage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+          Extending kiara
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Extending kiara" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Extending kiara
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_kiara/creating_modules/the_basics/" class="md-nav__link">
+        Creating modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          Pipelines
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pipelines" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Pipelines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending_kiara/pipelines/assemble_pipelines" class="md-nav__link">
+        Assemble a pipeline
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../workflows/">Workflows</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Workflows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/topic_modeling/" class="md-nav__link">
+        Topic modeling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/xor/" class="md-nav__link">
+        Xor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index md-nav__link--active">
+          <a href="./">Workshop</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Workshop" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Workshop
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshop/" class="md-nav__link">
+        Workshop
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-process" class="md-nav__link">
+    Starting the Process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-the-texts" class="md-nav__link">
+    Preparing the Texts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-processing-and-topic-modelling" class="md-nav__link">
+    Language Processing and Topic Modelling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recording-and-tracing-our-data" class="md-nav__link">
+    Recording and Tracing our Data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://mybinder.org/v2/gh/GitHub/develop?urlpath=lab%2Ftree%2Fdocs%2Fworkshop%2FTopic_Modelling.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="kiara-language-processing"><i>kiara</i>: Language Processing<a class="headerlink" href="#kiara-language-processing" title="Permanent link">&para;</a></h1>
+<p>Welcome back! Now that we're comfortable with what <em>kiara</em> looks like and what it can do to help track your data and your research process, let's try out some of the digital analysis tools, starting with <strong>Language Processing</strong>.</p>
+<p><span style ="color:blue">Lorella could there be some general information here on language processing/point to some literature maybe?</span></p>
+<h3 id="starting-the-process">Starting the Process<a class="headerlink" href="#starting-the-process" title="Permanent link">&para;</a></h3>
+<p>Let's start by double checking that we have all the required plugins, and setting up an API for us to use <em>kiara</em>. We'll do this all in one go this time, but if you're unsure, feel free to head back to the <a href="http://dharpa.org/kiara.documentation/latest/workshop/workshop/">installation notebook</a> to look over this section again.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">kiara_plugin.jupyter</span> <span class="kn">import</span> <span class="n">ensure_kiara_plugins</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Installing &#39;kiara_plugin.jupyter&#39;...&quot;</span><span class="p">)</span>
+    <span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">kiara_plugin</span><span class="o">.</span><span class="n">jupyter</span>
+    <span class="kn">from</span> <span class="nn">kiara_plugin.jupyter</span> <span class="kn">import</span> <span class="n">ensure_kiara_plugins</span>
+
+<span class="n">ensure_kiara_plugins</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">kiara</span> <span class="kn">import</span> <span class="n">KiaraAPI</span>
+<span class="n">kiara</span> <span class="o">=</span> <span class="n">KiaraAPI</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we're all set up, we want to download some text to work with in our language processing analyis. <br/>
+Let's have a look and see what there is.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">list_operation_ids</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[&#39;download.file&#39;, &#39;download.file_bundle&#39;]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last time we only wanted one file, but with language processing we might want a bigger corpus. <br/>
+Let's have a look at <code>download.file_bundle</code> this time.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operation_info</span><span class="p">(</span><span class="s1">&#39;download.file_bundle&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                                                                            
+ <span style="font-style: italic">Documentation    </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   -- n/a --                                                                                                              
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Author(s)        </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                                                                                    
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Context          </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  onboarding                                                                                                
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.onboarding                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>: <a href="https://github.com/DHARPA-Project/kiara_plugin.onboarding" target="_blank">https://github.com/DHARPA-Project/kiara_plugin.onboarding</a>                                    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>: <a href="https://DHARPA-Project.github.io/kiara_plugin.onboarding/" target="_blank">https://DHARPA-Project.github.io/kiara_plugin.onboarding/</a>                                  
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Operation details</span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  -- n/a --                                                                                              
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name </span> <span style="font-weight: bold"> type   </span> <span style="font-weight: bold"> description                                  </span> <span style="font-weight: bold"> Required </span> <span style="font-weight: bold"> Default          </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> url        </span>  string   The url of an archive/zip file to download.    <span style="font-weight: bold">yes</span>        -- no default --     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> sub_path   </span>  string   A relative path to select only a sub-folder    no         -- no default --     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">            </span>           from the archive.                                                              
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name        </span> <span style="font-weight: bold"> type        </span> <span style="font-weight: bold"> description                                                    </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> file_bundle       </span>  file_bundle   The downloaded file bundle.                                        
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> download_metadata </span>  dict          Metadata about the download.                                       
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So we still want a url, but for a zip file that we can download.
+Here's some example data for us to use.</p>
+<p>Again, we need to define the <span style="color:green">inputs</span>, use <code>kiara.run_job</code> with our chosen operation <code>download.file_bundle</code> and store this as our <span style="color:red">outputs</span>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/DHARPA-Project/kiara.examples/archive/refs/heads/main.zip&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sub_path&quot;</span><span class="p">:</span> <span class="s2">&quot;kiara.examples-main/examples/data/text_corpus/data&quot;</span>
+ <span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;download.file_bundle&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>patool: Extracting /var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpjr9umxt6 ...
+patool: ... /var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpjr9umxt6 extracted to `/var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpnha6uj9d&#39;.
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│  <span style="font-weight: bold"> field             </span> <span style="font-weight: bold"> value                                                                                                            </span>  │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  <span style="font-weight: bold"> download_metadata </span> <span style="font-style: italic">                                                                                                                  </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">   dict data     </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">{</span><span style="font-style: italic">                                                                                                </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"response_headers"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: [</span><span style="font-style: italic">                                                                          </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    {</span><span style="font-style: italic">                                                                                            </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"access-control-allow-origin"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"https://render.githubusercontent.com"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                     </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"content-disposition"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"attachment; filename=kiara.examples-main.zip"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                     </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"content-security-policy"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"default-src 'none'; style-src 'unsafe-inline'; sandbox"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">       </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"content-type"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"application/zip"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                         </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"etag"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"W/\"34f87e1d6dc5c913d21b59d7aecf516bca3a32605b6e1504ae97eec4611cc862\""</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">          </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"strict-transport-security"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"max-age=31536000"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                           </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"vary"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"Authorization,Accept-Encoding,Origin"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                            </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"x-content-type-options"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"nosniff"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                       </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"x-frame-options"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"deny"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                 </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"x-xss-protection"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"1; mode=block"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                       </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"date"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"Fri, 27 Jan 2023 07:48:53 GMT"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                   </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"transfer-encoding"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"chunked"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                            </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"x-github-request-id"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"542C:C4A4:31636B:3C82F9:63D381E5"</span><span style="font-style: italic">                                  </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    },</span><span style="font-style: italic">                                                                                           </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    {</span><span style="font-style: italic">                                                                                            </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"server"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"GitHub.com"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                    </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"date"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"Fri, 27 Jan 2023 07:48:53 GMT"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                   </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"content-type"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"text/html; charset=utf-8"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"vary"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, Accept-Encoding, Accept, X…</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"location"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"https://codeload.github.com/DHARPA-Project/kiara.examples/zip/refs/heads/m…</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"cache-control"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"max-age=0, private"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                     </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"strict-transport-security"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"max-age=31536000; includeSubdomains; preload"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"x-frame-options"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"deny"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                 </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"x-content-type-options"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"nosniff"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                       </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"x-xss-protection"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"0"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                   </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"referrer-policy"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"no-referrer-when-downgrade"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                           </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"content-security-policy"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"default-src 'none'; base-uri 'self'; block-all-mixed-conten…</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"content-length"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"0"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                     </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"x-github-request-id"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"77A9:872B:7D71061:81F6ABB:63D381E5"</span><span style="font-style: italic">                                </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    }</span><span style="font-style: italic">                                                                                            </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  ],</span><span style="font-style: italic">                                                                                             </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"request_time"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"2023-01-27T07:48:53.906919+00:00"</span><span style="font-style: italic">                                             </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">}</span><span style="font-style: italic">                                                                                                </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">   dict schema   </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">{</span><span style="font-style: italic">                                                                                                </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"title"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"dict"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"type"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"object"</span><span style="font-style: italic">                                                                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">}</span><span style="font-style: italic">                                                                                                </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                                                                                                                  </span>  │
+│  <span style="font-weight: bold"> file_bundle       </span> <span style="font-style: italic">                                                                                                                  </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">   bundle name       data                                                                                         </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">   number_of_files   16                                                                                           </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">   size              298452                                                                                       </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">   included files                                                                                                 </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                      </span><span style="font-weight: bold; font-style: italic"> (relative) path                                      </span><span style="font-style: italic"> </span><span style="font-weight: bold; font-style: italic"> size  </span><span style="font-style: italic">                              </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                      ──────────────────────────────────────────────────────────────                              </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Rassegna/sn84037025_1917-04-14_ed-1_seq-1_ocr.txt   20647                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Rassegna/sn84037025_1917-04-07_ed-1_seq-1_ocr.txt   19397                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Rassegna/sn84037025_1917-04-14_ed-2_seq-1_ocr.txt   20650                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Rassegna/sn84037025_1917-04-21_ed-1_seq-1_ocr.txt   21017                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Rassegna/sn84037025_1917-04-21_ed-2_seq-1_ocr.txt   20982                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-05-05_ed-2_seq-1_ocr.txt    18474                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-05-16_ed-1_seq-1_ocr.txt    18620                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-05-16_ed-2_seq-1_ocr.txt    18698                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-05-05_ed-1_seq-1_ocr.txt    18346                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-04-25_ed-4_seq-1_ocr.txt    16235                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-04-25_ed-3_seq-1_ocr.txt    16793                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-04-25_ed-2_seq-1_ocr.txt    16679                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-04-25_ed-1_seq-1_ocr.txt    16613                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-05-16_ed-3_seq-1_ocr.txt    18540                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-05-05_ed-4_seq-1_ocr.txt    18481                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                       La_Ragione/sn84037024_1917-05-05_ed-3_seq-1_ocr.txt    18280                               </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                                                                                                                  </span>  │
+│  <span style="font-weight: bold">                   </span> <span style="font-style: italic">                                                                                                                  </span>  │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Great, we've successfully imported a bundle of files this time rather than just one. This has given us both the metadata for the files, and the files themselves. Let's save the files themselves in a separate variable for us to use later.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">file_bundle</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;file_bundle&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="preparing-the-texts">Preparing the Texts<a class="headerlink" href="#preparing-the-texts" title="Permanent link">&para;</a></h3>
+<p>Before we can start using the language processing functions, we need to prepare the texts.
+Let's start by creating a table, just like with the csv in the installation notebook, but this time with the <code>create.table.from.file_bundle</code> function. Have a look and see what it needs.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operation_info</span><span class="p">(</span><span class="s1">&#39;create.table.from.file_bundle&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                                                                            
+ <span style="font-style: italic">Documentation    </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Create a table value from a text file_bundle.                                                                          
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   The resulting table will have (at a minimum) the following collumns:                                                   
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>id: an auto-assigned index                                                                                          
+ <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>rel_path: the relative path of the file (from the provided base path)                                               
+ <span style="font-style: italic">                 </span>   <span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> • </span>content: the text file content                                                                                      
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Author(s)        </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                                                                                    
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Context          </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  tabular                                                                                                   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.tabular                                                                             
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>: <a href="https://github.com/DHARPA-Project/kiara_plugin.tabular" target="_blank">https://github.com/DHARPA-Project/kiara_plugin.tabular</a>                                       
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>: <a href="https://DHARPA-Project.github.io/kiara_plugin.tabular/" target="_blank">https://DHARPA-Project.github.io/kiara_plugin.tabular/</a>                                     
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Operation details</span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Create a table value from a text file_bundle.                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  The resulting table will have (at a minimum) the following collumns:                                   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  - id: an auto-assigned index                                                                           
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  - rel_path: the relative path of the file (from the provided base path)                                
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  - content: the text file content                                                                       
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name  </span> <span style="font-weight: bold"> type        </span> <span style="font-weight: bold"> description                            </span> <span style="font-weight: bold"> Required </span> <span style="font-weight: bold"> Default          </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> file_bundle </span>  file_bundle   The source value (of type                <span style="font-weight: bold">yes</span>        -- no default --     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">             </span>                'file_bundle').                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description                                                                 </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table      </span>  table   The result value (of type 'table').                                             
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's use the file bundle we downloaded earlier and saved in our variable, and run this <em>kiara</em> table function.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;file_bundle&#39;</span> <span class="p">:</span> <span class="n">file_bundle</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;create.table.from.file_bundle&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│  <span style="font-weight: bold"> field </span> <span style="font-weight: bold"> value                                                                                                                        </span>  │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  <span style="font-weight: bold"> table </span> <span style="font-style: italic">                                                                                                                              </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">  </span><span style="font-weight: bold; font-style: italic"> id </span><span style="font-style: italic"> </span><span style="font-weight: bold; font-style: italic"> rel_path                      </span><span style="font-style: italic"> </span><span style="font-weight: bold; font-style: italic"> mime_type  </span><span style="font-style: italic"> </span><span style="font-weight: bold; font-style: italic"> size  </span><span style="font-style: italic"> </span><span style="font-weight: bold; font-style: italic"> content                        </span><span style="font-style: italic"> </span><span style="font-weight: bold; font-style: italic"> file_name                     </span><span style="font-style: italic">  </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   0    La_Ragione/sn84037024_1917-04   text/plain   16613   LA RAGIONE                       sn84037024_1917-04-25_ed-1_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   1    La_Ragione/sn84037024_1917-04   text/plain   16679   LA RAG ONE                       sn84037024_1917-04-25_ed-2_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   2    La_Ragione/sn84037024_1917-04   text/plain   16793   LA RAGIONE                       sn84037024_1917-04-25_ed-3_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   3    La_Ragione/sn84037024_1917-04   text/plain   16235   contro i vili, i camorristi, i   sn84037024_1917-04-25_ed-4_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   4    La_Ragione/sn84037024_1917-05   text/plain   18346   contro i vili, i camorristi, i   sn84037024_1917-05-05_ed-1_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   5    La_Ragione/sn84037024_1917-05   text/plain   18474   LA RAGIONA                       sn84037024_1917-05-05_ed-2_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   6    La_Ragione/sn84037024_1917-05   text/plain   18280   LA RAGIONE                       sn84037024_1917-05-05_ed-3_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   7    La_Ragione/sn84037024_1917-05   text/plain   18481   LA RAGIONE                       sn84037024_1917-05-05_ed-4_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   8    La_Ragione/sn84037024_1917-05   text/plain   18620   contro i vili, i camorristi, i   sn84037024_1917-05-16_ed-1_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   9    La_Ragione/sn84037024_1917-05   text/plain   18698   LA RAG ONE                       sn84037024_1917-05-16_ed-2_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   10   La_Ragione/sn84037024_1917-05   text/plain   18540   contro 1 vili, i camorristi, i   sn84037024_1917-05-16_ed-3_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   11   La_Rassegna/sn84037025_1917-0   text/plain   19397   ■■■                              sn84037025_1917-04-07_ed-1_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   12   La_Rassegna/sn84037025_1917-0   text/plain   20647   La Rassegna                      sn84037025_1917-04-14_ed-1_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   13   La_Rassegna/sn84037025_1917-0   text/plain   20650   Both Phones                      sn84037025_1917-04-14_ed-2_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   14   La_Rassegna/sn84037025_1917-0   text/plain   21017   ■ jSrìt** W?? iIK 38®f- i^M      sn84037025_1917-04-21_ed-1_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   15   La_Rassegna/sn84037025_1917-0   text/plain   20982   ■Both Phones                     sn84037025_1917-04-21_ed-2_se   </span>  │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">                                                                                                                              </span>  │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Great, this has taken all the information from the files we downloaded and made it a bit easier to navigate. At the moment, for our language processing, we're just interested in the texts themselves, stored in the 'content' column. Let's have a look at what we might be able to do with our table.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">list_operation_ids</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[&#39;create.database.from.table&#39;,
+ &#39;create.network_data.from.tables&#39;,
+ &#39;create.table.from.file&#39;,
+ &#39;create.table.from.file_bundle&#39;,
+ &#39;export.table.as.csv_file&#39;,
+ &#39;extract.date_array.from.table&#39;,
+ &#39;filter.table&#39;,
+ &#39;import.table.from.local_file_path&#39;,
+ &#39;import.table.from.local_folder_path&#39;,
+ &#39;query.table&#39;,
+ &#39;table.pick.column&#39;,
+ &#39;table_filter.drop_columns&#39;,
+ &#39;table_filter.select_columns&#39;,
+ &#39;table_filter.select_rows&#39;]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We only want one column, so let's have a look at <code>table.pick.column</code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operation_info</span><span class="p">(</span><span class="s1">&#39;table.pick.column&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                                                                            
+ <span style="font-style: italic">Documentation    </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Pick one column from a table, returning an array.                                                                      
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Author(s)        </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                                                                                    
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Context          </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  tabular                                                                                                   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.tabular                                                                             
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>: <a href="https://github.com/DHARPA-Project/kiara_plugin.tabular" target="_blank">https://github.com/DHARPA-Project/kiara_plugin.tabular</a>                                       
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>: <a href="https://DHARPA-Project.github.io/kiara_plugin.tabular/" target="_blank">https://DHARPA-Project.github.io/kiara_plugin.tabular/</a>                                     
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Operation details</span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Pick one column from a table, returning an array.                                                      
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name  </span> <span style="font-weight: bold"> type   </span> <span style="font-weight: bold"> description                                 </span> <span style="font-weight: bold"> Required </span> <span style="font-weight: bold"> Default          </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> table       </span>  table    A table.                                      <span style="font-weight: bold">yes</span>        -- no default --     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> column_name </span>  string   The name of the column to extract.            <span style="font-weight: bold">yes</span>        -- no default --     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description                                                                 </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> array      </span>  array   The column.                                                                     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So here we need two <span style="color:green">inputs</span>, the <strong>table</strong> we just made and the name of the <strong>coloumn</strong> we want to pick. </p>
+<p>Let's use our outputs again and run the function. This way we can keep just the information we need for our language processing.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;table&#39;</span> <span class="p">:</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;column_name&#39;</span> <span class="p">:</span> <span class="s1">&#39;content&#39;</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;table.pick.column&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│  <span style="font-weight: bold"> field </span> <span style="font-weight: bold"> value                                                                                    </span>                                      │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────                                      │
+│  <span style="font-weight: bold"> array </span> <span style="font-style: italic">                                                                                          </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   LA RAGIONE                                                                             </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   LA RAG ONE                                                                             </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   LA RAGIONE                                                                             </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   contro i vili, i camorristi, i sicari, i falsari e gli austriacanti, nemici dell ...   </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   contro i vili, i camorristi, i sicari, i falsari e gli austriacanti, nemici dell ...   </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   LA RAGIONA                                                                             </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   LA RAGIONE                                                                             </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   LA RAGIONE                                                                             </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   contro i vili, i camorristi, i sicari, i falsari e gli austriacanti, nemici dell ...   </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   LA RAG ONE                                                                             </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   contro 1 vili, i camorristi, i sicari, i falsari e gli austriacanti, nemici dell ...   </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   ■■■                                                                                    </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   La Rassegna                                                                            </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   Both Phones                                                                            </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   ■ jSrìt** W?? iIK 38®f- i^M                                                            </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">   ■Both Phones                                                                           </span>                                      │
+│  <span style="font-weight: bold">       </span> <span style="font-style: italic">                                                                                          </span>                                      │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="language-processing-and-topic-modelling">Language Processing and Topic Modelling<a class="headerlink" href="#language-processing-and-topic-modelling" title="Permanent link">&para;</a></h3>
+<p>Great, we've downloaded and prepped our material for text analysis. Not we want to see what kind of functions are included in <em>kiara</em> for language processing. Let's have a look and see what's included in the <code>kiara_plugin.language_processing</code> package.</p>
+<p><span style="color:blue">Lorella this may/may not need some extra description on what the different operations do</span></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">infos</span> <span class="o">=</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operations_info</span><span class="p">()</span>
+<span class="n">operations</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">op_id</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">infos</span><span class="o">.</span><span class="n">item_infos</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">info</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;package&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;kiara_plugin.language_processing&quot;</span><span class="p">:</span>
+        <span class="n">operations</span><span class="p">[</span><span class="n">op_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">info</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">operations</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>dict_keys([&#39;create.stopwords_list&#39;, &#39;generate.LDA.for.tokens_array&#39;, &#39;preprocess.tokens_array&#39;, &#39;remove_stopwords.from.tokens_array&#39;, &#39;tokenize.string&#39;, &#39;tokenize.texts_array&#39;])
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The contents of our text files have been stored as an <strong>array</strong>, so let's start by tokenizing this using the <code>tokenize.texts_array</code> function.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operation_info</span><span class="p">(</span><span class="s1">&#39;tokenize.texts_array&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                                                                            
+ <span style="font-style: italic">Documentation    </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Split sentences into words or words into characters.                                                                   
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   In other words, this operation establishes the word boundaries (i.e., tokens) a very helpful way of finding            
+ <span style="font-style: italic">                 </span>   patterns. It is also the typical step prior to stemming and lemmatization                                              
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Author(s)        </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                                                                                    
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Context          </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  language_processing, tokenize, tokens                                                                     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.language_processing                                                                 
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>: <a href="https://github.com/DHARPA-Project/kiara_plugin.language_processing" target="_blank">https://github.com/DHARPA-Project/kiara_plugin.language_processing</a>                           
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>: <a href="https://DHARPA-Project.github.io/kiara_plugin.language_processing/" target="_blank">https://DHARPA-Project.github.io/kiara_plugin.language_processing/</a>                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Operation details</span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Split sentences into words or words into characters.                                                   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  In other words, this operation establishes the word boundaries (i.e., tokens) a very helpful way of    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  finding patterns. It is also the typical step prior to stemming and lemmatization                      
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name       </span> <span style="font-weight: bold"> type    </span> <span style="font-weight: bold"> description                           </span> <span style="font-weight: bold"> Required </span> <span style="font-weight: bold"> Default          </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> texts_array      </span>  array     An array of text items to be            <span style="font-weight: bold">yes</span>        -- no default --     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                  </span>            tokenized.                                                              
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> tokenize_by_word </span>  boolean   Whether to tokenize by word             no         True                 
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                  </span>            (default), or character.                                                
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name   </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description                                                               </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> tokens_array </span>  array   The tokenized content, as an array of lists of strings.                       
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Great, let's give it a go!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;texts_array&#39;</span><span class="p">:</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;array&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;tokenize.texts_array&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│  <span style="font-weight: bold"> field        </span> <span style="font-weight: bold"> value                                                                                    </span>                               │
+│  ─────────────────────────────────────────────────────────────────────────────────────────────────────────                               │
+│  <span style="font-weight: bold"> tokens_array </span> <span style="font-style: italic">                                                                                          </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['LA', 'RAGIONE', 'ORGANO', 'DI', 'DIFESA', 'DELLA', "ITALIANITÀ'", 'contro', '1 ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['LA', 'RAG', 'ONE', 'contro', 'i', 'vili', ',', 'i', 'camorristi', ',', 'i', 's ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['LA', 'RAGIONE', 'ORGANO', 'DI', 'DIFESA', 'DELLA', 'ITALIANITÀ', 'contro', 'i' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'i', 'vili', ',', 'i', 'camorristi', ',', 'i', 'sicari', ',', 'i', 'f ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'i', 'vili', ',', 'i', 'camorristi', ',', 'i', 'sicari', ',', 'i', 'f ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['LA', 'RAGIONA', 'ORGANO', 'DI', 'DIFESA', 'DELLA', 'ITALIANITÀ', 'contro', 'i' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['LA', 'RAGIONE', 'ORGANO', 'DI', 'DIFESA', 'DELLA', "ITALIANITÀ'", 'contro', 'i ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['LA', 'RAGIONE', 'contro', 'i', 'vili', ',', '1', 'camorristi', ',', 'i', 'sica ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'i', 'vili', ',', 'i', 'camorristi', ',', 'i', 'sicari', ',', 'i', 'f ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['LA', 'RAG', 'ONE', 'ORGANO', 'DI', 'DIFESA', 'DELLA', 'ITALIANITÀ', "''", 'con ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', '1', 'vili', ',', 'i', 'camorristi', ',', 'i', 'sicari', ',', 'i', 'f ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['■■■', 'La', 'Rassegna', '_', 'I', 'Both', 'Phones', 'ANNO', 'L', 'No', '.', '1 ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['La', 'Rassegna', 'Jjoth', 'Phones', 'ANNO', 'L', 'No', '.', '2', 'BASTA', '!', ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['Both', 'Phones', 'ANNO', 'I', '.', 'No', '.', '2', 'BASTA', '!', '...', 'uà',  ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['■', 'jSrìt', '*', '*', 'W', '?', '?', 'iIK', '38®f-', 'i^M', 'F', '&lt;', '5É', ' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['■Both', 'Phones', 'ANNO', '11', '.', 'No', '.', '5', 'LE', 'COSE', 'A', 'POSTO ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">                                                                                          </span>                               │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see from the printed preview that this has tokenized the contents for each of the text files we imported.</p>
+<p>Now we can work on pre-processing some of this text. Let's look at what options we have in the <code>preprocess.tokens_array</code> operation.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operation_info</span><span class="p">(</span><span class="s1">&#39;preprocess.tokens_array&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                                                                            
+ <span style="font-style: italic">Documentation    </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Preprocess lists of tokens, incl. lowercasing, remove special characers, etc.                                          
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Lowercasing: Lowercase the words. This operation is a double-edged sword. It can be effective at yielding              
+ <span style="font-style: italic">                 </span>   potentially better results in the case of relatively small datasets or datatsets with a high percentage of OCR         
+ <span style="font-style: italic">                 </span>   mistakes. For instance, if lowercasing is not performed, the algorithm will treat USA, Usa, usa, UsA, uSA, etc. as     
+ <span style="font-style: italic">                 </span>   distinct tokens, even though they may all refer to the same entity. On the other hand, if the dataset does not         
+ <span style="font-style: italic">                 </span>   contain such OCR mistakes, then it may become difficult to distinguish between homonyms and make interpreting the      
+ <span style="font-style: italic">                 </span>   topics much harder.                                                                                                    
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Removing stopwords and words with less than three characters: Remove low information words. These are typically        
+ <span style="font-style: italic">                 </span>   words such as articles, pronouns, prepositions, conjunctions, etc. which are not semantically salient. There are       
+ <span style="font-style: italic">                 </span>   numerous stopword lists available for many, though not all, languages which can be easily adapted to the individual    
+ <span style="font-style: italic">                 </span>   researcher's needs. Removing words with less than three characters may additionally remove many OCR mistakes. Both     
+ <span style="font-style: italic">                 </span>   these operations have the dual advantage of yielding more reliable results while reducing the size of the dataset,     
+ <span style="font-style: italic">                 </span>   thus in turn reducing the required processing power. This step can therefore hardly be considered optional in TM.      
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Noise removal: Remove elements such as punctuation marks, special characters, numbers, html formatting, etc. This      
+ <span style="font-style: italic">                 </span>   operation is again concerned with removing elements that may not be relevant to the text analysis and in fact          
+ <span style="font-style: italic">                 </span>   interfere with it. Depending on the dataset and research question, this operation can become essential.                
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Author(s)        </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                                                                                    
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Context          </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  language_processing, tokens, preprocess                                                                   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.language_processing                                                                 
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>: <a href="https://github.com/DHARPA-Project/kiara_plugin.language_processing" target="_blank">https://github.com/DHARPA-Project/kiara_plugin.language_processing</a>                           
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>: <a href="https://DHARPA-Project.github.io/kiara_plugin.language_processing/" target="_blank">https://DHARPA-Project.github.io/kiara_plugin.language_processing/</a>                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Operation details</span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Preprocess lists of tokens, incl. lowercasing, remove special characers, etc.                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  Lowercasing: Lowercase the words. This operation is a double-edged sword. It can be effective at       
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  yielding potentially better results in the case of relatively small datasets or datatsets with a       
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  high percentage of OCR mistakes. For instance, if lowercasing is not performed, the algorithm will     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  treat USA, Usa, usa, UsA, uSA, etc. as distinct tokens, even though they may all refer to the same     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  entity. On the other hand, if the dataset does not contain such OCR mistakes, then it may become       
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  difficult to distinguish between homonyms and make interpreting the topics much harder.                
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  Removing stopwords and words with less than three characters: Remove low information words. These      
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  are typically words such as articles, pronouns, prepositions, conjunctions, etc. which are not         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  semantically salient. There are numerous stopword lists available for many, though not all,            
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  languages which can be easily adapted to the individual researcher's needs. Removing words with less   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  than three characters may additionally remove many OCR mistakes. Both these operations have the dual   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  advantage of yielding more reliable results while reducing the size of the dataset, thus in turn       
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  reducing the required processing power. This step can therefore hardly be considered optional in TM.   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  Noise removal: Remove elements such as punctuation marks, special characters, numbers, html            
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  formatting, etc. This operation is again concerned with removing elements that may not be relevant     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  to the text analysis and in fact interfere with it. Depending on the dataset and research question,    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  this operation can become essential.                                                                   
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name          </span> <span style="font-weight: bold"> type    </span> <span style="font-weight: bold"> description                        </span> <span style="font-weight: bold"> Required </span> <span style="font-weight: bold"> Default          </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> tokens_array        </span>  array     The tokens array to pre-process.     <span style="font-weight: bold">yes</span>        -- no default --     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> to_lowercase        </span>  boolean   Apply lowercasing to the text.       no         False                
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> remove_alphanumeric </span>  boolean   Remove all tokens that include       no         False                
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                     </span>            numbers (e.g. ex1ample).                                             
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> remove_non_alpha    </span>  boolean   Remove all tokens that include       no         False                
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                     </span>            punctuation and numbers (e.g.                                        
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                     </span>            ex1a.mple).                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> remove_all_numeric  </span>  boolean   Remove all tokens that contain       no         False                
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                     </span>            numbers only (e.g. 876).                                             
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> remove_short_tokens </span>  integer   Remove tokens shorter or equal to    no         0                    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                     </span>            this value. If value is &lt;= 0, no                                     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                     </span>            filtering will be done.                                              
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> remove_stopwords    </span>  list      Remove stopwords.                    no         -- no default --     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name   </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description                                                               </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> tokens_array </span>  array   The pre-processed content, as an array of lists of strings.                   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There's lots of options here to choose from to help pre-process our texts.</p>
+<p>Let's start by removing a custom <strong>stopword list</strong>. Feel free to have a play around, and add and change some of the words!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">stopword_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;la&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">]</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;tokens_array&#39;</span><span class="p">:</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;tokens_array&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;remove_stopwords&#39;</span> <span class="p">:</span> <span class="n">stopword_list</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;preprocess.tokens_array&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│  <span style="font-weight: bold"> field        </span> <span style="font-weight: bold"> value                                                                                    </span>                               │
+│  ─────────────────────────────────────────────────────────────────────────────────────────────────────────                               │
+│  <span style="font-weight: bold"> tokens_array </span> <span style="font-style: italic">                                                                                          </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['RAGIONE', 'ORGANO', 'DI', 'DIFESA', 'DELLA', "ITALIANITÀ'", 'contro', '1', 'vi ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['RAG', 'ONE', 'contro', 'vili', ',', 'camorristi', ',', 'sicari', ',', 'falsari ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['RAGIONE', 'ORGANO', 'DI', 'DIFESA', 'DELLA', 'ITALIANITÀ', 'contro', 'vili', ' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'vili', ',', 'camorristi', ',', 'sicari', ',', 'falsari', 'e', 'gli', ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'vili', ',', 'camorristi', ',', 'sicari', ',', 'falsari', 'e', 'gli', ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['RAGIONA', 'ORGANO', 'DI', 'DIFESA', 'DELLA', 'ITALIANITÀ', 'contro', 'vili', ' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['RAGIONE', 'ORGANO', 'DI', 'DIFESA', 'DELLA', "ITALIANITÀ'", 'contro', 'vili',  ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['RAGIONE', 'contro', 'vili', ',', '1', 'camorristi', ',', 'sicari', ',', 'falsa ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'vili', ',', 'camorristi', ',', 'sicari', ',', 'falsari', 'e', 'gli', ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['RAG', 'ONE', 'ORGANO', 'DI', 'DIFESA', 'DELLA', 'ITALIANITÀ', "''", 'contro',  ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', '1', 'vili', ',', 'camorristi', ',', 'sicari', ',', 'falsari', 'e', ' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['■■■', 'Rassegna', '_', 'Both', 'Phones', 'ANNO', 'L', 'No', '.', '1', 'Il', 'p ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['Rassegna', 'Jjoth', 'Phones', 'ANNO', 'L', 'No', '.', '2', 'BASTA', '!', '...' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['Both', 'Phones', 'ANNO', '.', 'No', '.', '2', 'BASTA', '!', '...', 'uà', 'quai ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['■', 'jSrìt', '*', '*', 'W', '?', '?', 'iIK', '38®f-', 'i^M', 'F', '&lt;', '5É', ' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['■Both', 'Phones', 'ANNO', '11', '.', 'No', '.', '5', 'LE', 'COSE', 'A', 'POSTO ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">                                                                                          </span>                               │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Great. Let's take this a bit further and try and combine two of our options in one function. In reality, we can add all the <span style="color:green">inputs</span> together in one job, but let's start with converting everything into lowercase and removing any words with non-alphanumeric symbols.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;tokens_array&#39;</span><span class="p">:</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;tokens_array&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;to_lowercase&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;remove_non_alpha&#39;</span> <span class="p">:</span> <span class="kc">True</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;preprocess.tokens_array&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│  <span style="font-weight: bold"> field        </span> <span style="font-weight: bold"> value                                                                                    </span>                               │
+│  ─────────────────────────────────────────────────────────────────────────────────────────────────────────                               │
+│  <span style="font-weight: bold"> tokens_array </span> <span style="font-style: italic">                                                                                          </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['ragione', 'organo', 'di', 'difesa', 'della', 'contro', 'vili', 'camorristi', ' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['rag', 'one', 'contro', 'vili', 'camorristi', 'sicari', 'falsari', 'e', 'gli',  ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['ragione', 'organo', 'di', 'difesa', 'della', 'italianità', 'contro', 'vili', ' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'vili', 'camorristi', 'sicari', 'falsari', 'e', 'gli', 'austriacanti' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'vili', 'camorristi', 'sicari', 'falsari', 'e', 'gli', 'austriacanti' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['ragiona', 'organo', 'di', 'difesa', 'della', 'italianità', 'contro', 'vili', ' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['ragione', 'organo', 'di', 'difesa', 'della', 'contro', 'vili', 'camorristi', ' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['ragione', 'contro', 'vili', 'camorristi', 'sicari', 'falsari', 'e', 'gli', 'au ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'vili', 'camorristi', 'sicari', 'falsari', 'e', 'gli', 'austriacanti' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['rag', 'one', 'organo', 'di', 'difesa', 'della', 'italianità', 'contro', 'vili' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['contro', 'vili', 'camorristi', 'sicari', 'falsari', 'e', 'gli', 'austriacanti' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['rassegna', 'both', 'phones', 'anno', 'l', 'no', 'il', 'perche', 'de', 'rassegn ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['rassegna', 'jjoth', 'phones', 'anno', 'l', 'no', 'basta', 'da', 'qualche', 'te ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['both', 'phones', 'anno', 'no', 'basta', 'uà', 'quaiene', 'tempo', 'a', 'questa ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['jsrìt', 'w', 'iik', 'f', 'v', 'ht', 'p', 't', 'both', 'phones', 'anno', 'il',  ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">   ['phones', 'anno', 'no', 'le', 'cose', 'a', 'posto', 'si', 'va', 'dicendo', 'si' ...   </span>                               │
+│  <span style="font-weight: bold">              </span> <span style="font-style: italic">                                                                                          </span>                               │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we're happy with our prepared pre-processed texts, we can use <code>generate.LDA.for.tokens_array</code> to try out some topic modelling. The default for topics is set at seven, but just like the <code>preprocess.tokens_array</code> operation, we can play around with the options. Let's have a look.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">kiara</span><span class="o">.</span><span class="n">retrieve_operation_info</span><span class="p">(</span><span class="s1">&#39;generate.LDA.for.tokens_array&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                                                                            
+ <span style="font-style: italic">Documentation    </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Perform Latent Dirichlet Allocation on a tokenized corpus.                                                             
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   This module computes models for a range of number of topics provided by the user.                                      
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Author(s)        </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                                                                                    
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Context          </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Tags       </span>  language_processing, LDA, tokens                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.language_processing                                                                 
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>: <a href="https://github.com/DHARPA-Project/kiara_plugin.language_processing" target="_blank">https://github.com/DHARPA-Project/kiara_plugin.language_processing</a>                           
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>: <a href="https://DHARPA-Project.github.io/kiara_plugin.language_processing/" target="_blank">https://DHARPA-Project.github.io/kiara_plugin.language_processing/</a>                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">Operation details</span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Documentation </span>  Perform Latent Dirichlet Allocation on a tokenized corpus.                                             
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>  This module computes models for a range of number of topics provided by the user.                      
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Inputs        </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name        </span> <span style="font-weight: bold"> type    </span> <span style="font-weight: bold"> description                          </span> <span style="font-weight: bold"> Required </span> <span style="font-weight: bold"> Default          </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> tokens_array      </span>  array     The text corpus.                       <span style="font-weight: bold">yes</span>        -- no default --     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> num_topics_min    </span>  integer   The minimal number of topics.          no         7                    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> num_topics_max    </span>  integer   The max number of topics.              no         7                    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> compute_coherence </span>  boolean   Whether to compute the coherence       no         False                
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                   </span>            score for each model.                                                  
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> words_per_topic   </span>  integer   How many words per topic to put in     no         10                   
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic">                   </span>            the result model.                                                      
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic"> Outputs       </span>                                                                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-weight: bold"> field name      </span> <span style="font-weight: bold"> type  </span> <span style="font-weight: bold"> description                                                            </span>    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   ──────────────────────────────────────────────────────────────────────────────────────────────────    
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> topic_models    </span>  dict    A dictionary with one coherence model table for each number of topics.     
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> coherence_table </span>  table   Coherence details.                                                         
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>   <span style="font-style: italic"> coherence_map   </span>  dict    A map with the coherence value for every number of topics.                 
+ <span style="font-style: italic">                 </span>  <span style="font-style: italic">               </span>                                                                                                         
+ <span style="font-style: italic">                 </span>                                                                                                                          
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We'll stick with the default for now, and generate some topics for our text.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;tokens_array&#39;</span> <span class="p">:</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;tokens_array&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;generate.LDA.for.tokens_array&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">outputs</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                          │
+│  <span style="font-weight: bold"> field           </span> <span style="font-weight: bold"> value                                                                                                              </span>  │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  <span style="font-weight: bold"> coherence_map   </span> <span style="font-style: italic">                                                                                                                    </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">   dict data     </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">{}</span><span style="font-style: italic">                                                                                                 </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">   dict schema   </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">{</span><span style="font-style: italic">                                                                                                  </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"title"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"dict"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                                 </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"type"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"object"</span><span style="font-style: italic">                                                                                 </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">}</span><span style="font-style: italic">                                                                                                  </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                                                                                                                    </span>  │
+│  <span style="font-weight: bold"> coherence_table </span> <span style="font-style: italic"> -- none/not set --                                                                                                 </span>  │
+│  <span style="font-weight: bold"> topic_models    </span> <span style="font-style: italic">                                                                                                                    </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">   dict data     </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">{</span><span style="font-style: italic">                                                                                                  </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"7"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: [</span><span style="font-style: italic">                                                                                           </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    [</span><span style="font-style: italic">                                                                                              </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #ae81ff; text-decoration-color: #ae81ff; background-color: #ffffff">0</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                                           </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"0.031*\"di\" + 0.024*\"e\" + 0.017*\"che\" + 0.015*\"il\" + 0.013*\"non\" + 0.012*\"a\" …</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    ],</span><span style="font-style: italic">                                                                                             </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    [</span><span style="font-style: italic">                                                                                              </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #ae81ff; text-decoration-color: #ae81ff; background-color: #ffffff">1</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                                           </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"0.043*\"di\" + 0.027*\"e\" + 0.025*\"che\" + 0.017*\"il\" + 0.016*\"a\" + 0.016*\"non\" …</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    ],</span><span style="font-style: italic">                                                                                             </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    [</span><span style="font-style: italic">                                                                                              </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #ae81ff; text-decoration-color: #ae81ff; background-color: #ffffff">2</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                                           </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"0.023*\"di\" + 0.022*\"e\" + 0.021*\"che\" + 0.014*\"a\" + 0.011*\"per\" + 0.011*\"il\" …</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    ],</span><span style="font-style: italic">                                                                                             </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    [</span><span style="font-style: italic">                                                                                              </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #ae81ff; text-decoration-color: #ae81ff; background-color: #ffffff">3</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                                           </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"0.043*\"di\" + 0.028*\"e\" + 0.026*\"che\" + 0.019*\"il\" + 0.016*\"a\" + 0.013*\"non\" …</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    ],</span><span style="font-style: italic">                                                                                             </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    [</span><span style="font-style: italic">                                                                                              </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #ae81ff; text-decoration-color: #ae81ff; background-color: #ffffff">4</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                                           </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"0.025*\"di\" + 0.020*\"che\" + 0.018*\"e\" + 0.016*\"a\" + 0.013*\"un\" + 0.012*\"il\" +…</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    ],</span><span style="font-style: italic">                                                                                             </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    [</span><span style="font-style: italic">                                                                                              </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #ae81ff; text-decoration-color: #ae81ff; background-color: #ffffff">5</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                                           </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"0.030*\"di\" + 0.019*\"e\" + 0.016*\"che\" + 0.016*\"il\" + 0.011*\"un\" + 0.011*\"a\" +…</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    ],</span><span style="font-style: italic">                                                                                             </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    [</span><span style="font-style: italic">                                                                                              </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #ae81ff; text-decoration-color: #ae81ff; background-color: #ffffff">6</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                                           </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">      </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"0.029*\"di\" + 0.018*\"e\" + 0.013*\"che\" + 0.012*\"il\" + 0.010*\"si\" + 0.009*\"per\"…</span><span style="font-style: italic">   </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    ]</span><span style="font-style: italic">                                                                                              </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  ]</span><span style="font-style: italic">                                                                                                </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">}</span><span style="font-style: italic">                                                                                                  </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">   dict schema   </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">{</span><span style="font-style: italic">                                                                                                  </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"title"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"dict"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">,</span><span style="font-style: italic">                                                                                 </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">  </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">"type"</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">: </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"object"</span><span style="font-style: italic">                                                                                 </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                 </span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">}</span><span style="font-style: italic">                                                                                                  </span>  │
+│  <span style="font-weight: bold">                 </span> <span style="font-style: italic">                                                                                                                    </span>  │
+│                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="recording-and-tracing-our-data">Recording and Tracing our Data<a class="headerlink" href="#recording-and-tracing-our-data" title="Permanent link">&para;</a></h3>
+<p>We've successfully downloaded, organised and pre-processed our text files, and now generated some topics for it. <br/>
+Fantastic!</p>
+<p>As we know, this means we've made lots of decisions about our research process and our data. But by using <em>kiara</em>, we can trace what's changed and the decisions we've made. Let's have a look!</p>
+<p><span style="color:blue">As with the installation notebook, not much to see here yet but will be updated as changes come. Would potentially be useful with operations that require options (like the preproccessing) to know whether this has been selected or not?</span></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">topics</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;topic_models&#39;</span><span class="p">]</span>
+
+<span class="n">topics</span><span class="o">.</span><span class="n">lineage</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #008000; text-decoration-color: #008000; font-weight: bold">generate.LDA.for.tokens_array</span>
+├── input: <span style="color: #008000; text-decoration-color: #008000; font-style: italic">compute_coherence (boolean)</span> = 5137a237-fe0f-45bd-abe3-cc84700a2bb6
+├── input: <span style="color: #008000; text-decoration-color: #008000; font-style: italic">num_topics_max (integer)</span> = 75399d70-bbef-4215-b9b5-5dacfa03b2ba
+├── input: <span style="color: #008000; text-decoration-color: #008000; font-style: italic">num_topics_min (integer)</span> = 75399d70-bbef-4215-b9b5-5dacfa03b2ba
+├── input: <span style="color: #008000; text-decoration-color: #008000; font-style: italic">tokens_array (array)</span> = 02d01eb7-70d6-4ef7-811e-66ed25f920bb
+│   └── <span style="color: #000080; text-decoration-color: #000080; font-weight: bold">preprocess.tokens_array</span>
+│       ├── input: <span style="color: #000080; text-decoration-color: #000080; font-style: italic">remove_all_numeric (boolean)</span> = 5137a237-fe0f-45bd-abe3-cc84700a2bb6
+│       ├── input: <span style="color: #000080; text-decoration-color: #000080; font-style: italic">remove_alphanumeric (boolean)</span> = 5137a237-fe0f-45bd-abe3-cc84700a2bb6
+│       ├── input: <span style="color: #000080; text-decoration-color: #000080; font-style: italic">remove_non_alpha (boolean)</span> = 8b1b93ec-a51e-4bbd-84cf-c5a1efd78e9b
+│       ├── input: <span style="color: #000080; text-decoration-color: #000080; font-style: italic">remove_short_tokens (integer)</span> = f5df1b36-9884-413d-92d0-81209227f106
+│       ├── input: <span style="color: #000080; text-decoration-color: #000080; font-style: italic">remove_stopwords (list)</span> = bb8a79b2-369c-46ae-a85a-2b0f85c9da22
+│       ├── input: <span style="color: #000080; text-decoration-color: #000080; font-style: italic">to_lowercase (boolean)</span> = 8b1b93ec-a51e-4bbd-84cf-c5a1efd78e9b
+│       └── input: <span style="color: #000080; text-decoration-color: #000080; font-style: italic">tokens_array (array)</span> = d1db365d-2e59-4455-ae05-78447e5a4268
+│           └── <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-weight: bold">preprocess.tokens_array</span>
+│               ├── input: <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-style: italic">remove_all_numeric (boolean)</span> = 5137a237-fe0f-45bd-abe3-cc84700a2bb6
+│               ├── input: <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-style: italic">remove_alphanumeric (boolean)</span> = 5137a237-fe0f-45bd-abe3-cc84700a2bb6
+│               ├── input: <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-style: italic">remove_non_alpha (boolean)</span> = 5137a237-fe0f-45bd-abe3-cc84700a2bb6
+│               ├── input: <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-style: italic">remove_short_tokens (integer)</span> = f5df1b36-9884-413d-92d0-81209227f106
+│               ├── input: <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-style: italic">remove_stopwords (list)</span> = 524b5812-c4df-4ea0-a50a-d0ec5166c22f
+│               ├── input: <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-style: italic">to_lowercase (boolean)</span> = 5137a237-fe0f-45bd-abe3-cc84700a2bb6
+│               └── input: <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-style: italic">tokens_array (array)</span> = a3c66f00-7f67-483d-8018-a64714094fa4
+│                   └── <span style="color: #870000; text-decoration-color: #870000; font-weight: bold">tokenize.texts_array</span>
+│                       ├── input: <span style="color: #870000; text-decoration-color: #870000; font-style: italic">texts_array (array)</span> = 3db76a98-88e6-45ee-8618-7c95fdf8232c
+│                       │   └── <span style="color: #d7af00; text-decoration-color: #d7af00; font-weight: bold">table.pick.column</span>
+│                       │       ├── input: <span style="color: #d7af00; text-decoration-color: #d7af00; font-style: italic">column_name (string)</span> = 33ebce29-be63-4644-b66b-9e82a3c56236
+│                       │       └── input: <span style="color: #d7af00; text-decoration-color: #d7af00; font-style: italic">table (table)</span> = bd56aae9-6289-4f3e-b3f4-edbc55310689
+│                       │           └── <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">create.table</span>
+│                       │               └── input: <span style="color: #008080; text-decoration-color: #008080; font-style: italic">file_bundle (file_bundle)</span> = 214ae90d-224b-447a-b0e8-112024a8e6d4
+│                       │                   └── <span style="color: #ffaf00; text-decoration-color: #ffaf00; font-weight: bold">download.file_bundle</span>
+│                       │                       ├── input: <span style="color: #ffaf00; text-decoration-color: #ffaf00; font-style: italic">sub_path (string)</span> = 89c3d000-a486-4089-9592-142253d8f3d3
+│                       │                       └── input: <span style="color: #ffaf00; text-decoration-color: #ffaf00; font-style: italic">url (string)</span> = 10d94fa6-0c3d-4d6e-a457-9fa1e7b63e99
+│                       └── input: <span style="color: #870000; text-decoration-color: #870000; font-style: italic">tokenize_by_word (boolean)</span> = 8b1b93ec-a51e-4bbd-84cf-c5a1efd78e9b
+└── input: <span style="color: #008000; text-decoration-color: #008000; font-style: italic">words_per_topic (integer)</span> = cd1319e3-a6ec-4d8d-99b3-34ef873e1d13
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>
