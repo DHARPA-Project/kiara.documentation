@@ -1111,8 +1111,8 @@ Let's use the operation list earlier, and look for something that allows us to c
 <div class="input">
 
 <div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;table&quot;</span> <span class="p">:</span> <span class="n">outputs_table</span><span class="p">,</span>
-    <span class="s2">&quot;query&quot;</span> <span class="p">:</span> <span class="s2">&quot;SELECT * from data where City like &#39;Berlin&#39;&quot;</span>
+    <span class="s2">&quot;table&quot;</span> <span class="o">=</span> <span class="n">outputs_table</span>
+    <span class="s2">&quot;query&quot;</span> <span class="o">=</span> <span class="s2">&quot;SELECT * from data where City like &#39;Berlin&#39;&quot;</span>
 <span class="p">}</span>
 
 <span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;query.table&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
