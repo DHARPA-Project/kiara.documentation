@@ -885,7 +885,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="running-kiara">Running <i>kiara</i><a class="headerlink" href="#running-kiara" title="Permanent link">&para;</a></h2>
 <p>In order to use <em>kiara</em>, we need to create a <code>KiaraAPI</code> instance. An API allows us to control and interact with <em>kiara</em> and its functions. In <em>kiara</em> this also allows us to get more information about what can be done (and what is happening) to our data as we go.</p>
-<p><span style="color:blue">* Note: I'm calling the API 'kiara' at the moment because I think it simplifies it for people who don't know what an API is/how it functions and might get confused by the variable name. This keeps it grounded in 'kiara' (whilst indicating it's an API for those who want to know/already know more) - the first instance of kiara isn't used again in this notebook, but we can always reverse this if it makes things more complicated for follow-on notebooks!</span></p>
+<p>For more on what can be done with the API, see the <em>kiara</em> API documentation <a href = "https://dharpa.org/kiara/latest/reference/kiara/interfaces/python_api/__init__/#kiara.interfaces.python_api.KiaraAPI">here</a>.</p>
 </div>
 </div>
 </div>
@@ -903,7 +903,6 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we have an API in place, we can get more information about what we can do in <em>kiara</em>. Let's start by asking <em>kiara</em> to list all the operations that are included with the plugins we just installed.</p>
-<p>The documentation for each of these functions can be found <a href="https://dharpa.org/kiara/latest/reference/kiara/interfaces/python_api/__init__/#kiara.interfaces.python_api.KiaraAPI">here</a></p>
 </div>
 </div>
 </div>
@@ -1112,8 +1111,8 @@ Let's use the operation list earlier, and look for something that allows us to c
 <div class="input">
 
 <div class="highlight"><pre><span></span><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;table&quot;</span> <span class="o">=</span> <span class="n">outputs_table</span>
-    <span class="s2">&quot;query&quot;</span> <span class="o">=</span> <span class="s2">&quot;SELECT * from data where City like &#39;Berlin&#39;&quot;</span>
+    <span class="s2">&quot;table&quot;</span> <span class="p">:</span> <span class="n">outputs_table</span><span class="p">,</span>
+    <span class="s2">&quot;query&quot;</span> <span class="p">:</span> <span class="s2">&quot;SELECT * from data where City like &#39;Berlin&#39;&quot;</span>
 <span class="p">}</span>
 
 <span class="n">outputs</span> <span class="o">=</span> <span class="n">kiara</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="s1">&#39;query.table&#39;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
