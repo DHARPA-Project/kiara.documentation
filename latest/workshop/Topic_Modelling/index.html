@@ -854,7 +854,7 @@ patool: ... /var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpjr9umxt6 extract
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="preparing-the-texts">Preparing the Texts<a class="headerlink" href="#preparing-the-texts" title="Permanent link">&para;</a></h3>
-<p>Now that we have imported the files, let's give them some structure. For this, we will need the <code>create.table.from.file_bundle</code> function (similar to the <a href="https://github.com/DHARPA-Project/kiara.documentation/blob/develop/docs/workshop/workshop.ipynb">installation notebook</a> which you are welcome to revist at any time). Let's have a look by exploring the list of avaibale operations.</p>
+<p>Now that we have imported the files, let's give them some structure. For this, we will need the <code>create.table.from.file_bundle</code> function (similar to the <a href="https://github.com/DHARPA-Project/kiara.documentation/blob/develop/docs/workshop/workshop.ipynb">installation notebook</a> which you are welcome to revisit at any time). Let's have a look by exploring the list of avaibale operations.</p>
 </div>
 </div>
 </div>
@@ -974,7 +974,7 @@ patool: ... /var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpjr9umxt6 extract
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Great, this has taken all the information from the files we downloaded and made it a bit easier to navigate. In order to process and analyse our sources, we need to work with the files' content which is in the column 'content'. Let's run kiara.list_operation_ids('table') to see how we might be able to do that.</p>
+<p>Great, this has taken all the information from the files we downloaded and made it a bit easier to navigate. In order to process and analyse our sources, we need to work with the files' content which is in the column 'content'. Let's run `kiara.list_operation_ids('table')' to see how we might be able to do that.</p>
 </div>
 </div>
 </div>
@@ -1013,7 +1013,7 @@ patool: ... /var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpjr9umxt6 extract
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We only want one column, so let's have a look at <code>table.pick.column</code></p>
+<p>As we are interested in one column, the <code>table.pick.column</code> operation seems like a good fit.</p>
 </div>
 </div>
 </div>
@@ -1068,7 +1068,7 @@ patool: ... /var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpjr9umxt6 extract
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So here we need two <span style="color:green">inputs</span>, the <strong>table</strong> we just made and the name of the <strong>coloumn</strong> we want to pick. </p>
-<p>Let's use our outputs again and run the function. This way we can keep just the information we need for our language processing.</p>
+<p>Let's specify our outputs again and run the function. In this way, we retain the content of the files as the variable we need for NLP.</p>
 </div>
 </div>
 </div>
