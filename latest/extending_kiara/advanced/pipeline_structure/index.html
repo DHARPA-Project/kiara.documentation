@@ -894,12 +894,13 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This shows three things:</p>
 <h4 id="inputs"><code>inputs</code><a class="headerlink" href="#inputs" title="Permanent link">&para;</a></h4>
-<p>The (pipeline) inputs a user can set, for the lifetime of a pipeline, those will never change, unless a new step is added that has one or several inputs that are not connected to another steps output(s). <em>kiara</em> automatically creates the list of user inputs from the pipeline structure, by collecting all inputs from all steps that are not connected to an output of another step.</p>
+<p>The (pipeline) inputs a user can set, for the lifetime of a pipeline, those will never change, unless a new step is added that has one or several inputs that are not connected to other step output(s). <em>kiara</em> automatically creates the list of user inputs from the pipeline structure, by collecting all inputs of all steps that are not connected to an output of another step.</p>
 <p>A pipeline creator can adjust the field name of inputs by setting it in the <code>input_aliases</code> section of the pipeline configuration, for example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">input_aliases</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">extract_texts_column.column_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content_column_name</span>
 <span class="w">  </span><span class="nt">import_text_corpus.path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text_corpus_folder_path</span>
 </code></pre></div>
+<p>This is optional, but usually makes for a nicer user experience, because input field names are more meaningful.</p>
 <p>Pipeline inputs that are not listed under <code>input_aliases</code> will have an auto-generated field name.</p>
 <h4 id="steps"><code>steps</code><a class="headerlink" href="#steps" title="Permanent link">&para;</a></h4>
 <p>A list of steps, similar to the visual representation of the execution graph above. Note how the steps are grouped into 'stages'. More on that later, it's the main thing I want to explain in this notebook.</p>
@@ -982,7 +983,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note how here the field names are assembled from the id of the step they belong to, and the field name of the input in the underlying module. This can be considered the 'address' of a value within a pipeline. The actual data of each of the fields will change over time, as a user sets different inputs, but this field name will stay the same, and can be used to access the current value.</p>
+<p>Note how here the field names are assembled from the id of the step they belong to, and the field name of the input in the underlying module. This can be considered the 'address' of a value within a pipeline. The actual data of each of the fields will change over time, as a user sets different inputs, but this field name will stay the same, and can always be used to access the current value at this point in the pipeline.</p>
 <h2 id="pipeline-stages">Pipeline stages<a class="headerlink" href="#pipeline-stages" title="Permanent link">&para;</a></h2>
 <p>Now the important bit. Each step in a pipeline can only be executed when all of its inputs are set. This is obvious for the inputs of that step that are set by a user (in which case we need to wait for the user). If the input is connected to an output of another step though, this means that the other steps needs to have finished processing before this one can be kicked off. Steps that are executed in the same 'level' as other steps (meaning they need to have waited for the same dependency steps) can be grouped into what I call a 'stage'.</p>
 <p>There are multiple ways how to group the steps of a pipeline into stages. The most obvious one would be to give each step its own stage, which for our example would look like this:</p>
@@ -1012,8 +1013,8 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If we think about automatically rendering an UI for the user to provide inputs, each "Stage: X" node would represent a step where the user needs to select the inputs that feed into it, and click 'Process' to get to the next step.
-The 'one-stage-per-step' strategy will give us the most detailed information about the flow the data goes through, but it will also be the most confusing (more nodes and connection mean a busier UI).</p>
-<p>The other extreme in terms of splitting up a pipeline would be to just create a single stage, and throw all steps in it:</p>
+The 'one-stage-per-step' strategy will give us the most detailed information about the flow of the data within the pipeline, but it will also be the most confusing (more nodes and connection mean a busier UI) and will take up the most space.</p>
+<p>The other extreme in terms of splitting up a pipeline would be to just create a single stage, and throw all steps into it:</p>
 </div>
 </div>
 </div>
@@ -1039,7 +1040,7 @@ The 'one-stage-per-step' strategy will give us the most detailed information abo
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Translating this to a UI again, a user would set all inputs at the same time, and re-compute the whole pipeline every time they changed any of the inputs, and clicks 'Process'.</p>
+<p>Translating this to a UI again, a user would set all inputs at the same time, and re-compute the whole pipeline every time the user changed any of the inputs, and clicks 'Process'.</p>
 <p>Both of those strategies have their advantages, but there are other strategies we can employ. There are two I call 'early' and 'late', who are very similar, but have a subtle difference: they schedule steps as early as possible, or as early as necessary. Both of them go through all steps, and figure out which ones can be processed at the same time (because their requirements will be satisfied at the same time), but 'late' will place a step in the last possible layer before it's result is needed, whereas 'early' places it as soon as possible (which, in practice only really applies for steps that require user input, and they will be added to the first stage, always). 'late' makes more sense if we want to auto-generate input forms, because that way user inputs are only asked when they are actually used, and not at the beginning, even though their input will be used 3 stages later, for example.</p>
 <p>Here are the two graphs:</p>
 </div>
@@ -1089,10 +1090,12 @@ The 'one-stage-per-step' strategy will give us the most detailed information abo
 <p>It's a subtle difference, but check out how the 'languages' and 'stopword_lists' inputs are requested in different stages.</p>
 <p>I haven't implemented other strategies to split up a pipeline into stages yet, but I want to have at least one more: a variation of 'late', where steps that don't have any user inputs (only connections to other step outputs) are merged with the previous stage. Because, if there is no user input, we can just process the step after we processed the previous one, without having to wait for any user input.</p>
 <p>Also, I want to add an option for pipeline creators to group steps into stages that make sense from a 'research' perspective, meaning the creator will manually hint at the best way to present the order of steps to a user.</p>
-<p>I'm not sure if any of this makes sense, but I think we'll have a hard time if we only have a single option to present a pipeline structure/order to users. The pipelines we'll be working with will differ a lot in terms of overall complexity and size, and unless we want to hand-craft a UI for all of them, I think the only option we have is to auto-generate one or several input forms per pipeline. Esp. large pipelines would become very unwieldy to display in a UI, even with zooming, scrolling.</p>
-<p>An input form would map to a node in your figma wireframe. The crucial thing then would be how to split up those forms to provide the best user experience. If we do it like I propose, we could easily have a menu or set of buttons that lets users switch between different views of the same pipeline.</p>
-<p>The nice thing is, we'd only need to create the code to auto-generate such a form once. And we'd feed in the information of one stage per form/node. If we want to change the way stages are split up, we just feed in 'broader' or 'slimmer' stages, and the generated UI would have less/more nodes with more/less input fields in each. If a user already set an input, that wouldn't change, since the input field name would be the same in each of the options.</p>
-<p>Another thing I haven't mentioned is that we'll of course also have a lot more data and metadata we can show in the nodes (or connection between nodes), what I outline is really only the simplest way I could think of to explain how I imagine this working.</p>
+<p>One of the nice things about the 'late' strategy is that it (usually, not always) 'balances' and distributes pipeline inputs across different stages, which means none of the input forms for a stage has an overwhelming amount of inputs. Also, the inputs are typically 'thematically' required. Also, since it's an automated process, it does not require any work on the part of the pipeline creator. Of course, the creater can decide to manually add other stage-extraction strategies for a specific pipeline, which would be a fallback for the case where the auto-generation fails to produce a nice result for some reason or other.</p>
+<p>I'm not sure if any of this makes sense, but I think we'll have a hard time if we only have a single option to present a pipeline structure/order to users. The pipelines we'll be working with will differ a lot in terms of overall complexity and size, and unless we want to hand-craft a UI for all of them, I think the only option we have is to auto-generate one or several input forms per pipeline. Esp. large pipelines would become very unwieldy to display in a UI, even with zooming, scrolling. Stages will translate a branched execution network into a linear one (one stage after the other), which would be more in line with what users are used to. But, as I said, we would not lose the option to display the actual execution graph either.</p>
+<p>An input form (encompassing the user inputs of a stage) would map to a node in your figma wireframe. I think you already unwittingly used stages for that, because you took your example from my 'static' streamlit app, which does.</p>
+<p>If we do it like I propose, we could easily have a menu or set of buttons that lets users switch between different views of the same pipeline.</p>
+<p>And the nice thing is, we'd only need to create the code to auto-generate such a form once. We'd feed in the information of one stage per form/node. If we want to change the way stages are split up, we just feed in 'broader' or 'slimmer' stages, and the generated UI would have less/more nodes with more/less input fields in each. If one or several user inputs are already set, it wouldn't matter and would still display the current state of each of them, since the input field name would be the same in each of the options (since in all cases, pipeline inputs always live outside of stages).</p>
+<p>Another thing I haven't mentioned is that we'll of course also have a lot more data and metadata we can show in the nodes (or connection between nodes), like previews, data types, documentation for each field, etc. What I outline is really only the simplest way I could think of to explain this implementation approach.</p>
 </div>
 </div>
 </div>
