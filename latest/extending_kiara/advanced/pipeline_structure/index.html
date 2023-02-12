@@ -1012,6 +1012,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>This is the only strategy that will actually give as a non-linear graph ("Stage 5" is an extra leaf node -- remember that in the following examples and see how we go through the stages one by one there).</p>
 <p>If we think about automatically rendering an UI for the user to provide inputs, each "Stage: X" node would represent a step where the user needs to select the inputs that feed into it, and click 'Process' to get to the next step.
 The 'one-stage-per-step' strategy will give us the most detailed information about the flow of the data within the pipeline, but it will also be the most confusing (more nodes and connection mean a busier UI) and will take up the most space.</p>
 <p>The other extreme in terms of splitting up a pipeline would be to just create a single stage, and throw all steps into it:</p>
@@ -1040,7 +1041,7 @@ The 'one-stage-per-step' strategy will give us the most detailed information abo
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Translating this to a UI again, a user would set all inputs at the same time, and re-compute the whole pipeline every time the user changed any of the inputs, and clicks 'Process'.</p>
+<p>Imagining this as a UI, a user would set all inputs at the same time, and re-compute the whole pipeline every time the user changed any of the inputs, and clicks 'Process'.</p>
 <p>Both of those strategies have their advantages, but there are other strategies we can employ. There are two I call 'early' and 'late', who are very similar, but have a subtle difference: they schedule steps as early as possible, or as early as necessary. Both of them go through all steps, and figure out which ones can be processed at the same time (because their requirements will be satisfied at the same time), but 'late' will place a step in the last possible layer before it's result is needed, whereas 'early' places it as soon as possible (which, in practice only really applies for steps that require user input, and they will be added to the first stage, always). 'late' makes more sense if we want to auto-generate input forms, because that way user inputs are only asked when they are actually used, and not at the beginning, even though their input will be used 3 stages later, for example.</p>
 <p>Here are the two graphs:</p>
 </div>
