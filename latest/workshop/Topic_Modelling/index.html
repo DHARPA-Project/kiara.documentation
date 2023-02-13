@@ -606,7 +606,6 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="kiara-natural-language-processing-nlp"><i>kiara</i>: Natural Language Processing (NLP)<a class="headerlink" href="#kiara-natural-language-processing-nlp" title="Permanent link">&para;</a></h1>
 <p>Welcome back! Now that we're comfortable with what <em>kiara</em> looks like and what it can do to help track your data and your research process, let's try out some of the digital analysis tools, starting with <strong>Natural Language Processing</strong>.</p>
-<p><span style ="color:blue">Lorella could there be some general information here on language processing/point to some literature maybe?</span></p>
 <h1 id="why-nlp">Why NLP?<a class="headerlink" href="#why-nlp" title="Permanent link">&para;</a></h1>
 <p>First of all, why bothering with NLP? Natural language processing technology allows researchers to sort through unstructured data such as plain text. In other words, by adding numerical value to text, computers can <i>understand</i> language and perform advanced operations such as text categorisation, labelling, summarisation and so on.
 There are two main stages in NLP: pre-processing and analysis (aka, algorithm development and/or implementation). Here we cover both stages through the example of some of the most common pre-processing operations such as tokenisation, lowercasing, removing stopwords etc. in the first part. For the second part, we will use the example of another widely used text analysis method called topic modelling.
@@ -1067,7 +1066,7 @@ patool: ... /var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpjr9umxt6 extract
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So here we need two <span style="color:green">inputs</span>, the <strong>table</strong> we just made and the name of the <strong>coloumn</strong> we want to pick. </p>
+<p>So here we need two <span style="color:green">inputs</span>, the <strong>table</strong> we just made and the name of the <strong>column</strong> we want to pick.</p>
 <p>Let's specify our outputs again and run the function. In this way, we retain the content of the files as the variable we need for NLP.</p>
 </div>
 </div>
@@ -1122,9 +1121,8 @@ patool: ... /var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpjr9umxt6 extract
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="language-processing-and-topic-modelling">Language Processing and Topic Modelling<a class="headerlink" href="#language-processing-and-topic-modelling" title="Permanent link">&para;</a></h3>
-<p>Great, we've downloaded and prepped our material for text analysis. Not we want to see what kind of functions are included in <em>kiara</em> for language processing. Let's have a look and see what's included in the <code>kiara_plugin.language_processing</code> package.</p>
-<p><span style="color:blue">Lorella this may/may not need some extra description on what the different operations do</span></p>
+<h3 id="natural-language-processing-stage-1">Natural Language Processing (Stage 1)<a class="headerlink" href="#natural-language-processing-stage-1" title="Permanent link">&para;</a></h3>
+<p>Now we are ready for preparing our text for analysis. Let's see what operations are included in <em>kiara</em> for NLP in the <code>kiara_plugin.language_processing</code> package.</p>
 </div>
 </div>
 </div>
@@ -1157,7 +1155,8 @@ patool: ... /var/folders/5h/j266_5ss6qj7x37qd77pydh0p248rs/T/tmpjr9umxt6 extract
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The contents of our text files have been stored as an <strong>array</strong>, so let's start by tokenizing this using the <code>tokenize.texts_array</code> function.</p>
+<p>The contents of our text files have been stored as an <strong>array</strong>. Before performing any operation, we should start by tokenising our text. We can do this by using the <code>tokenize.texts_array</code> function.</p>
+<p>If you're unsure about which of these operations you should run, you can refer to the in-built explanation in each <em>kiara</em> module which clarifies what each operation does. For further information about pros and cons of each pre-processing operation, please refer to this repository <a href="https://github.com/DHARPA-Project/TopicModelling-">here</a>.</p>
 </div>
 </div>
 </div>
