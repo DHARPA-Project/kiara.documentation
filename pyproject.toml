@@ -30,8 +30,8 @@ classifiers = [
     "Programming Language :: Python :: 3.11"
 ]
 dependencies = [
-    "kiara>=0.4.29",
-    "kiara_plugin.network_analysis>=0.4.9",
+    "kiara>=0.4.32",
+    "kiara_plugin.network_analysis>=0.4.10",
     "icecream>=2.1.0",
     "mike>=1.0.1",
     "mkdocs-awesome-pages-plugin>=2.5.0",
